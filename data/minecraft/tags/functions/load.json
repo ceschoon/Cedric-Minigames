@@ -13,6 +13,6 @@
 	  "platforms:reload",
 	  "tag:reload",
 	  "teams:reload",
-	  "zombie:reload"
+	  "zombies:reload"
 	  ]
 }
