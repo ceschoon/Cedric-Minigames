@@ -1,0 +1,18 @@
+{
+	"values": [
+	  "animals:main",
+	  "cmenu:main",
+	  "compass:main",
+	  "ctime:main",
+	  "duels:main",
+	  "flsheep:main",
+	  "hunt:main",
+	  "infection:main",
+	  "koth:main",
+	  "platforms:main",
+	  "permeffects:main",
+	  "tag:main",
+	  "teams:main",
+	  "zombies:main"
+	  ]
+}

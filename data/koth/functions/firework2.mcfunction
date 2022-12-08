@@ -1,0 +1,1 @@
+summon firework_rocket ~ ~3 ~ {LifeTime:15,FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Flight:1,Explosions:[{Type:4,Flicker:1,Trail:1,Colors:[I;2651799,4312372,6719955],FadeColors:[I;15790320]}]}}}}

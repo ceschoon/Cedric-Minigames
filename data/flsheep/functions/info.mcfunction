@@ -1,0 +1,7 @@
+tellraw @s [" "]
+tellraw @s [{"text":" Flying Sheep Minigame: Info ","color":"aqua"}]
+tellraw @s [" "]
+tellraw @s [{"text":" In this minigame 2 or 4 teams compete to bring sheep to their base, by elytra. The first team to bring 20 sheep wins the game. ","color":"aqua"}]
+tellraw @s [" "]
+tellraw @s [{"text":" The teams are filled randomly by default but you are free to create them in advance (using the teams module). The game preserves the existing teams if they are not empty. ","color":"aqua"}]
+tellraw @s [" "]

@@ -1,0 +1,8 @@
+tellraw @a [" "]
+tellraw @a [{"text":"=== Minigame: Infection ===","color":"gold","bold":true}]
+tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function infection:info"}}]
+tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function infection:reload"}}]
+tellraw @a [{"text":"[Start with me]","color":"green", "clickEvent":{"action":"run_command","value":"/function infection:start"},"hoverEvent":{"action":"show_text","value":{"text":"First infected is the one who clicks"}}}]
+tellraw @a [{"text":"[Start with random player]","color":"green", "clickEvent":{"action":"run_command","value":"/execute as @r run function infection:start"},"hoverEvent":{"action":"show_text","value":{"text":"First infected is selected at random"}}}]
+tellraw @a [{"text":"[Pause/Restart]","color":"dark_green", "clickEvent":{"action":"run_command","value":"/function ctime:togglepause"}}]
+tellraw @a [" "]

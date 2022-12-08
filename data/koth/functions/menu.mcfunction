@@ -1,0 +1,7 @@
+tellraw @a [" "]
+tellraw @a [{"text":"=== Minigame: King of the Hill ===","color":"gold","bold":true}]
+tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function koth:info"}}]
+tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function koth:reload"}}]
+tellraw @a [{"text":"[Start]","color":"green", "clickEvent":{"action":"run_command","value":"/function koth:start"},"hoverEvent":{"action":"show_text","value":{"text":"Note: the platform will be generated where you stand"}}}]
+tellraw @a [{"text":"[Pause/Restart]","color":"dark_green", "clickEvent":{"action":"run_command","value":"/function ctime:togglepause"}}]
+tellraw @a [" "]
