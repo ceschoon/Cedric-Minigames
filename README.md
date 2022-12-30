@@ -43,3 +43,6 @@ You can also pause a game by clicking the dark green text [Pause/Restart].
 ![alt text](gallery/tag/fort.png?raw=true)
 ![alt text](gallery/tag/sneak.png?raw=true)
 
+## Development history
+
+This is a new repository in which I merged several minigames from another repository at https://github.com/ceschoon/Minecraft-Datapacks. I intent to continue the development of these minigames here in a single minecraft datapack.
