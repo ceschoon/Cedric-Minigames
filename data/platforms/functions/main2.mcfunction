@@ -59,6 +59,9 @@ clear @a[team=team3] yellow_terracotta
 # Convert freshly bought terracotta to player's team color
 execute as @a run function platforms:terracottacolor
 
+# Convert mob spawn eggs to spawn mob in correct team
+execute as @a run function platforms:makespawneggofteam
+
 # Clear diamonds from inventory and increment score
 scoreboard players set @a pltf_AddScore 0
 execute at @e[type=armor_stand,name=team1] as @a[team=team1,distance=..2] store success score @s pltf_AddScore run clear @s diamond 1
@@ -115,6 +118,30 @@ scoreboard players set @a[scores={pltf_DelayWool=..0}] pltf_DelayWool 30
 # Keep villagers in place
 execute at @e[type=armor_stand,name=villager1] run tp @e[type=villager,distance=..5] ~ ~ ~
 execute at @e[type=armor_stand,name=villager2] run tp @e[type=villager,distance=..5] ~ ~ ~
+
+# Keep golems in place
+execute at @e[type=armor_stand,name=team1] run tp @e[type=iron_golem,distance=12..16] ~ ~ ~
+execute at @e[type=armor_stand,name=team2] run tp @e[type=iron_golem,distance=12..16] ~ ~ ~
+execute at @e[type=armor_stand,name=team3] run tp @e[type=iron_golem,distance=12..16] ~ ~ ~
+execute at @e[type=armor_stand,name=team4] run tp @e[type=iron_golem,distance=12..16] ~ ~ ~
+
+# Make golems join the team of the platform where they spawn
+execute at @e[type=armor_stand,name=team1] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team1
+execute at @e[type=armor_stand,name=team2] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team2
+execute at @e[type=armor_stand,name=team3] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team3
+execute at @e[type=armor_stand,name=team4] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team4
+
+# Make golems angry at enemy players
+data modify entity @e[type=iron_golem,team=team1,limit=1,sort=random] AngryAt set from entity @p[team=!team1] UUID
+data modify entity @e[type=iron_golem,team=team2,limit=1,sort=random] AngryAt set from entity @p[team=!team2] UUID
+data modify entity @e[type=iron_golem,team=team3,limit=1,sort=random] AngryAt set from entity @p[team=!team3] UUID
+data modify entity @e[type=iron_golem,team=team4,limit=1,sort=random] AngryAt set from entity @p[team=!team4] UUID
+
+# Make golems glow to show team colors
+effect give @e[type=iron_golem,team=team1] glowing 1 1 true
+effect give @e[type=iron_golem,team=team2] glowing 1 1 true
+effect give @e[type=iron_golem,team=team3] glowing 1 1 true
+effect give @e[type=iron_golem,team=team4] glowing 1 1 true
 
 # Summon fireballs from fire_charge
 #function platforms:summonfireball
