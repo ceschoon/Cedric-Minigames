@@ -50,5 +50,18 @@ team modify tag_hunter6 color dark_aqua
 team modify tag_hunter7 color light_purple
 team modify tag_hunter8 color dark_purple
 
+team remove noteam
+team add noteam
+team join noteam @a
+
+execute as @r[team=noteam] run team join tag_hunter1 @s
+execute as @r[team=noteam] run team join tag_hunter2 @s
+execute as @r[team=noteam] run team join tag_hunter3 @s
+execute as @r[team=noteam] run team join tag_hunter4 @s
+execute as @r[team=noteam] run team join tag_hunter5 @s
+execute as @r[team=noteam] run team join tag_hunter6 @s
+execute as @r[team=noteam] run team join tag_hunter7 @s
+execute as @r[team=noteam] run team join tag_hunter8 @s
+
 say Cedric Tag: reloaded teams module!
 
