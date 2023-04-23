@@ -1,7 +1,7 @@
 tellraw @a [" "]
 tellraw @a [{"text":"=== Minigame: Duels ===","color":"gold","bold":true}]
-tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function duels:info"}}]
 tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function duels:reload"}}]
+tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function duels:info"}}]
 tellraw @a [{"text":"[World Border 16]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function duels:worldborder16"},"hoverEvent":{"action":"show_text","value":{"text":" Restricts world size around your position "}}}]
 tellraw @a [{"text":"[World Border 32]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function duels:worldborder32"},"hoverEvent":{"action":"show_text","value":{"text":" Restricts world size around your position "}}}]
 tellraw @a [{"text":"[World Border 48]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function duels:worldborder48"},"hoverEvent":{"action":"show_text","value":{"text":" Restricts world size around your position "}}}]
