@@ -17,11 +17,8 @@ gamerule naturalRegeneration true
 
 gamemode survival @a
 
-# Store position to target hill with compass
-function compass:trackxyz
-execute store result score @a X run data get entity @s Pos[0] 1
-execute store result score @a Y run data get entity @s Pos[1] 1
-execute store result score @a Z run data get entity @s Pos[2] 1
+# Target hill with compass
+function compass:trackhere
 
 # Summon armorstand on top of the hill (for targeting position)
 kill @e[type=armor_stand]
