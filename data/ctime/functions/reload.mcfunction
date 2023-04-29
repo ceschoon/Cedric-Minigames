@@ -17,4 +17,6 @@ scoreboard players set @a ctime_Ticks 0
 scoreboard players set @a ctime_Seconds 0
 scoreboard players set @a ctime_TicksInSec 0
 
+gamerule randomTickSpeed 300
+
 say Cedric Time module: reloaded!
