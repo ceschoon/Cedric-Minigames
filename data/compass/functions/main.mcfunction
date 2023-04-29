@@ -22,4 +22,7 @@ scoreboard players set @a[nbt={Dimension:"minecraft:overworld"}] dimroof 0
 scoreboard players set @a[nbt={Dimension:"minecraft:the_nether"}] dimroof 1
 scoreboard players set @a[nbt={Dimension:"minecraft:the_end"}] dimroof 0
 
+# Apply glowing to all players in range of bell ringing
+execute at @a[scores={cbellring=1..}] run effect give @a[distance=..32] glowing 5
+scoreboard players set @a[scores={cbellring=1..}] cbellring 0
 

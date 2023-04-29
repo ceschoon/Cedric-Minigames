@@ -16,12 +16,18 @@ scoreboard objectives add X dummy
 scoreboard objectives add Y dummy
 scoreboard objectives add Z dummy
 
+scoreboard players set @a drop 0
+scoreboard players set @a target 0
+
+# Track mechanism by ringing bells
+scoreboard objectives remove cbellring
+scoreboard objectives add cbellring minecraft.custom:minecraft.bell_ring
+scoreboard players set @a cbellring 0
+
 # Variable used to spread players: indicates the presence of a roof
 # TODO: This should be avoided and the other minigame functions should detect the dimension on their own
 scoreboard objectives remove dimroof
 scoreboard objectives add dimroof dummy
-
-scoreboard players set @a target 0
 scoreboard players set @a dimroof 0
 
 say Cedric Compass module: reloaded!
