@@ -6,12 +6,14 @@ scoreboard objectives remove tag_ScoreCopy
 scoreboard objectives remove tag_Kills
 scoreboard objectives remove tag_Tag
 scoreboard objectives remove tag_On
+scoreboard objectives remove tag_PrepTime
 
 scoreboard objectives add tag_Score dummy "Time Tagged"
 scoreboard objectives add tag_ScoreCopy dummy
 scoreboard objectives add tag_Kills minecraft.custom:minecraft.player_kills
 scoreboard objectives add tag_Tag dummy
 scoreboard objectives add tag_On dummy
+scoreboard objectives add tag_PrepTime dummy
 
 ## Indication variables for derived games (now map size variants)
 
