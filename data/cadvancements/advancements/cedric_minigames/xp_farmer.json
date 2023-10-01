@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:experience_bottle"
+    },
+    "title": "XP Farmer",
+    "description": "Continue killing players to collect experience",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent":"cadvancements:cedric_minigames/player_hunter",
+  "criteria": {
+    "xp_farmer": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:player"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 200,
+    "function": "cadvancements:reset_advancement_xp_farmer"
+  },
+  "sends_telemetry_event": false
+}
