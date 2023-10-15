@@ -5,6 +5,7 @@ tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command
 
 tellraw @a [{"text":"[Toggle gamemode]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function tag:togglegamemode"},"hoverEvent":{"action":"show_text","value":{"text":"Change the game objective: keep the tag as long as possible or get rid of it"}}}]
 tellraw @a [{"text":"[Enable/Disable kill rewards]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function tag:togglekillrewards"}}]
+tellraw @a [{"text":"[Enable/Disable mining fatigue for the tagged player]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function tag:toggleminingfatigue"}}]
 
 tellraw @a [{"text":"[Set preparation time to  0 min]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players set @a tag_PrepTime 0"},"hoverEvent":{"action":"show_text","value":{"text":"Give the players time to collect resources before the score increase"}}}]
 tellraw @a [{"text":"[Set preparation time to  5 min]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players set @a tag_PrepTime 300"},"hoverEvent":{"action":"show_text","value":{"text":"Give the players time to collect resources before the score increase"}}}]

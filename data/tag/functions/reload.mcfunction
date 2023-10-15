@@ -30,12 +30,16 @@ scoreboard players set @a tag_rtagxs 0
 
 scoreboard objectives remove tag_gamemode
 scoreboard objectives remove tag_kill_rewards
+scoreboard objectives remove tag_mining_fatigue
 
 scoreboard objectives add tag_gamemode dummy
 scoreboard objectives add tag_kill_rewards dummy
+scoreboard objectives add tag_mining_fatigue
 
 scoreboard players set @a tag_gamemode 0
 scoreboard players set @a tag_kill_rewards 1
+scoreboard players set @a[scores={tag_gamemode=0}] tag_mining_fatigue 1
+scoreboard players set @a[scores={tag_gamemode=1}] tag_mining_fatigue 0
 
 function tag:reloadteams
 #function tagrules:reload
