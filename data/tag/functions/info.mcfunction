@@ -5,7 +5,7 @@ tellraw @s [{"text":" This minigame comes with 3 variants. The first variant (ba
 tellraw @s [" "]
 tellraw @s [{"text":" The \"tag\" consists of a scoreboard display that increments every second for the tagged player. The tagged player is indicated by the gold color. If the tagged player dies from natural causes, the tag is given randomly to one of the players with the lowest score.","color":"aqua"}]
 tellraw @s [" "]
-tellraw @s [{"text":" In the second variant (normal) worldborders are set to create a 400x400 map. The inventory/effects of the players are cleared before the game starts. The winner is the first player to stay tagged for more than 1200 seconds (20 minutes). ","color":"aqua"}]
+tellraw @s [{"text":" In the second variant (normal) worldborders are set to create a 300x300 map. The inventory/effects of the players are cleared before the game starts. The winner is the first player to stay tagged for more than 1200 seconds (20 minutes). ","color":"aqua"}]
 tellraw @s [" "]
 tellraw @s [{"text":" In the third variant (mini) the map is only 100x100 blocks wide. All players have the ability to kill the others in one hit with bare hands. The game is played at a faster pace and the threshold to win is thus set to 600 seconds (10 minutes). ","color":"aqua"}]
 tellraw @s [" "]

@@ -33,8 +33,8 @@ time set 0
 tp @a @s
 
 # Spread Players (use dimroof variable from compass module)
-execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 200 200 false @a
-execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 200 200 under 127 false @a
+execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 150 150 false @a
+execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 150 150 under 127 false @a
 
 # Set spawn (world spawn too, should not be close to platform)
 execute as @a at @s run spawnpoint @s ~ ~ ~
