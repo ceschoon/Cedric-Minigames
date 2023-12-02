@@ -22,6 +22,7 @@ scoreboard objectives add inf_test_mole dummy
 scoreboard players set @a inf_test_mole 0
 execute as @a[team=sane,scores={inf_Mole=1}] unless entity @s[nbt={Inventory:[{id: "minecraft:black_banner", Count:1b}]}] run scoreboard players set @s inf_test_mole 1
 team join infected @a[scores={inf_test_mole=1}]
+effect give @a[scores={inf_test_mole=1}] minecraft:absorption 30 1 false
 execute as @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@s","color":"red"},{"text":" was a mole the whole time!!","color":"red"}]
 execute as @a[scores={inf_test_mole=1}] at @s run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
 
@@ -34,3 +35,5 @@ effect give @a[scores={ctime_Pause=1}] resistance 1 255
 # detect end of the game
 execute if entity @a[scores={inf_On=1}] unless entity @a[team=sane] run function infection:win
 
+# make it so that sane players get bonuses when grouped together
+execute as @a[team=sane] at @s if entity @a[team=sane,distance=2..10] run effect give @s minecraft:resistance 20 1 false
