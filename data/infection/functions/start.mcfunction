@@ -7,6 +7,7 @@ scoreboard players set @a ctime_TicksInSec 0
 scoreboard players set @a ctime_Seconds 0
 scoreboard players set @a ctime_Pause 0
 scoreboard players set @a inf_WarnDelay 0
+scoreboard players set @a inf_HealDelay 0
 
 gamerule keepInventory true
 gamerule doImmediateRespawn true
@@ -20,6 +21,16 @@ time set 0
 execute in minecraft:overworld run worldborder center ~ ~
 execute in minecraft:overworld run worldborder set 300
 setworldspawn ~ ~ ~
+
+# Summon armorstand to indicate the position where the shrine must be constructed
+# Use spreadplayers command to make sure that the shrine is placed at the surface
+execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 50 50 false @s
+execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 50 50 under 127 false @s
+kill @e[type=armor_stand]
+summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"shrine\"",CustomNameVisible:0}
+execute at @s align xyz run tp @e[type=armor_stand,name=shrine] ~.5 ~-1.5 ~.5
+execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~2 ~2 ~2 air
+scoreboard players set @a shrine_active 0
 
 # Tp all players to bring them in the correct dimension
 tp @a @s
@@ -48,7 +59,6 @@ scoreboard players set @a inf_Mole 0
 scoreboard players set @s inf_Mole 1
 item replace entity @s hotbar.8 with black_banner{display:{Lore:["\"Remove the banner from this slot to join the infected team.\""]},BlockEntityTag:{Patterns:[{Pattern:"sku",Color:13}]}} 1
 
-
 title @a title {"text":"Infection Game Starts Now!","color":"red"}
 title @a[team=sane,scores={inf_Mole=0}] subtitle {"text":"You will become infected if you die","color":"red"}
 title @a[team=sane,scores={inf_Mole=1}] subtitle {"text":"You are a mole. Your goal is to kill your teammates.","color":"red"}
@@ -56,5 +66,7 @@ title @a[team=infected] subtitle {"text":"You are infected","color":"red"}
 tellraw @a[team=sane,scores={inf_Mole=0}] [{"text":"Infection Game Starts Now! You will become infected if you die","color":"red"}]
 tellraw @a[team=sane,scores={inf_Mole=1}] [{"text":"Infection Game Starts Now! You are a mole. Your goal is to kill your teammates.","color":"red"}]
 tellraw @a[team=infected] [{"text":"Infection Game Starts Now! You are infected","color":"red"}]
+
+
 
 

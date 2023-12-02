@@ -5,4 +5,5 @@ tellraw @s [{"text":" In this minigame, \"infected\" players chase other players
 tellraw @s [" "]
 tellraw @s [{"text":" The sane players glow so they cannot hide their position to the infected. The infected players do not glow and thus can sneak on the others. However, a warning message is shown to sane players if an infected is nearby. Sane players have a resistance II bonus if they stay close to each other. The mole gets 4 additional hearts (absorption II) for 30 seconds upon revealing oneself. ","color":"aqua"}]
 tellraw @s [" "]
-
+tellraw @s [{"text":" To get rid of the spreading infection, the sane players must repair a magic structure that will give them potions to cure the infected. ","color":"aqua"}]
+tellraw @s [" "]
