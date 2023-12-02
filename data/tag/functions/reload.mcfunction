@@ -23,6 +23,7 @@ scoreboard objectives remove tag_rtagxs
 scoreboard objectives add tag_rtag dummy
 scoreboard objectives add tag_rtagxs dummy
 
+# Cannot be moved to start function because we would loose the configuration set in the menu
 scoreboard players set @a tag_rtag 0
 scoreboard players set @a tag_rtagxs 0
 
@@ -34,8 +35,9 @@ scoreboard objectives remove tag_mining_fatigue
 
 scoreboard objectives add tag_gamemode dummy
 scoreboard objectives add tag_kill_rewards dummy
-scoreboard objectives add tag_mining_fatigue
+scoreboard objectives add tag_mining_fatigue dummy
 
+# Cannot be moved to start function because we would loose the configuration set in the menu
 scoreboard players set @a tag_gamemode 0
 scoreboard players set @a tag_kill_rewards 1
 scoreboard players set @a[scores={tag_gamemode=0}] tag_mining_fatigue 1

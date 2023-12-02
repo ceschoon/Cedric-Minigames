@@ -1,7 +1,7 @@
 
 # permanent effects
 effect give @a[scores={tag_rtagxs=1}] strength 20 255
-effect give @a night_vision 20 255
+effect give @a night_vision infinite 0 true
 effect give @a[scores={tag_gamemode=1,tag_Tag=0}] glowing 1 255
 
 # mining fatigue for the runner (option)
