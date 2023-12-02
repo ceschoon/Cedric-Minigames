@@ -25,4 +25,6 @@ kill @e[type=item,x=-1000000,y=-200,z=-1000000,dx=2000000,dy=100,dz=2000000]
 # give special abilities to the zombies
 #execute as @a[scores={zombies_difficulty=0..}] at @s run execute as @e[name=custom_zombie,distance=..32] run attribute @s generic.follow_range base set 64
 
-
+# zombie team
+team join zombies @e[type=zombie]
+team join zombies @e[type=zombie_villager]

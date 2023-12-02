@@ -19,4 +19,7 @@ scoreboard objectives remove zombies_count
 scoreboard objectives add zombies_count dummy
 scoreboard players set @a zombies_count 0
 
+team remove zombies
+team add zombies
+
 say Cedric Zombies: reloaded!
