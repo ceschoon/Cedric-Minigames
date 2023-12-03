@@ -46,14 +46,16 @@ execute at @e[type=armor_stand,name=shrine] if entity @a[scores={shrine_active=0
 execute at @e[type=armor_stand,name=shrine] if entity @a[scores={shrine_active=1}] run fill ~-1 ~ ~-1 ~1 ~ ~1 air
 execute at @e[type=armor_stand,name=shrine] if entity @a[scores={shrine_active=1}] run setblock ~ ~ ~ glass
 
-# shrine particles
-execute at @e[type=armor_stand,name=shrine] if entity @a[scores={ctime_TicksInSec=0,shrine_active=0}] run playsound minecraft:block.portal.ambient ambient @a ~ ~10 ~ 5
+# shrine particles (when activated)
 execute at @e[type=armor_stand,name=shrine] if entity @a[scores={ctime_TicksInSec=0,shrine_active=1}] run playsound minecraft:block.beacon.ambient ambient @a ~ ~10 ~ 10
-execute at @e[type=armor_stand,name=shrine] if entity @a[scores={ctime_TicksInSec=15,shrine_active=1}] run playsound minecraft:block.beacon.activate ambient @a ~ ~10 ~ 2
+execute at @e[type=armor_stand,name=shrine] if entity @a[scores={ctime_TicksInSec=13,shrine_active=1}] run playsound minecraft:block.beacon.activate ambient @a ~ ~10 ~ 3
 execute at @e[type=armor_stand,name=shrine] if entity @a[scores={ctime_TicksInSec=0,shrine_active=1}] run particle minecraft:sonic_boom ~ ~ ~ 0.0 0.0 0.0 0.05 1 normal
 execute at @e[type=armor_stand,name=shrine] if entity @a[scores={ctime_TicksInSec=0,shrine_active=1}] run particle minecraft:sculk_soul ~ ~ ~ 0.5 0.5 0.5 0.05 1 normal
 execute at @e[type=armor_stand,name=shrine] if entity @a[scores={shrine_active=1}] run particle minecraft:scrape ~ ~ ~ 0.9 0.9 0.9 0.05 1 normal
 execute at @e[type=armor_stand,name=shrine] if entity @a[scores={shrine_active=1}] run particle minecraft:scrape ~ ~ ~ 0.0 0.0 0.0 40 20 normal
-#execute at @e[type=armor_stand,name=shrine] if entity @a[scores={shrine_active=1}] run particle minecraft:reverse_portal ~ ~ ~ 0 0 0 20.0 40 normal
+
+# shrine particles (when deactivated)
+execute at @e[type=armor_stand,name=shrine] if entity @a[scores={ctime_TicksInSec=0,shrine_active=0}] run playsound minecraft:block.portal.ambient ambient @a ~ ~10 ~ 5
+execute at @e[type=armor_stand,name=shrine] if entity @a[scores={shrine_active=0}] run particle minecraft:flame ~ ~ ~ 1.2 0.4 1.2 0.01 1 normal
 execute at @e[type=armor_stand,name=shrine] if entity @a[scores={shrine_active=0}] run particle minecraft:portal ~ ~ ~ 0 0 0 20.0 40 normal
 

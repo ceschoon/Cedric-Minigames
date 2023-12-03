@@ -46,9 +46,14 @@ execute as @a[team=sane] at @s if entity @a[team=sane,distance=2..10] run effect
 function infection:shrine_mechanics
 
 # shrine effects
-execute at @e[type=armor_stand,name=shrine] run effect give @a[team=sane,distance=..10] minecraft:haste 2 4 false
-execute at @e[type=armor_stand,name=shrine] run effect give @a[team=infected,distance=..10] minecraft:mining_fatigue 2 2 false
-#execute as @r[scores={ctime_TicksInSec=0,shrine_active=1}] at @e[type=armor_stand,name=shrine] run summon area_effect_cloud ~ ~ ~ {Potion:luck,Radius:1.5,RadiusPerTick:-0.0,Duration:20}
+execute at @e[type=armor_stand,name=shrine] run effect give @a[team=sane,distance=..8,scores={shrine_active=0}] minecraft:weakness 5 0 false
+execute at @e[type=armor_stand,name=shrine] run effect give @a[team=infected,distance=..8,scores={shrine_active=1}] minecraft:weakness 5 0 false
+execute at @e[type=armor_stand,name=shrine] run effect give @a[team=sane,distance=..8] minecraft:haste 5 4 false
+execute at @e[type=armor_stand,name=shrine] run effect give @a[team=infected,distance=..8] minecraft:mining_fatigue 5 2 false
+execute as @r[scores={ctime_TicksInSec=15,shrine_active=0}] at @e[type=armor_stand,name=shrine] run summon area_effect_cloud ~ ~ ~ {Particle:flame,Potion:harming,Radius:2.5,RadiusPerTick:-0.0,Duration:10}
+#execute if entity @a[scores={shrine_active=0}] run weather rain 1d
+execute if entity @a[scores={shrine_active=1}] run weather clear 1d
+
 
 # shrine item generator
 execute as @r[scores={ctime_TicksInSec=0,shrine_active=1}] at @e[type=armor_stand,name=shrine] run summon item ~ ~1 ~ {Item:{id:"splash_potion",Count:1,tag:{Potion:"luck"}}}
