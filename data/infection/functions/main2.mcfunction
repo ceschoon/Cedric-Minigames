@@ -38,6 +38,7 @@ effect give @a[scores={ctime_Pause=1}] resistance 1 255
 # detect end of the game
 execute unless entity @a[team=sane] run function infection:win_infected
 execute unless entity @a[team=infected] unless entity @a[scores={inf_Mole=1}] run function infection:win_sane
+execute unless entity @a[team=infected] unless entity @a[scores={shrine_active=0}] run function infection:win_sane
 
 # make it so that sane players get bonuses when grouped together
 execute as @a[team=sane] at @s if entity @a[team=sane,distance=2..10] run effect give @s minecraft:resistance 20 1 false
