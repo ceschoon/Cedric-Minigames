@@ -1,6 +1,7 @@
 
-# effect glowing to all sane players
-effect give @a[scores={inf_On=1},team=sane] glowing 10
+# effect glowing to all sane players (and infected once shrine is active)
+effect give @a[team=sane] glowing 10
+effect give @a[scores={shrine_active=1},team=sane] glowing 10
 
 # give food as reward for kills
 give @a[scores={inf_On=1,inf_Kills=1..}] cooked_beef 3
@@ -14,9 +15,9 @@ execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=inf
 execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=infected,distance=..30] run scoreboard players set @s inf_WarnDelay 0
 
 # infect sane players who just died
-execute if entity @a[scores={inf_On=1,ctime_DeathCount=5},team=sane] as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
-execute if entity @a[scores={inf_On=1,ctime_DeathCount=5},team=sane] run title @a[team=sane] actionbar [{"text":"One of you lost his life... but will come back soon.","color":"red"}]
-team join infected @a[scores={inf_On=1,ctime_DeathCount=5},team=sane]
+execute if entity @a[scores={ctime_DeathCount=5},team=sane] as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
+execute if entity @a[scores={ctime_DeathCount=5},team=sane] run title @a[team=sane] actionbar [{"text":"One of you lost his life... but will come back soon.","color":"red"}]
+team join infected @a[scores={ctime_DeathCount=5},team=sane]
 
 # mole reveal
 scoreboard objectives remove inf_test_mole
@@ -30,7 +31,7 @@ execute as @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@s","color"
 execute as @a[scores={inf_test_mole=1}] at @s run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
 
 # increment time
-scoreboard players add @a[scores={inf_On=1,ctime_TicksInSec=0}] inf_WarnDelay 1
+scoreboard players add @a[scores={ctime_TicksInSec=0}] inf_WarnDelay 1
 
 # make players invincible during pauses
 effect give @a[scores={ctime_Pause=1}] resistance 1 255
