@@ -54,7 +54,8 @@ execute at @e[type=armor_stand,name=team3] run kill @e[type=sheep,distance=..3]
 execute at @e[type=armor_stand,name=team4] run kill @e[type=sheep,distance=..3]
 scoreboard players remove @a[scores={flsheep_AddScore=1..}] flsheep_AddScore 1
 
-# Clear sheep loot from the map
+# Clear trash from the map
+kill @e[type=item,nbt={Item:{id:"minecraft:seeds"}}]
 kill @e[type=item,nbt={Item:{id:"minecraft:mutton"}}]
 kill @e[type=item,nbt={Item:{id:"minecraft:cooked_mutton"}}]
 kill @e[type=item,nbt={Item:{id:"minecraft:lead"}}]
