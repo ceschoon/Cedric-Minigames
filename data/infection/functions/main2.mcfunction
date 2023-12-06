@@ -26,7 +26,7 @@ scoreboard players set @a inf_test_mole 0
 execute as @a[team=sane,scores={inf_Mole=1}] unless entity @s[nbt={Inventory:[{id: "minecraft:black_banner", Count:1b}]}] run scoreboard players set @s inf_test_mole 1
 team join infected @a[scores={inf_test_mole=1}]
 scoreboard players set @a[scores={inf_test_mole=1}] inf_Mole 0
-effect give @a[scores={inf_test_mole=1}] minecraft:absorption 30 1 false
+effect give @a[scores={inf_test_mole=1}] minecraft:absorption infinite 1 false
 execute as @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@s","color":"red"},{"text":" was a mole the whole time!!","color":"red"}]
 execute as @a[scores={inf_test_mole=1}] at @s run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
 
@@ -35,6 +35,8 @@ scoreboard players add @a[scores={ctime_TicksInSec=0}] inf_WarnDelay 1
 
 # make players invincible during pauses
 effect give @a[scores={ctime_Pause=1}] resistance 1 255
+effect give @a[scores={ctime_Pause=1}] slowness 1 255
+effect give @a[scores={ctime_Pause=1}] invisibility 1
 
 # detect end of the game
 execute unless entity @a[team=sane] run function infection:win_infected
@@ -55,7 +57,6 @@ execute at @e[type=armor_stand,name=shrine] run effect give @a[team=infected,dis
 execute as @r[scores={ctime_TicksInSec=15,shrine_active=0}] at @e[type=armor_stand,name=shrine] run summon area_effect_cloud ~ ~ ~ {Particle:flame,Potion:harming,Radius:2.5,RadiusPerTick:-0.0,Duration:10}
 #execute if entity @a[scores={shrine_active=0}] run weather rain 1d
 execute if entity @a[scores={shrine_active=1}] run weather clear 1d
-
 
 # shrine item generator
 execute as @r[scores={ctime_TicksInSec=0,shrine_active=1}] at @e[type=armor_stand,name=shrine] run summon item ~ ~1 ~ {Item:{id:"splash_potion",Count:1,tag:{Potion:"luck"}}}
