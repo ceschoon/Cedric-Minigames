@@ -5,8 +5,8 @@ effect give @a night_vision infinite 0 true
 effect give @a[scores={tag_gamemode=1,tag_Tag=0}] glowing 1 255
 
 # mining fatigue for the runner (option)
-effect give @a[scores={tag_Tag=1,tag_PrepTime=..0,tag_mining_fatigue=1}] mining_fatigue infinite 0 true
-effect clear @a[scores={tag_Tag=0,tag_PrepTime=..0}] mining_fatigue
+effect give @a[scores={tag_gamemode=0,tag_Tag=1,tag_PrepTime=..0,tag_mining_fatigue=1}] mining_fatigue infinite 0 true
+effect clear @a[scores={tag_gamemode=0,tag_Tag=0,tag_PrepTime=..0}] mining_fatigue
 
 # increment score
 scoreboard players add @a[scores={tag_Tag=1,tag_PrepTime=..0,ctime_TicksInSec=0}] tag_Score 1
