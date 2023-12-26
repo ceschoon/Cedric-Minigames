@@ -27,6 +27,9 @@ scoreboard objectives add tag_rtagxs dummy
 scoreboard players set @a tag_rtag 0
 scoreboard players set @a tag_rtagxs 0
 
+# Here -1 will be replace by the config set in the menu or overwritten by the start function
+scoreboard players set @a tag_PrepTime -1
+
 ## Game modes/rules
 
 scoreboard objectives remove tag_gamemode

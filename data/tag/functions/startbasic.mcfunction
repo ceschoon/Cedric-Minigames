@@ -14,6 +14,8 @@ scoreboard players set @a tag_ScoreCopy 0
 scoreboard players set @a tag_Kills 0
 scoreboard players set @a tag_Tag 0
 
+scoreboard players set @a[scores={tag_PrepTime=-1}] tag_PrepTime 0
+
 execute as @r at @s run function tag:newrunner
 
 title @a title {"text":"Tag Game Starts Now!","color":"gold"}
