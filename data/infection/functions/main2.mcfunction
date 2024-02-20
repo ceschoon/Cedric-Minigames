@@ -19,6 +19,9 @@ execute if entity @a[scores={ctime_DeathCount=5},team=sane] as @a at @s run play
 execute if entity @a[scores={ctime_DeathCount=5},team=sane] run title @a[team=sane] actionbar [{"text":"One of you lost his life... but will come back soon.","color":"red"}]
 team join infected @a[scores={ctime_DeathCount=5},team=sane]
 
+# force players to wear a golden helmet in the nether
+execute if dimension minecraft:the_nether run item replace entity @a armor.head with golden_helmet
+
 # mole reveal
 scoreboard objectives remove inf_test_mole
 scoreboard objectives add inf_test_mole dummy
