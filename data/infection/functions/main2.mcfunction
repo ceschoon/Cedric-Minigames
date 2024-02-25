@@ -20,7 +20,7 @@ execute if entity @a[scores={ctime_DeathCount=5},team=sane] run title @a[team=sa
 team join infected @a[scores={ctime_DeathCount=5},team=sane]
 
 # force players to wear a golden helmet in the nether
-execute if dimension minecraft:the_nether run item replace entity @a armor.head with golden_helmet
+execute as @a at @s if dimension minecraft:the_nether run item replace entity @s armor.head with golden_helmet{Enchantments:[{id:binding_curse,lvl:1}]}
 
 # mole reveal
 scoreboard objectives remove inf_test_mole
