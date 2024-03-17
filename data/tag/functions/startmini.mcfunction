@@ -20,6 +20,12 @@ clear @a
 give @a compass
 function tag:giverespawnset
 
+# Added tools to dig / gather stuff faster
+give @a diamond_pickaxe{Enchantments:[{id:efficiency,lvl:5}]}
+give @a diamond_axe{Enchantments:[{id:efficiency,lvl:5}]}
+give @a diamond_shovel{Enchantments:[{id:efficiency,lvl:5}]}
+give @a diamond_hoe{Enchantments:[{id:efficiency,lvl:5},{id:silk_touch,lvl:1}]}
+
 execute in minecraft:overworld run worldborder center ~ ~
 execute in minecraft:overworld run worldborder set 100
 setworldspawn ~ ~ ~
