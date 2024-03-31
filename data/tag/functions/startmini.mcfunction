@@ -23,6 +23,7 @@ function tag:giverespawnset
 # Added tools to dig / gather stuff faster
 give @a diamond_pickaxe{Enchantments:[{id:efficiency,lvl:5}]}
 give @a diamond_axe{Enchantments:[{id:efficiency,lvl:5}]}
+give @a diamond_sword{Enchantments:[{id:fire_aspect,lvl:1}]}
 give @a diamond_shovel{Enchantments:[{id:efficiency,lvl:5}]}
 give @a diamond_hoe{Enchantments:[{id:efficiency,lvl:5},{id:silk_touch,lvl:1}]}
 
