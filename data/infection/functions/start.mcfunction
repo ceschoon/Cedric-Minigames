@@ -15,8 +15,10 @@ gamerule doDaylightCycle true
 gamerule naturalRegeneration true
 
 gamemode survival @a
+advancement revoke @a everything
 
 time set 0
+weather clear
 
 execute in minecraft:overworld run worldborder center ~ ~
 execute in minecraft:overworld run worldborder set 300

@@ -1,7 +1,7 @@
 
 # effect glowing to all sane players (and infected once shrine is active)
 effect give @a[team=sane] glowing 10
-effect give @a[scores={shrine_active=1},team=sane] glowing 10
+effect give @a[scores={shrine_active=1},team=infected] glowing 10
 
 # give food as reward for kills
 give @a[scores={inf_On=1,inf_Kills=1..}] cooked_beef 3
@@ -47,7 +47,7 @@ execute unless entity @a[team=infected] unless entity @a[scores={inf_Mole=1}] ru
 execute unless entity @a[team=infected] if entity @a[scores={shrine_active=1}] run function infection:win_sane
 
 # make it so that sane players get bonuses when grouped together
-execute as @a[team=sane] at @s if entity @a[team=sane,distance=2..10] run effect give @s minecraft:resistance 20 1 false
+function infection:bonus_effects
 
 # shrine mechanics
 function infection:shrine_mechanics

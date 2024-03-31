@@ -8,8 +8,10 @@ gamerule doDaylightCycle true
 gamerule naturalRegeneration true
 
 time set 0
+weather clear
 
 gamemode survival @a
+advancement revoke @a everything
 
 effect clear @a
 effect give @a resistance 10 255
