@@ -1,4 +1,6 @@
 
+function compass:reload
+
 scoreboard objectives remove hunt_Hunted
 scoreboard objectives remove hunt_On
 

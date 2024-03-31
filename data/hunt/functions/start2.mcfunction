@@ -1,4 +1,6 @@
 
+## Effective start after initial delay
+
 scoreboard objectives setdisplay sidebar ctime_Seconds
 scoreboard objectives modify ctime_Seconds displayname "Time Hunted"
 

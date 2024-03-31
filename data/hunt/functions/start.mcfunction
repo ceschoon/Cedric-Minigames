@@ -27,5 +27,7 @@ effect give @a slowness 10 10
 
 function hunt:newrunner
 
+gamemode survival @a
+
 clear @a
 give @a[scores={hunt_Hunted=0}] compass
