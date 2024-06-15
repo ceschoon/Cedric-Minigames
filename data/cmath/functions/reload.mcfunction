@@ -33,4 +33,4 @@ scoreboard players set @a cconstant_8 8
 scoreboard players set @a cconstant_9 9
 scoreboard players set @a cconstant_10 10
 
-say "Cedric Math reloaded!"
+say Cedric Math: reloaded!
