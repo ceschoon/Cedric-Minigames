@@ -1,6 +1,7 @@
 {
 	"values": [
 	  "animals:reload",
+	  "boss:reload",
 	  "cmath:reload",
 	  "cmenu:reload",
 	  "compass:reload",

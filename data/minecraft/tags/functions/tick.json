@@ -1,6 +1,7 @@
 {
 	"values": [
 	  "animals:main",
+	  "boss:main",
 	  "cmenu:main",
 	  "compass:main",
 	  "ctime:main",

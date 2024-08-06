@@ -8,7 +8,7 @@ scoreboard objectives remove ctime_TicksInSec
 scoreboard objectives add ctime_DeathCount deathCount
 scoreboard objectives add ctime_Pause dummy
 scoreboard objectives add ctime_Ticks dummy
-scoreboard objectives add ctime_Seconds dummy
+scoreboard objectives add ctime_Seconds dummy "Elapsed Seconds"
 scoreboard objectives add ctime_TicksInSec dummy
 
 scoreboard players set @a ctime_DeathCount 0

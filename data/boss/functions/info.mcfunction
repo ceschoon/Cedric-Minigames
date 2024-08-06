@@ -1,0 +1,5 @@
+tellraw @s [" "]
+tellraw @s [{"text":" Kill The Boss Minigame: Info ","color":"aqua"}]
+tellraw @s [" "]
+tellraw @s [{"text":" In this minigame all players teamp up to kill the boss. The boss is a randomly selected player which is given special items and abilities. ","color":"aqua"}]
+tellraw @s [" "]
