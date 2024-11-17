@@ -1,6 +1,6 @@
 tellraw @a [" "]
 tellraw @a [{"text":"=== Permanent Effects Module ===","color":"gold","bold":true}]
-tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function permeffects:reload"}}]
+tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function permeffects:load"}}]
 tellraw @a [{"text":"[Toggle Glowing]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players add @a permeffects_glowing 1"}}]
 tellraw @a [{"text":"[Toggle Blindness]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players add @a permeffects_blindness 1"}}]
 tellraw @a [{"text":"[Toggle Darkness]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players add @a permeffects_darkness 1"}}]

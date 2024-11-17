@@ -1,20 +1,20 @@
 {
 	"values": [
-	  "animals:reload",
-	  "boss:reload",
-	  "cmath:reload",
-	  "cmenu:reload",
-	  "compass:reload",
-	  "ctime:reload",
-	  "duels:reload",
-	  "flsheep:reload",
-	  "hunt:reload",
-	  "infection:reload",
-	  "koth:reload",
-	  "permeffects:reload",
-	  "platforms:reload",
-	  "tag:reload",
-	  "teams:reload",
-	  "zombies:reload"
+	  "animals:load",
+	  "boss:load",
+	  "cmath:load",
+	  "cmenu:load",
+	  "compass:load",
+	  "ctime:load",
+	  "duels:load",
+	  "flsheep:load",
+	  "hunt:load",
+	  "infection:load",
+	  "koth:load",
+	  "permeffects:load",
+	  "platforms:load",
+	  "tag:load",
+	  "teams:load",
+	  "zombies:load"
 	  ]
 }

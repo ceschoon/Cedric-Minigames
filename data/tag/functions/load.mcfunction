@@ -47,6 +47,5 @@ scoreboard players set @a[scores={tag_gamemode=0}] tag_mining_fatigue 1
 scoreboard players set @a[scores={tag_gamemode=1}] tag_mining_fatigue 0
 
 function tag:reloadteams
-#function tagrules:reload
 
 say Cedric Tag: reloaded!

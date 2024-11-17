@@ -1,6 +1,6 @@
 tellraw @a [" "]
 tellraw @a [{"text":"=== Teams Module ===","color":"gold","bold":true}]
-tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function teams:reload"}}]
+tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function teams:load"}}]
 tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function teams:info"}}]
 tellraw @a [{"text":"[Random teams 1-2]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function teams:dorandomteams2"}}]
 tellraw @a [{"text":"[Random teams 1-3]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function teams:dorandomteams3"}}]

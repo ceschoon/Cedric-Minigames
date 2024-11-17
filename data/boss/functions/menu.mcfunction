@@ -1,6 +1,6 @@
 tellraw @a [" "]
 tellraw @a [{"text":"=== Minigame: Kill The Boss ===","color":"gold","bold":true}]
-tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function boss:reload"}}]
+tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function boss:load"}}]
 tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function boss:info"}}]
 tellraw @a [{"text":"[Start with random player]","color":"green", "clickEvent":{"action":"run_command","value":"/execute as @r run function boss:start"},"hoverEvent":{"action":"show_text","value":{"text":" "}}}]
 tellraw @a [{"text":"[Pause/Restart]","color":"dark_green", "clickEvent":{"action":"run_command","value":"/function ctime:togglepause"}}]

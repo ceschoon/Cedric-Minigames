@@ -1,6 +1,6 @@
 tellraw @a [" "]
 tellraw @a [{"text":"=== Minigame: Flying Sheep ===","color":"gold","bold":true}]
-tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function flsheep:reload"}}]
+tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function flsheep:load"}}]
 tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function flsheep:info"}}]
 tellraw @a [{"text":"[Start 2 teams]","color":"green", "clickEvent":{"action":"run_command","value":"/function flsheep:start2"}}]
 tellraw @a [{"text":"[Start 4 teams]","color":"green", "clickEvent":{"action":"run_command","value":"/function flsheep:start4"}}]

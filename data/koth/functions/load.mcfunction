@@ -16,4 +16,3 @@ team modify onhill color gold
 
 say Cedric Koth: reloaded!
 
-function koth:compassreload

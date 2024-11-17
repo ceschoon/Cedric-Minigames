@@ -1,19 +1,19 @@
 {
 	"values": [
-	  "animals:main",
-	  "boss:main",
-	  "cmenu:main",
-	  "compass:main",
-	  "ctime:main",
-	  "duels:main",
-	  "flsheep:main",
-	  "hunt:main",
-	  "infection:main",
-	  "koth:main",
-	  "platforms:main",
-	  "permeffects:main",
-	  "tag:main",
-	  "teams:main",
-	  "zombies:main"
+	  "animals:tick",
+	  "boss:tick",
+	  "cmenu:tick",
+	  "compass:tick",
+	  "ctime:tick",
+	  "duels:tick",
+	  "flsheep:tick",
+	  "hunt:tick",
+	  "infection:tick",
+	  "koth:tick",
+	  "platforms:tick",
+	  "permeffects:tick",
+	  "tag:tick",
+	  "teams:tick",
+	  "zombies:tick"
 	  ]
 }

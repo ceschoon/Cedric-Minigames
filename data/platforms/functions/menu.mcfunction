@@ -1,6 +1,6 @@
 tellraw @a [" "]
 tellraw @a [{"text":"=== Minigame: Platforms ===","color":"gold","bold":true}]
-tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function platforms:reload"}}]
+tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function platforms:load"}}]
 tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function platforms:info"}}]
 tellraw @a [{"text":"[Toggle rule no fireballs]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function platforms:togglerulenofireballs"}}]
 tellraw @a [{"text":"[Generate map 1]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function platforms:generatemap1"},"hoverEvent":{"action":"show_text","value":{"text":"Non-circular map with 4 teams and 6 platforms"}}}]

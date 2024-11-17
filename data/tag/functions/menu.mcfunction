@@ -1,6 +1,6 @@
 tellraw @a [" "]
 tellraw @a [{"text":"=== Minigame: Tag ===","color":"gold","bold":true}]
-tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function tag:reload"}}]
+tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function tag:load"}}]
 tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function tag:info"}}]
 
 tellraw @a [{"text":"[Toggle gamemode]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function tag:togglegamemode"},"hoverEvent":{"action":"show_text","value":{"text":"Change the game objective: keep the tag as long as possible or get rid of it"}}}]
