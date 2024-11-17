@@ -1,22 +1,22 @@
 # shrine particles to indicate frame location
-execute if entity @a[scores={shrine_active=1}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker obsidian ~ ~ ~ 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker obsidian ~ ~ ~ 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~-2 ~ ~-2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~-1 ~ ~-2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~ ~ ~-2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~1 ~ ~-2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~2 ~ ~-2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~2 ~ ~-1 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~-2 ~ ~-1 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~2 ~ ~ 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~-2 ~ ~ 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~2 ~ ~1 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~-2 ~ ~1 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~-2 ~ ~2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~-1 ~ ~2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~ ~ ~2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~1 ~ ~2 0 0 0 0.0 1 normal
-execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~2 ~ ~2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=1}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:obsidian}} ~ ~ ~ 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:obsidian}} ~ ~ ~ 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~-2 ~ ~-2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~-1 ~ ~-2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~ ~ ~-2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~1 ~ ~-2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~2 ~ ~-2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~2 ~ ~-1 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~-2 ~ ~-1 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~2 ~ ~ 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~-2 ~ ~ 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~2 ~ ~1 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~-2 ~ ~1 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~-2 ~ ~2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~-1 ~ ~2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~ ~ ~2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~1 ~ ~2 0 0 0 0.0 1 normal
+execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle block_marker{block_state:{Name:copper_block}} ~2 ~ ~2 0 0 0 0.0 1 normal
 
 # make sure no one places obsidian in place of the copper blocks
 execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~2 ~ ~-2 air replace obsidian

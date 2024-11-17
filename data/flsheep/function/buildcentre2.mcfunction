@@ -24,8 +24,8 @@ setblock ~-4 ~-1 ~4 sea_lantern
 setblock ~4 ~-1 ~-4 sea_lantern
 setblock ~4 ~-1 ~4 sea_lantern
 
-setblock ~-2 ~ ~-3 grass
-setblock ~-2 ~ ~3 grass
-setblock ~-1 ~ ~-1 grass
-setblock ~1 ~ ~2 grass
-setblock ~2 ~ ~3 grass
+setblock ~-2 ~ ~-3 short_grass
+setblock ~-2 ~ ~3 short_grass
+setblock ~-1 ~ ~-1 short_grass
+setblock ~1 ~ ~2 short_grass
+setblock ~2 ~ ~3 short_grass

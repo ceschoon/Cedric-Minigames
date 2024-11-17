@@ -20,7 +20,7 @@ team join boss_Hunter @a[scores={boss_Who=0}]
 
 # Boss effects, etc.
 
-item replace entity @a[scores={boss_Who=1}] armor.head with red_banner{BlockEntityTag:{Patterns:[{Pattern:"sku",Color:1}]}}
+item replace entity @a[scores={boss_Who=1}] armor.head with red_banner[minecraft:banner_patterns=[{pattern:skull,color:black}]]
 item replace entity @a[scores={boss_Who=1}] hotbar.8 with baked_potato 64
 execute at @a[scores={boss_Who=1}] run particle minecraft:flame ~ ~ ~ 1.5 1.5 1.5 0.01 1 normal
 
