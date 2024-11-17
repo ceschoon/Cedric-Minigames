@@ -18,6 +18,16 @@ execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrin
 execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~1 ~ ~2 0 0 0 0.0 1 normal
 execute if entity @a[scores={shrine_active=0}] at @e[type=armor_stand,name=shrine] run particle minecraft:block_marker copper_block ~2 ~ ~2 0 0 0 0.0 1 normal
 
+# make sure no one places obsidian in place of the copper blocks
+execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~2 ~ ~-2 air replace obsidian
+execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~-2 ~ ~2 air replace obsidian
+execute at @e[type=armor_stand,name=shrine] run fill ~2 ~ ~-2 ~2 ~ ~2 air replace obsidian
+execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~2 ~2 ~ ~2 air replace obsidian
+execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~2 ~ ~-2 air replace crying_obsidian
+execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~-2 ~ ~2 air replace crying_obsidian
+execute at @e[type=armor_stand,name=shrine] run fill ~2 ~ ~-2 ~2 ~ ~2 air replace crying_obsidian
+execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~2 ~2 ~ ~2 air replace crying_obsidian
+
 # shrine building progression
 scoreboard objectives remove shrine_level
 scoreboard objectives add shrine_level dummy

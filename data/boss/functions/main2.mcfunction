@@ -21,7 +21,7 @@ team join boss_Hunter @a[scores={boss_Who=0}]
 # Boss effects, etc.
 
 item replace entity @a[scores={boss_Who=1}] armor.head with red_banner{BlockEntityTag:{Patterns:[{Pattern:"sku",Color:1}]}}
-item replace entity @a[scores={boss_Who=1}] hotbar.8 with cooked_beef 64
+item replace entity @a[scores={boss_Who=1}] hotbar.8 with baked_potato 64
 execute at @a[scores={boss_Who=1}] run particle minecraft:flame ~ ~ ~ 1.5 1.5 1.5 0.01 1 normal
 
 effect give @a[scores={boss_Who=1}] jump_boost 10 3
@@ -31,7 +31,7 @@ effect give @a[scores={boss_Who=1}] mining_fatigue 10 0
 
 execute as @a[scores={boss_Who=1}] at @s run spawnpoint @s ~ ~ ~
 
-execute as @a[scores={boss_Who=1}] run attribute @s minecraft:generic.max_health base set 100
+execute as @a[scores={boss_Who=1}] run attribute @s minecraft:generic.max_health base set 40
 execute as @a[scores={boss_Who=0}] run attribute @s minecraft:generic.max_health base set 20
 
 

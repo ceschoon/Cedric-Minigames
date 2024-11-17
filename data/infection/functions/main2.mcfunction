@@ -15,6 +15,7 @@ execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=inf
 execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=infected,distance=..30] run scoreboard players set @s inf_WarnDelay 0
 
 # infect sane players who just died
+###clear @a[scores={ctime_DeathCount=5,inf_Mole=0},team=sane]
 execute if entity @a[scores={ctime_DeathCount=5},team=sane] as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
 execute if entity @a[scores={ctime_DeathCount=5},team=sane] run title @a[team=sane] actionbar [{"text":"One of you lost his life... but will come back soon.","color":"red"}]
 team join infected @a[scores={ctime_DeathCount=5},team=sane]
