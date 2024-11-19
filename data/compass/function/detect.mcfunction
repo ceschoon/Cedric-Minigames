@@ -1,4 +1,5 @@
 
+scoreboard objectives remove temp_target
 scoreboard objectives add temp_target dummy
 scoreboard players set @a temp_target 0
 
