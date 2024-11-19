@@ -16,6 +16,7 @@ gamerule doDaylightCycle true
 gamerule naturalRegeneration true
 
 gamemode survival @a
+advancement revoke @a everything
 
 # Target hill with compass
 function compass:trackhere
