@@ -59,6 +59,7 @@ team join sane @a
 # teammates and spread the "infection"
 scoreboard players set @a inf_Mole 0
 scoreboard players set @s inf_Mole 1
+loot give @a[scores={inf_Mole=1}] loot ckits:starterkit
 item replace entity @s hotbar.8 with black_banner[banner_patterns=[{pattern:skull,color:green}],lore=['{"text":"Remove the banner from this slot to join the infected team."}']]
 
 title @a title {"text":"Infection Game Starts Now!","color":"red"}

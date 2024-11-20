@@ -1,0 +1,33 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+              "type": "minecraft:item",
+              "name": "minecraft:splash_potion",
+              "functions": [{"function": "minecraft:set_components","components": {"minecraft:potion_contents": {"potion": "minecraft:poison"}}}]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+              "type": "minecraft:item",
+              "name": "minecraft:milk_bucket"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:protection": 2}}}}]
+        }
+      ]
+    }
+  ]
+}

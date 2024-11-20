@@ -1,0 +1,52 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:arrow",
+          "functions": [{"function": "minecraft:set_count","count": 64}]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:crossbow"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:goat_horn"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:multishot": 1}}}}]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:quick_charge": 3}}}}]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:piercing": 2}}}}]
+        }
+      ]
+    }
+  ]
+}

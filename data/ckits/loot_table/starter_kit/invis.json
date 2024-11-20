@@ -1,0 +1,24 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+              "type": "minecraft:item",
+              "name": "minecraft:potion",
+              "functions": [{"function": "minecraft:set_components","components": {"minecraft:potion_contents": {"potion": "minecraft:invisibility"}}}]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:swift_sneak": 3}}}}]
+        }
+      ]
+    }
+  ]
+}

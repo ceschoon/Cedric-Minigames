@@ -1,0 +1,32 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pufferfish_bucket"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:mending": 1, "minecraft:lure": 3, "minecraft:luck_of_the_sea": 3}}}}]
+        }
+      ]
+    }
+  ]
+}

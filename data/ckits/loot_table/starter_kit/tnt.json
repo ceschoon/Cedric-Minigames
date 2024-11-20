@@ -1,0 +1,38 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:tnt",
+          "functions": [{"function": "minecraft:set_count","count": 4}]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:creeper_spawn_egg",
+          "functions": [{"function": "minecraft:set_count","count": 4}]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:flint_and_steel"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:blast_protection": 4}}}}]
+        }
+      ]
+    }
+  ]
+}

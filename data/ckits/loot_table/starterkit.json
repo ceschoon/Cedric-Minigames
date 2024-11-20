@@ -1,0 +1,109 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/aquaman"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/archer"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/baker"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/caveman"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/doggo"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/enchanter"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/ender"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/explorer"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/evoker"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/fisherman"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/healer"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/horseman"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/german"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/invis"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/jumper"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/lumberman"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/pillager"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/poison"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/snowman"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/speeder"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/spider"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/swordsman"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/tnt"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/trident"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "ckits:starter_kit/wither"
+        }
+      ]
+    }
+  ]
+}

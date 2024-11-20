@@ -1,0 +1,24 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bread",
+          "functions": [{"function": "minecraft:set_count","count": 64},{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {},"minecraft:lore":["Dinkelbrot"]}}]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:efficiency": 5}}}}]
+        }
+      ]
+    }
+  ]
+}
