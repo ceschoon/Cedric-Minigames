@@ -67,8 +67,8 @@ execute as @r[scores={ctime_TicksInSec=0,shrine_active=1}] at @e[type=armor_stan
 execute as @r[scores={ctime_TicksInSec=10,shrine_active=1}] at @e[type=armor_stand,name=shrine] run kill @e[type=item,nbt={Item:{id:"minecraft:splash_potion"}},distance=..2]
 
 # convert infected back to sane team using luck potions/effect
-execute as @a[scores={ctime_TicksInSec=0}] unless entity @s[team=infected,nbt={ActiveEffects:[{Id:26}]}] run scoreboard players add @s inf_HealDelay 1
-execute as @a[scores={ctime_TicksInSec=0}] if entity @s[team=infected,nbt={ActiveEffects:[{Id:26}]}] run scoreboard players remove @s inf_HealDelay 1
+execute as @a[scores={ctime_TicksInSec=0}] unless entity @s[team=infected,nbt={active_effects:[{id:"minecraft:luck"}]}] run scoreboard players add @s inf_HealDelay 1
+execute as @a[scores={ctime_TicksInSec=0}] if entity @s[team=infected,nbt={active_effects:[{id:"minecraft:luck"}]}] run scoreboard players remove @s inf_HealDelay 1
 scoreboard players set @a[scores={inf_HealDelay=31..}] inf_HealDelay 31
 team join sane @a[team=infected,scores={inf_HealDelay=..-1}]
 effect give @a[team=infected,scores={ctime_TicksInSec=0,inf_HealDelay=10}] nausea 15
