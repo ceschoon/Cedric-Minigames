@@ -1,7 +1,13 @@
 # Permanent effects
 effect give @a saturation 10
 
-# Safety net to avoid death by falling, using special boots
+# Effects nerfing the special anti-fall boots
+## Note: The weakness effect prevents anti-fall players from using the knockback stick and defend with punches
+execute as @a[nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1}]}] run effect give @s weakness 10 0
+#execute as @a[nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1}]}] run effect give @s slowness 10 0
+#execute as @a[nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run effect give @s slowness 10 9
+
+# Safety net using special anti-fall boots
 execute at @e[type=armor_stand,name=team1] as @a[team=team1,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
 execute at @e[type=armor_stand,name=team2] as @a[team=team2,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
 execute at @e[type=armor_stand,name=team3] as @a[team=team3,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
@@ -28,11 +34,11 @@ execute at @e[type=armor_stand,name=team3] run tp @a[scores={pltf_DeathCount=200
 execute at @e[type=armor_stand,name=team4] run tp @a[scores={pltf_DeathCount=200},team=team4] ~ ~ ~
 
 # Force players to wear team colors (except if player invisible)
-execute as @a unless entity @s[nbt={ActiveEffects:[{Id:14b}]}] if entity @s[team=team1] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:65280},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
-execute as @a unless entity @s[nbt={ActiveEffects:[{Id:14b}]}] if entity @s[team=team2] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
-execute as @a unless entity @s[nbt={ActiveEffects:[{Id:14b}]}] if entity @s[team=team3] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:255},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
-execute as @a unless entity @s[nbt={ActiveEffects:[{Id:14b}]}] if entity @s[team=team4] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16776960},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
-execute as @a if entity @s[nbt={ActiveEffects:[{Id:14b}]}] run item replace entity @s armor.head with air
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team1] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:65280},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team2] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team3] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:255},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team4] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16776960},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a if entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with air
 
 # Clear inventories from other team's wool color
 clear @a[team=team2] lime_wool
@@ -67,6 +73,9 @@ execute as @a run function platforms:terracottacolor
 
 # Convert mob spawn eggs to spawn mob in correct team
 execute as @a run function platforms:makespawneggofteam
+
+# Clear inventories from empty glass bottles
+clear @a glass_bottle
 
 # Clear diamonds from inventory and increment score
 scoreboard players set @a pltf_AddScore 0
