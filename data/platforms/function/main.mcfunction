@@ -1,6 +1,12 @@
 # Permanent effects
 effect give @a saturation 10
 
+# Safety net to avoid death by falling, using special boots
+execute at @e[type=armor_stand,name=team1] as @a[team=team1,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team2] as @a[team=team2,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team3] as @a[team=team3,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team4] as @a[team=team4,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
+
 # Kill players who fell off the map
 kill @a[x=-1000000,y=0,z=-1000000,dx=2000000,dy=149,dz=2000000,scores={pltf_DeathCount=0}]
 
