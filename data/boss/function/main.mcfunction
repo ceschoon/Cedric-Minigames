@@ -9,14 +9,10 @@ execute store result bossbar playerboss max run attribute @p[scores={boss_Who=1}
 execute store result bossbar playerboss value run data get entity @p[scores={boss_Who=1}] Health
 execute unless entity @a[scores={boss_Who=1}] run bossbar set playerboss value 0
 
-
-
 # Teams
 
 team join boss_Boss @a[scores={boss_Who=1}]
 team join boss_Hunter @a[scores={boss_Who=0}]
-
-
 
 # Boss effects, etc.
 
@@ -29,12 +25,12 @@ effect give @a[scores={boss_Who=1}] resistance 10 1
 effect give @a[scores={boss_Who=1}] fire_resistance 10 1
 effect give @a[scores={boss_Who=1}] mining_fatigue 10 0
 
+effect give @a[nbt={SelectedItem:{id:"minecraft:mace"}}] slowness 1 1
+
 execute as @a[scores={boss_Who=1}] at @s run spawnpoint @s ~ ~ ~
 
 execute as @a[scores={boss_Who=1}] run attribute @s minecraft:generic.max_health base set 40
 execute as @a[scores={boss_Who=0}] run attribute @s minecraft:generic.max_health base set 20
-
-
 
 # End of the game
 execute if entity @a[scores={boss_Who=1,ctime_DeathCount=5}] run function boss:hunters_win
