@@ -1,6 +1,6 @@
 
 ## Add some space after the display of menus + Reload option
-tellraw @a[scores={cmenu_show=2}] [{"text":"[Reload Everything]","color":"dark_aqua","bold":false,"clickEvent":{"action":"run_command","value":"/reload"}}]
+tellraw @a[scores={cmenu_show=2}] [{"text":"[Reload Everything]","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/reload"}}]
 tellraw @a[scores={cmenu_show=2}] [" "]
 
 ## Flag indicating to other datapacks when to display their menus
