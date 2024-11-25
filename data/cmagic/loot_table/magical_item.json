@@ -1,0 +1,41 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/infinity_bow"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/mace_windy"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/fire_sword"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/fortune_pick"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/turtle_helmet"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/tank_armor"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/speedy_pants"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/spring_boots"
+        }
+      ]
+    }
+  ]
+}

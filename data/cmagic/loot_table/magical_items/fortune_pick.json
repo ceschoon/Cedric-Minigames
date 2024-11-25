@@ -1,0 +1,17 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_pickaxe",
+          "functions": [
+            {"function": "minecraft:set_components","components": {"minecraft:enchantment_glint_override": true,"minecraft:stored_enchantments": {"levels": {"efficiency":5,"unbreaking":3,"fortune":3}}}},
+            {"function": "minecraft:set_lore","lore": [{"text": "CMagic Item","italic": false}],"mode": "append"}
+          ]
+        }
+      ]
+    }
+  ]
+}
