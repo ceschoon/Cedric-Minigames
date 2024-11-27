@@ -15,7 +15,7 @@ execute if entity @a[scores={cmagic_barrel_drop_delay=0}] run kill @e[type=armor
 execute if entity @a[scores={cmagic_barrel_drop_delay=0}] as @a at @s run playsound minecraft:item.trident.thunder master @s ~ ~ ~
 execute if entity @a[scores={cmagic_barrel_drop_delay=0}] at @r run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"barreldrop\"",CustomNameVisible:0}
 execute if entity @a[scores={cmagic_barrel_drop_delay=0}] as @e[type=armor_stand,name="barreldrop"] at @s run spreadplayers ~ ~ 50 50 false @s
-execute if entity @a[scores={cmagic_barrel_drop_delay=0}] at @e[type=armor_stand,name="barreldrop"] run summon minecraft:falling_block ~ 220 ~ {BlockState:{Name:"barrel"},TileEntityData:{LootTable:"cmagic:barreldrop"},Time:-9999,NoGravity:0b}
+execute if entity @a[scores={cmagic_barrel_drop_delay=0}] at @e[type=armor_stand,name="barreldrop"] run summon minecraft:falling_block ~ 220 ~ {BlockState:{Name:"barrel"},TileEntityData:{LootTable:"cmagic:barrel_drop"},Time:-9999,NoGravity:0b}
 
 
 

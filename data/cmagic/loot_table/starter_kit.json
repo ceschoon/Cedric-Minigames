@@ -5,103 +5,103 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/aquaman"
+          "value": "cmagic:starter_kits/aquaman"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/archer"
+          "value": "cmagic:starter_kits/archer"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/baker"
+          "value": "cmagic:starter_kits/baker"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/caveman"
+          "value": "cmagic:starter_kits/caveman"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/doggo"
+          "value": "cmagic:starter_kits/doggo"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/enchanter"
+          "value": "cmagic:starter_kits/enchanter"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/ender"
+          "value": "cmagic:starter_kits/ender"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/explorer"
+          "value": "cmagic:starter_kits/explorer"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/evoker"
+          "value": "cmagic:starter_kits/evoker"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/fisherman"
+          "value": "cmagic:starter_kits/fisherman"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/healer"
+          "value": "cmagic:starter_kits/healer"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/horseman"
+          "value": "cmagic:starter_kits/horseman"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/german"
+          "value": "cmagic:starter_kits/german"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/invis"
+          "value": "cmagic:starter_kits/invis"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/jumper"
+          "value": "cmagic:starter_kits/jumper"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/lumberman"
+          "value": "cmagic:starter_kits/lumberman"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/pillager"
+          "value": "cmagic:starter_kits/pillager"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/poison"
+          "value": "cmagic:starter_kits/poison"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/snowman"
+          "value": "cmagic:starter_kits/snowman"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/speeder"
+          "value": "cmagic:starter_kits/speeder"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/spider"
+          "value": "cmagic:starter_kits/spider"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/swordsman"
+          "value": "cmagic:starter_kits/swordsman"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/tnt"
+          "value": "cmagic:starter_kits/tnt"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/trident"
+          "value": "cmagic:starter_kits/trident"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starter_kit/wither"
+          "value": "cmagic:starter_kits/wither"
         }
       ]
     }

@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "ckits:starterkit"
+          "value": "cmagic:starter_kit"
         }
       ]
     },
