@@ -42,10 +42,12 @@ execute as @a at @s run spawnpoint @s ~ ~ ~
 scoreboard players set @s boss_Who 1
 function compass:trackme
 
-give @a[scores={boss_Who=1}] mace
 give @a[scores={boss_Who=1}] golden_axe
 give @a[scores={boss_Who=1}] golden_pickaxe
 give @a[scores={boss_Who=1}] golden_shovel
+#give @a[scores={boss_Who=1}] mace
+
+loot give @a[scores={boss_Who=1}] loot cmagic:magical_item
 
 # Game starts message
 title @a title {"text":"Go!","color":"gold"}

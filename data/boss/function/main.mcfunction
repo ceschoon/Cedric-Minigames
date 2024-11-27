@@ -16,16 +16,15 @@ team join boss_Hunter @a[scores={boss_Who=0}]
 
 # Boss effects, etc.
 
-item replace entity @a[scores={boss_Who=1}] armor.head with red_banner[minecraft:banner_patterns=[{pattern:skull,color:black}]]
+#item replace entity @a[scores={boss_Who=1}] armor.head with red_banner[minecraft:banner_patterns=[{pattern:skull,color:black}]]
 item replace entity @a[scores={boss_Who=1}] hotbar.8 with baked_potato 64
-execute at @a[scores={boss_Who=1}] run particle minecraft:flame ~ ~ ~ 1.5 1.5 1.5 0.01 1 normal
+#execute at @a[scores={boss_Who=1}] run particle minecraft:flame ~ ~ ~ 1.5 1.5 1.5 0.01 1 normal
 
-effect give @a[scores={boss_Who=1}] jump_boost 10 3
-effect give @a[scores={boss_Who=1}] resistance 10 1
-effect give @a[scores={boss_Who=1}] fire_resistance 10 1
+#effect give @a[scores={boss_Who=1}] jump_boost 10 3
+#effect give @a[scores={boss_Who=1}] fire_resistance 10 1
+effect give @a[scores={boss_Who=1}] resistance 10 0
 effect give @a[scores={boss_Who=1}] mining_fatigue 10 0
-
-effect give @a[nbt={SelectedItem:{id:"minecraft:mace"}}] slowness 1 1
+#effect give @a[nbt={SelectedItem:{id:"minecraft:mace"}}] slowness 1 1
 
 execute as @a[scores={boss_Who=1}] at @s run spawnpoint @s ~ ~ ~
 

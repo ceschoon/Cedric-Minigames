@@ -15,7 +15,7 @@ execute store result score @s cmagic_has_magical_item run clear @s bow[lore=['{"
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 execute store result score @s cmagic_has_magical_item2 run clear @s spectral_arrow 0
-give @s[scores={cmagic_has_magical_item=1..,cmagic_has_magical_item2=0}] spectral_arrow 1
+give @s[scores={cmagic_has_magical_item=1..,cmagic_has_magical_item2=..1}] spectral_arrow 1
 
 
 
@@ -56,7 +56,7 @@ execute store result score @s cmagic_has_magical_item run clear @s netherite_pic
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 effect give @s[scores={cmagic_has_magical_item=1..}] haste 1 0
-effect give @s[scores={cmagic_has_magical_item=1..}] luck 1 0
+#effect give @s[scores={cmagic_has_magical_item=1..}] luck 1 0 #would interfere with infected minigame??
 
 
 
@@ -66,6 +66,18 @@ execute store result score @s cmagic_has_magical_item run clear @s turtle_helmet
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 effect give @s[scores={cmagic_has_magical_item=1..}] dolphins_grace 1 0
+effect give @s[scores={cmagic_has_magical_item=1..}] conduit_power 1 0
+
+
+
+## Wither helmet
+
+execute store result score @s cmagic_has_magical_item run clear @s wither_skeleton_skull[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
+
+#execute unless entity @s[nbt={active_effects:[{id:"minecraft:wither"}]}] run effect give @s[scores={cmagic_has_magical_item=1..}] wither 2 0
+execute at @s[scores={cmagic_has_magical_item=1..}] as @a[distance=..8,scores={cmagic_has_magical_item=0}] unless entity @s[nbt={active_effects:[{id:"minecraft:wither"}]}] run effect give @s wither 2 0
+execute at @s[scores={cmagic_has_magical_item=1..}] as @e[distance=..8,type=!player] unless entity @s[nbt={active_effects:[{id:"minecraft:wither"}]}] run effect give @s wither 2 0
 
 
 
@@ -76,6 +88,7 @@ scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magica
 
 effect give @s[scores={cmagic_has_magical_item=1..}] resistance 1 1
 effect give @s[scores={cmagic_has_magical_item=1..}] slowness 1 0
+execute at @s[scores={cmagic_has_magical_item=1..}] run effect give @a[distance=..5,scores={cmagic_has_magical_item=0}] weakness 1 0
 
 
 

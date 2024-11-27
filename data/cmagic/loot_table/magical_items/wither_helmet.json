@@ -5,9 +5,9 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:netherite_chestplate",
+          "name": "minecraft:wither_skeleton_skull",
           "functions": [
-            {"function": "minecraft:set_components","components": {"minecraft:enchantment_glint_override": true,"minecraft:stored_enchantments": {"levels": {"blast_protection":4,"thorns":3}}}},
+            {"function": "minecraft:set_components","components": {"minecraft:enchantment_glint_override": true}},
             {"function": "minecraft:set_lore","lore": [{"text": "CMagic Item","italic": false}],"mode": "append"}
           ]
         }

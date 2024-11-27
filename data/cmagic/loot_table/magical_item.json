@@ -25,6 +25,10 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "cmagic:magical_items/wither_helmet"
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "cmagic:magical_items/tank_armor"
         },
         {
