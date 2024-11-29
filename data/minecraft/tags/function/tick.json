@@ -5,6 +5,7 @@
 	  "cmagic:tick",
 	  "cmenu:tick",
 	  "compass:tick",
+	  "cscale:tick",
 	  "ctime:tick",
 	  "duels:tick",
 	  "flsheep:tick",

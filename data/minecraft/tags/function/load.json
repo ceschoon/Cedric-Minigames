@@ -6,6 +6,7 @@
 	  "cmath:load",
 	  "cmenu:load",
 	  "compass:load",
+	  "cscale:load",
 	  "ctime:load",
 	  "duels:load",
 	  "flsheep:load",
