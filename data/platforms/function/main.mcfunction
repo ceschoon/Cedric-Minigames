@@ -139,10 +139,13 @@ execute at @e[type=armor_stand,name=villager1] run tp @e[type=villager,distance=
 execute at @e[type=armor_stand,name=villager2] run tp @e[type=villager,distance=..5] ~ ~ ~
 
 # Keep golems in place
-execute at @e[type=armor_stand,name=team1] run tp @e[type=iron_golem,distance=12..16] ~ ~ ~
-execute at @e[type=armor_stand,name=team2] run tp @e[type=iron_golem,distance=12..16] ~ ~ ~
-execute at @e[type=armor_stand,name=team3] run tp @e[type=iron_golem,distance=12..16] ~ ~ ~
-execute at @e[type=armor_stand,name=team4] run tp @e[type=iron_golem,distance=12..16] ~ ~ ~
+execute at @e[type=armor_stand,name=team1] run tp @e[type=iron_golem,distance=8..10] ~ ~ ~
+execute at @e[type=armor_stand,name=team2] run tp @e[type=iron_golem,distance=8..10] ~ ~ ~
+execute at @e[type=armor_stand,name=team3] run tp @e[type=iron_golem,distance=8..10] ~ ~ ~
+execute at @e[type=armor_stand,name=team4] run tp @e[type=iron_golem,distance=8..10] ~ ~ ~
+
+# Keep vex in place --> messes up with their aggro or pathfinding ??
+#execute at @e[type=armor_stand,name=diamond] run tp @e[type=vex,distance=20..25] ~ ~8 ~
 
 # Make golems join the team of the platform where they spawn
 execute at @e[type=armor_stand,name=team1] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team1
@@ -151,16 +154,22 @@ execute at @e[type=armor_stand,name=team3] as @e[type=iron_golem,distance=..16,l
 execute at @e[type=armor_stand,name=team4] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team4
 
 # Make golems angry at enemy players
-data modify entity @e[type=iron_golem,team=team1,limit=1,sort=random] AngryAt set from entity @p[team=!team1] UUID
-data modify entity @e[type=iron_golem,team=team2,limit=1,sort=random] AngryAt set from entity @p[team=!team2] UUID
-data modify entity @e[type=iron_golem,team=team3,limit=1,sort=random] AngryAt set from entity @p[team=!team3] UUID
-data modify entity @e[type=iron_golem,team=team4,limit=1,sort=random] AngryAt set from entity @p[team=!team4] UUID
+execute as @e[type=iron_golem,team=team1,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[team=!team1] UUID
+execute as @e[type=iron_golem,team=team2,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[team=!team2] UUID
+execute as @e[type=iron_golem,team=team3,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[team=!team3] UUID
+execute as @e[type=iron_golem,team=team4,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[team=!team4] UUID
 
 # Make golems glow to show team colors
 effect give @e[type=iron_golem,team=team1] glowing 1 1 true
 effect give @e[type=iron_golem,team=team2] glowing 1 1 true
 effect give @e[type=iron_golem,team=team3] glowing 1 1 true
 effect give @e[type=iron_golem,team=team4] glowing 1 1 true
+
+# Make vex angry at enemy players
+execute as @e[type=vex,team=team1,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s AngryAt set from entity @p[team=!team1] UUID
+execute as @e[type=vex,team=team2,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s AngryAt set from entity @p[team=!team2] UUID
+execute as @e[type=vex,team=team3,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s AngryAt set from entity @p[team=!team3] UUID
+execute as @e[type=vex,team=team4,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s AngryAt set from entity @p[team=!team4] UUID
 
 # Make vex glow to show team colors
 effect give @e[type=vex,team=team1] glowing 1 1 true
@@ -169,8 +178,9 @@ effect give @e[type=vex,team=team3] glowing 1 1 true
 effect give @e[type=vex,team=team4] glowing 1 1 true
 
 # Nerf some mobs a bit
-#execute as @e[type=vex] run item replace entity @s weapon.mainhand with air
-execute as @e[type=vex] run effect give @s weakness infinite
+execute as @e[type=vex] run item replace entity @s weapon.mainhand with minecraft:egg
+execute as @e[type=vex] run attribute @s minecraft:generic.follow_range base set 100
+#execute as @e[type=vex] run effect give @s weakness infinite
 execute as @e[type=vex] run attribute @s minecraft:generic.max_health base set 4
 execute as @e[type=silverfish] run attribute @s minecraft:generic.max_health base set 2
 
