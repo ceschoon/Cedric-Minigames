@@ -2,7 +2,7 @@
 scoreboard players set @a[scores={ctime_DeathCount=5}] cscale_step 0
 scoreboard players add @a[scores={cscale_stepdelay=0,cscale_step=0..}] cscale_step 1
 
-scoreboard players set @a[scores={cscale_stepdelay=0}] cscale_stepdelay 200
+scoreboard players set @a[scores={cscale_stepdelay=0}] cscale_stepdelay 600
 scoreboard players remove @a[scores={cscale_stepdelay=1..}] cscale_stepdelay 1
 
 execute as @a[scores={cscale_step=1}] run attribute @s minecraft:generic.scale modifier add myscalestep1 -0.01 add_multiplied_base
