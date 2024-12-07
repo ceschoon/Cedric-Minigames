@@ -111,6 +111,10 @@ execute at @e[type=armor_stand,name=diamond] run kill @e[type=item,nbt={Item:{id
 execute at @e[type=armor_stand,name=emerald1] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
 execute at @e[type=armor_stand,name=emerald2] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
 
+# Remove wind charges near fireball cannon to prevent staked middle camper from getting rid of them remotely
+#execute at @e[type=armor_stand,name=cannon1] run kill @e[type=wind_charge,distance=..5]
+#execute at @e[type=armor_stand,name=cannon2] run kill @e[type=wind_charge,distance=..5]
+
 # Decrement time delays for generators
 scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayEmrld 1
 scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayDiamd 1
@@ -157,6 +161,23 @@ effect give @e[type=iron_golem,team=team1] glowing 1 1 true
 effect give @e[type=iron_golem,team=team2] glowing 1 1 true
 effect give @e[type=iron_golem,team=team3] glowing 1 1 true
 effect give @e[type=iron_golem,team=team4] glowing 1 1 true
+
+# Make vex glow to show team colors
+effect give @e[type=vex,team=team1] glowing 1 1 true
+effect give @e[type=vex,team=team2] glowing 1 1 true
+effect give @e[type=vex,team=team3] glowing 1 1 true
+effect give @e[type=vex,team=team4] glowing 1 1 true
+
+# Nerf some mobs a bit
+#execute as @e[type=vex] run item replace entity @s weapon.mainhand with air
+execute as @e[type=vex] run effect give @s weakness infinite
+execute as @e[type=vex] run attribute @s minecraft:generic.max_health base set 4
+execute as @e[type=silverfish] run attribute @s minecraft:generic.max_health base set 2
+
+# Summon silverfish on players targeted by snowball
+execute as @a at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:snowball"}}] if entity @e[type=snowball,distance=..3] run summon silverfish ~ ~ ~
+execute as @a at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:snowball"}}] if entity @e[type=snowball,distance=..3] run summon silverfish ~ ~ ~
+execute as @a at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:snowball"}}] if entity @e[type=snowball,distance=..3] run kill @e[type=snowball,distance=..3]
 
 # Summon fireballs from fire_charge
 #function platforms:summonfireball
