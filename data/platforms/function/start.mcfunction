@@ -9,8 +9,10 @@ scoreboard players set @a pltf_DelayDiamd 0
 scoreboard players set @a pltf_DelayWool 0
 scoreboard players set @a pltf_DelayFire1 0
 scoreboard players set @a pltf_DelayFire2 0
+scoreboard players set @a pltf_DelayFire3 0
 scoreboard players set @a pltf_CountFire1 0
 scoreboard players set @a pltf_CountFire2 0
+scoreboard players set @a pltf_CountFire3 0
 scoreboard players set @a pltf_DeathCount 0
 
 # Gamerules

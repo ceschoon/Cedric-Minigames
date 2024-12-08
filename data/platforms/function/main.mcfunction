@@ -96,10 +96,13 @@ execute as @a[scores={pltf_AddScore=1},team=team4] at @s run playsound minecraft
 execute at @e[type=armor_stand,name=diamond] run function platforms:builddiamond
 execute at @e[type=armor_stand,name=emerald1] run function platforms:buildemerald
 execute at @e[type=armor_stand,name=emerald2] run function platforms:buildemerald
+execute at @e[type=armor_stand,name=emerald3] run function platforms:buildemerald
 execute at @e[type=armor_stand,name=villager1] run function platforms:buildvillager
 execute at @e[type=armor_stand,name=villager2] run function platforms:buildvillager
+execute at @e[type=armor_stand,name=villager3] run function platforms:buildvillager
 execute at @e[type=armor_stand,name=cannon1] run function platforms:buildmagma
 execute at @e[type=armor_stand,name=cannon2] run function platforms:buildmagma
+execute at @e[type=armor_stand,name=cannon3] run function platforms:buildmagma
 execute at @e[type=armor_stand,name=team1] run function platforms:buildteam1
 execute at @e[type=armor_stand,name=team2] run function platforms:buildteam2
 execute at @e[type=armor_stand,name=team3] run function platforms:buildteam3
@@ -110,10 +113,12 @@ execute at @e[type=armor_stand,name=team4] run function platforms:buildteam4
 execute at @e[type=armor_stand,name=diamond] run kill @e[type=item,nbt={Item:{id:"minecraft:diamond_block"}},distance=..10]
 execute at @e[type=armor_stand,name=emerald1] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
 execute at @e[type=armor_stand,name=emerald2] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
+execute at @e[type=armor_stand,name=emerald3] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
 
 # Remove wind charges near fireball cannon to prevent staked middle camper from getting rid of them remotely
 #execute at @e[type=armor_stand,name=cannon1] run kill @e[type=wind_charge,distance=..5]
 #execute at @e[type=armor_stand,name=cannon2] run kill @e[type=wind_charge,distance=..5]
+#execute at @e[type=armor_stand,name=cannon3] run kill @e[type=wind_charge,distance=..5]
 
 # Decrement time delays for generators
 scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayEmrld 1
@@ -124,6 +129,7 @@ scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayWool 1
 execute at @e[type=armor_stand,name=diamond] if entity @a[scores={pltf_DelayDiamd=..0}] run loot spawn ~ ~ ~ loot minecraft:blocks/diamond_ore
 execute at @e[type=armor_stand,name=emerald1] if entity @a[scores={pltf_DelayEmrld=..0}] run loot spawn ~ ~ ~ loot minecraft:blocks/emerald_ore
 execute at @e[type=armor_stand,name=emerald2] if entity @a[scores={pltf_DelayEmrld=..0}] run loot spawn ~ ~ ~ loot minecraft:blocks/emerald_ore
+execute at @e[type=armor_stand,name=emerald3] if entity @a[scores={pltf_DelayEmrld=..0}] run loot spawn ~ ~ ~ loot minecraft:blocks/emerald_ore
 execute at @e[type=armor_stand,name=team1] if entity @a[scores={pltf_DelayWool=..0}] run loot spawn ~ ~ ~ loot minecraft:blocks/lime_wool
 execute at @e[type=armor_stand,name=team2] if entity @a[scores={pltf_DelayWool=..0}] run loot spawn ~ ~ ~ loot minecraft:blocks/red_wool
 execute at @e[type=armor_stand,name=team3] if entity @a[scores={pltf_DelayWool=..0}] run loot spawn ~ ~ ~ loot minecraft:blocks/blue_wool
@@ -137,6 +143,7 @@ scoreboard players set @a[scores={pltf_DelayWool=..0}] pltf_DelayWool 30
 # Keep villagers in place
 execute at @e[type=armor_stand,name=villager1] run tp @e[type=villager,distance=..5] ~ ~ ~
 execute at @e[type=armor_stand,name=villager2] run tp @e[type=villager,distance=..5] ~ ~ ~
+execute at @e[type=armor_stand,name=villager3] run tp @e[type=villager,distance=..5] ~ ~ ~
 
 # Keep golems in place
 execute at @e[type=armor_stand,name=team1] run tp @e[type=iron_golem,distance=8..10] ~ ~ ~
@@ -195,10 +202,13 @@ execute as @a at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:snowball"}
 # Delay for cannons
 scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayFire1 1
 scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayFire2 1
+scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayFire3 1
 execute if entity @a[scores={pltf_CountFire1=3..,pltf_DelayFire1=..0}] run scoreboard players set @a pltf_DelayFire1 2400
 execute if entity @a[scores={pltf_CountFire2=3..,pltf_DelayFire2=..0}] run scoreboard players set @a pltf_DelayFire2 2400
+execute if entity @a[scores={pltf_CountFire3=3..,pltf_DelayFire3=..0}] run scoreboard players set @a pltf_DelayFire3 2400
 execute if entity @a[scores={pltf_CountFire1=3..}] run scoreboard players set @a pltf_CountFire1 0
 execute if entity @a[scores={pltf_CountFire2=3..}] run scoreboard players set @a pltf_CountFire2 0
+execute if entity @a[scores={pltf_CountFire3=3..}] run scoreboard players set @a pltf_CountFire3 0
 
 # Summon fireball in cannon1
 scoreboard players set @a pltf_SummonFire 0
@@ -211,6 +221,12 @@ scoreboard players set @a pltf_SummonFire 0
 execute at @e[type=armor_stand,name=cannon2] if entity @a[scores={pltf_DelayFire2=..0}] unless entity @e[type=fireball,distance=..2] run scoreboard players set @a pltf_SummonFire 1
 execute at @e[type=armor_stand,name=cannon2] if entity @a[scores={pltf_SummonFire=1}] run summon fireball ~ ~1 ~ {ExplosionPower:3}
 execute at @e[type=armor_stand,name=cannon2] if entity @a[scores={pltf_SummonFire=1}] run scoreboard players add @a pltf_CountFire2 1
+
+# Summon fireball in cannon3
+scoreboard players set @a pltf_SummonFire 0
+execute at @e[type=armor_stand,name=cannon3] if entity @a[scores={pltf_DelayFire3=..0}] unless entity @e[type=fireball,distance=..2] run scoreboard players set @a pltf_SummonFire 1
+execute at @e[type=armor_stand,name=cannon3] if entity @a[scores={pltf_SummonFire=1}] run summon fireball ~ ~1 ~ {ExplosionPower:3}
+execute at @e[type=armor_stand,name=cannon3] if entity @a[scores={pltf_SummonFire=1}] run scoreboard players add @a pltf_CountFire3 1
 
 # Enforce no fireball rule if activated
 execute if entity @a[scores={pltf_nofireballs=1}] run kill @e[type=fireball]
