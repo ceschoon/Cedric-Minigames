@@ -140,10 +140,12 @@ scoreboard players set @a[scores={pltf_DelayEmrld=..0}] pltf_DelayEmrld 100
 scoreboard players set @a[scores={pltf_DelayDiamd=..0}] pltf_DelayDiamd 600
 scoreboard players set @a[scores={pltf_DelayWool=..0}] pltf_DelayWool 30
 
-# Keep villagers in place
-execute at @e[type=armor_stand,name=villager1] run tp @e[type=villager,distance=..5] ~ ~ ~
-execute at @e[type=armor_stand,name=villager2] run tp @e[type=villager,distance=..5] ~ ~ ~
-execute at @e[type=armor_stand,name=villager3] run tp @e[type=villager,distance=..5] ~ ~ ~
+# Keep villagers in place --> it appears that after version 1.21.4,
+# teleporting the villager closes the interaction gui. Therefore, I
+# I now set NOAI=1 and reserve an emergency tp beyond a certain distance.
+execute at @e[type=armor_stand,name=villager1] run tp @e[type=villager,distance=4..9] ~ ~ ~
+execute at @e[type=armor_stand,name=villager2] run tp @e[type=villager,distance=4..9] ~ ~ ~
+execute at @e[type=armor_stand,name=villager3] run tp @e[type=villager,distance=4..9] ~ ~ ~
 
 # Keep golems in place
 execute at @e[type=armor_stand,name=team1] run tp @e[type=iron_golem,distance=8..10] ~ ~ ~
