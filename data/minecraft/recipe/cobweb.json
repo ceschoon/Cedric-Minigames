@@ -6,9 +6,7 @@
     "s s"
   ],
   "key": {
-    "s": {
-      "item": "minecraft:string"
-    }
+    "s": "minecraft:string"
   },
   "result": {
     "id": "minecraft:cobweb"

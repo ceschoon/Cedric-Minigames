@@ -7,7 +7,8 @@ scoreboard players set @a ctime_TicksInSec 0
 scoreboard players set @a ctime_Seconds 0
 scoreboard players set @a ctime_Pause 0
 scoreboard players set @a inf_WarnDelay 0
-scoreboard players set @a inf_HealDelay 0
+scoreboard players set @a inf_HealDelay 1000
+scoreboard players set @a inf_DebugMode 0
 
 gamerule keepInventory true
 gamerule doImmediateRespawn true

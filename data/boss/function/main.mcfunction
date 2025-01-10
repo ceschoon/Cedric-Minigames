@@ -5,7 +5,7 @@ bossbar set playerboss players @a
 bossbar set playerboss color red
 #bossbar set playerboss max 100
 
-execute store result bossbar playerboss max run attribute @p[scores={boss_Who=1}] minecraft:generic.max_health base get
+execute store result bossbar playerboss max run attribute @p[scores={boss_Who=1}] minecraft:max_health base get
 execute store result bossbar playerboss value run data get entity @p[scores={boss_Who=1}] Health
 execute unless entity @a[scores={boss_Who=1}] run bossbar set playerboss value 0
 
@@ -28,8 +28,8 @@ effect give @a[scores={boss_Who=1}] mining_fatigue 10 0
 
 execute as @a[scores={boss_Who=1}] at @s run spawnpoint @s ~ ~ ~
 
-execute as @a[scores={boss_Who=1}] run attribute @s minecraft:generic.max_health base set 40
-execute as @a[scores={boss_Who=0}] run attribute @s minecraft:generic.max_health base set 20
+execute as @a[scores={boss_Who=1}] run attribute @s minecraft:max_health base set 40
+execute as @a[scores={boss_Who=0}] run attribute @s minecraft:max_health base set 20
 
 # End of the game
 execute if entity @a[scores={boss_Who=1,ctime_DeathCount=5}] run function boss:hunters_win

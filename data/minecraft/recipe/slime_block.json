@@ -2,15 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "sss",
-    "ggg",
-    "g g"
+    "sss",
+    "sss"
   ],
   "key": {
-    "s": "minecraft:stick",
-    "g": "minecraft:gold_ingot"
+    "s": "minecraft:slime_ball"
   },
   "result": {
-    "id": "minecraft:bell"
+    "id": "minecraft:slime_block",
+    "count": 3
   }
 }
 

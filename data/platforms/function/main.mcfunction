@@ -186,10 +186,10 @@ effect give @e[type=vex,team=team4] glowing 1 1 true
 
 # Nerf some mobs a bit
 execute as @e[type=vex] run item replace entity @s weapon.mainhand with minecraft:egg
-execute as @e[type=vex] run attribute @s minecraft:generic.follow_range base set 100
+execute as @e[type=vex] run attribute @s minecraft:follow_range base set 100
 #execute as @e[type=vex] run effect give @s weakness infinite
-execute as @e[type=vex] run attribute @s minecraft:generic.max_health base set 4
-execute as @e[type=silverfish] run attribute @s minecraft:generic.max_health base set 2
+execute as @e[type=vex] run attribute @s minecraft:max_health base set 4
+execute as @e[type=silverfish] run attribute @s minecraft:max_health base set 2
 
 # Summon silverfish on players targeted by snowball
 execute as @a at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:snowball"}}] if entity @e[type=snowball,distance=..3] run summon silverfish ~ ~ ~

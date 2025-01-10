@@ -1,8 +1,8 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "ingredients": ["minecraft:iron_block"],
+  "ingredients": ["minecraft:slime_block"],
   "result": {
-    "id": "minecraft:iron_ingot",
+    "id": "minecraft:slime_ball",
     "count": 3
   }
 }

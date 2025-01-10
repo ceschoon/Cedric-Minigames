@@ -43,9 +43,9 @@ effect give @a[scores={ctime_Pause=1}] slowness 1 255
 effect give @a[scores={ctime_Pause=1}] invisibility 1
 
 # detect end of the game
-execute unless entity @a[team=sane] run function infection:win_infected
-execute unless entity @a[team=infected] unless entity @a[scores={inf_Mole=1}] run function infection:win_sane
-execute unless entity @a[team=infected] if entity @a[scores={shrine_active=1}] run function infection:win_sane
+execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=sane] run function infection:win_infected
+execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=infected] unless entity @a[scores={inf_Mole=1}] run function infection:win_sane
+execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=infected] if entity @a[scores={shrine_active=1}] run function infection:win_sane
 
 # make it so that sane players get bonuses when grouped together
 function infection:bonus_effects
@@ -63,7 +63,7 @@ execute as @r[scores={ctime_TicksInSec=15,shrine_active=0}] at @e[type=armor_sta
 execute if entity @a[scores={shrine_active=1}] run weather clear 1d
 
 # shrine item generator
-execute as @r[scores={ctime_TicksInSec=0,shrine_active=1}] at @e[type=armor_stand,name=shrine] run summon item ~ ~1 ~ {Item:{id:"splash_potion",1ount:1,components:{potion_contents:{potion:"luck"}}}}
+execute as @r[scores={ctime_TicksInSec=0,shrine_active=1}] at @e[type=armor_stand,name=shrine] run summon item ~ ~1 ~ {Item:{id:"splash_potion",count:1,components:{potion_contents:{potion:"luck"}}}}
 execute as @r[scores={ctime_TicksInSec=10,shrine_active=1}] at @e[type=armor_stand,name=shrine] run kill @e[type=item,nbt={Item:{id:"minecraft:splash_potion"}},distance=..2]
 
 # convert infected back to sane team using luck potions/effect

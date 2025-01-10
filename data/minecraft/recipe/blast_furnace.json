@@ -6,12 +6,8 @@
     "iii"
   ],
   "key": {
-    "i": {
-      "item": "minecraft:iron_nugget"
-    },
-    "f": {
-      "item": "minecraft:furnace"
-    }
+    "i": "minecraft:iron_nugget",
+    "f": "minecraft:furnace"
   },
   "result": {
     "id": "minecraft:blast_furnace"
