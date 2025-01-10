@@ -7,6 +7,7 @@
 	  "compass:tick",
 	  "cscale:tick",
 	  "ctime:tick",
+	  "cworld:tick",
 	  "duels:tick",
 	  "flsheep:tick",
 	  "hunt:tick",

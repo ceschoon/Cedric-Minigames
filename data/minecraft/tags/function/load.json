@@ -8,6 +8,7 @@
 	  "compass:load",
 	  "cscale:load",
 	  "ctime:load",
+	  "cworld:load",
 	  "duels:load",
 	  "flsheep:load",
 	  "hunt:load",

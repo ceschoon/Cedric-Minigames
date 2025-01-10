@@ -1,0 +1,15 @@
+Should I merge the ver growing number of small modules into a "cutils" module?
+Maybe all of the existing modules? Or just smaller ones:
+  - cadvancements
+  - cmath
+  - cmenu
+  - ctime
+  - cworld
+
+These are probably better as standalone modules:
+  - cmagic
+  - compass
+  - cscale
+  - teams
+  - zombies
+
