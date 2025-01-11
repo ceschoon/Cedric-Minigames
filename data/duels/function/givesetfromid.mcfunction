@@ -1,4 +1,7 @@
 
+scoreboard players set @a[scores={duels_SetId=10..}] duels_SetId 0
+scoreboard players set @a[scores={duels_SetId=..-1}] duels_SetId 9
+
 execute as @s[scores={duels_SetId=0}] run function duels:sets/giveset_0
 execute as @s[scores={duels_SetId=1}] run function duels:sets/giveset_1
 execute as @s[scores={duels_SetId=2}] run function duels:sets/giveset_2
