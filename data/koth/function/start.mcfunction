@@ -27,15 +27,15 @@ summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"hill\"",CustomNameV
 
 # World
 execute in minecraft:overworld run worldborder center ~ ~
-execute in minecraft:overworld run worldborder set 1000000
+execute in minecraft:overworld run worldborder set 10000
 time set 0
 
 # Tp all players to bring them in the correct dimension
 tp @a @s
 
 # Spread Players (use dimroof variable from compass module)
-execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 150 150 false @a
-execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 150 150 under 127 false @a
+execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 100 100 false @a
+execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 100 100 under 127 false @a
 
 # Set spawn (world spawn too, should not be close to platform)
 execute as @a at @s run spawnpoint @s ~ ~ ~
