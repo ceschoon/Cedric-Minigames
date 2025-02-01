@@ -120,10 +120,11 @@ execute at @e[type=armor_stand,name=emerald3] run kill @e[type=item,nbt={Item:{i
 #execute at @e[type=armor_stand,name=cannon2] run kill @e[type=wind_charge,distance=..5]
 #execute at @e[type=armor_stand,name=cannon3] run kill @e[type=wind_charge,distance=..5]
 
-# Decrement time delays for generators
+# Decrement time delays
 scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayEmrld 1
 scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayDiamd 1
 scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayWool 1
+scoreboard players remove @a[scores={ctime_Pause=0}] pltf_DelayCage 1
 
 # Spawn loot at armor stand when delay completed
 execute at @e[type=armor_stand,name=diamond] if entity @a[scores={pltf_DelayDiamd=..0}] run loot spawn ~ ~ ~ loot minecraft:blocks/diamond_ore
@@ -229,6 +230,9 @@ scoreboard players set @a pltf_SummonFire 0
 execute at @e[type=armor_stand,name=cannon3] if entity @a[scores={pltf_DelayFire3=..0}] unless entity @e[type=fireball,distance=..2] run scoreboard players set @a pltf_SummonFire 1
 execute at @e[type=armor_stand,name=cannon3] if entity @a[scores={pltf_SummonFire=1}] run summon fireball ~ ~1 ~ {ExplosionPower:3}
 execute at @e[type=armor_stand,name=cannon3] if entity @a[scores={pltf_SummonFire=1}] run scoreboard players add @a pltf_CountFire3 1
+
+# Cage mechanics
+function platforms:cagemechanics
 
 # Enforce no fireball rule if activated
 execute if entity @a[scores={pltf_nofireballs=1}] run kill @e[type=fireball]
