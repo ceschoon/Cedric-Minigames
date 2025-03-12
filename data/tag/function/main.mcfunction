@@ -21,6 +21,18 @@ execute as @a[scores={tag_gamemode=1}] run function tag:detectwin1
 # enforce additional rules (legacy)
 #execute as @a at @s run function tagrules:main
 
+# enforce helmet to distinguish the runner from hunters
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_runner] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:golden_helmet"}]}] run item replace entity @s armor.head with golden_helmet[enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter1] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter2] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter3] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter4] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter5] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter6] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter7] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter8] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a if entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with air
+
 # make players invincible during pauses
 effect give @a[scores={ctime_Pause=1}] resistance 1 255
 

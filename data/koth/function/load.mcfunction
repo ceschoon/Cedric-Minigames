@@ -14,5 +14,8 @@ team add onhill
 team modify offhill color gray
 team modify onhill color gold
 
+team modify offhill nametagVisibility never
+team modify onhill nametagVisibility never
+
 say Cedric Koth: reloaded!
 

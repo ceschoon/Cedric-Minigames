@@ -14,4 +14,9 @@ team modify team2 color red
 team modify team3 color blue
 team modify team4 color yellow
 
+team modify team1 nametagVisibility never
+team modify team2 nametagVisibility never
+team modify team3 nametagVisibility never
+team modify team4 nametagVisibility never
+
 say Cedric Teams module: reloaded!

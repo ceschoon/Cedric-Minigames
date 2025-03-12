@@ -16,6 +16,9 @@ team add boss_Hunter "Team Hunters"
 team modify boss_Boss color red
 team modify boss_Hunter color green
 
+team modify boss_Boss nametagVisibility never
+team modify boss_Hunter nametagVisibility never
+
 execute as @a run attribute @s minecraft:max_health base set 20
 
 say Cedric Kill The Boss: reloaded!

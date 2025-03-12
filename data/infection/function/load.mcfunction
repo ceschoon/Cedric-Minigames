@@ -24,10 +24,12 @@ scoreboard objectives add shrine_active dummy
 team remove sane
 team add sane 
 team modify sane color green
+team modify sane nametagVisibility never
 
 team remove infected
 team add infected
 team modify infected color red
+team modify infected nametagVisibility never
 
 say Cedric Infection: reloaded!
 

@@ -41,14 +41,24 @@ team add tag_hunter7
 team add tag_hunter8
 
 team modify tag_runner color gold
-team modify tag_hunter1 color green
-team modify tag_hunter2 color dark_green
-team modify tag_hunter3 color blue
-team modify tag_hunter4 color dark_blue
-team modify tag_hunter5 color aqua
-team modify tag_hunter6 color dark_aqua
-team modify tag_hunter7 color light_purple
-team modify tag_hunter8 color dark_purple
+team modify tag_hunter1 color dark_red
+team modify tag_hunter2 color dark_red
+team modify tag_hunter3 color dark_red
+team modify tag_hunter4 color dark_red
+team modify tag_hunter5 color dark_red
+team modify tag_hunter6 color dark_red
+team modify tag_hunter7 color dark_red
+team modify tag_hunter8 color dark_red
+
+team modify tag_runner nametagVisibility never
+team modify tag_hunter1 nametagVisibility never
+team modify tag_hunter2 nametagVisibility never
+team modify tag_hunter3 nametagVisibility never
+team modify tag_hunter4 nametagVisibility never
+team modify tag_hunter5 nametagVisibility never
+team modify tag_hunter6 nametagVisibility never
+team modify tag_hunter7 nametagVisibility never
+team modify tag_hunter8 nametagVisibility never
 
 team remove noteam
 team add noteam
