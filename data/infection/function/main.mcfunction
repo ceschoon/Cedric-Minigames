@@ -34,6 +34,10 @@ effect give @a[scores={inf_test_mole=1}] minecraft:absorption infinite 1 false
 execute as @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@s","color":"red"},{"text":" was a mole the whole time!!","color":"red"}]
 execute as @a[scores={inf_test_mole=1}] at @s run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
 
+# auto reveal mole as soon as the portal is constructed
+execute if entity @a[scores={shrine_active=1}] run team join infected @a[scores={inf_Mole=1}]
+execute if entity @a[scores={shrine_active=1}] run scoreboard players set @a[scores={inf_Mole=1}] inf_Mole 0
+
 # increment time
 scoreboard players add @a[scores={ctime_TicksInSec=0}] inf_WarnDelay 1
 
@@ -42,10 +46,10 @@ effect give @a[scores={ctime_Pause=1}] resistance 1 255
 effect give @a[scores={ctime_Pause=1}] slowness 1 255
 effect give @a[scores={ctime_Pause=1}] invisibility 1
 
-# detect end of the game
+# detect end of the game (thrid line commented out so sane players do not immediatly win at shrine completion in case the mole did not reveal itself)
 execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=sane] run function infection:win_infected
 execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=infected] unless entity @a[scores={inf_Mole=1}] run function infection:win_sane
-execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=infected] if entity @a[scores={shrine_active=1}] run function infection:win_sane
+######execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=infected] if entity @a[scores={shrine_active=1}] run function infection:win_sane
 
 # make it so that sane players get bonuses when grouped together
 function infection:bonus_effects
@@ -72,6 +76,9 @@ execute as @a[scores={ctime_TicksInSec=0}] if entity @s[team=infected,nbt={activ
 scoreboard players set @a[scores={inf_HealDelay=31..}] inf_HealDelay 31
 team join sane @a[team=infected,scores={inf_HealDelay=..-1}]
 effect give @a[team=infected,scores={ctime_TicksInSec=0,inf_HealDelay=10}] nausea 15
+effect give @a[team=infected,scores={inf_HealDelay=..30}] resistance 1 4
+effect give @a[team=infected,scores={inf_HealDelay=..30}] absorption 1 4
+effect give @a[team=infected,scores={inf_HealDelay=..30}] regeneration 1 4
 title @a[team=infected,scores={ctime_TicksInSec=0,inf_HealDelay=30}] title [{"text":"Hit!","color":"red"}]
 title @a[team=infected,scores={ctime_TicksInSec=0,inf_HealDelay=30}] subtitle [{"text":"Hit! You will be healed in 30 seconds","color":"red"}]
 title @a[team=infected,scores={ctime_TicksInSec=0,inf_HealDelay=20}] title [{"text":"20 seconds ...","color":"red"}]
