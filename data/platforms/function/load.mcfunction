@@ -18,7 +18,7 @@ scoreboard objectives remove pltf_On
 
 scoreboard objectives add pltf_DeathCount deathCount
 scoreboard objectives add pltf_AddScore dummy
-scoreboard objectives add pltf_Score dummy "Diamonds"
+scoreboard objectives add pltf_Score dummy "Diamonds /20"
 scoreboard objectives add pltf_DelayEmrld dummy
 scoreboard objectives add pltf_DelayDiamd dummy
 scoreboard objectives add pltf_DelayWool dummy

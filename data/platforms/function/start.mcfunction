@@ -60,6 +60,7 @@ effect clear @a
 effect give @a resistance 10 255
 effect give @a regeneration 10 10
 effect give @a saturation 10 10
+effect give @a slowness 3 10
 
 # Inventory and gamemode
 clear @a
