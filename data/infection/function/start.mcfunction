@@ -59,7 +59,8 @@ team join sane @a
 # All sane at the start but one of them is a mole whose goal is to kill his 
 # teammates and spread the "infection"
 scoreboard players set @a inf_Mole 0
-scoreboard players set @s inf_Mole 1
+scoreboard players set @r inf_Mole 1
+
 loot give @a[scores={inf_Mole=1}] loot cmagic:starter_kit
 item replace entity @s inventory.0 with black_banner[banner_patterns=[{pattern:skull,color:green}],lore=['{"text":"Remove the banner from this slot to join the infected team."}']]
 
