@@ -12,7 +12,7 @@ effect clear @a[scores={tag_gamemode=0,tag_Tag=0,tag_PrepTime=..0}] mining_fatig
 scoreboard players add @a[scores={tag_Tag=1,tag_PrepTime=..0,ctime_TicksInSec=0}] tag_Score 1
 
 # death mechanics
-execute if entity @a run function tag:deathmechanics
+function tag:deathmechanics
 
 # detect win
 execute as @a[scores={tag_gamemode=0}] run function tag:detectwin0

@@ -10,7 +10,7 @@ team join tag_runner @s
 scoreboard players set @a tag_ScoreCopy -1
 
 # Reset kills indicators
-scoreboard players set @a tag_KillDetect 0
+#scoreboard players set @a tag_KillDetect 0
 
 # Give tag to new runner
 scoreboard players set @a tag_Tag 0

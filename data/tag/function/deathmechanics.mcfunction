@@ -13,9 +13,11 @@ execute if entity @a[scores={tag_gamemode=0,tag_Tag=1,ctime_DeathCount=5}] unles
 # In case of player kill, the killer becomes the new runner
 execute if entity @a[scores={tag_gamemode=0,tag_Tag=1,ctime_DeathCount=5}] as @r[scores={tag_KillDetect=1..}] run function tag:newrunner
 
+# Reset kill detector
+execute unless entity @a[scores={tag_gamemode=0,tag_Tag=1,ctime_DeathCount=1..}] run scoreboard players set @a tag_KillDetect 0
+
 ###################
 # (gamemode stag)
  
 # Any player who dies gets the tag
 execute as @a[scores={tag_gamemode=1,ctime_DeathCount=5}] run function tag:newrunner
-
