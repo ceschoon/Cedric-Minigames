@@ -4,6 +4,7 @@
 scoreboard objectives remove tag_Score
 scoreboard objectives remove tag_ScoreCopy
 scoreboard objectives remove tag_Kills
+scoreboard objectives remove tag_KillDetect
 scoreboard objectives remove tag_Tag
 scoreboard objectives remove tag_On
 scoreboard objectives remove tag_PrepTime
@@ -11,6 +12,7 @@ scoreboard objectives remove tag_PrepTime
 scoreboard objectives add tag_Score dummy "Time Tagged"
 scoreboard objectives add tag_ScoreCopy dummy
 scoreboard objectives add tag_Kills minecraft.custom:minecraft.player_kills
+scoreboard objectives add tag_KillDetect minecraft.custom:minecraft.player_kills
 scoreboard objectives add tag_Tag dummy
 scoreboard objectives add tag_On dummy
 scoreboard objectives add tag_PrepTime dummy
@@ -46,6 +48,18 @@ scoreboard players set @a tag_kill_rewards 1
 scoreboard players set @a[scores={tag_gamemode=0}] tag_mining_fatigue 1
 scoreboard players set @a[scores={tag_gamemode=1}] tag_mining_fatigue 0
 
-function tag:reloadteams
+## Teams
+
+team remove tag_runner
+team remove tag_hunter
+
+team add tag_runner
+team add tag_hunter
+
+team modify tag_runner color gold
+team modify tag_hunter color dark_red
+
+team modify tag_runner nametagVisibility never
+team modify tag_hunter nametagVisibility never
 
 say Cedric Tag: reloaded!
