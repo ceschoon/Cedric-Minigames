@@ -11,8 +11,8 @@ tellraw @s [{"text":" In the third variant (mini) the map is only 100x100 blocks
 tellraw @s [" "]
 tellraw @s [{"text":" Each player gets a compass to track the runner. You must drop the compass on the ground to record the current location of the runner. You need to drop the compass each time you want to update his position. ","color":"aqua"}]
 tellraw @s [" "]
-tellraw @s [{"text":" All variants of the tag game can be played in one of two gamemodes: The first (reverse tag) consists in keeping the tag for as long as possible (first to 1200/600 seconds) and in the second you must get rid of the tag as quickly as you can. The winner in the second gamemode (simple tag) is the last player tagged less than 20 minutes (or 10 depending on the variant). ","color":"aqua"}]
+tellraw @s [{"text":" All variants of the tag game can be played in one of two gamemodes: The first (reverse tag) consists in keeping the tag for as long as possible (first to 1200/600 seconds) and in the second you must get rid of the tag as quickly as you can. The winner in the second gamemode (simple tag) is the player with lowest time tagged after 20 minutes (10 in the mini variant). ","color":"aqua"}]
 tellraw @s [" "]
-tellraw @s [{"text":" Kills are rewarded in the following manner: In reverse tag, each kill adds 60 to the score when the map is of normal size (10 in the mini variant). In the simple tag gamemode the same amounts are subtracted to the score and the kill points are granted only for players with scores above 1200 (600 in the mini variant). This is meant to provide comeback strategies for loosing players. In the same spirit, the rewards in reverse tag are only granted to players of scores below 600 (300 in the mini variant). ","color":"aqua"}]
+tellraw @s [{"text":" Kills are rewarded in the following manner: In reverse tag, each kill adds 60 to the score when the map is of normal size (10 in the mini variant). In the simple tag gamemode these rewards are subtracted to the score. This is meant to provide comeback strategies for loosing players. ","color":"aqua"}]
 tellraw @s [" "]
 
