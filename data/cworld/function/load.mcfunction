@@ -1,7 +1,7 @@
 
-scoreboard objectives remove cworld_bordersize
-scoreboard objectives add cworld_bordersize dummy "World Border Size"
-#scoreboard objectives setdisplay sidebar cworld_bordersize
+scoreboard objectives remove cworld_setting
+scoreboard objectives add cworld_setting dummy
+#scoreboard objectives setdisplay sidebar cworld_setting
 
 worldborder set 10000
 worldborder center 0 0
