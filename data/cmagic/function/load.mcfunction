@@ -3,16 +3,17 @@ scoreboard objectives remove cmagic_num_life_cryst
 scoreboard objectives remove cmagic_has_magical_item
 scoreboard objectives remove cmagic_has_magical_item2
 scoreboard objectives remove cmagic_num_magical_items
-scoreboard objectives remove cmagic_barrel_drop_delay
 scoreboard objectives remove cmagic_trident_lightning_delay
 
 scoreboard objectives add cmagic_num_life_cryst dummy
 scoreboard objectives add cmagic_has_magical_item dummy
 scoreboard objectives add cmagic_has_magical_item2 dummy
 scoreboard objectives add cmagic_num_magical_items dummy
-scoreboard objectives add cmagic_barrel_drop_delay dummy
 scoreboard objectives add cmagic_trident_lightning_delay dummy
 
-scoreboard players set @a cmagic_barrel_drop_delay -1
+# Global variables
+scoreboard objectives remove cmagic_variable
+scoreboard objectives add cmagic_variable dummy
+scoreboard players set #cmagic_barrel_drop_delay cmagic_variable -1
 
 say Cedric Magic: reloaded!
