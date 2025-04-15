@@ -17,6 +17,10 @@ scoreboard players set @a ctime_Ticks 0
 scoreboard players set @a ctime_Seconds 0
 scoreboard players set @a ctime_TicksInSec 0
 
+## For global variables
+scoreboard objectives remove ctime_variable
+scoreboard objectives add ctime_variable dummy
+
 gamerule randomTickSpeed 300
 
 say Cedric Time module: reloaded!

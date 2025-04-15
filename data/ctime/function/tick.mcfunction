@@ -1,9 +1,9 @@
 
-execute as @a[scores={ctime_Pause=0}] run function ctime:main
+execute if score #ctime_Pause ctime_variable matches 0 run function ctime:main
 
 ## Also advance time if ctime_TicksInSec is zero, otherwise other
 ## datapacks may increment one second every tick when the game is paused
-execute as @a[scores={ctime_Pause=1,ctime_TicksInSec=0}] run function ctime:main
+execute if score #ctime_Pause ctime_variable matches 1 if score #ctime_TicksInSec ctime_variable matches 0 run function ctime:main
 
 ## Delay and reset death detection
 scoreboard players set @a[scores={ctime_DeathCount=5..}] ctime_DeathCount 0
