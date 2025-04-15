@@ -1,7 +1,7 @@
 
 # effect glowing to all sane players (and infected once shrine is active)
 effect give @a[team=sane] glowing 10
-effect give @a[scores={shrine_active=1},team=infected] glowing 10
+execute if score #shrine_active inf_variable matches 1 run effect give @a[team=infected] glowing 10
 
 # give food as reward for kills
 give @a[scores={inf_On=1,inf_Kills=1..}] cooked_beef 3
@@ -35,8 +35,8 @@ execute as @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@s","color"
 execute as @a[scores={inf_test_mole=1}] at @s run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
 
 # auto reveal mole as soon as the portal is constructed
-execute if entity @a[scores={shrine_active=1}] run team join infected @a[scores={inf_Mole=1}]
-execute if entity @a[scores={shrine_active=1}] run scoreboard players set @a[scores={inf_Mole=1}] inf_Mole 0
+execute if score #shrine_active inf_variable matches 1 run team join infected @a[scores={inf_Mole=1}]
+execute if score #shrine_active inf_variable matches 1 run scoreboard players set @a[scores={inf_Mole=1}] inf_Mole 0
 
 # increment time
 scoreboard players add @a[scores={ctime_TicksInSec=0}] inf_WarnDelay 1
@@ -47,28 +47,28 @@ effect give @a[scores={ctime_Pause=1}] slowness 1 255
 effect give @a[scores={ctime_Pause=1}] invisibility 1
 
 # detect end of the game (thrid line commented out so sane players do not immediatly win at shrine completion in case the mole did not reveal itself)
-execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=sane] run function infection:win_infected
-execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=infected] unless entity @a[scores={inf_Mole=1}] run function infection:win_sane
-######execute unless entity @a[scores={inf_DebugMode=1}] unless entity @a[team=infected] if entity @a[scores={shrine_active=1}] run function infection:win_sane
+execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=sane] run function infection:win_infected
+execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=infected] unless entity @a[scores={inf_Mole=1}] run function infection:win_sane
+######execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=infected] if score #shrine_active inf_variable matches 1 run function infection:win_sane
 
 # make it so that sane players get bonuses when grouped together
 function infection:bonus_effects
 
 # shrine mechanics
-function infection:shrine_mechanics
+execute at @e[type=armor_stand,name=shrine] run function infection:shrine_mechanics
 
 # shrine effects
-execute at @e[type=armor_stand,name=shrine] run effect give @a[team=sane,distance=..8,scores={shrine_active=0}] minecraft:weakness 5 0 false
-execute at @e[type=armor_stand,name=shrine] run effect give @a[team=infected,distance=..8,scores={shrine_active=1}] minecraft:weakness 5 0 false
+execute at @e[type=armor_stand,name=shrine] if score #shrine_active inf_variable matches 0 run effect give @a[team=sane,distance=..8] minecraft:weakness 5 0 false
+execute at @e[type=armor_stand,name=shrine] if score #shrine_active inf_variable matches 1 run effect give @a[team=infected,distance=..8] minecraft:weakness 5 0 false
 execute at @e[type=armor_stand,name=shrine] run effect give @a[team=sane,distance=..8] minecraft:haste 5 4 false
 execute at @e[type=armor_stand,name=shrine] run effect give @a[team=infected,distance=..8] minecraft:mining_fatigue 5 2 false
-execute as @r[scores={ctime_TicksInSec=15,shrine_active=0}] at @e[type=armor_stand,name=shrine] run summon area_effect_cloud ~ ~ ~ {Particle:{type:flame},potion_contents:{custom_effects:[{id:instant_damage,duration:10,show_particles:1b,show_icon:1}]},Radius:2.5,RadiusPerTick:-0.0,Duration:10}
-#execute if entity @a[scores={shrine_active=0}] run weather rain 1d
-execute if entity @a[scores={shrine_active=1}] run weather clear 1d
+execute at @e[type=armor_stand,name=shrine] if score #shrine_active inf_variable matches 0 as @r[scores={ctime_TicksInSec=15}] run summon area_effect_cloud ~ ~ ~ {Particle:{type:flame},potion_contents:{custom_effects:[{id:instant_damage,duration:10,show_particles:1b,show_icon:1}]},Radius:2.5,RadiusPerTick:-0.0,Duration:10}
+#execute if score #shrine_active inf_variable matches 0 run weather rain 1d
+execute if score #shrine_active inf_variable matches 1 run weather clear 1d
 
 # shrine item generator
-execute as @r[scores={ctime_TicksInSec=0,shrine_active=1}] at @e[type=armor_stand,name=shrine] run summon item ~ ~1 ~ {Item:{id:"splash_potion",count:1,components:{potion_contents:{potion:"luck"}}}}
-execute as @r[scores={ctime_TicksInSec=10,shrine_active=1}] at @e[type=armor_stand,name=shrine] run kill @e[type=item,nbt={Item:{id:"minecraft:splash_potion"}},distance=..2]
+execute at @e[type=armor_stand,name=shrine] if score #shrine_active inf_variable matches 1 as @r[scores={ctime_TicksInSec=0}] run summon item ~ ~1 ~ {Item:{id:"splash_potion",count:1,components:{potion_contents:{potion:"luck"}}}}
+execute at @e[type=armor_stand,name=shrine] if score #shrine_active inf_variable matches 1 as @r[scores={ctime_TicksInSec=10}] run kill @e[type=item,nbt={Item:{id:"minecraft:splash_potion"}},distance=..2]
 
 # convert infected back to sane team using luck potions/effect
 execute as @a[scores={ctime_TicksInSec=0}] unless entity @s[team=infected,nbt={active_effects:[{id:"minecraft:luck"}]}] run scoreboard players add @s inf_HealDelay 1

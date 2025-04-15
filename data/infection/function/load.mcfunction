@@ -4,22 +4,15 @@ scoreboard objectives remove inf_WarnDelay
 scoreboard objectives remove inf_HealDelay
 scoreboard objectives remove inf_Kills
 scoreboard objectives remove inf_Mole
-scoreboard objectives remove inf_DebugMode
 
 scoreboard objectives add inf_On dummy
 scoreboard objectives add inf_WarnDelay dummy
 scoreboard objectives add inf_HealDelay dummy
 scoreboard objectives add inf_Kills minecraft.custom:minecraft.player_kills
 scoreboard objectives add inf_Mole dummy
-scoreboard objectives add inf_DebugMode dummy
 
-scoreboard objectives remove numplayers_sane
-scoreboard objectives remove numplayers_inf
-scoreboard objectives add numplayers_sane dummy
-scoreboard objectives add numplayers_inf dummy
-
-scoreboard objectives remove shrine_active
-scoreboard objectives add shrine_active dummy
+scoreboard objectives remove inf_variable
+scoreboard objectives add inf_variable dummy
 
 team remove sane
 team add sane 

@@ -8,7 +8,7 @@ scoreboard players set @a ctime_Seconds 0
 scoreboard players set @a ctime_Pause 0
 scoreboard players set @a inf_WarnDelay 0
 scoreboard players set @a inf_HealDelay 1000
-scoreboard players set @a inf_DebugMode 0
+scoreboard players set #inf_DebugMode inf_variable 0
 
 gamerule keepInventory true
 gamerule doImmediateRespawn true
@@ -33,7 +33,7 @@ kill @e[type=armor_stand]
 summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"shrine\"",CustomNameVisible:0}
 execute at @s align xyz run tp @e[type=armor_stand,name=shrine] ~.5 ~-1.5 ~.5
 execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~2 ~2 ~2 air
-scoreboard players set @a shrine_active 0
+scoreboard players set #shrine_active inf_variable 0
 
 # Tp all players to bring them in the correct dimension
 tp @a @s
