@@ -1,4 +1,6 @@
 
+## TODO: Should kick players with inf_On=0 from the teams??
+
 # effect glowing to all sane players (and infected once shrine is active)
 effect give @a[team=sane] glowing 10
 execute if score #shrine_active inf_variable matches 1 run effect give @a[team=infected] glowing 10
@@ -15,13 +17,12 @@ execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=inf
 execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=infected,distance=..30] run scoreboard players set @s inf_WarnDelay 0
 
 # infect sane players who just died
-###clear @a[scores={ctime_DeathCount=5,inf_Mole=0},team=sane]
 execute if entity @a[scores={ctime_DeathCount=5},team=sane] as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
 execute if entity @a[scores={ctime_DeathCount=5},team=sane] run title @a[team=sane] actionbar [{"text":"One of you lost his life... but will come back soon.","color":"red"}]
 team join infected @a[scores={ctime_DeathCount=5},team=sane]
 
 # force players to wear a golden helmet in the nether
-execute as @a at @s if dimension minecraft:the_nether run item replace entity @s armor.head with golden_helmet[enchantments={levels:{binding_curse:1}}]
+execute as @a[scores={inf_On=1}] at @s if dimension minecraft:the_nether run item replace entity @s armor.head with golden_helmet[enchantments={levels:{binding_curse:1}}]
 
 # mole reveal
 scoreboard objectives remove inf_test_mole
@@ -35,16 +36,16 @@ execute as @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@s","color"
 execute as @a[scores={inf_test_mole=1}] at @s run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
 
 # auto reveal mole as soon as the portal is constructed
-execute if score #shrine_active inf_variable matches 1 run team join infected @a[scores={inf_Mole=1}]
-execute if score #shrine_active inf_variable matches 1 run scoreboard players set @a[scores={inf_Mole=1}] inf_Mole 0
+execute if score #shrine_active inf_variable matches 1 run team join infected @a[scores={inf_On=1,inf_Mole=1}]
+execute if score #shrine_active inf_variable matches 1 run scoreboard players set @a[scores={inf_On=1,inf_Mole=1}] inf_Mole 0
 
 # increment delays
 execute if score #ctime_TicksInSec ctime_variable matches 0 run scoreboard players add @a inf_WarnDelay 1
 
 # make players invincible during pauses
-execute if score #ctime_Pause ctime_variable matches 1 run effect give @a resistance 1 255
-execute if score #ctime_Pause ctime_variable matches 1 run effect give @a slowness 1 255
-execute if score #ctime_Pause ctime_variable matches 1 run effect give @a invisibility 1
+execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores={inf_On=1}] resistance 1 255
+execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores={inf_On=1}] slowness 1 255
+execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores={inf_On=1}] invisibility 1
 
 # detect end of the game (thrid line commented out so sane players do not immediatly win at shrine completion in case the mole did not reveal itself)
 execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=sane] run function infection:win_infected
@@ -52,26 +53,12 @@ execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team
 ######execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=infected] if score #shrine_active inf_variable matches 1 run function infection:win_sane
 
 # make it so that sane players get bonuses when grouped together
-function infection:bonus_effects
+execute as @a[scores={inf_On=1}] run function infection:bonus_effects
 
 # shrine mechanics
 execute at @e[type=armor_stand,name=shrine] run function infection:shrine_mechanics
 
 # convert infected back to sane team using luck potions/effect
-execute as @a if score #ctime_TicksInSec ctime_variable matches 0 unless entity @s[team=infected,nbt={active_effects:[{id:"minecraft:luck"}]}] run scoreboard players add @s inf_HealDelay 1
-execute as @a if score #ctime_TicksInSec ctime_variable matches 0 if entity @s[team=infected,nbt={active_effects:[{id:"minecraft:luck"}]}] run scoreboard players remove @s inf_HealDelay 1
-scoreboard players set @a[scores={inf_HealDelay=31..}] inf_HealDelay 31
-team join sane @a[team=infected,scores={inf_HealDelay=..-1}]
-effect give @a[team=infected,scores={inf_HealDelay=..30}] resistance 1 4
-effect give @a[team=infected,scores={inf_HealDelay=..30}] absorption 1 4
-effect give @a[team=infected,scores={inf_HealDelay=..30}] regeneration 1 4
-execute if score #ctime_TicksInSec ctime_variable matches 0 run effect give @a[team=infected,scores={inf_HealDelay=10}] nausea 15
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @a[team=infected,scores={inf_HealDelay=30}] title [{"text":"Hit!","color":"red"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @a[team=infected,scores={inf_HealDelay=30}] subtitle [{"text":"Hit! You will be healed in 30 seconds","color":"red"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @a[team=infected,scores={inf_HealDelay=20}] title [{"text":"20 seconds ...","color":"red"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @a[team=infected,scores={inf_HealDelay=10}] title [{"text":"10 seconds ...","color":"red"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @a[team=sane,scores={inf_HealDelay=-1}] title [{"text":"Healed!","color":"green"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @a[team=sane,scores={inf_HealDelay=-1}] subtitle [{"text":"You are now in the sane team","color":"green"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run tellraw @a[team=sane,scores={inf_HealDelay=-1}] [{"text":"Healed! You are now in the sane team","color":"green"}]
+execute as @a[scores={inf_On=1}] run function infection:conversion_mechanics
 
 
