@@ -7,5 +7,5 @@ tellraw @a [{"text":"Game over! Infected players won","color":"red"}]
 execute as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
 
 scoreboard players set @a inf_On 0
-scoreboard players set @a ctime_Pause 1
+scoreboard players set #ctime_Pause ctime_variable 1
 

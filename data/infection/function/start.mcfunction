@@ -1,11 +1,8 @@
 
-scoreboard objectives modify ctime_Seconds displayname "Time"
-scoreboard objectives setdisplay sidebar ctime_Seconds
-
 scoreboard players set @a inf_On 1
-scoreboard players set @a ctime_TicksInSec 0
-scoreboard players set @a ctime_Seconds 0
-scoreboard players set @a ctime_Pause 0
+scoreboard players set #ctime_TicksInSec ctime_variable 0
+scoreboard players set #ctime_Seconds ctime_variable 0
+scoreboard players set #ctime_Pause ctime_variable 0
 scoreboard players set @a inf_WarnDelay 0
 scoreboard players set @a inf_HealDelay 1000
 scoreboard players set #inf_DebugMode inf_variable 0
