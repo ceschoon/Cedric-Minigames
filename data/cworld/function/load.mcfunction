@@ -1,7 +1,7 @@
 
-scoreboard objectives remove cworld_setting
-scoreboard objectives add cworld_setting dummy
-#scoreboard objectives setdisplay sidebar cworld_setting
+scoreboard objectives remove cworld_variable
+scoreboard objectives add cworld_variable dummy
+#scoreboard objectives setdisplay sidebar cworld_variable
 
 worldborder set 10000
 worldborder center 0 0

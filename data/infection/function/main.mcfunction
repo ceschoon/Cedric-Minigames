@@ -5,6 +5,9 @@
 effect give @a[team=sane] glowing 10
 execute if score #shrine_active inf_variable matches 1 run effect give @a[team=infected] glowing 10
 
+# track total kills
+scoreboard players add @a[scores={inf_On=1,inf_Kills=1..}] inf_TotalKills 1
+
 # give food as reward for kills
 give @a[scores={inf_On=1,inf_Kills=1..}] cooked_beef 3
 scoreboard players remove @a[scores={inf_On=1,inf_Kills=1..}] inf_Kills 1
@@ -28,12 +31,12 @@ execute as @a[scores={inf_On=1}] at @s if dimension minecraft:the_nether run ite
 scoreboard objectives remove inf_test_mole
 scoreboard objectives add inf_test_mole dummy
 scoreboard players set @a inf_test_mole 0
-execute as @a[team=sane,scores={inf_Mole=1}] unless entity @s[nbt={Inventory:[{id: "minecraft:black_banner", count:1}]}] run scoreboard players set @s inf_test_mole 1
+execute as @a[team=sane,scores={inf_On=1,inf_Mole=1}] unless entity @s[nbt={Inventory:[{id: "minecraft:black_banner", count:1}]}] run scoreboard players set @s inf_test_mole 1
 team join infected @a[scores={inf_test_mole=1}]
 scoreboard players set @a[scores={inf_test_mole=1}] inf_Mole 0
 effect give @a[scores={inf_test_mole=1}] minecraft:absorption infinite 1 false
-execute as @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@s","color":"red"},{"text":" was a mole the whole time!!","color":"red"}]
-execute as @a[scores={inf_test_mole=1}] at @s run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
+execute if entity @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@a[scores={inf_test_mole=1}]","color":"red"},{"text":" was a mole the whole time!!","color":"red"}]
+execute if entity @a[scores={inf_test_mole=1}] as @a at @a run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
 
 # auto reveal mole as soon as the portal is constructed
 execute if score #shrine_active inf_variable matches 1 run team join infected @a[scores={inf_On=1,inf_Mole=1}]
@@ -49,7 +52,7 @@ execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores
 
 # detect end of the game (thrid line commented out so sane players do not immediatly win at shrine completion in case the mole did not reveal itself)
 execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=sane] run function infection:win_infected
-execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=infected] unless entity @a[scores={inf_Mole=1}] run function infection:win_sane
+execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=infected] unless entity @a[scores={inf_On=1,inf_Mole=1}] run function infection:win_sane
 ######execute unless score #inf_DebugMode inf_variable matches 1 unless entity @a[team=infected] if score #shrine_active inf_variable matches 1 run function infection:win_sane
 
 # make it so that sane players get bonuses when grouped together
