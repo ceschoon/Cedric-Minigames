@@ -1,5 +1,6 @@
 
-## TODO: Should kick players with inf_On=0 from the teams??
+## TODO: Should also kick players with inf_On=0 from the teams??
+execute as @a unless score @s inf_On matches 1 run scoreboard players set @s inf_On 0
 
 # effect glowing to all sane players (and infected once shrine is active)
 effect give @a[team=sane] glowing 10

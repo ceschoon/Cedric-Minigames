@@ -1,5 +1,6 @@
 
 scoreboard players set @a inf_On 1
+scoreboard players set @a[scores={cfp_is_fake_player=1}] inf_On 0
 
 # Reset player variables (for all players)
 scoreboard players set @a inf_Mole 0
