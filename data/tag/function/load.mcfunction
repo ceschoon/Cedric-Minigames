@@ -1,51 +1,33 @@
 
-## Variables for game mechanics (scores etc.)
+###############################################################
+## Player variables
 
 scoreboard objectives remove tag_Score
 scoreboard objectives remove tag_Kills
 scoreboard objectives remove tag_KillDetect
 scoreboard objectives remove tag_Tag
 scoreboard objectives remove tag_On
-scoreboard objectives remove tag_PrepTime
 
 scoreboard objectives add tag_Score dummy "Time Tagged"
 scoreboard objectives add tag_Kills minecraft.custom:minecraft.player_kills
 scoreboard objectives add tag_KillDetect minecraft.custom:minecraft.player_kills
 scoreboard objectives add tag_Tag dummy
 scoreboard objectives add tag_On dummy
-scoreboard objectives add tag_PrepTime dummy
 
-## Indication variables for derived games (now map size variants)
 
-scoreboard objectives remove tag_rtag
-scoreboard objectives remove tag_rtagxs
+###############################################################
+## Global variables/settings
 
-scoreboard objectives add tag_rtag dummy
-scoreboard objectives add tag_rtagxs dummy
+scoreboard objectives remove tag_setting
+scoreboard objectives add tag_setting dummy
 
-# Cannot be moved to start function because we would loose the configuration set in the menu
-scoreboard players set @a tag_rtag 0
-scoreboard players set @a tag_rtagxs 0
+##### Here the -1 values are either manually replaced through the menu or overwritten by the start function
+scoreboard players set #tag_PrepTime tag_setting 0
+scoreboard players set #tag_Gamemode tag_setting 0
+scoreboard players set #tag_TimeToWin tag_setting 999999
 
-# Here -1 will be replace by the config set in the menu or overwritten by the start function
-scoreboard players set @a tag_PrepTime -1
 
-## Game modes/rules
-
-scoreboard objectives remove tag_gamemode
-scoreboard objectives remove tag_kill_rewards
-scoreboard objectives remove tag_mining_fatigue
-
-scoreboard objectives add tag_gamemode dummy
-scoreboard objectives add tag_kill_rewards dummy
-scoreboard objectives add tag_mining_fatigue dummy
-
-# Cannot be moved to start function because we would loose the configuration set in the menu
-scoreboard players set @a tag_gamemode 0
-scoreboard players set @a tag_kill_rewards 1
-scoreboard players set @a[scores={tag_gamemode=0}] tag_mining_fatigue 1
-scoreboard players set @a[scores={tag_gamemode=1}] tag_mining_fatigue 0
-
+###############################################################
 ## Teams
 
 team remove tag_runner

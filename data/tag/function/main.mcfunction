@@ -1,56 +1,41 @@
 
-# permanent effects
-effect give @a[scores={tag_rtagxs=1}] strength 20 255
-effect give @a night_vision infinite 0 true
-effect give @a[scores={tag_gamemode=1,tag_Tag=0}] glowing 1 255
+# preparation time
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 0 run title @a[scores={tag_On=1}] title [{"text":"Go!","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 60 run title @a[scores={tag_On=1}] title [{"text":"1 minute","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 120 run title @a[scores={tag_On=1}] title [{"text":"2 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 300 run title @a[scores={tag_On=1}] title [{"text":"5 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 600 run title @a[scores={tag_On=1}] title [{"text":"10 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 900 run title @a[scores={tag_On=1}] title [{"text":"15 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 1200 run title @a[scores={tag_On=1}] title [{"text":"20 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 0 run tellraw @a[scores={tag_On=1}] [{"text":"The score will now increase for the tagged player!","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 60 run tellraw @a[scores={tag_On=1}] [{"text":"Time left before the score increase:  1 minute","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 120 run tellraw @a[scores={tag_On=1}] [{"text":"Time left before the score increase:  2 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 300 run tellraw @a[scores={tag_On=1}] [{"text":"Time left before the score increase:  5 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 600 run tellraw @a[scores={tag_On=1}] [{"text":"Time left before the score increase: 10 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 900 run tellraw @a[scores={tag_On=1}] [{"text":"Time left before the score increase: 15 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 1200 run tellraw @a[scores={tag_On=1}] [{"text":"Time left before the score increase: 20 minutes","color":"gold"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 0 run execute as @r[scores={tag_On=1}] run function tag:newrunner
+execute if score #ctime_TicksInSec ctime_variable matches 0 if score #tag_PrepTime tag_setting matches 0.. run scoreboard players remove #tag_PrepTime tag_setting 1
 
-# mining fatigue for the runner (option)
-effect give @a[scores={tag_gamemode=0,tag_Tag=1,tag_PrepTime=..0,tag_mining_fatigue=1}] mining_fatigue infinite 0 true
-effect clear @a[scores={tag_gamemode=0,tag_Tag=0,tag_PrepTime=..0}] mining_fatigue
+# permanent effects
+execute if score #tag_Gamemode tag_setting matches 1 run effect give @a[scores={tag_On=1,tag_Tag=0}] glowing 1 255 true
+execute if score #tag_Gamemode tag_setting matches 0 run effect give @a[scores={tag_On=1,tag_Tag=1}] mining_fatigue infinite 0 true
 
 # increment score
-scoreboard players add @a[scores={tag_Tag=1,tag_PrepTime=..0,ctime_TicksInSec=0}] tag_Score 1
+execute if score #tag_PrepTime tag_setting matches ..0 run scoreboard players add @a[scores={tag_On=1,tag_Tag=1,ctime_TicksInSec=0}] tag_Score 1
 
 # death mechanics
 function tag:deathmechanics
 
 # detect win
-execute as @a[scores={tag_gamemode=0}] run function tag:detectwin0
-execute as @a[scores={tag_gamemode=1}] run function tag:detectwin1
+execute if score #tag_Gamemode tag_setting matches 0 as @a[scores={tag_On=1}] if score @s tag_Score >= #tag_TimeToWin tag_setting at @s run function tag:win
+execute if score #tag_Gamemode tag_setting matches 1 as @a[scores={tag_On=1}] if score @s ctime_Seconds >= #tag_TimeToWin tag_setting at @s run function tag:find_winner
 
-# enforce additional rules (legacy)
-#execute as @a at @s run function tagrules:main
-
-# enforce helmet to distinguish the runner from hunters
-execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_runner] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:golden_helmet"}]}] run item replace entity @s armor.head with golden_helmet[enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
-execute as @a unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
-execute as @a if entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with air
+# enforce helmet to distinguish the runner from the hunters
+execute as @a[scores={tag_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_runner] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:golden_helmet"}]}] run item replace entity @s armor.head with golden_helmet[enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a[scores={tag_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=tag_hunter] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color={rgb:16711680},enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+execute as @a[scores={tag_On=1}] if entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with air
 
 # make players invincible during pauses
-effect give @a[scores={ctime_Pause=1}] resistance 1 255
+effect give @a[scores={tag_On=1,ctime_Pause=1}] resistance 1 255
 
-# reward kills (option)
-scoreboard players add @a[scores={tag_Kills=1..,tag_kill_rewards=1,tag_gamemode=0,tag_rtag=1}] tag_Score 60
-scoreboard players add @a[scores={tag_Kills=1..,tag_kill_rewards=1,tag_gamemode=0,tag_rtagxs=1}] tag_Score 10
-scoreboard players remove @a[scores={tag_Kills=1..,tag_kill_rewards=1,tag_gamemode=1,tag_rtag=1}] tag_Score 60
-scoreboard players remove @a[scores={tag_Kills=1..,tag_kill_rewards=1,tag_gamemode=1,tag_rtagxs=1}] tag_Score 10
-scoreboard players set @a[scores={tag_Kills=1..}] tag_Kills 0
-
-# preparation time
-title @a[scores={ctime_TicksInSec=0,tag_PrepTime=1}] title [{"text":"Go!","color":"gold"}]
-title @a[scores={ctime_TicksInSec=0,tag_PrepTime=60}] title [{"text":"1 minute","color":"gold"}]
-title @a[scores={ctime_TicksInSec=0,tag_PrepTime=120}] title [{"text":"2 minutes","color":"gold"}]
-title @a[scores={ctime_TicksInSec=0,tag_PrepTime=300}] title [{"text":"5 minutes","color":"gold"}]
-title @a[scores={ctime_TicksInSec=0,tag_PrepTime=600}] title [{"text":"10 minutes","color":"gold"}]
-title @a[scores={ctime_TicksInSec=0,tag_PrepTime=900}] title [{"text":"15 minutes","color":"gold"}]
-title @a[scores={ctime_TicksInSec=0,tag_PrepTime=1200}] title [{"text":"20 minutes","color":"gold"}]
-tellraw @a[scores={ctime_TicksInSec=0,tag_PrepTime=60}] [{"text":"The score will now increase for the tagged player!","color":"gold"}]
-tellraw @a[scores={ctime_TicksInSec=0,tag_PrepTime=60}] [{"text":"Time left before the score increase:  1 minute","color":"gold"}]
-tellraw @a[scores={ctime_TicksInSec=0,tag_PrepTime=120}] [{"text":"Time left before the score increase:  2 minutes","color":"gold"}]
-tellraw @a[scores={ctime_TicksInSec=0,tag_PrepTime=300}] [{"text":"Time left before the score increase:  5 minutes","color":"gold"}]
-tellraw @a[scores={ctime_TicksInSec=0,tag_PrepTime=600}] [{"text":"Time left before the score increase: 10 minutes","color":"gold"}]
-tellraw @a[scores={ctime_TicksInSec=0,tag_PrepTime=900}] [{"text":"Time left before the score increase: 15 minutes","color":"gold"}]
-tellraw @a[scores={ctime_TicksInSec=0,tag_PrepTime=1200}] [{"text":"Time left before the score increase: 20 minutes","color":"gold"}]
-scoreboard players remove @a[scores={tag_PrepTime=1..,ctime_TicksInSec=0}] tag_PrepTime 1
-scoreboard players set @a[scores={tag_PrepTime=1..}] tag_Tag 0
-execute as @r[scores={tag_PrepTime=1}] run function tag:newrunner

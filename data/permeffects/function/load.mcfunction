@@ -5,6 +5,7 @@ scoreboard objectives remove permeffects_darknight
 scoreboard objectives remove permeffects_invisibility
 scoreboard objectives remove permeffects_night_vision
 scoreboard objectives remove permeffects_saturation
+scoreboard objectives remove permeffects_strength
 scoreboard objectives remove permeffects_water_breathing
 scoreboard objectives remove permeffects_blindness
 
@@ -14,6 +15,7 @@ scoreboard objectives add permeffects_darknight dummy
 scoreboard objectives add permeffects_invisibility dummy
 scoreboard objectives add permeffects_night_vision dummy
 scoreboard objectives add permeffects_saturation dummy
+scoreboard objectives add permeffects_strength dummy
 scoreboard objectives add permeffects_water_breathing dummy
 scoreboard objectives add permeffects_blindness dummy
 
@@ -23,6 +25,7 @@ scoreboard players set @a permeffects_darknight 0
 scoreboard players set @a permeffects_invisibility 0
 scoreboard players set @a permeffects_night_vision 1
 scoreboard players set @a permeffects_saturation 0
+scoreboard players set @a permeffects_strength 0
 scoreboard players set @a permeffects_water_breathing 0
 scoreboard players set @a permeffects_blindness 0
 

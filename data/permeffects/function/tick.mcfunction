@@ -8,6 +8,7 @@ scoreboard players set @a[scores={permeffects_darknight=2..}] permeffects_darkni
 scoreboard players set @a[scores={permeffects_invisibility=2..}] permeffects_invisibility 0
 scoreboard players set @a[scores={permeffects_night_vision=2..}] permeffects_night_vision 0
 scoreboard players set @a[scores={permeffects_saturation=2..}] permeffects_saturation 0
+scoreboard players set @a[scores={permeffects_strength=2..}] permeffects_strength 0
 scoreboard players set @a[scores={permeffects_water_breathing=2..}] permeffects_water_breathing 0
 scoreboard players set @a[scores={permeffects_blindness=2..}] permeffects_blindness 0
 
@@ -16,6 +17,7 @@ effect give @a[scores={permeffects_darkness=1}] darkness 11 1 false
 effect give @a[scores={permeffects_invisibility=1}] invisibility 11 1 false
 effect give @a[scores={permeffects_night_vision=1}] night_vision 11 1 false
 effect give @a[scores={permeffects_saturation=1}] saturation 11 1 false
+effect give @a[scores={permeffects_strength=1}] strength 11 255 false
 effect give @a[scores={permeffects_water_breathing=1}] water_breathing 11 1 false
 effect give @a[scores={permeffects_blindness=1}] blindness 11 1 false
 

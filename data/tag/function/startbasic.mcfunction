@@ -1,24 +1,19 @@
 
-scoreboard players set @a tag_rtag 0
-scoreboard players set @a tag_rtagxs 0
-scoreboard players set @a ctime_Pause 0
-scoreboard players set @a tag_Score 0
+scoreboard players set @a tag_On 1
+scoreboard players set @a[scores={cfp_is_fake_player=1}] tag_On 0
+
+scoreboard players set @a[scores={tag_On=1}] ctime_Pause 0
+scoreboard players set @a[scores={tag_On=1}] ctime_Ticks 0
+scoreboard players set @a[scores={tag_On=1}] ctime_Seconds 0
+scoreboard players set @a[scores={tag_On=1}] ctime_Total 0
+scoreboard players set @a[scores={tag_On=1}] tag_Score 0
+scoreboard players set @a[scores={tag_On=1}] tag_Kills 0
+scoreboard players set @a[scores={tag_On=1}] tag_KillDetect 0
+scoreboard players set @a[scores={tag_On=1}] tag_Tag 0
 
 scoreboard objectives setdisplay sidebar tag_Score
 
-scoreboard players set @a tag_On 1
-scoreboard players set @a ctime_Ticks 0
-scoreboard players set @a ctime_Seconds 0
-scoreboard players set @a ctime_Total 0
-scoreboard players set @a tag_Score 0
-scoreboard players set @a tag_Kills 0
-scoreboard players set @a tag_KillDetect 0
-scoreboard players set @a tag_Tag 0
+team join tag_hunter @a[scores={tag_On=1}]
 
-scoreboard players set @a[scores={tag_PrepTime=-1}] tag_PrepTime 0
-
-team join tag_hunter @a
-execute as @r at @s run function tag:newrunner
-
-title @a title {"text":"Tag Game Starts Now!","color":"gold"}
+title @a[scores={tag_On=1}] title {"text":"Tag Game Starts Now!","color":"gold"}
 

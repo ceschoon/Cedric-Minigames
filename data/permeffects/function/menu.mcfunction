@@ -8,6 +8,7 @@ tellraw @a [{"text":"[Toggle Dark Night]","color":"aqua", "clickEvent":{"action"
 tellraw @a [{"text":"[Toggle Invisibility]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players add @a permeffects_invisibility 1"}}]
 tellraw @a [{"text":"[Toggle Night Vision]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players add @a permeffects_night_vision 1"}}]
 tellraw @a [{"text":"[Toggle Saturation]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players add @a permeffects_saturation 1"}}]
+tellraw @a [{"text":"[Toggle Strength]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players add @a permeffects_strength 1"}}]
 tellraw @a [{"text":"[Toggle Water Breathing]","color":"aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players add @a permeffects_water_breathing 1"}}]
 tellraw @a [{"text":"[Clear all effects]","color":"red", "clickEvent":{"action":"run_command","value":"/function permeffects:clearall"}}]
 tellraw @a [" "]

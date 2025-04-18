@@ -13,6 +13,4 @@ tellraw @s [{"text":" Each player gets a compass to track the runner. You must d
 tellraw @s [" "]
 tellraw @s [{"text":" All variants of the tag game can be played in one of two gamemodes: The first (reverse tag) consists in keeping the tag for as long as possible (first to 1200/600 seconds) and in the second you must get rid of the tag as quickly as you can. The winner in the second gamemode (simple tag) is the player with lowest time tagged after 20 minutes (10 in the mini variant). ","color":"aqua"}]
 tellraw @s [" "]
-tellraw @s [{"text":" Kills are rewarded in the following manner: In reverse tag, each kill adds 60 to the score when the map is of normal size (10 in the mini variant). In the simple tag gamemode these rewards are subtracted to the score. This is meant to provide comeback strategies for loosing players. ","color":"aqua"}]
-tellraw @s [" "]
 
