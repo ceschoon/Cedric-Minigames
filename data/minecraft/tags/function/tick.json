@@ -10,7 +10,6 @@
 	  "cworld:tick",
 	  "duels:tick",
 	  "flsheep:tick",
-	  "hunt:tick",
 	  "infection:tick",
 	  "koth:tick",
 	  "platforms:tick",
