@@ -2,12 +2,11 @@
 team empty team1
 team empty team2
 
-team join noteam @a
+execute as @a unless entity @s[scores={cfp_is_fake_player=1}] run team join noteam @s
 team join team1 @p[team=noteam]
 team join team2 @p[team=noteam]
 
 gamemode survival @a[team=!noteam]
-clear @a[team=!noteam]
 
 effect clear @a[team=!noteam]
 effect give @a[team=!noteam] resistance 5 255

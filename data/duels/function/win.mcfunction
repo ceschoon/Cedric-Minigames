@@ -1,9 +1,8 @@
-scoreboard players set @a duels_On 0
 
-title @a title [{"selector":"@s","color":"gold"},{"text":" won the game!","color":"gold"}]
-tellraw @a [{"selector":"@s","color":"gold"},{"text":" won the game!","color":"gold"}]
+title @a[scores={duels_On=1..}] title [{"selector":"@s","color":"gold"},{"text":" won the game!","color":"gold"}]
+tellraw @a[scores={duels_On=1..}] [{"selector":"@s","color":"gold"},{"text":" won the game!","color":"gold"}]
 
-execute as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
+execute as @a[scores={duels_On=1..}] at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
 
 schedule function duels:firework1 1s
 schedule function duels:firework2 2s
@@ -18,5 +17,5 @@ effect give @s glowing 600 255
 
 scoreboard players add @s duels_Score 1
 
-tellraw @a [{"text":"[Duels: REMATCH]","color":"green", "clickEvent":{"action":"run_command","value":"/function duels:start"}}]
-
+tellraw @a[scores={duels_On=1..}] [{"text":"[Duels: REMATCH]","color":"green", "clickEvent":{"action":"run_command","value":"/function duels:start"}}]
+scoreboard players set @a duels_On 0
