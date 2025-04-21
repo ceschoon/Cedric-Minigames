@@ -1,7 +1,7 @@
 # Temporary team for player not assigned in teams to fill
 team remove noteam
 team add noteam
-team join noteam @a
+execute as @a unless entity @s[scores={cfp_is_fake_player=1}] run team join noteam @s
 
 # Fill teams (up to 24 players)
 execute as @r[team=noteam] run team join team1 @s

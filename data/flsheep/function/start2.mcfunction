@@ -1,2 +1,2 @@
-scoreboard players set @a flsheep_NumTeams 2
+scoreboard players set #flsheep_NumTeams flsheep_variable 2
 function flsheep:start
