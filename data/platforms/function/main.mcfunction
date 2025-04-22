@@ -156,16 +156,16 @@ execute at @e[type=armor_stand,name=team4] run tp @e[type=iron_golem,distance=8.
 #execute at @e[type=armor_stand,name=diamond] run tp @e[type=vex,distance=20..25] ~ ~8 ~
 
 # Make golems join the team of the platform where they spawn
-execute at @e[type=armor_stand,name=team1] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team1
-execute at @e[type=armor_stand,name=team2] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team2
-execute at @e[type=armor_stand,name=team3] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team3
-execute at @e[type=armor_stand,name=team4] as @e[type=iron_golem,distance=..16,limit=1,sort=random] run team join team4
+execute at @e[type=armor_stand,name=team1] as @e[type=iron_golem,distance=..10,limit=1,sort=random] run team join team1
+execute at @e[type=armor_stand,name=team2] as @e[type=iron_golem,distance=..10,limit=1,sort=random] run team join team2
+execute at @e[type=armor_stand,name=team3] as @e[type=iron_golem,distance=..10,limit=1,sort=random] run team join team3
+execute at @e[type=armor_stand,name=team4] as @e[type=iron_golem,distance=..10,limit=1,sort=random] run team join team4
 
 # Make golems angry at enemy players
-execute as @e[type=iron_golem,team=team1,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team1] UUID
-execute as @e[type=iron_golem,team=team2,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team2] UUID
-execute as @e[type=iron_golem,team=team3,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team3] UUID
-execute as @e[type=iron_golem,team=team4,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team4] UUID
+execute as @e[type=iron_golem,team=team1,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team1,distance=..24] UUID
+execute as @e[type=iron_golem,team=team2,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team2,distance=..24] UUID
+execute as @e[type=iron_golem,team=team3,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team3,distance=..24] UUID
+execute as @e[type=iron_golem,team=team4,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team4,distance=..24] UUID
 
 # Make golems glow to show team colors
 effect give @e[type=iron_golem,team=team1] glowing 1 1 true
@@ -230,6 +230,9 @@ execute at @e[type=armor_stand,name=cannon3] if score #pltf_SummonFire pltf_vari
 
 # Cage mechanics
 function platforms:cagemechanics
+
+# Auto-ignite TNT
+execute as @a at @s run function platforms:autoignitetnt
 
 # Enforce no fireball rule if activated
 execute if score #pltf_nofireballs pltf_setting matches 1 run kill @e[type=fireball]

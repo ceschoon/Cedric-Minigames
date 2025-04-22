@@ -19,7 +19,7 @@ execute as @a[scores={temp=1..}] unless entity @s[team=team4] at @e[type=armor_s
 execute as @a[scores={temp=1..}] unless entity @s[team=team4] at @e[type=armor_stand,name=team4] run fill ~-3 ~-1 ~-3 ~3 ~2 ~3 iron_bars
 execute as @a[scores={temp=1..}] unless entity @s[team=team4] at @e[type=armor_stand,name=team4] run fill ~-3 ~3 ~-3 ~3 ~3 ~3 iron_trapdoor
 execute as @a[scores={temp=1..}] run playsound minecraft:block.end_portal_frame.fill master @a
-execute as @a[scores={temp=1..}] run scoreboard players set @s pltf_DelayCage 200
+execute as @a[scores={temp=1..}] run scoreboard players set @s pltf_DelayCage 300
 
 ## Remove the cages
 execute unless entity @a[scores={pltf_DelayCage=1..},team=!team1] at @e[type=armor_stand,name=team1] run fill ~-3 ~-1 ~-3 ~3 ~3 ~3 air replace iron_trapdoor
