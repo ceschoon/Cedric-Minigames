@@ -90,6 +90,9 @@ execute as @a[scores={pltf_On=1,pltf_AddScore=1},team=team2] at @s run playsound
 execute as @a[scores={pltf_On=1,pltf_AddScore=1},team=team3] at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~
 execute as @a[scores={pltf_On=1,pltf_AddScore=1},team=team4] at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~
 
+# Auto-ignite TNT (before resetting platforms, so tnt can be placed on them)
+execute as @a at @s run function platforms:autoignitetnt
+
 # Reset platforms
 execute at @e[type=armor_stand,name=diamond] run function platforms:builddiamond
 execute at @e[type=armor_stand,name=emerald1] run function platforms:buildemerald
@@ -122,6 +125,7 @@ execute at @e[type=armor_stand,name=emerald3] run kill @e[type=item,nbt={Item:{i
 execute if score #ctime_Pause ctime_variable matches 0 run scoreboard players remove #pltf_DelayEmrld pltf_variable 1
 execute if score #ctime_Pause ctime_variable matches 0 run scoreboard players remove #pltf_DelayDiamd pltf_variable 1
 execute if score #ctime_Pause ctime_variable matches 0 run scoreboard players remove #pltf_DelayWool pltf_variable 1
+execute if score #ctime_Pause ctime_variable matches 0 run scoreboard players remove @a pltf_DelayBlind 1
 execute if score #ctime_Pause ctime_variable matches 0 run scoreboard players remove @a pltf_DelayCage 1
 
 # Spawn loot at armor stand when delay completed
@@ -161,7 +165,7 @@ execute at @e[type=armor_stand,name=team2] as @e[type=iron_golem,distance=..10,l
 execute at @e[type=armor_stand,name=team3] as @e[type=iron_golem,distance=..10,limit=1,sort=random] run team join team3
 execute at @e[type=armor_stand,name=team4] as @e[type=iron_golem,distance=..10,limit=1,sort=random] run team join team4
 
-# Make golems angry at enemy players
+# Make golems angry at members of enemy teams
 execute as @e[type=iron_golem,team=team1,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team1,distance=..24] UUID
 execute as @e[type=iron_golem,team=team2,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team2,distance=..24] UUID
 execute as @e[type=iron_golem,team=team3,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team3,distance=..24] UUID
@@ -184,6 +188,22 @@ effect give @e[type=vex,team=team1] glowing 1 1 true
 effect give @e[type=vex,team=team2] glowing 1 1 true
 effect give @e[type=vex,team=team3] glowing 1 1 true
 effect give @e[type=vex,team=team4] glowing 1 1 true
+
+# Kill shulkers close to spawn platforms
+execute at @e[type=armor_stand,name=team1] as @e[type=shulker,distance=..16] at @s run say "One cannot place a shulker within 16 blocks of a spawn platform!" 
+execute at @e[type=armor_stand,name=team2] as @e[type=shulker,distance=..16] at @s run say "One cannot place a shulker within 16 blocks of a spawn platform!" 
+execute at @e[type=armor_stand,name=team3] as @e[type=shulker,distance=..16] at @s run say "One cannot place a shulker within 16 blocks of a spawn platform!" 
+execute at @e[type=armor_stand,name=team4] as @e[type=shulker,distance=..16] at @s run say "One cannot place a shulker within 16 blocks of a spawn platform!" 
+execute at @e[type=armor_stand,name=team1] as @e[type=shulker,distance=..16] at @s run kill @s
+execute at @e[type=armor_stand,name=team2] as @e[type=shulker,distance=..16] at @s run kill @s
+execute at @e[type=armor_stand,name=team3] as @e[type=shulker,distance=..16] at @s run kill @s
+execute at @e[type=armor_stand,name=team4] as @e[type=shulker,distance=..16] at @s run kill @s
+
+# Make shulkers glow to show team colors
+effect give @e[type=shulker,team=team1] glowing 1 1 true
+effect give @e[type=shulker,team=team2] glowing 1 1 true
+effect give @e[type=shulker,team=team3] glowing 1 1 true
+effect give @e[type=shulker,team=team4] glowing 1 1 true
 
 # Nerf some mobs a bit
 execute as @e[type=vex] run item replace entity @s weapon.mainhand with minecraft:egg
@@ -231,8 +251,8 @@ execute at @e[type=armor_stand,name=cannon3] if score #pltf_SummonFire pltf_vari
 # Cage mechanics
 function platforms:cagemechanics
 
-# Auto-ignite TNT
-execute as @a at @s run function platforms:autoignitetnt
+# Blindness from ink sacs
+function platforms:inkmechanics
 
 # Enforce no fireball rule if activated
 execute if score #pltf_nofireballs pltf_setting matches 1 run kill @e[type=fireball]

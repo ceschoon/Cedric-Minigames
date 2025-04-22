@@ -5,7 +5,7 @@ fill ~-2 ~ ~-2 ~2 ~2 ~2 air
 
 # ores in platform
 setblock ~ ~-1 ~ diamond_block
-setblock ~ ~-1 ~1 diamond_ore
+setblock ~2 ~-1 ~2 diamond_ore
 setblock ~-2 ~-1 ~1 diamond_ore
 setblock ~1 ~-1 ~-2 diamond_ore
 
@@ -20,7 +20,6 @@ setblock ~2 ~-2 ~1 diamond_ore
 setblock ~2 ~-2 ~ diamond_block
 setblock ~ ~-2 ~2 diamond_ore
 setblock ~1 ~-2 ~2 diamond_ore 
-setblock ~2 ~-2 ~2 diamond_ore
 setblock ~1 ~-2 ~-2 diamond_block
 setblock ~ ~-2 ~2 diamond_ore
 

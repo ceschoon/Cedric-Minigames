@@ -4,6 +4,7 @@ scoreboard players set @a[scores={cfp_is_fake_player=1}] pltf_On 0
 
 scoreboard players set @a[scores={pltf_On=1}] pltf_Score 0
 scoreboard players set @a[scores={pltf_On=1}] pltf_DelayCage 0
+scoreboard players set @a[scores={pltf_On=1}] pltf_DelayBlind 0
 scoreboard players set @a[scores={pltf_On=1}] pltf_DeathCount 0
 
 scoreboard players set #pltf_DelayDiamd pltf_variable 0

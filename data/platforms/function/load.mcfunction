@@ -4,12 +4,14 @@
 
 scoreboard objectives remove pltf_On
 scoreboard objectives remove pltf_DeathCount
+scoreboard objectives remove pltf_DelayBlind
 scoreboard objectives remove pltf_DelayCage
 scoreboard objectives remove pltf_AddScore
 scoreboard objectives remove pltf_Score
 
 scoreboard objectives add pltf_On dummy
 scoreboard objectives add pltf_DeathCount deathCount
+scoreboard objectives add pltf_DelayBlind dummy
 scoreboard objectives add pltf_DelayCage dummy
 scoreboard objectives add pltf_AddScore dummy
 scoreboard objectives add pltf_Score dummy "Diamonds /20"

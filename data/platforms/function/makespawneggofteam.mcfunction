@@ -23,3 +23,9 @@ execute if score #temp pltf_variable matches 1 if entity @s[team=team2] run give
 execute if score #temp pltf_variable matches 1 if entity @s[team=team3] run give @s vex_spawn_egg[entity_data={id:vex,Team:team3,PersistenceRequired:1},lore=['{"text":"Member of the blue team","italic":false,"color":blue}']]
 execute if score #temp pltf_variable matches 1 if entity @s[team=team4] run give @s vex_spawn_egg[entity_data={id:vex,Team:team4,PersistenceRequired:1},lore=['{"text":"Member of the yellow team","italic":false,"color":yellow}']]
 
+execute store result score #temp pltf_variable run clear @s shulker_spawn_egg[lore=['{"text":"Will not be hostile to you","italic":false}']] 1
+execute if score #temp pltf_variable matches 1 if entity @s[team=team1] run give @s shulker_spawn_egg[entity_data={id:shulker,Team:team1,PersistenceRequired:1},lore=['{"text":"Member of the green team","italic":false,"color":green}']]
+execute if score #temp pltf_variable matches 1 if entity @s[team=team2] run give @s shulker_spawn_egg[entity_data={id:shulker,Team:team2,PersistenceRequired:1},lore=['{"text":"Member of the red team","italic":false,"color":red}']]
+execute if score #temp pltf_variable matches 1 if entity @s[team=team3] run give @s shulker_spawn_egg[entity_data={id:shulker,Team:team3,PersistenceRequired:1},lore=['{"text":"Member of the blue team","italic":false,"color":blue}']]
+execute if score #temp pltf_variable matches 1 if entity @s[team=team4] run give @s shulker_spawn_egg[entity_data={id:shulker,Team:team4,PersistenceRequired:1},lore=['{"text":"Member of the yellow team","italic":false,"color":yellow}']]
+
