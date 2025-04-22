@@ -1,4 +1,4 @@
-scoreboard players set @a pltf_NumTeams 2
+scoreboard players set #pltf_NumTeams pltf_setting 2
 
 # Build central diamond platform
 kill @e[type=armor_stand]

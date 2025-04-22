@@ -1,9 +1,9 @@
 
-scoreboard players set @a[scores={pltf_nofireballs=0}] pltf_nofireballs 10
-scoreboard players set @a[scores={pltf_nofireballs=1}] pltf_nofireballs 11
-scoreboard players set @a[scores={pltf_nofireballs=10}] pltf_nofireballs 1
-scoreboard players set @a[scores={pltf_nofireballs=11}] pltf_nofireballs 0
+execute if score #pltf_nofireballs pltf_setting matches 0 run scoreboard players set #pltf_nofireballs pltf_setting 10
+execute if score #pltf_nofireballs pltf_setting matches 1 run scoreboard players set #pltf_nofireballs pltf_setting 11
+execute if score #pltf_nofireballs pltf_setting matches 10 run scoreboard players set #pltf_nofireballs pltf_setting 1
+execute if score #pltf_nofireballs pltf_setting matches 11 run scoreboard players set #pltf_nofireballs pltf_setting 0
 
-tellraw @a[scores={pltf_nofireballs=0}] [{"text":"Platforms: Fireballs reactivated","color":"gold"}]
-tellraw @a[scores={pltf_nofireballs=1}] [{"text":"Platforms: Fireballs deactivated","color":"gold"}]
+execute if score #pltf_nofireballs pltf_setting matches 0 run tellraw @a [{"text":"Platforms: Fireballs reactivated","color":"gold"}]
+execute if score #pltf_nofireballs pltf_setting matches 1 run tellraw @a [{"text":"Platforms: Fireballs deactivated","color":"gold"}]
 
