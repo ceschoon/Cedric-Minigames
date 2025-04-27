@@ -20,3 +20,6 @@ execute if score #ctime_TicksInSec ctime_variable matches 0 run scoreboard playe
 # detect end of the game
 execute as @a[scores={koth_On=1,koth_SecondsOnPlatform=1200}] run function koth:win
 
+# For compatibility with the Herobrine datapack
+scoreboard players set @a cfp_herobrine_target_override 0
+scoreboard players set @a[scores={koth_On=1,koth_OnHill=1}] cfp_herobrine_target_override 1

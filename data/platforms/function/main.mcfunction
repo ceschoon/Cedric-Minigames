@@ -267,3 +267,8 @@ execute as @a[team=team1,scores={pltf_On=1,pltf_Score=20..}] run function platfo
 execute as @a[team=team2,scores={pltf_On=1,pltf_Score=20..}] run function platforms:win2
 execute as @a[team=team3,scores={pltf_On=1,pltf_Score=20..}] run function platforms:win3
 execute as @a[team=team4,scores={pltf_On=1,pltf_Score=20..}] run function platforms:win4
+
+# For compatibility with the Herobrine datapack
+execute at @e[type=armor_stand,name=diamond] run scoreboard players set @a cfp_herobrine_target_override 0
+execute at @e[type=armor_stand,name=diamond] run scoreboard players set @p[scores={pltf_On=1}] cfp_herobrine_target_override 1
+

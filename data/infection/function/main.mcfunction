@@ -65,4 +65,7 @@ execute at @e[type=armor_stand,name=shrine] run function infection:shrine_mechan
 # convert infected back to sane team using luck potions/effect
 execute as @a[scores={inf_On=1}] run function infection:conversion_mechanics
 
+# For compatibility with the Herobrine datapack
+scoreboard players set @a cfp_herobrine_target_override 0
+scoreboard players set @a[scores={inf_On=1},team=sane] cfp_herobrine_target_override 1
 

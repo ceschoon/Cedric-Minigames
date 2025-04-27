@@ -49,6 +49,10 @@ give @a[scores={boss_On=1,boss_Who=1}] golden_shovel
 
 loot give @a[scores={boss_On=1,boss_Who=1}] loot cmagic:magical_item
 
+# For compatibility with the Herobrine datapack
+scoreboard players set @a cfp_herobrine_target_override 0
+scoreboard players set @a[scores={boss_On=1,boss_Who=1}] cfp_herobrine_target_override 1
+
 # Game starts message
 title @a[scores={boss_On=1}] title {"text":"Go!","color":"gold"}
 tellraw @a[scores={boss_On=1,boss_Who=0}] [{"text":"Kill The Boss: Your goal is to kill the player with the golden hat","color":"green"}]

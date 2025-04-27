@@ -39,3 +39,8 @@ execute as @a[scores={tag_On=1}] if entity @s[nbt={active_effects:[{id:"minecraf
 # make players invincible during pauses
 execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores={tag_On=1}] resistance 1 255
 
+# For compatibility with the Herobrine datapack
+scoreboard players set @a cfp_herobrine_target_override 0
+execute if score #tag_Gamemode tag_setting matches 0 run scoreboard players set @a[scores={tag_On=1,tag_Tag=1}] cfp_herobrine_target_override 1
+execute if score #tag_Gamemode tag_setting matches 1 run scoreboard players set @a[scores={tag_On=1,tag_Tag=0}] cfp_herobrine_target_override 1
+
