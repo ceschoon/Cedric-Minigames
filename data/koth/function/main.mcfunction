@@ -15,7 +15,7 @@ team join offhill @a[scores={koth_On=1,koth_OnHill=0}]
 execute as @a[scores={koth_On=1,ctime_DeathCount=5}] at @s run function koth:giverespawnset
 
 # increment time
-scoreboard players add @a[team=onhill,scores={koth_On=1,ctime_TicksInSec=0}] koth_SecondsOnPlatform 1
+execute if score #ctime_TicksInSec ctime_variable matches 0 run scoreboard players add @a[team=onhill,scores={koth_On=1}] koth_SecondsOnPlatform 1
 
 # detect end of the game
 execute as @a[scores={koth_On=1,koth_SecondsOnPlatform=1200}] run function koth:win

@@ -122,4 +122,6 @@ execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":['{"italic":fals
 
 
 ## Playsound around magical item entity
-execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":['{"italic":false,"text":"CMagic Item"}'],"minecraft:enchantment_glint_override":1b}}}] at @s if entity @p[scores={ctime_TicksInSec=0}] run playsound minecraft:block.enchantment_table.use ambient @a ~ ~ ~ 2.0
+execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":['{"italic":false,"text":"CMagic Item"}'],"minecraft:enchantment_glint_override":1b}}}] at @s if score #ctime_TicksInSec ctime_variable matches 0 run playsound minecraft:block.enchantment_table.use ambient @a ~ ~ ~ 2.0
+
+

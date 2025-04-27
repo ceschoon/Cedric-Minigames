@@ -12,7 +12,7 @@ effect give @a[scores={boss_Who=1}] levitation 10 1
 effect give @a[scores={boss_Who=1}] resistance 15 255
 
 ## Set boss_On to 2 because I need a second pass in main to update bossbar and attributes
-scoreboard players set @a[scores={boss_On=1}] ctime_Pause 1
+scoreboard players set #ctime_Pause ctime_variable 1
 scoreboard players set @a[scores={boss_On=1}] boss_On 2
 scoreboard players set @a boss_Who 0
 

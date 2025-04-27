@@ -31,7 +31,7 @@ execute as @e[type=armor_stand,name="barreldrop"] at @s if block ~ ~ ~ barrel[op
 execute as @e[type=armor_stand,name="barrelunopened"] at @s unless block ~ ~ ~ barrel[open=false] run kill @s
 
 execute at @e[type=armor_stand,name="barrelunopened"] run particle minecraft:crit ~ ~ ~ 1.0 2.0 1.0 0.01 2
-execute at @e[type=armor_stand,name="barrelunopened"] if entity @p[scores={ctime_TicksInSec=0}] run playsound minecraft:block.amethyst_block.step ambient @a ~ ~ ~ 2.0
-execute at @e[type=armor_stand,name="barrelunopened"] if entity @p[scores={ctime_TicksInSec=4}] run playsound minecraft:block.amethyst_block.resonate ambient @a ~ ~ ~ 2.0
-execute at @e[type=armor_stand,name="barrelunopened"] if entity @p[scores={ctime_TicksInSec=10}] run playsound minecraft:block.amethyst_block.step ambient @a ~ ~ ~ 2.0
-execute at @e[type=armor_stand,name="barrelunopened"] if entity @p[scores={ctime_TicksInSec=14}] run playsound minecraft:block.amethyst_block.resonate ambient @a ~ ~ ~ 2.0
+execute at @e[type=armor_stand,name="barrelunopened"] if score #ctime_TicksInSec ctime_variable matches 0 run playsound minecraft:block.amethyst_block.step ambient @a ~ ~ ~ 2.0
+execute at @e[type=armor_stand,name="barrelunopened"] if score #ctime_TicksInSec ctime_variable matches 4 run playsound minecraft:block.amethyst_block.resonate ambient @a ~ ~ ~ 2.0
+execute at @e[type=armor_stand,name="barrelunopened"] if score #ctime_TicksInSec ctime_variable matches 10 run playsound minecraft:block.amethyst_block.step ambient @a ~ ~ ~ 2.0
+execute at @e[type=armor_stand,name="barrelunopened"] if score #ctime_TicksInSec ctime_variable matches 14 run playsound minecraft:block.amethyst_block.resonate ambient @a ~ ~ ~ 2.0

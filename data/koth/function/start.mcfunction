@@ -4,10 +4,6 @@ scoreboard players set @a[scores={cfp_is_fake_player=1}] koth_On 0
 
 # Reset player variables (for all players)
 scoreboard players set @a koth_SecondsOnPlatform 0
-scoreboard players set @a ctime_Ticks 0
-scoreboard players set @a ctime_Seconds 0
-scoreboard players set @a ctime_TicksInSec 0
-scoreboard players set @a ctime_Pause 0
 
 # Scoreboards
 scoreboard objectives setdisplay sidebar koth_SecondsOnPlatform

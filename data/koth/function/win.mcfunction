@@ -15,5 +15,5 @@ effect give @s strength 600 255
 effect give @s resistance 600 255
 effect give @s regeneration 600 255 
 
-scoreboard players set @a[scores={koth_On=1}] ctime_Pause 1
+scoreboard players set #ctime_Pause ctime_variable 1
 scoreboard players set @a koth_On 0
