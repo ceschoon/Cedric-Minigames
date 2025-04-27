@@ -12,7 +12,7 @@ team join onhill @a[scores={koth_On=1,koth_OnHill=1}]
 team join offhill @a[scores={koth_On=1,koth_OnHill=0}]
 
 # detect death and give respawn kit
-execute as @a[scores={koth_On=1,ctime_DeathCount=5}] at @s run function koth:giverespawnset
+execute as @a[scores={koth_On=1,ctime_DeathCount=2}] at @s run function koth:giverespawnset
 
 # increment time
 execute if score #ctime_TicksInSec ctime_variable matches 0 run scoreboard players add @a[team=onhill,scores={koth_On=1}] koth_SecondsOnPlatform 1

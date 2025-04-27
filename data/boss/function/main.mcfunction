@@ -32,7 +32,7 @@ execute as @a[scores={boss_On=1..,boss_Who=1}] run attribute @s minecraft:max_he
 execute as @a[scores={boss_On=1..,boss_Who=0}] run attribute @s minecraft:max_health base set 20
 
 # End of the game
-execute if entity @a[scores={boss_On=1,boss_Who=1,ctime_DeathCount=5}] run function boss:hunters_win
+execute if entity @a[scores={boss_On=1,boss_Who=1,ctime_DeathCount=2}] run function boss:hunters_win
 
 # For some reason I need to wait a certain amount of time here
 scoreboard players add @a[scores={boss_On=2..}] boss_On 1
