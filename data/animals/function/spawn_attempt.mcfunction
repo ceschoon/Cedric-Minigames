@@ -1,6 +1,6 @@
 ## Count number of animals within 128 blocks of the player
 scoreboard players set @s animals_count 0
-execute store result score @s animals_count run execute if entity @e[name=custom_animal,distance=..128]
+execute store result score @s animals_count run execute if entity @e[tag=custom_animal,distance=..128]
 
 ## Summon armor stand that will mark the spawn location
 ## Proceed if there is fewer animals than a certain cap
