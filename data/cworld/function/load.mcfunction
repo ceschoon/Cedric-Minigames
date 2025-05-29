@@ -12,5 +12,6 @@ gamerule doImmediateRespawn true
 gamerule doDaylightCycle false
 gamerule naturalRegeneration true
 gamerule mobGriefing true
+gamerule doInsomnia false
 
 say Cedric World module: reloaded!
