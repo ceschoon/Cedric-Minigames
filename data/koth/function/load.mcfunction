@@ -17,5 +17,15 @@ team modify onhill color gold
 team modify offhill nametagVisibility never
 team modify onhill nametagVisibility never
 
+
+#######################################################
+## Settings
+
+scoreboard objectives remove koth_setting
+scoreboard objectives add koth_setting dummy
+
+scoreboard players set #koth_time_to_win koth_setting 1200
+
+
 say Cedric Koth: reloaded!
 

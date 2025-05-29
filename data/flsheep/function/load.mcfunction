@@ -28,4 +28,13 @@ scoreboard objectives add flsheep_variable dummy
 scoreboard players set #flsheep_NumTeams flsheep_variable 2
 
 
+#######################################################
+## Settings
+
+scoreboard objectives remove flsheep_setting
+scoreboard objectives add flsheep_setting dummy
+
+scoreboard players set #flsheep_score_to_win flsheep_setting 20
+
+
 say Cedric Flying Sheep: reloaded!

@@ -18,7 +18,7 @@ execute as @a[scores={koth_On=1,ctime_DeathCount=2}] at @s run function koth:giv
 execute if score #ctime_TicksInSec ctime_variable matches 0 run scoreboard players add @a[team=onhill,scores={koth_On=1}] koth_SecondsOnPlatform 1
 
 # detect end of the game
-execute as @a[scores={koth_On=1,koth_SecondsOnPlatform=1200}] run function koth:win
+execute as @a[scores={koth_On=1}] if score @s koth_SecondsOnPlatform >= #koth_time_to_win koth_setting run function koth:win
 
 # For compatibility with the Herobrine datapack
 scoreboard players set @a cfp_herobrine_target_override 0

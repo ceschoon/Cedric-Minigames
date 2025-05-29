@@ -34,6 +34,7 @@ scoreboard objectives add pltf_setting dummy
 
 scoreboard players set #pltf_NumTeams pltf_setting 4
 scoreboard players set #pltf_nofireballs pltf_setting 0
+scoreboard players set #pltf_score_to_win pltf_setting 20
 
 
 say Cedric Platforms: reloaded!

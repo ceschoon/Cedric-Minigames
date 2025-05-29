@@ -263,10 +263,10 @@ execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores
 execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores={pltf_On=1}] resistance 1 255
 
 # detect end of the game
-execute as @a[team=team1,scores={pltf_On=1,pltf_Score=20..}] run function platforms:win1
-execute as @a[team=team2,scores={pltf_On=1,pltf_Score=20..}] run function platforms:win2
-execute as @a[team=team3,scores={pltf_On=1,pltf_Score=20..}] run function platforms:win3
-execute as @a[team=team4,scores={pltf_On=1,pltf_Score=20..}] run function platforms:win4
+execute as @a[team=team1,scores={pltf_On=1}] if score @s pltf_Score >= #pltf_score_to_win pltf_setting run function platforms:win1
+execute as @a[team=team2,scores={pltf_On=1}] if score @s pltf_Score >= #pltf_score_to_win pltf_setting run function platforms:win2
+execute as @a[team=team3,scores={pltf_On=1}] if score @s pltf_Score >= #pltf_score_to_win pltf_setting run function platforms:win3
+execute as @a[team=team4,scores={pltf_On=1}] if score @s pltf_Score >= #pltf_score_to_win pltf_setting run function platforms:win4
 
 # For compatibility with the Herobrine datapack
 execute at @e[type=armor_stand,name=diamond] run scoreboard players set @a cfp_herobrine_target_override 0

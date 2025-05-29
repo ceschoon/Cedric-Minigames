@@ -110,8 +110,8 @@ execute if score #flsheep_Delay flsheep_variable matches ..0 if score #flsheep_N
 execute if score #flsheep_Delay flsheep_variable matches ..0 if score #flsheep_NumTeams flsheep_variable matches 4 run scoreboard players set #flsheep_Delay flsheep_variable 150
 
 # Detect end of the game
-execute as @a[team=team1,scores={flsheep_On=1,flsheep_Score=20..}] run function flsheep:win1
-execute as @a[team=team2,scores={flsheep_On=1,flsheep_Score=20..}] run function flsheep:win2
-execute as @a[team=team3,scores={flsheep_On=1,flsheep_Score=20..}] run function flsheep:win3
-execute as @a[team=team4,scores={flsheep_On=1,flsheep_Score=20..}] run function flsheep:win4
+execute as @a[team=team1,scores={flsheep_On=1}] if score @s flsheep_Score >= #flsheep_score_to_win flsheep_setting run function flsheep:win1
+execute as @a[team=team2,scores={flsheep_On=1}] if score @s flsheep_Score >= #flsheep_score_to_win flsheep_setting run function flsheep:win2
+execute as @a[team=team3,scores={flsheep_On=1}] if score @s flsheep_Score >= #flsheep_score_to_win flsheep_setting run function flsheep:win3
+execute as @a[team=team4,scores={flsheep_On=1}] if score @s flsheep_Score >= #flsheep_score_to_win flsheep_setting run function flsheep:win4
 
