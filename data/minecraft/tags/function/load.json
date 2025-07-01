@@ -2,6 +2,7 @@
 	"values": [
 	  "animals:load",
 	  "boss:load",
+	  "cgame:load",
 	  "cmagic:load",
 	  "cmenu:load",
 	  "compass:load",

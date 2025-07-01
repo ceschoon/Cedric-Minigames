@@ -6,11 +6,13 @@ scoreboard objectives remove cgame_score
 scoreboard objectives remove cgame_kills
 scoreboard objectives remove cgame_kill_detect
 scoreboard objectives remove cgame_on
+scoreboard objectives remove cgame_temp
 
 scoreboard objectives add cgame_score dummy "Score"
 scoreboard objectives add cgame_kills minecraft.custom:minecraft.player_kills
 scoreboard objectives add cgame_kill_detect minecraft.custom:minecraft.player_kills
 scoreboard objectives add cgame_on dummy
+scoreboard objectives add cgame_temp dummy
 
 
 ###############################################################
@@ -23,6 +25,7 @@ scoreboard objectives add cgame_setting dummy
 scoreboard players set #cgame_preptime cgame_setting 0
 scoreboard players set #cgame_time_to_win cgame_setting 999999
 scoreboard players set #cgame_score_to_win cgame_setting 999999
+scoreboard players set #cgame_curse_active cgame_setting 0
 
 
 ###############################################################

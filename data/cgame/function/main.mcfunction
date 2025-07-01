@@ -37,5 +37,4 @@ execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores
 # For compatibility with the Herobrine datapack
 # TODO: set priorities based on present teams
 scoreboard players set @a cfp_herobrine_target_override 0
-scoreboard players set @a[scores={cgame_on=1,team=cgame_increment}] cfp_herobrine_target_override 1
-
+scoreboard players set @a[team=cgame_increment,scores={cgame_on=1}] cfp_herobrine_target_override 1

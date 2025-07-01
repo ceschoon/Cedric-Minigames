@@ -2,6 +2,7 @@
 	"values": [
 	  "animals:tick",
 	  "boss:tick",
+	  "cgame:tick",
 	  "cmagic:tick",
 	  "cmenu:tick",
 	  "compass:tick",
