@@ -1,7 +1,3 @@
-# Start of normal tag game ("rtag")
-
-###############################################################################
-## Base common to all related minigames
 
 scoreboard players set @a cgame_on 1
 scoreboard players set @a[scores={cfp_is_fake_player=1}] cgame_on 0
@@ -60,15 +56,3 @@ execute if score #cgame_map_size cgame_setting matches 5.. if entity @s[scores={
 execute as @a[scores={cgame_on=1}] at @s run spawnpoint @s ~ ~ ~
 
 title @a[scores={cgame_on=1}] title {"text":"Game Starts Now!","color":"gold"}
-
-###############################################################################
-## Specifics to this minigame --> Should all be presets?
-
-## TODO: These should be presets selectable (and editable) *before* start
-scoreboard players set #cgame_preptime cgame_setting 0
-scoreboard players set #cgame_time_to_win cgame_setting 999999
-scoreboard players set #cgame_score_to_win cgame_setting 1200
-
-## TODO: Distribute (hidden?) "tickets" before start, during preset selection
-team join cgame_regular @a[scores={cgame_on=1}]
-

@@ -24,11 +24,11 @@ team join cgame_regular @a[team=cgame_decrement,scores={cgame_on=1,cgame_kill_de
 
 # Unique player in the special teams
 scoreboard players set @a cgame_temp 0
-scoreboard players set @a[team=cgame_increment] cgame_temp 1
-scoreboard players set @r[team=cgame_increment] cgame_temp 0
-#scoreboard players set @a[team=cgame_decrement] cgame_temp 1
-#scoreboard players set @r[team=cgame_decrement] cgame_temp 0
-team join cgame_regular @a[scores={cgame_temp=1}]
+scoreboard players set @a[team=cgame_increment,scores={cgame_on=1}] cgame_temp 1
+scoreboard players set @r[team=cgame_increment,scores={cgame_on=1}] cgame_temp 0
+#scoreboard players set @a[team=cgame_decrement,scores={cgame_on=1}] cgame_temp 1
+#scoreboard players set @r[team=cgame_decrement,scores={cgame_on=1}] cgame_temp 0
+team join cgame_regular @a[scores={cgame_temp=1,cgame_on=1}]
 
 #### DEBUG
 execute as @a[scores={ctime_DeathCount=1..}] run say "@s just died"
