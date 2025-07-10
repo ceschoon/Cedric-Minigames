@@ -23,9 +23,14 @@ effect give @a[scores={cgame_on=1}] saturation 10 10
 
 clear @a[scores={cgame_on=1}]
 give @a[scores={cgame_on=1}] compass
+execute as @a[scores={cgame_on=1}] run function cgame:give_starter_kit
 execute as @a[scores={cgame_on=1}] run function cgame:give_respawn_set
 
 tp @a[scores={cgame_on=1}] ~ ~ ~
+
+kill @e[type=armor_stand,name=cgame_hill]
+execute if score #cgame_include_hill cgame_setting matches 1 run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"cgame_hill\"",CustomNameVisible:0}
+execute if score #cgame_include_hill cgame_setting matches 1 run function compass:trackhere
 
 time set 0
 weather clear
@@ -56,3 +61,4 @@ execute if score #cgame_map_size cgame_setting matches 5.. if entity @s[scores={
 execute as @a[scores={cgame_on=1}] at @s run spawnpoint @s ~ ~ ~
 
 title @a[scores={cgame_on=1}] title {"text":"Game Starts Now!","color":"gold"}
+

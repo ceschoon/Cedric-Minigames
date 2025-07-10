@@ -7,6 +7,9 @@ function cgame:preptime
 effect give @a[team=cgame_decrement,scores={cgame_on=1}] glowing 1 255 true
 effect give @a[team=cgame_increment,scores={cgame_on=1}] mining_fatigue infinite 0 true
 
+# hill mechanics
+function cgame:hill_mechanics
+
 # increment scores
 execute if score #cgame_preptime cgame_setting matches ..0 if score #ctime_TicksInSec ctime_variable matches 0 run function cgame:update_scores
 
