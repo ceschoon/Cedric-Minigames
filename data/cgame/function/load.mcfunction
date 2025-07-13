@@ -11,6 +11,8 @@ gamerule randomTickSpeed 300
 gamerule mobGriefing true
 gamerule doInsomnia false
 
+execute as @a[scores={cfp_is_fake_player=0}] run attribute @s minecraft:max_health base set 20
+
 
 ###############################################################
 ## Player variables
@@ -44,6 +46,7 @@ scoreboard players set #cgame_time_to_win cgame_setting 999999
 scoreboard players set #cgame_score_to_win cgame_setting 999999
 scoreboard players set #cgame_curse_active cgame_setting 0
 scoreboard players set #cgame_include_hill cgame_setting 0
+scoreboard players set #cgame_include_boss cgame_setting 0
 scoreboard players set #cgame_starter_kit cgame_setting 0
 
 # This will be used to set the worldborder to 100*cgame_map_size
@@ -56,22 +59,26 @@ scoreboard players set #cgame_map_size cgame_setting 3
 team remove cgame_regular
 team remove cgame_increment
 team remove cgame_decrement
+team remove cgame_boss
 
 team add cgame_regular
 team add cgame_increment
 team add cgame_decrement
+team add cgame_boss
 
 team modify cgame_regular color dark_red
 team modify cgame_increment color gold
 team modify cgame_decrement color dark_purple
+team modify cgame_boss color light_purple
 
 team modify cgame_regular nametagVisibility never
 team modify cgame_increment nametagVisibility never
 team modify cgame_decrement nametagVisibility never
+team modify cgame_boss nametagVisibility never
 
 
 ###############################################################
-## Remove armor stands
+## Remove armor stands and misc.
 
 kill @e[type=armor_stand,name=cgame_hill]
 
