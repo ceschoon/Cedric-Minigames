@@ -28,9 +28,8 @@ execute as @a[scores={cgame_on=1}] run function cgame:give_respawn_set
 
 tp @a[scores={cgame_on=1}] ~ ~ ~
 
-kill @e[type=armor_stand,name=cgame_hill]
-execute if score #cgame_include_hill cgame_setting matches 1 run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"cgame_hill\"",CustomNameVisible:0}
-execute if score #cgame_include_hill cgame_setting matches 1 run function compass:trackhere
+## Note: armor stands cleared in load function
+execute if score #cgame_include_hill cgame_setting matches 1 unless entity @e[type=armor_stand,name=cgame_hill] run function cgame:place_hill_here
 
 time set 0
 weather clear

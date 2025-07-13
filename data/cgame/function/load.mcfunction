@@ -56,5 +56,14 @@ team modify cgame_regular nametagVisibility never
 team modify cgame_increment nametagVisibility never
 team modify cgame_decrement nametagVisibility never
 
+
+###############################################################
+## Remove armor stands
+
+kill @e[type=armor_stand,name=cgame_hill]
+
+
+###############################################################
+
 say Cedric Composer Module: reloaded!
 

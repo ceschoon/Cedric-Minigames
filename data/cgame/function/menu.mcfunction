@@ -9,6 +9,7 @@ tellraw @a [{"text":"[Change time to win]","color":"aqua", "clickEvent":{"action
 tellraw @a [{"text":"[Change score to win]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_score_to_win cgame_setting 1200"}}]
 tellraw @a [{"text":"[Change map size (1 to 5)]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_map_size cgame_setting 1"}}]
 tellraw @a [{"text":"[Enable cursed tag (0 or 1)]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_curse_active cgame_setting 1"}}]
+tellraw @a [{"text":"[Place hill here]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/function cgame:place_hill_here"},"hoverEvent":{"action":"show_text","value":{"text":"Used to play king of the hill"}}}]
 
 tellraw @a [" "]
 tellraw @a [{"text":"[Preset: normal tag]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/tag_normal"},"hoverEvent":{"action":"show_text","value":{"text":"Tag game on a 300x300 map"}}}]
