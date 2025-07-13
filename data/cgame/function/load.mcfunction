@@ -40,7 +40,6 @@ scoreboard objectives add cgame_is_on_hill dummy
 scoreboard objectives remove cgame_setting
 scoreboard objectives add cgame_setting dummy
 
-##### Here the -1 values are either manually replaced through the menu or overwritten by the start function
 scoreboard players set #cgame_preptime cgame_setting 0
 scoreboard players set #cgame_time_to_win cgame_setting 999999
 scoreboard players set #cgame_score_to_win cgame_setting 999999
@@ -51,6 +50,12 @@ scoreboard players set #cgame_starter_kit cgame_setting 0
 
 # This will be used to set the worldborder to 100*cgame_map_size
 scoreboard players set #cgame_map_size cgame_setting 3
+
+
+###############################################################
+## OVERRIDE some values to have a playable (tag) game by default
+
+function cgame:presets/tag_normal
 
 
 ###############################################################
