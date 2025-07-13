@@ -1,5 +1,18 @@
 
 ###############################################################
+## Default Gamerules
+
+gamerule keepInventory true
+gamerule showDeathMessages true
+gamerule doImmediateRespawn true
+gamerule naturalRegeneration true
+gamerule doDaylightCycle false
+gamerule randomTickSpeed 300
+gamerule mobGriefing true
+gamerule doInsomnia false
+
+
+###############################################################
 ## Player variables
 
 scoreboard objectives remove cgame_score
