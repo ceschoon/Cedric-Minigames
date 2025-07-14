@@ -1,6 +1,6 @@
 
 ###############################################################
-## Default Gamerules
+## Default Gamerules (for the entire datapack)
 
 gamerule keepInventory true
 gamerule showDeathMessages true
@@ -11,7 +11,7 @@ gamerule randomTickSpeed 300
 gamerule mobGriefing true
 gamerule doInsomnia false
 
-execute as @a[scores={cfp_is_fake_player=0}] run attribute @s minecraft:max_health base set 20
+execute as @a run attribute @s minecraft:max_health base set 20
 
 
 ###############################################################
@@ -20,18 +20,22 @@ execute as @a[scores={cfp_is_fake_player=0}] run attribute @s minecraft:max_heal
 scoreboard objectives remove cgame_score
 scoreboard objectives remove cgame_kills
 scoreboard objectives remove cgame_kill_detect
+scoreboard objectives remove cgame_kill_streak
 scoreboard objectives remove cgame_on
 scoreboard objectives remove cgame_temp
 scoreboard objectives remove cgame_starting_team
 scoreboard objectives remove cgame_is_on_hill
+scoreboard objectives remove cgame_time_copy_for_display
 
 scoreboard objectives add cgame_score dummy "Score"
 scoreboard objectives add cgame_kills minecraft.custom:minecraft.player_kills
 scoreboard objectives add cgame_kill_detect minecraft.custom:minecraft.player_kills
+scoreboard objectives add cgame_kill_streak minecraft.custom:minecraft.player_kills
 scoreboard objectives add cgame_on dummy
 scoreboard objectives add cgame_temp dummy
 scoreboard objectives add cgame_starting_team dummy
 scoreboard objectives add cgame_is_on_hill dummy
+scoreboard objectives add cgame_time_copy_for_display dummy
 
 
 ###############################################################
@@ -65,21 +69,25 @@ team remove cgame_regular
 team remove cgame_increment
 team remove cgame_decrement
 team remove cgame_boss
+team remove cgame_hunter
 
 team add cgame_regular
 team add cgame_increment
 team add cgame_decrement
 team add cgame_boss
+team add cgame_hunter
 
 team modify cgame_regular color gray
 team modify cgame_increment color gold
 team modify cgame_decrement color dark_red
 team modify cgame_boss color light_purple
+team modify cgame_hunter color dark_purple
 
 team modify cgame_regular nametagVisibility never
 team modify cgame_increment nametagVisibility never
 team modify cgame_decrement nametagVisibility never
 team modify cgame_boss nametagVisibility never
+team modify cgame_hunter nametagVisibility never
 
 
 ###############################################################
