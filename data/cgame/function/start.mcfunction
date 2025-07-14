@@ -62,5 +62,10 @@ execute if score #cgame_map_size cgame_setting matches 5.. if entity @s[scores={
 
 execute as @a[scores={cgame_on=1}] at @s run spawnpoint @s ~ ~ ~
 
-title @a[scores={cgame_on=1}] title {"text":"Game Starts Now!","color":"gold"}
+execute if score #cgame_preptime cgame_setting matches 1.. run title @a[scores={cgame_on=1}] title {"text":"Get ready!","color":"gold"}
+execute if score #cgame_preptime cgame_setting matches 1.. run title @a[scores={cgame_on=1}] subtitle {"text":"This is the preparation phase","color":"gold"}
+execute if score #cgame_preptime cgame_setting matches 1.. run tellraw @a[scores={cgame_on=1}] [{"text":"Preparation time is ticking down...","color":"gold"}]
+
+execute if score #cgame_preptime cgame_setting matches 0 run title @a[scores={cgame_on=1}] title {"text":"Game Starts Now!","color":"gold"}
+execute if score #cgame_preptime cgame_setting matches 0 run tellraw @a[scores={cgame_on=1}] [{"text":"Game started! No preparation time.","color":"gold"}]
 
