@@ -71,9 +71,9 @@ team add cgame_increment
 team add cgame_decrement
 team add cgame_boss
 
-team modify cgame_regular color dark_red
+team modify cgame_regular color gray
 team modify cgame_increment color gold
-team modify cgame_decrement color dark_purple
+team modify cgame_decrement color dark_red
 team modify cgame_boss color light_purple
 
 team modify cgame_regular nametagVisibility never

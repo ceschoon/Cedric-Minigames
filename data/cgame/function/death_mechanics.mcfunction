@@ -8,6 +8,7 @@ execute if entity @a[team=cgame_increment,scores={cgame_on=1,ctime_DeathCount=2}
 execute if entity @a[team=cgame_increment,scores={cgame_on=1,ctime_DeathCount=2}] unless entity @a[team=cgame_regular,scores={cgame_on=1,cgame_kill_detect=1..}] as @a[team=cgame_regular,scores={cgame_on=1}] if score @s cgame_score = #minscore cgame_score run team join cgame_increment @s
 
 # In case a player kills the solo ("tagged") runner, the killer becomes a new runner
+# TODO: use the scoreboard criterion "teamkill.gold"
 execute if entity @a[team=cgame_increment,scores={cgame_on=1,ctime_DeathCount=2}] run team join cgame_increment @a[team=cgame_regular,scores={cgame_on=1,cgame_kill_detect=1..}]
 
 # If the solo ("tagged") player dies, he becomes a regular player again
@@ -19,7 +20,7 @@ team join cgame_regular @a[team=cgame_increment,scores={cgame_on=1,ctime_DeathCo
 # If curse mode is active, any (regular) player that dies gets the curse
 execute if score #cgame_curse_active cgame_setting matches 1 run team join cgame_decrement @a[team=cgame_regular,scores={cgame_on=1,ctime_DeathCount=1..}]
 
-# Cursed players loose their curse by killing someone
+# Cursed players loose their curse by killing someone (anyone)
 team join cgame_regular @a[team=cgame_decrement,scores={cgame_on=1,cgame_kill_detect=1..}]
 
 # If the boss player dies, he becomes a regular player (but with style...)
