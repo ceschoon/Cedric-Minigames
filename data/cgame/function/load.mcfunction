@@ -50,6 +50,7 @@ scoreboard players set #cgame_score_to_win cgame_setting 999999
 scoreboard players set #cgame_curse_active cgame_setting 0
 scoreboard players set #cgame_include_hill cgame_setting 0
 scoreboard players set #cgame_include_boss cgame_setting 0
+scoreboard players set #cgame_include_barrel_drops cgame_setting 0
 scoreboard players set #cgame_starter_kit cgame_setting 0
 
 # This will be used to set the worldborder to 100*cgame_map_size
