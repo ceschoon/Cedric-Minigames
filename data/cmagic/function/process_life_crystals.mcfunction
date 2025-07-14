@@ -1,4 +1,7 @@
 
+###################################################
+## Life crystals give extra hearts
+
 scoreboard players set @s num_life_cryst 0
 
 execute store result score @s num_life_cryst run clear @s amethyst_shard[lore=['{"text":"Life crystal","italic":false}'],enchantment_glint_override=true] 0
@@ -24,4 +27,10 @@ attribute @s[scores={num_life_cryst=17}] minecraft:max_health base set 54
 attribute @s[scores={num_life_cryst=18}] minecraft:max_health base set 56
 attribute @s[scores={num_life_cryst=19}] minecraft:max_health base set 58
 attribute @s[scores={num_life_cryst=20..}] minecraft:max_health base set 60
+
+
+###################################################
+## Life crystals are lost upon death
+
+clear @a[scores={ctime_DeathCount=1..}] amethyst_shard[lore=['{"text":"Life crystal","italic":false}'],enchantment_glint_override=true]
 
