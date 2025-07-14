@@ -1,6 +1,7 @@
 
 # preparation time
 execute if score #cgame_preptime cgame_setting matches 0 if score #ctime_TicksInSec ctime_variable matches 0 run function cgame:fill_teams
+execute if score #cgame_preptime cgame_setting matches 0 if score #ctime_TicksInSec ctime_variable matches 0 if score #cgame_include_barrel_drops cgame_setting matches 1 run scoreboard players add #cmagic_barrel_drop_delay cmagic_variable 100
 function cgame:preptime
 
 # permanent effects

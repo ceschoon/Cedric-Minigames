@@ -62,8 +62,5 @@ execute if score #cgame_map_size cgame_setting matches 5.. if entity @s[scores={
 
 execute as @a[scores={cgame_on=1}] at @s run spawnpoint @s ~ ~ ~
 
-execute if score #cgame_include_barrel_drops cgame_setting matches 1 run execute store result score #cmagic_barrel_drop_delay cmagic_variable run scoreboard players get #cgame_preptime cgame_setting
-execute if score #cgame_include_barrel_drops cgame_setting matches 1 run scoreboard players add #cmagic_barrel_drop_delay cmagic_variable 100
-
 title @a[scores={cgame_on=1}] title {"text":"Game Starts Now!","color":"gold"}
 
