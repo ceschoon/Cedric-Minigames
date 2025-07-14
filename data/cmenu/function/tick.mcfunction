@@ -8,9 +8,14 @@ tellraw @a[scores={cmenu_show=2}] [" "]
 scoreboard players set @a[scores={cmenu_show=2..}] cmenu_show 0
 scoreboard players add @a[scores={cmenu_show=1..}] cmenu_show 1
 
+## Special flag for the minigame composer
+## We need it to be displayed for two ticks to process the clickEvent
+scoreboard players set @a[scores={cmenu_show_composer=2..}] cmenu_show_composer 0
+scoreboard players add @a[scores={cmenu_show_composer=1..}] cmenu_show_composer 1
+
 ## Pop-up message to display menus
 tellraw @a[scores={cmenu_delay=20}] [" "]
-tellraw @a[scores={cmenu_delay=20}] [{"text":"=== Cedric's Minigames ","color":"gold","bold":true},{"text":"[display]","color":"aqua","bold":false,"clickEvent":{"action":"run_command","value":"/scoreboard players set @s cmenu_show 1"}},{"text":" ===","color":"gold","bold":true}]
+tellraw @a[scores={cmenu_delay=20}] [{"text":"=== Cedric's Minigames ","color":"gold","bold":true},{"text":"[play] ","color":"aqua","bold":false,"clickEvent":{"action":"run_command","value":"/scoreboard players set @s cmenu_show_composer 1"}},{"text":"[other games/modules]","color":"dark_aqua","bold":false,"clickEvent":{"action":"run_command","value":"/scoreboard players set @s cmenu_show 1"}},{"text":" ===","color":"gold","bold":true}]
 tellraw @a[scores={cmenu_delay=20}] [" "]
 
 ## Add delay of 3 minutes (3*1200 ticks) between pop-up messages
