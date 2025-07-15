@@ -44,13 +44,13 @@ execute as @a[team=cgame_decrement] run function compass:trackme
 execute as @a[team=cgame_increment] run function compass:trackme
 execute as @a[team=cgame_boss] run function compass:trackme
 
-# detect win
-execute as @a[scores={cgame_on=1}] if score @s cgame_score >= #cgame_score_to_win cgame_setting at @s run function cgame:win
-execute as @a[scores={cgame_on=1}] if score #ctime_Seconds ctime_variable >= #cgame_time_to_win cgame_setting at @s run function cgame:find_winner
-
 # display game time
 execute store result score @a[scores={cgame_on=1}] cgame_time_copy_for_display run scoreboard players get #ctime_Seconds ctime_variable
 scoreboard objectives setdisplay list cgame_time_copy_for_display
+
+# detect win
+execute as @a[scores={cgame_on=1}] if score @s cgame_score >= #cgame_score_to_win cgame_setting at @s run function cgame:win
+execute as @a[scores={cgame_on=1}] if score #ctime_Seconds ctime_variable >= #cgame_time_to_win cgame_setting at @s run function cgame:find_winner
 
 # helmet to better distinguish teams
 function cgame:force_team_helmets
