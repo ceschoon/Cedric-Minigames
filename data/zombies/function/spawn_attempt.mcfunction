@@ -1,6 +1,6 @@
 ## Count number of zombies within 32 blocks of the player
 scoreboard players set @s zombies_count 0
-execute store result score @s zombies_count run execute if entity @e[name=custom_zombie,distance=..32]
+execute store result score @s zombies_count run execute if entity @e[tag=custom_zombie,distance=..32]
 
 ## Summon armor stand that will mark the spawn location
 ## Proceed if there is fewer zombies than a certain cap (spawn only at night)
