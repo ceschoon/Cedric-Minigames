@@ -10,6 +10,7 @@ gamerule doDaylightCycle false
 gamerule randomTickSpeed 300
 gamerule mobGriefing true
 gamerule doInsomnia false
+gamerule spawnRadius 0
 
 execute as @a run attribute @s minecraft:max_health base set 20
 
@@ -26,6 +27,7 @@ scoreboard objectives remove cgame_temp
 scoreboard objectives remove cgame_starting_team
 scoreboard objectives remove cgame_is_on_hill
 scoreboard objectives remove cgame_time_copy_for_display
+scoreboard objectives remove cgame_relocate
 
 scoreboard objectives add cgame_score dummy "Score"
 scoreboard objectives add cgame_kills minecraft.custom:minecraft.player_kills
@@ -36,6 +38,7 @@ scoreboard objectives add cgame_temp dummy
 scoreboard objectives add cgame_starting_team dummy
 scoreboard objectives add cgame_is_on_hill dummy
 scoreboard objectives add cgame_time_copy_for_display dummy
+scoreboard objectives add cgame_relocate dummy
 
 
 ###############################################################
@@ -94,6 +97,7 @@ team modify cgame_hunter nametagVisibility never
 ###############################################################
 ## Remove armor stands and misc.
 
+kill @e[type=armor_stand,name=cgame_map_center]
 kill @e[type=armor_stand,name=cgame_hill]
 
 

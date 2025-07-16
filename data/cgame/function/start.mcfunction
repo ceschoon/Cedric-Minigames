@@ -31,7 +31,8 @@ execute as @a[scores={cgame_on=1}] run function cgame:give_respawn_set
 
 tp @a[scores={cgame_on=1}] ~ ~ ~
 
-## Note: armor stands cleared in load function
+## Note: armor stands are cleared in the load function
+summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"cgame_map_center\"",CustomNameVisible:0}
 execute if score #cgame_include_hill cgame_setting matches 1 unless entity @e[type=armor_stand,name=cgame_hill] run function cgame:place_hill_here
 
 time set 0
@@ -41,7 +42,7 @@ execute in minecraft:overworld run worldborder center ~ ~
 setworldspawn ~ ~ ~
 
 ## Set world spawn as the default spawnpoint (will be overritten by the spread function)
-run spawnpoint @a[scores={cgame_on=1}] ~ ~ ~
+spawnpoint @a[scores={cgame_on=1}] ~ ~ ~
 
 execute if score #cgame_map_size cgame_setting matches ..1 run execute in minecraft:overworld run worldborder set 100
 execute if score #cgame_map_size cgame_setting matches 2 run execute in minecraft:overworld run worldborder set 200
@@ -49,21 +50,8 @@ execute if score #cgame_map_size cgame_setting matches 3 run execute in minecraf
 execute if score #cgame_map_size cgame_setting matches 4 run execute in minecraft:overworld run worldborder set 400
 execute if score #cgame_map_size cgame_setting matches 5.. run execute in minecraft:overworld run worldborder set 500
 
-###### Spread Players (use dimroof variable from compass module)
-execute if score #cgame_map_size cgame_setting matches ..1 if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 40 40 false @a[scores={cgame_on=1}]
-execute if score #cgame_map_size cgame_setting matches 2 if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 80 80 false @a[scores={cgame_on=1}]
-execute if score #cgame_map_size cgame_setting matches 3 if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 120 120 false @a[scores={cgame_on=1}]
-execute if score #cgame_map_size cgame_setting matches 4 if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 160 160 false @a[scores={cgame_on=1}]
-execute if score #cgame_map_size cgame_setting matches 5.. if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 200 200 false @a[scores={cgame_on=1}]
-
-execute if score #cgame_map_size cgame_setting matches ..1 if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 40 40 under 127 false @a[scores={cgame_on=1}]
-execute if score #cgame_map_size cgame_setting matches 2 if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 80 80 under 127 false @a[scores={cgame_on=1}]
-execute if score #cgame_map_size cgame_setting matches 3 if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 120 120 under 127 false @a[scores={cgame_on=1}]
-execute if score #cgame_map_size cgame_setting matches 4 if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 160 160 under 127 false @a[scores={cgame_on=1}]
-execute if score #cgame_map_size cgame_setting matches 5.. if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 200 200 under 127 false @a[scores={cgame_on=1}]
-
-execute as @a[scores={cgame_on=1}] at @s run spawnpoint @s ~ ~ ~
-######
+scoreboard players set @a[scores={cgame_on=1}] cgame_relocate 1
+function cgame:spread_players
 
 execute if score #cgame_preptime cgame_setting matches 1.. run title @a[scores={cgame_on=1}] title {"text":"Get ready!","color":"gold"}
 execute if score #cgame_preptime cgame_setting matches 1.. run title @a[scores={cgame_on=1}] subtitle {"text":"This is the preparation phase","color":"gold"}

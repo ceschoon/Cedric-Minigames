@@ -17,6 +17,7 @@ execute as @a[scores={drop=1..},nbt={Dimension:"minecraft:the_nether"}] if entit
 execute as @a[scores={drop=1..},nbt={Dimension:"minecraft:the_end"}] if entity @a[scores={target=1..}] run function compass:pointinend
 
 # Detect if the player is in a dimension with a roof (used to spreadplayers)
+# TODO: GET RID OF THIS (will be removed in a future update)
 
 scoreboard players set @a[nbt={Dimension:"minecraft:overworld"}] dimroof 0
 scoreboard players set @a[nbt={Dimension:"minecraft:the_nether"}] dimroof 1
