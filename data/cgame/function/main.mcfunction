@@ -31,7 +31,7 @@ function cgame:update_scores
 function cgame:death_mechanics
 
 # play a sound where a player death occurs
-#execute if entity @a[scores={cgame_on=1,ctime_DeathCount=1}] as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
+execute if entity @a[scores={cgame_on=1,ctime_DeathCount=1}] as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
 
 # spread dead players to a new location, if they re-spawned at the map center
 # otherwise they can be spawn-killed (this works only if spawnradius set to 0)
