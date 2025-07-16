@@ -15,6 +15,7 @@ gamerule keepInventory true
 gamerule doImmediateRespawn true
 gamerule doDaylightCycle true
 gamerule naturalRegeneration true
+gamerule spawnRadius 0
 
 gamemode survival @a[scores={cgame_on=1}]
 advancement revoke @a[scores={cgame_on=1}] everything
@@ -65,6 +66,8 @@ tellraw @a[scores={cgame_on=1}] " "
 tellraw @a[scores={cgame_on=1}] [{"text":"Game max duration is set to ","color":"gold"},{"score":{"name": "#cgame_time_to_win", "objective": "cgame_setting"},"color":"gold"},{"text":" minutes","color":"gold"}]
 tellraw @a[scores={cgame_on=1}] [{"text":"Score to win is set to ","color":"gold"},{"score":{"name": "#cgame_score_to_win", "objective": "cgame_setting"},"color":"gold"}]
 tellraw @a[scores={cgame_on=1}] [{"text":"Map size is set to ","color":"gold"},{"score":{"name": "#cgame_map_size", "objective": "cgame_setting"},"color":"gold"},{"text":" x 100 blocks","color":"gold"}]
+execute if score #cgame_shrink_border cgame_setting matches 0 run tellraw @a[scores={cgame_on=1}] [{"text":"World border is fixed","color":"gold"}]
+execute if score #cgame_shrink_border cgame_setting matches 1 run tellraw @a[scores={cgame_on=1}] [{"text":"World border will shrink (after preptime)","color":"gold"}]
 execute if score #cgame_curse_active cgame_setting matches 0 run tellraw @a[scores={cgame_on=1}] [{"text":"Cursed tag is disabled","color":"gold"}]
 execute if score #cgame_curse_active cgame_setting matches 1 run tellraw @a[scores={cgame_on=1}] [{"text":"Cursed tag is enabled","color":"gold"}]
 
