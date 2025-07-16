@@ -26,7 +26,8 @@ execute at @e[type=falling_block] run particle minecraft:cloud ~ ~ ~ 0.2 0.2 0.2
 execute as @e[type=armor_stand,name="barreldrop"] at @s if block ~ ~-1 ~ barrel run tp @s ~ ~-1 ~
 execute as @e[type=armor_stand,name="barreldrop"] at @s if block ~ ~-2 ~ barrel run tp @s ~ ~-2 ~
 
-execute at @e[type=armor_stand,name="barreldrop"] if block ~ ~ ~ barrel unless entity @e[type=armor_stand,name="barrelunopened",distance=..3] run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"barrelunopened\"",CustomNameVisible:0}
+execute at @e[type=armor_stand,name="barreldrop"] if block ~ ~ ~ barrel[open=false] unless entity @e[type=armor_stand,name="barrelunopened",distance=..3] run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"barrelunopened\"",CustomNameVisible:0}
+execute at @e[type=armor_stand,name="barreldrop"] if block ~ ~ ~ barrel[open=true] unless entity @e[type=armor_stand,name="barrelopened",distance=..3] run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"barrelopened\"",CustomNameVisible:0}
 execute as @e[type=armor_stand,name="barreldrop"] at @s if block ~ ~ ~ barrel[open=true] run kill @s
 execute as @e[type=armor_stand,name="barrelunopened"] at @s unless block ~ ~ ~ barrel[open=false] run kill @s
 
@@ -35,3 +36,17 @@ execute at @e[type=armor_stand,name="barrelunopened"] if score #ctime_TicksInSec
 execute at @e[type=armor_stand,name="barrelunopened"] if score #ctime_TicksInSec ctime_variable matches 4 run playsound minecraft:block.amethyst_block.resonate ambient @a ~ ~ ~ 2.0
 execute at @e[type=armor_stand,name="barrelunopened"] if score #ctime_TicksInSec ctime_variable matches 10 run playsound minecraft:block.amethyst_block.step ambient @a ~ ~ ~ 2.0
 execute at @e[type=armor_stand,name="barrelunopened"] if score #ctime_TicksInSec ctime_variable matches 14 run playsound minecraft:block.amethyst_block.resonate ambient @a ~ ~ ~ 2.0
+
+
+## Delete the barrels after 5 minutes (6000 ticks)
+
+scoreboard players add @e[type=armor_stand,name="barrelunopened"] cmagic_barrel_age 1
+scoreboard players add @e[type=armor_stand,name="barrelopened"] cmagic_barrel_age 1
+
+execute at @e[type=armor_stand,name="barrelunopened",scores={cmagic_barrel_age=6000..}] run setblock ~ ~ ~ air replace
+execute at @e[type=armor_stand,name="barrelopened",scores={cmagic_barrel_age=6000..}] run setblock ~ ~ ~ air replace
+
+execute at @e[type=armor_stand,name="barrelunopened",scores={cmagic_barrel_age=6000..}] run kill @e[type=item,distance=..1]
+kill @e[type=armor_stand,name="barrelunopened",scores={cmagic_barrel_age=6000..}]
+kill @e[type=armor_stand,name="barrelopened",scores={cmagic_barrel_age=6000..}]
+
