@@ -8,4 +8,3 @@ function cscale:load
 function ctime:load
 function cworld:load
 function permeffects:load
-function zombies:load

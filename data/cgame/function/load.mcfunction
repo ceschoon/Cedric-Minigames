@@ -3,6 +3,7 @@
 ## Default Gamerules (for the entire datapack)
 
 gamerule keepInventory true
+gamerule announceAdvancements true
 gamerule showDeathMessages true
 gamerule doImmediateRespawn true
 gamerule naturalRegeneration true
