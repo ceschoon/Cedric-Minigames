@@ -10,13 +10,18 @@ effect give @a[team=cgame_increment,scores={cgame_on=1}] mining_fatigue 10 0 tru
 effect give @a[team=cgame_decrement,scores={cgame_on=1}] glowing 1 255 true
 effect give @a[team=cgame_boss,scores={cgame_on=1}] resistance 10 1 true
 effect give @a[team=cgame_boss,scores={cgame_on=1}] mining_fatigue 10 0 true
+effect give @a[team=cgame_cultist,scores={cgame_on=1}] glowing 1 255 true
 
 # special mechanics
 function cgame:hill_mechanics
 function cgame:boss_mechanics
+function cgame:cult_mechanics
 
 # hunters gain life crystals as a kill reward
 give @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_detect=1..}] amethyst_shard[lore=['{"text":"Life crystal","italic":false}'],enchantment_glint_override=true] 2
+
+# cultists gain food as a kill reward
+give @a[team=cgame_cultist,scores={cgame_on=1,cgame_kill_detect=1..}] cooked_beef 3
 
 # particles above hunters with high kill streak
 execute as @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_streak=1..}] at @s if score #ctime_TicksInSec ctime_variable matches 0 run particle reverse_portal ~ ~2.5 ~ 0.0 0.0 0.0 0.01 1
@@ -72,3 +77,5 @@ execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores
 scoreboard players set @a cfp_herobrine_target_override 0
 scoreboard players set @a[team=cgame_increment,scores={cgame_on=1}] cfp_herobrine_target_override 1
 scoreboard players set @a[team=cgame_boss,scores={cgame_on=1}] cfp_herobrine_target_override 1
+
+

@@ -27,6 +27,9 @@ team join cgame_regular @a[team=cgame_decrement,scores={cgame_on=1,cgame_kill_de
 execute if entity @a[team=cgame_boss,scores={cgame_on=1,ctime_DeathCount=1..}] run function cgame:boss_death
 team join cgame_regular @a[team=cgame_boss,scores={cgame_on=1,ctime_DeathCount=1..}]
 
+# If a cultist dies, he becomes a regular player again
+team join cgame_regular @a[team=cgame_cultist,scores={cgame_on=1,ctime_DeathCount=2}]
+
 # Unique player in the special teams
 scoreboard players set @a cgame_temp 0
 scoreboard players set @a[team=cgame_increment,scores={cgame_on=1}] cgame_temp 1

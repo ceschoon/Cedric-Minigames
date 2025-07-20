@@ -29,6 +29,9 @@ scoreboard objectives remove cgame_starting_team
 scoreboard objectives remove cgame_is_on_hill
 scoreboard objectives remove cgame_time_copy_for_display
 scoreboard objectives remove cgame_relocate
+scoreboard objectives remove cgame_is_fake_cultist
+scoreboard objectives remove cgame_cult_conversion_delay
+scoreboard objectives remove cgame_cult_warning_delay
 
 scoreboard objectives add cgame_score dummy "Score"
 scoreboard objectives add cgame_kills minecraft.custom:minecraft.player_kills
@@ -40,6 +43,9 @@ scoreboard objectives add cgame_starting_team dummy
 scoreboard objectives add cgame_is_on_hill dummy
 scoreboard objectives add cgame_time_copy_for_display dummy
 scoreboard objectives add cgame_relocate dummy
+scoreboard objectives add cgame_is_fake_cultist dummy
+scoreboard objectives add cgame_cult_conversion_delay dummy
+scoreboard objectives add cgame_cult_warning_delay dummy
 
 
 ###############################################################
@@ -47,6 +53,9 @@ scoreboard objectives add cgame_relocate dummy
 
 scoreboard objectives remove cgame_setting
 scoreboard objectives add cgame_setting dummy
+
+scoreboard objectives remove cgame_variable
+scoreboard objectives add cgame_variable dummy
 
 scoreboard players set #cgame_preptime cgame_setting 0
 scoreboard players set #cgame_time_to_win cgame_setting 999999
@@ -76,24 +85,28 @@ team remove cgame_increment
 team remove cgame_decrement
 team remove cgame_boss
 team remove cgame_hunter
+team remove cgame_cultist
 
 team add cgame_regular
 team add cgame_increment
 team add cgame_decrement
 team add cgame_boss
 team add cgame_hunter
+team add cgame_cultist
 
 team modify cgame_regular color gray
 team modify cgame_increment color gold
 team modify cgame_decrement color dark_red
 team modify cgame_boss color light_purple
 team modify cgame_hunter color dark_purple
+team modify cgame_cultist color dark_green
 
 team modify cgame_regular nametagVisibility never
 team modify cgame_increment nametagVisibility never
 team modify cgame_decrement nametagVisibility never
 team modify cgame_boss nametagVisibility never
 team modify cgame_hunter nametagVisibility never
+team modify cgame_cultist nametagVisibility never
 
 
 ###############################################################

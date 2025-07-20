@@ -2,13 +2,17 @@
 ## Color integer calc as Red<<16 + Green<<8 + Blue
 ## TODO: replace helmet even if there is one already (this is not a problem, see hunters)
 
+###########################################################
+## Tag games
+
 execute as @a[team=cgame_regular,scores={cgame_on=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:8421504}}}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=8421504,enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
 
 execute as @a[team=cgame_increment,scores={cgame_on=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:golden_helmet"}]}] run item replace entity @s armor.head with golden_helmet[enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
 
 execute as @a[team=cgame_decrement,scores={cgame_on=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:11546150}}}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=11546150,enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
 
-## No helmet for the boss (there is a magical helmet), he is glowing anyway
+###########################################################
+## No helmet for the boss (conflicts with the magical helmet), he is glowing anyway
 
 ## Upgrade the helmet of hunters, depending on their kill streak
 execute as @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_streak=0}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=8991416,enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
@@ -18,5 +22,21 @@ execute as @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_streak=3}] unless 
 execute as @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_streak=4}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=8991416,enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1,"minecraft:protection":8}}]
 execute as @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_streak=5}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=8991416,enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1,"minecraft:protection":10}}]
 
+
+###########################################################
+## Cultists
+
+execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_is_fake_cultist=0}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:65280}}}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=65280,enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
+
+execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_is_fake_cultist=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:65280}}}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=65280,enchantments={levels:{"minecraft:vanishing_curse":1}}]
+
+## Fake cultist automatically leaves the cultist team if he removes/replaces his helmet
+execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_is_fake_cultist=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:65280}}}]}] run team join cgame_regular @s
+
+
+###########################################################
+## Last to be processed: remove if invis
+
 execute as @a[scores={cgame_on=1}] if entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with air
+
 
