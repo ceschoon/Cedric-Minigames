@@ -20,9 +20,6 @@ function cgame:cult_mechanics
 # hunters gain life crystals as a kill reward
 give @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_detect=1..}] amethyst_shard[lore=['{"text":"Life crystal","italic":false}'],enchantment_glint_override=true] 2
 
-# cultists gain food as a kill reward
-give @a[team=cgame_cultist,scores={cgame_on=1,cgame_kill_detect=1..}] cooked_beef 3
-
 # particles above hunters with high kill streak
 execute as @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_streak=1..}] at @s if score #ctime_TicksInSec ctime_variable matches 0 run particle reverse_portal ~ ~2.5 ~ 0.0 0.0 0.0 0.01 1
 execute as @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_streak=2..}] at @s if score #ctime_TicksInSec ctime_variable matches 4 run particle reverse_portal ~ ~2.5 ~ 0.0 0.0 0.0 0.02 1
