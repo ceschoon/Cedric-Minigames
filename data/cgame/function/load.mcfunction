@@ -32,6 +32,7 @@ scoreboard objectives remove cgame_relocate
 scoreboard objectives remove cgame_is_fake_cultist
 scoreboard objectives remove cgame_cult_conversion_delay
 scoreboard objectives remove cgame_cult_warning_delay
+scoreboard objectives remove cgame_cult_kill_detect
 
 scoreboard objectives add cgame_score dummy "Score"
 scoreboard objectives add cgame_kills minecraft.custom:minecraft.player_kills
@@ -46,6 +47,7 @@ scoreboard objectives add cgame_relocate dummy
 scoreboard objectives add cgame_is_fake_cultist dummy
 scoreboard objectives add cgame_cult_conversion_delay dummy
 scoreboard objectives add cgame_cult_warning_delay dummy
+scoreboard objectives add cgame_cult_kill_detect teamkill.dark_green
 
 
 ###############################################################

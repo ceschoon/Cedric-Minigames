@@ -36,7 +36,7 @@ function cgame:update_scores
 # death mechanics
 function cgame:death_mechanics
 
-# play a sound where a player death occurs
+# play a sound when a player death occurs
 execute if entity @a[scores={cgame_on=1,ctime_DeathCount=1}] as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
 
 # spread dead players to a new location, if they re-spawned at the map center
@@ -45,8 +45,9 @@ execute if entity @a[scores={cgame_on=1,ctime_DeathCount=1}] as @a at @s run pla
 execute as @a[scores={cgame_on=1,ctime_DeathCount=1}] at @s if entity @e[type=armor_stand,name=cgame_map_center,distance=..5] run scoreboard players set @s cgame_relocate 1
 function cgame:spread_players
 
-# reset kill detector and streak
+# reset kill detectors and streak
 execute unless entity @a[scores={cgame_on=1,ctime_DeathCount=1..}] run scoreboard players set @a[scores={cgame_on=1}] cgame_kill_detect 0
+execute unless entity @a[scores={cgame_on=1,ctime_DeathCount=1..}] run scoreboard players set @a[scores={cgame_on=1}] cgame_cult_kill_detect 0
 scoreboard players set @a[scores={cgame_on=1,ctime_DeathCount=1..}] cgame_kill_streak 0
 
 # compass
@@ -60,9 +61,13 @@ execute as @a[team=cgame_boss] run function compass:trackme
 execute store result score @a[scores={cgame_on=1}] cgame_time_copy_for_display run scoreboard players get #ctime_Seconds ctime_variable
 scoreboard objectives setdisplay list cgame_time_copy_for_display
 
+# game ends if there are only regular players left and no way to progress into the game
+execute unless entity @a[team=!cgame_regular,scores={cgame_on=1}] unless entity @e[type=armor_stand,name=cgame_hill] run scoreboard players set #cgame_time_to_win cgame_setting -999999
+
 # detect win
 execute as @a[scores={cgame_on=1}] if score @s cgame_score >= #cgame_score_to_win cgame_setting at @s run function cgame:win
 execute as @a[scores={cgame_on=1}] if score #ctime_Seconds ctime_variable >= #cgame_time_to_win cgame_setting at @s run function cgame:find_winner
+execute as @a[scores={cgame_on=1}] unless entity @a[team=!cgame_cultist,scores={cgame_on=1}] unless entity @a[team=cgame_cultist,scores={cgame_on=1,cgame_is_fake_cultist=1}] at @s run function cgame:cult_win
 
 # helmet to better distinguish teams
 function cgame:force_team_helmets

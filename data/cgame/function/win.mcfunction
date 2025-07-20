@@ -1,6 +1,6 @@
 # executed as/by the winning player
 
-playsound minecraft:entity.wither.spawn master @a[scores={cgame_on=1}] ~ ~ ~
+execute as @a at @s run playsound minecraft:entity.wither.spawn master @s
 
 title @a[scores={cgame_on=1}] title [{"selector":"@s","color":"gold"},{"text":" won the game!","color":"gold"}]
 tellraw @a[scores={cgame_on=1}] [{"selector":"@s","color":"gold"},{"text":" won the game!","color":"gold"}]

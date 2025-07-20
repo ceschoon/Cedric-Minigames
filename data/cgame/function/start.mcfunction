@@ -8,6 +8,7 @@ scoreboard players set @a[scores={cgame_on=1}] cgame_kill_detect 0
 scoreboard players set @a[scores={cgame_on=1}] cgame_kill_streak 0
 scoreboard players set @a[scores={cgame_on=1}] cgame_cult_conversion_delay 0
 scoreboard players set @a[scores={cgame_on=1}] cgame_cult_warning_delay 0
+scoreboard players set @a[scores={cgame_on=1}] cgame_cult_kill_detect 0
 
 function ctime:reset
 

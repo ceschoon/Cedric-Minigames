@@ -31,7 +31,7 @@ effect give @a[team=cgame_regular,scores={cgame_cult_conversion_delay=1..}] resi
 effect give @a[team=cgame_regular,scores={cgame_cult_conversion_delay=1..}] absorption 1 4
 effect give @a[team=cgame_regular,scores={cgame_cult_conversion_delay=1..}] regeneration 1 4
 
-execute if score #ctime_TicksInSec ctime_variable matches 0 run effect give @a[team=cgame_regular,scores={cgame_cult_conversion_delay=300},nbt={active_effects:[{id:"minecraft:luck"}]}] nausea 15
+effect give @a[team=cgame_regular,scores={cgame_on=1,cgame_cult_conversion_delay=300},nbt={active_effects:[{id:"minecraft:luck"}]}] nausea 20
 
 
 #########################################################
