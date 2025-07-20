@@ -1,5 +1,5 @@
 tellraw @a [" "]
-tellraw @a [{"text":"=== Minigame: Infection ===","color":"gold","bold":true}]
+tellraw @a [{"text":"=== Minigame: Infection (legacy) ===","color":"gold","bold":true}]
 tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function infection:load"}}]
 tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function infection:info"}}]
 tellraw @a [{"text":"[Start with random player]","color":"green", "clickEvent":{"action":"run_command","value":"/function infection:start"},"hoverEvent":{"action":"show_text","value":{"text":"First infected is selected at random"}}}]

@@ -15,6 +15,7 @@ tellraw @a [{"text":"[Preset: mini tag]","color":"aqua", "clickEvent":{"action":
 tellraw @a [{"text":"[Preset: cursed tag]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/tag_cursed"},"hoverEvent":{"action":"show_text","value":{"text":"The goal is to get rid of the tag"}}}]
 tellraw @a [{"text":"[Preset: kill the boss]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/boss"},"hoverEvent":{"action":"show_text","value":{"text":"Kill a player with randomly selected advantages"}}}]
 tellraw @a [{"text":"[Preset: battleroyale]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/battleroyale"},"hoverEvent":{"action":"show_text","value":{"text":"Kill other players to score"}}}]
+tellraw @a [{"text":"[Preset: conversion]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/cult"},"hoverEvent":{"action":"show_text","value":{"text":"The goal is for the cultist to bring riches to the sacred stone and convert everyone. The others must stop them."}}}]
 tellraw @a [{"text":"[Preset: king of the hill]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/king_of_the_hill"},"hoverEvent":{"action":"show_text","value":{"text":"Stay on the hill for as long as possible"}}}]
 
 tellraw @a [" "]
