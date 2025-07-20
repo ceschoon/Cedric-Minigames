@@ -4,7 +4,8 @@ scoreboard players set #cgame_time_to_win cgame_setting 999999
 scoreboard players set #cgame_score_to_win cgame_setting 999999
 scoreboard players set #cgame_curse_active cgame_setting 0
 scoreboard players set #cgame_map_size cgame_setting 3
-scoreboard players set #cgame_starting_team cgame_setting 5
+
+scoreboard players set @a[scores={cfp_is_fake_player=0}] cgame_starting_team 5
 
 scoreboard players set @a[scores={cfp_is_fake_player=0}] cgame_is_fake_cultist 0
 scoreboard players set @r[scores={cfp_is_fake_player=0}] cgame_is_fake_cultist 1

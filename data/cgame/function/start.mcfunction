@@ -29,8 +29,8 @@ effect give @a[scores={cgame_on=1}] saturation 10 10
 
 clear @a[scores={cgame_on=1}]
 give @a[scores={cgame_on=1}] compass
-execute as @a[scores={cgame_on=1}] run function cgame:give_starter_kit
 execute as @a[scores={cgame_on=1}] run function cgame:give_respawn_set
+execute as @a[scores={cgame_on=1}] run function cgame:give_starter_kit
 
 tp @a[scores={cgame_on=1}] ~ ~ ~
 

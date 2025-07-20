@@ -26,12 +26,13 @@ execute as @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_streak=5}] unless 
 ###########################################################
 ## Cultists
 
+## Fake cultist automatically leaves the cultist team if he removes/replaces his helmet
+## Note that we don't allow this in the first second because they don't have their helmet at the start of the game
+execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_is_fake_cultist=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:65280}}}]}] unless score #ctime_Seconds ctime_variable matches 0 run function cgame:fake_cultist_reveal
+
 execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_is_fake_cultist=0}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:65280}}}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=65280,enchantments={levels:{"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}}]
 
 execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_is_fake_cultist=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:65280}}}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=65280,enchantments={levels:{"minecraft:vanishing_curse":1}}]
-
-## Fake cultist automatically leaves the cultist team if he removes/replaces his helmet
-execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_is_fake_cultist=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet",components:{"minecraft:dyed_color":{rgb:65280}}}]}] run team join cgame_regular @s
 
 
 ###########################################################
