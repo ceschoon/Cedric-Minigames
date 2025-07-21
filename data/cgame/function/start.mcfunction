@@ -38,6 +38,7 @@ give @a[scores={cgame_on=1}] compass
 execute as @a[scores={cgame_on=1}] run function cgame:give_respawn_set
 execute as @a[scores={cgame_on=1}] run function cgame:give_starter_kit
 
+function cgame:find_start_location
 tp @a[scores={cgame_on=1}] ~ ~ ~
 
 ## Note: armor stands are cleared in the load function

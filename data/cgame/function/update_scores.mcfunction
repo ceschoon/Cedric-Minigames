@@ -12,5 +12,5 @@ execute if score #cgame_preptime cgame_setting matches ..0 if score #ctime_Ticks
 ##########################################
 ## Other scores
 
-scoreboard players add @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_detect=1..}] cgame_score 100
-scoreboard players add @a[team=!cgame_cultist,scores={cgame_on=1,cgame_cult_kill_detect=1..}] cgame_score 100
+scoreboard players add @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_detect=1}] cgame_score 100
+scoreboard players add @a[team=!cgame_cultist,scores={cgame_on=1,cgame_cult_kill_detect=1}] cgame_score 100

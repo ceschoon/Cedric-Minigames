@@ -104,8 +104,12 @@ execute at @e[type=armor_stand,name=cgame_sacred_stone] if score #sacred_stone_m
 
 execute at @e[type=armor_stand,name=cgame_sacred_stone] positioned ~ ~1 ~ run tp @e[type=villager,tag=cgame_cult_villager,distance=0.5..] ~ ~ ~
 
+team join cgame_cultist @e[type=villager,tag=cgame_cult_villager]
+effect give @e[type=villager,tag=cgame_cult_villager] glowing infinite
+
 execute if score #sacred_stone_missing_blocks cgame_variable matches ..0 run tp @e[type=villager,tag=cgame_cult_villager] ~ -999 ~
 execute if score #sacred_stone_missing_blocks cgame_variable matches ..0 run kill @e[type=villager,tag=cgame_cult_villager]
+
 
 
 #########################################################
