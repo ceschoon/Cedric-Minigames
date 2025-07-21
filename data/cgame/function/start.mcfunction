@@ -10,6 +10,8 @@ scoreboard players set @a[scores={cgame_on=1}] cgame_cult_conversion_delay 0
 scoreboard players set @a[scores={cgame_on=1}] cgame_cult_warning_delay 0
 scoreboard players set @a[scores={cgame_on=1}] cgame_cult_kill_detect 0
 
+scoreboard players set #cgame_cult_conversion cgame_variable 0
+
 function ctime:reset
 
 scoreboard objectives setdisplay sidebar cgame_score
@@ -27,6 +29,9 @@ effect clear @a[scores={cgame_on=1}]
 effect give @a[scores={cgame_on=1}] resistance 10 255
 effect give @a[scores={cgame_on=1}] regeneration 10 10
 effect give @a[scores={cgame_on=1}] saturation 10 10
+
+xp set @a[scores={cgame_on=1}] 0 levels
+xp set @a[scores={cgame_on=1}] 0 points
 
 clear @a[scores={cgame_on=1}]
 give @a[scores={cgame_on=1}] compass

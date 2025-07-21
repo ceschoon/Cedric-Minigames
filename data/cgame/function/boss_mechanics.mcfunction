@@ -1,14 +1,14 @@
 
 ## Bossbar 
 
-execute unless entity @a[team=cgame_boss,scores={cgame_on=1}] run bossbar remove playerboss
-execute if entity @a[team=cgame_boss,scores={cgame_on=1}] run bossbar add playerboss {"text":"Boss Health","color":"light_purple"}
+execute unless entity @a[team=cgame_boss,scores={cgame_on=1}] run bossbar remove cgame_boss_health
+execute if entity @a[team=cgame_boss,scores={cgame_on=1}] run bossbar add cgame_boss_health {"text":"Boss Health","color":"light_purple"}
 
-bossbar set playerboss players @a[scores={cgame_on=1}]
-bossbar set playerboss color pink
+bossbar set cgame_boss_health players @a[scores={cgame_on=1}]
+bossbar set cgame_boss_health color pink
 
-execute store result bossbar playerboss max run attribute @p[team=cgame_boss,scores={cgame_on=1}] minecraft:max_health base get
-execute store result bossbar playerboss value run data get entity @p[team=cgame_boss,scores={cgame_on=1}] Health
+execute store result bossbar cgame_boss_health max run attribute @p[team=cgame_boss,scores={cgame_on=1}] minecraft:max_health base get
+execute store result bossbar cgame_boss_health value run data get entity @p[team=cgame_boss,scores={cgame_on=1}] Health
 
 
 ## Other things
