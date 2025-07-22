@@ -69,6 +69,7 @@ scoreboard players set #cgame_include_barrel_drops cgame_setting 0
 scoreboard players set #cgame_include_sacred_stone cgame_setting 0
 scoreboard players set #cgame_starter_kit cgame_setting 0
 scoreboard players set #cgame_shrink_border cgame_setting 0
+scoreboard players set #cgame_include_hunter_item_shop cgame_setting 0
 
 # This will be used to set the worldborder to 100*cgame_map_size
 scoreboard players set #cgame_map_size cgame_setting 3
@@ -89,6 +90,7 @@ team remove cgame_decrement
 team remove cgame_boss
 team remove cgame_hunter
 team remove cgame_cultist
+team remove cgame_portable_item_shop
 
 team add cgame_regular
 team add cgame_increment
@@ -96,6 +98,7 @@ team add cgame_decrement
 team add cgame_boss
 team add cgame_hunter
 team add cgame_cultist
+team add cgame_portable_item_shop
 
 team modify cgame_regular color gray
 team modify cgame_increment color gold
@@ -110,6 +113,8 @@ team modify cgame_decrement nametagVisibility never
 team modify cgame_boss nametagVisibility never
 team modify cgame_hunter nametagVisibility never
 team modify cgame_cultist nametagVisibility never
+
+team modify cgame_portable_item_shop collisionRule never
 
 
 ###############################################################
