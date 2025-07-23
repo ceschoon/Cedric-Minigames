@@ -17,6 +17,9 @@ function cgame:hill_mechanics
 function cgame:boss_mechanics
 function cgame:cult_mechanics
 
+# cultists gain nether star as a kill reward
+give @a[team=cgame_cultist,scores={cgame_on=1,cgame_kill_detect=1}] nether_star[lore=['{"text":"Use me to build a copper beacon and stand on it","italic":false}'],enchantment_glint_override=true] 1
+
 # hunters gain life crystals as a kill reward
 give @a[team=cgame_hunter,scores={cgame_on=1,cgame_kill_detect=1}] amethyst_shard[lore=['{"text":"Life crystal","italic":false}'],enchantment_glint_override=true] 2
 

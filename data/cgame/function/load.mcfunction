@@ -33,6 +33,7 @@ scoreboard objectives remove cgame_is_fake_cultist
 scoreboard objectives remove cgame_cult_conversion_delay
 scoreboard objectives remove cgame_cult_warning_delay
 scoreboard objectives remove cgame_cult_kill_detect
+scoreboard objectives remove cgame_cult_beacon_level
 
 scoreboard objectives add cgame_score dummy "Score"
 scoreboard objectives add cgame_kills minecraft.custom:minecraft.player_kills
@@ -48,6 +49,7 @@ scoreboard objectives add cgame_is_fake_cultist dummy
 scoreboard objectives add cgame_cult_conversion_delay dummy
 scoreboard objectives add cgame_cult_warning_delay dummy
 scoreboard objectives add cgame_cult_kill_detect teamkill.dark_green
+scoreboard objectives add cgame_cult_beacon_level dummy
 
 
 ###############################################################
@@ -122,6 +124,7 @@ team modify cgame_portable_item_shop collisionRule never
 
 kill @e[type=armor_stand,name=cgame_map_center]
 kill @e[type=armor_stand,name=cgame_hill]
+kill @e[type=armor_stand,name=cgame_cult_beacon]
 kill @e[type=armor_stand,name=cgame_sacred_stone]
 kill @e[type=armor_stand,name=cgame_sacred_stone_blocks]
 
