@@ -124,6 +124,8 @@ team modify cgame_portable_item_shop collisionRule never
 kill @e[type=armor_stand,name=cgame_map_center]
 kill @e[type=armor_stand,name=cgame_hill]
 kill @e[type=armor_stand,name=cgame_cult_beacon]
+kill @e[type=armor_stand,name="Cultist Beacon Level 1/2"]
+kill @e[type=armor_stand,name="Cultist Beacon Level 2/2"]
 
 kill @e[type=villager,tag=cgame_cult_villager]
 
