@@ -68,7 +68,6 @@ scoreboard players set #cgame_curse_active cgame_setting 0
 scoreboard players set #cgame_include_hill cgame_setting 0
 scoreboard players set #cgame_include_boss cgame_setting 0
 scoreboard players set #cgame_include_barrel_drops cgame_setting 0
-scoreboard players set #cgame_include_sacred_stone cgame_setting 0
 scoreboard players set #cgame_starter_kit cgame_setting 0
 scoreboard players set #cgame_shrink_border cgame_setting 0
 scoreboard players set #cgame_include_hunter_item_shop cgame_setting 0
@@ -125,8 +124,6 @@ team modify cgame_portable_item_shop collisionRule never
 kill @e[type=armor_stand,name=cgame_map_center]
 kill @e[type=armor_stand,name=cgame_hill]
 kill @e[type=armor_stand,name=cgame_cult_beacon]
-kill @e[type=armor_stand,name=cgame_sacred_stone]
-kill @e[type=armor_stand,name=cgame_sacred_stone_blocks]
 
 kill @e[type=villager,tag=cgame_cult_villager]
 
