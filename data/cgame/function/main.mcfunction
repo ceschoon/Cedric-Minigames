@@ -67,8 +67,9 @@ execute store result score @a[scores={cgame_on=1}] cgame_time_copy_for_display r
 scoreboard objectives setdisplay list cgame_time_copy_for_display
 
 # detect win
-execute as @a[scores={cgame_on=1}] if score @s cgame_score >= #cgame_score_to_win cgame_setting at @s run function cgame:win
-execute as @a[scores={cgame_on=1}] if score #ctime_Seconds ctime_variable >= #cgame_time_to_win cgame_setting at @s run function cgame:find_winner
+execute if score #cgame_end_game_when_no_cultist_left cgame_setting matches 1 unless entity @a[team=cgame_cultist,scores={cgame_on=1}] run scoreboard players set #cgame_time_to_win cgame_setting 0
+execute as @a[scores={cgame_on=1}] if score @s cgame_score >= #cgame_score_to_win cgame_setting run function cgame:find_winner
+execute as @a[scores={cgame_on=1}] if score #ctime_Seconds ctime_variable >= #cgame_time_to_win cgame_setting run function cgame:find_winner
 
 # helmet to better distinguish teams
 function cgame:force_team_helmets

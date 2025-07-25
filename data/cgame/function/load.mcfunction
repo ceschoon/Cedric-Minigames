@@ -79,6 +79,7 @@ scoreboard players set #cgame_include_barrel_drops cgame_setting 0
 scoreboard players set #cgame_starter_kit cgame_setting 0
 scoreboard players set #cgame_shrink_border cgame_setting 0
 scoreboard players set #cgame_include_hunter_item_shop cgame_setting 0
+scoreboard players set #cgame_end_game_when_no_cultist_left cgame_setting 0
 
 # This will be used to set the worldborder to 100*cgame_map_size
 scoreboard players set #cgame_map_size cgame_setting 3
