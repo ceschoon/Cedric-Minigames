@@ -41,8 +41,8 @@ scoreboard players set @r[team=cgame_boss,scores={cgame_on=1}] cgame_temp 0
 team join cgame_regular @a[scores={cgame_temp=1,cgame_on=1}]
 
 #### DEBUG
-execute as @a[scores={ctime_DeathCount=1..}] run say "DEBUG: @s just died"
-execute as @a[scores={cgame_kill_detect=1..}] run say "DEBUG: @s killed someone"
+#execute as @a[scores={ctime_DeathCount=1..}] run say "DEBUG: @s just died"
+#execute as @a[scores={cgame_kill_detect=1..}] run say "DEBUG: @s killed someone"
 #execute as @a[scores={cgame_kill_detect=1..}] as @a[team=cgame_increment] run say "DEBUG: @s is tagged (inc)"
 #execute as @a[scores={cgame_kill_detect=1..}] as @a[team=cgame_decrement] run say "DEBUG: @s is tagged (dec)"
 

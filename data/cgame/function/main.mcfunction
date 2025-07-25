@@ -66,9 +66,6 @@ execute as @a[team=cgame_boss] run function compass:trackme
 execute store result score @a[scores={cgame_on=1}] cgame_time_copy_for_display run scoreboard players get #ctime_Seconds ctime_variable
 scoreboard objectives setdisplay list cgame_time_copy_for_display
 
-# game ends if there are only regular players left and no way to progress into the game
-execute unless entity @a[team=!cgame_regular,scores={cgame_on=1}] unless entity @e[type=armor_stand,name=cgame_hill] run scoreboard players set #cgame_time_to_win cgame_setting -999999
-
 # detect win
 execute as @a[scores={cgame_on=1}] if score @s cgame_score >= #cgame_score_to_win cgame_setting at @s run function cgame:win
 execute as @a[scores={cgame_on=1}] if score #ctime_Seconds ctime_variable >= #cgame_time_to_win cgame_setting at @s run function cgame:find_winner
