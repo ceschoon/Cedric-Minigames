@@ -51,15 +51,23 @@ scoreboard objectives add cgame_cult_warning_delay dummy
 scoreboard objectives add cgame_cult_kill_detect teamkill.dark_green
 scoreboard objectives add cgame_cult_beacon_level dummy
 
+scoreboard players set @a cgame_score 0
+scoreboard players set @a cgame_kills 0
+scoreboard players set @a cgame_kill_detect 0
+scoreboard players set @a cgame_kill_streak 0
+scoreboard players set @a cgame_starting_team 0
+scoreboard players set @a cgame_is_on_hill 0
+scoreboard players set @a cgame_is_fake_cultist 0
+scoreboard players set @a cgame_cult_conversion_delay 0
+scoreboard players set @a cgame_cult_warning_delay 0
+scoreboard players set @a cgame_cult_kill_detect 0
+
 
 ###############################################################
 ## Global variables/settings
 
 scoreboard objectives remove cgame_setting
 scoreboard objectives add cgame_setting dummy
-
-scoreboard objectives remove cgame_variable
-scoreboard objectives add cgame_variable dummy
 
 scoreboard players set #cgame_preptime cgame_setting 0
 scoreboard players set #cgame_time_to_win cgame_setting 999999
@@ -74,6 +82,11 @@ scoreboard players set #cgame_include_hunter_item_shop cgame_setting 0
 
 # This will be used to set the worldborder to 100*cgame_map_size
 scoreboard players set #cgame_map_size cgame_setting 3
+
+scoreboard objectives remove cgame_variable
+scoreboard objectives add cgame_variable dummy
+
+scoreboard players set #cgame_cult_conversion cgame_variable 0
 
 
 ###############################################################
