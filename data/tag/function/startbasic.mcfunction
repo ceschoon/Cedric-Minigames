@@ -2,6 +2,8 @@
 scoreboard players set @a tag_On 1
 scoreboard players set @a[scores={cfp_is_fake_player=1}] tag_On 0
 
+scoreboard players set #compass_active compass_setting 1
+
 scoreboard players set @a[scores={tag_On=1}] tag_Score 0
 scoreboard players set @a[scores={tag_On=1}] tag_Kills 0
 scoreboard players set @a[scores={tag_On=1}] tag_KillDetect 0

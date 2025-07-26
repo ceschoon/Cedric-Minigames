@@ -1,6 +1,7 @@
 tellraw @a [" "]
 tellraw @a [{"text":"=== Compass module ===","color":"gold","bold":true}]
 tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function compass:load"}}]
+tellraw @a [{"text":"[Enable/Disable module (0 or 1)]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/scoreboard players set #compass_active compass_setting 0"}}]
 tellraw @a [{"text":"[Info]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function compass:info"}}]
 tellraw @a [{"text":"[Track me]","color":"green", "clickEvent":{"action":"run_command","value":"/function compass:trackme"},"hoverEvent":{"action":"show_text","value":{"text":"Make compasses point to the player who clicks"}}}]
 tellraw @a [{"text":"[Track here]","color":"green", "clickEvent":{"action":"run_command","value":"/function compass:trackhere"},"hoverEvent":{"action":"show_text","value":{"text":"Make compasses point to this location"}}}]

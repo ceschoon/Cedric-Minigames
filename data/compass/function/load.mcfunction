@@ -1,5 +1,9 @@
 # Compass Module reload
 
+scoreboard objective remove compass_setting
+scoreboard objective add compass_setting dummy
+scoreboard players set #compass_active compass_setting 0
+
 ## target = 0 means the player is not being tracked
 ## target = 1 means the player is a tracking target
 ## target = 2 is a trick to run the pointindimension functions with a static target (should be implemente differently)
@@ -18,11 +22,6 @@ scoreboard objectives add Z dummy
 
 scoreboard players set @a drop 0
 scoreboard players set @a target 0
-
-# Track mechanism by ringing bells
-scoreboard objectives remove cbellring
-scoreboard objectives add cbellring minecraft.custom:minecraft.bell_ring
-scoreboard players set @a cbellring 0
 
 # Variable used to spread players: indicates the presence of a roof
 # TODO: This should be avoided and the other minigame functions should detect the dimension on their own

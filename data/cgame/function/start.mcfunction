@@ -2,6 +2,8 @@
 scoreboard players set @a cgame_on 1
 scoreboard players set @a[scores={cfp_is_fake_player=1}] cgame_on 0
 
+scoreboard players set #compass_active compass_setting 1
+
 function ctime:reset
 
 scoreboard objectives setdisplay sidebar cgame_score

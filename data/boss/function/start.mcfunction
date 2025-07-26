@@ -4,6 +4,8 @@ scoreboard players set @a boss_On 1
 scoreboard players set @a[scores={cfp_is_fake_player=1}] boss_On 0
 scoreboard players set @a[scores={boss_On=1}] boss_Who 0
 
+scoreboard players set #compass_active compass_setting 1
+
 bossbar add playerboss "Boss Health"
 
 gamerule keepInventory true

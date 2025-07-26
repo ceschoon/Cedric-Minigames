@@ -1,4 +1,7 @@
 
+#####################################################################
+## Player variables
+
 scoreboard objectives remove cmagic_num_life_cryst
 scoreboard objectives remove cmagic_has_magical_item
 scoreboard objectives remove cmagic_has_magical_item2
@@ -13,7 +16,14 @@ scoreboard objectives add cmagic_num_magical_items dummy
 scoreboard objectives add cmagic_trident_lightning_delay dummy
 scoreboard objectives add cmagic_barrel_age dummy
 
-# Global variables
+# Track mechanism by ringing bells
+scoreboard objectives remove cbellring
+scoreboard objectives add cbellring minecraft.custom:minecraft.bell_ring
+scoreboard players set @a cbellring 0
+
+
+#####################################################################
+## Global variables
 scoreboard objectives remove cmagic_variable
 scoreboard objectives add cmagic_variable dummy
 scoreboard players set #cmagic_barrel_drop_delay cmagic_variable -1

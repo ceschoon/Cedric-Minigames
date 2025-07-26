@@ -6,3 +6,7 @@ execute as @a at @s run function cmagic:process_life_crystals
 execute as @a at @s run function cmagic:process_magical_items
 
 execute if score #cmagic_barrel_drop_delay cmagic_variable matches 0.. run function cmagic:process_barrel_drops
+
+# Apply glowing to all players in range of bell ringing
+execute at @a[scores={cbellring=1..}] run effect give @a[distance=1..32] glowing 5
+scoreboard players set @a[scores={cbellring=1..}] cbellring 0
