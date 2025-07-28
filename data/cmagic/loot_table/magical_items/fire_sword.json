@@ -7,7 +7,7 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_sword",
           "functions": [
-            {"function": "minecraft:set_components","components": {"minecraft:enchantment_glint_override": true,"minecraft:stored_enchantments": {"levels": {"fire_aspect":2,"sweeping_edge":3,"looting":3}}}},
+            {"function": "minecraft:set_components","components": {"minecraft:enchantment_glint_override": true,"minecraft:stored_enchantments": {"levels": {"vanishing_curse":1,"fire_aspect":2,"sweeping_edge":3,"looting":3}}}},
             {"function": "minecraft:set_lore","lore": [{"text": "CMagic Item","italic": false}],"mode": "append"}
           ]
         }
