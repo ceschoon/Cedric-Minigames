@@ -7,10 +7,10 @@ function cgame:preptime
 
 # permanent effects
 effect give @a[team=cgame_increment,scores={cgame_on=1}] mining_fatigue 10 0 true
-effect give @a[team=cgame_decrement,scores={cgame_on=1}] glowing 1 255 true
+effect give @a[team=cgame_decrement,scores={cgame_on=1}] glowing 10 0 true
 effect give @a[team=cgame_boss,scores={cgame_on=1}] resistance 10 1 true
 effect give @a[team=cgame_boss,scores={cgame_on=1}] mining_fatigue 10 0 true
-effect give @a[team=cgame_cultist,scores={cgame_on=1}] glowing 1 255 true
+effect give @a[team=cgame_boss,scores={cgame_on=1}] glowing 10 0 true
 
 # special mechanics
 function cgame:hill_mechanics
