@@ -1,9 +1,5 @@
 
-## Differences wrt old code:
-## Kill limit of 1
-## Shorter distance (..1 instead of ..3)
-
-execute at @s run kill @e[type=item,nbt={Item:{id:"minecraft:compass",count:1}},distance=..1,limit=1]
+execute at @s positioned ~ ~1.6 ~ run kill @e[type=item,nbt={Item:{id:"minecraft:compass"}},distance=..1]
 execute at @s run summon minecraft:item ~ ~ ~ {Item:{id:"minecraft:compass",count:1,components:{lore:['{"text":"Dimension: Overworld","italic":false}']}}}
 
 execute at @s run data merge entity @e[type=item,nbt={Item:{id:"minecraft:compass"}},distance=..1,limit=1] {Item:{components:{"minecraft:lodestone_tracker":{target:{dimension:"minecraft:overworld",pos:[I;0,0,0]},tracked:false}}}}

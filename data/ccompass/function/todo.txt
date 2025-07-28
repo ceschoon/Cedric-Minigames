@@ -1,6 +1,2 @@
 Add compass type as lore when summoning new compass in point_in_x functions (append with data merge -- item??)
-For compass type 0, filter out players in the same team (how to do it without copying 16 times the same line of code ??)
-Replace y level estimation by an indication of whether the target is above or below the player
-Also add a distance estimation
-
-
+For compass type 0, filter out players in the same team (how to do it ??)

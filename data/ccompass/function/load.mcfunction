@@ -31,13 +31,13 @@ scoreboard players set @a ccompass_z 0
 ################################################################################
 ## Global variables / settings
 
-scoreboard objective remove ccompass_setting
-scoreboard objective add ccompass_setting dummy
+scoreboard objectives remove ccompass_setting
+scoreboard objectives add ccompass_setting dummy
 
 scoreboard players set #ccompass_active ccompass_setting 0
 
-scoreboard objective remove ccompass_variable
-scoreboard objective add ccompass_variable dummy
+scoreboard objectives remove ccompass_variable
+scoreboard objectives add ccompass_variable dummy
 
 
 ################################################################################

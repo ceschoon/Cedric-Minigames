@@ -3,7 +3,7 @@
 
 scoreboard objectives remove ccompass_target_copy
 scoreboard objectives add ccompass_target_copy dummy
-execute as @e run store result score @s ccompass_target_copy run scoreboard players get @s ccompass_target_copy
+execute as @e store result score @s ccompass_target_copy run scoreboard players get @s ccompass_target
 
 ## Exclude yourself from the target list
 
@@ -39,17 +39,19 @@ execute if entity @e[scores={ccompass_target_copy=2..}] run scoreboard players r
 
 ## Store coordinates of the nearest eligible target
 
-execute at @s if entity @e[scores={ccompass_target_copy=1..}] store result score @s X run data get entity @n[scores={ccompass_target_copy=1..}] Pos[0] 1
-execute at @s if entity @e[scores={ccompass_target_copy=1..}] store result score @s Y run data get entity @n[scores={ccompass_target_copy=1..}] Pos[1] 1
-execute at @s if entity @e[scores={ccompass_target_copy=1..}] store result score @s Z run data get entity @n[scores={ccompass_target_copy=1..}] Pos[2] 1
+execute at @s if entity @e[scores={ccompass_target_copy=1..}] store result score @s ccompass_x run data get entity @n[scores={ccompass_target_copy=1..}] Pos[0] 1
+execute at @s if entity @e[scores={ccompass_target_copy=1..}] store result score @s ccompass_y run data get entity @n[scores={ccompass_target_copy=1..}] Pos[1] 1
+execute at @s if entity @e[scores={ccompass_target_copy=1..}] store result score @s ccompass_z run data get entity @n[scores={ccompass_target_copy=1..}] Pos[2] 1
 
-## Tell the approximate y level of the target
+## Tell if target is above or below
 
-execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..},x=-1000000,dx=2000000,y=-64,dy=64,z=-1000000,dz=2000000] run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is below y=0"}]
-execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..},x=-1000000,dx=2000000,y=0,dy=64,z=-1000000,dz=2000000] run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is below y=64"}]
-execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..},x=-1000000,dx=2000000,y=64,dy=64,z=-1000000,dz=2000000] run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is above y=64"}]
-execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..},x=-1000000,dx=2000000,y=128,dy=64,z=-1000000,dz=2000000] run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is above y=128"}]
-execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..},x=-1000000,dx=2000000,y=192,dy=64,z=-1000000,dz=2000000] run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is above y=192"}]
-execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..},x=-1000000,dx=2000000,y=256,dy=1000000,z=-1000000,dz=2000000] run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is above y=256"}]
+execute store result score #player_y ccompass_variable run data get entity @s Pos[1] 1
+execute store result score #target_dy ccompass_variable run data get entity @n[scores={ccompass_target_copy=1..}] Pos[1] 1
+scoreboard players operation #target_dy ccompass_variable -= #player_y ccompass_variable
 
+execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..}] if score #target_dy ccompass_variable matches ..-30 run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is far below you"}]
+execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..}] if score #target_dy ccompass_variable matches -29..-2 run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is below you"}]
+execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..}] if score #target_dy ccompass_variable matches -1..1 run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is level with you"}]
+execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..}] if score #target_dy ccompass_variable matches 2..29 run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is above you"}]
+execute at @s if entity @s[scores={ccompass_dropped=1..}] if entity @n[scores={ccompass_target_copy=1..}] if score #target_dy ccompass_variable matches 30.. run title @s actionbar [{"text":"Target "},{"selector":"@n[scores={ccompass_target_copy=1..}]"},{"text":" is far above you"}]
 
