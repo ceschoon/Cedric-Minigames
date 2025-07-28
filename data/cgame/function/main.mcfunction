@@ -76,13 +76,21 @@ function cgame:force_team_helmets
 
 # compass target priorities
 scoreboard players set @a ccompass_target 0
-scoreboard players set @a[team=cgame_regular] ccompass_target 1
-scoreboard players set @a[team=cgame_increment] ccompass_target 3
-scoreboard players set @a[team=cgame_decrement] ccompass_target 3
-scoreboard players set @a[team=cgame_boss] ccompass_target 3
-scoreboard players set @a[team=cgame_hunter] ccompass_target 0
-scoreboard players set @a[team=cgame_cultist] ccompass_target 2
-scoreboard players set @e[type=armor_stand,name=cgame_hill] ccompass_target 1
+scoreboard players set @a[scores={cgame_on=1},team=cgame_regular] ccompass_target 1
+scoreboard players set @a[scores={cgame_on=1},team=cgame_increment] ccompass_target 3
+scoreboard players set @a[scores={cgame_on=1},team=cgame_decrement] ccompass_target 3
+scoreboard players set @a[scores={cgame_on=1},team=cgame_boss] ccompass_target 3
+scoreboard players set @a[scores={cgame_on=1},team=cgame_hunter] ccompass_target 0
+scoreboard players set @a[scores={cgame_on=1},team=cgame_cultist] ccompass_target 2
+scoreboard players set @e[scores={cgame_on=1},type=armor_stand,name=cgame_hill] ccompass_target 1
+
+# compass groups
+scoreboard players set @a[scores={cgame_on=1},team=cgame_regular] ccompass_group 6
+scoreboard players set @a[scores={cgame_on=1},team=cgame_increment] ccompass_group 10
+scoreboard players set @a[scores={cgame_on=1},team=cgame_decrement] ccompass_group 9
+scoreboard players set @a[scores={cgame_on=1},team=cgame_boss] ccompass_group 13
+scoreboard players set @a[scores={cgame_on=1},team=cgame_hunter] ccompass_group 8
+scoreboard players set @a[scores={cgame_on=1},team=cgame_cultist] ccompass_group 7
 
 # make players invincible during pauses
 execute if score #ctime_Pause ctime_variable matches 1 run effect give @a[scores={cgame_on=1}] resistance 1 255

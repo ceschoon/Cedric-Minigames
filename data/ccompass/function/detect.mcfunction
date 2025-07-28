@@ -23,12 +23,24 @@ execute unless entity @s[nbt={Dimension:"minecraft:the_end"}] run scoreboard pla
 execute if score @s ccompass_type matches 1 run scoreboard players set @e[type=!player,scores={ccompass_target_copy=1..}] ccompass_target_copy 0
 execute if score @s ccompass_type matches 2 run scoreboard players set @e[type=!armor_stand,scores={ccompass_target_copy=1..}] ccompass_target_copy 0
 
-## Type 1x, x=1,2,3,4 track players of matching target priority value
+## Type 10x tracks players in ccompass_group=x (and target priority>=1)
 
-#execute if score @s ccompass_type matches 11 as @e unless @s[type=player,scores={ccompass_target_copy=1}] run scoreboard players set @s ccompass_target_copy 0
-#execute if score @s ccompass_type matches 12 as @e unless @s[type=player,scores={ccompass_target_copy=2}] run scoreboard players set @s ccompass_target_copy 0
-#execute if score @s ccompass_type matches 13 as @e unless @s[type=player,scores={ccompass_target_copy=3}] run scoreboard players set @s ccompass_target_copy 0
-#execute if score @s ccompass_type matches 14 as @e unless @s[type=player,scores={ccompass_target_copy=4}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 101 as @e unless entity @s[type=player,scores={ccompass_group=1,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 102 as @e unless entity @s[type=player,scores={ccompass_group=2,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 103 as @e unless entity @s[type=player,scores={ccompass_group=3,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 104 as @e unless entity @s[type=player,scores={ccompass_group=4,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 105 as @e unless entity @s[type=player,scores={ccompass_group=5,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 106 as @e unless entity @s[type=player,scores={ccompass_group=6,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 107 as @e unless entity @s[type=player,scores={ccompass_group=7,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 108 as @e unless entity @s[type=player,scores={ccompass_group=8,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 109 as @e unless entity @s[type=player,scores={ccompass_group=9,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 110 as @e unless entity @s[type=player,scores={ccompass_group=10,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 111 as @e unless entity @s[type=player,scores={ccompass_group=11,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 112 as @e unless entity @s[type=player,scores={ccompass_group=12,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 113 as @e unless entity @s[type=player,scores={ccompass_group=13,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 114 as @e unless entity @s[type=player,scores={ccompass_group=14,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 115 as @e unless entity @s[type=player,scores={ccompass_group=15,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
+execute if score @s ccompass_type matches 116 as @e unless entity @s[type=player,scores={ccompass_group=16,ccompass_target_copy=1..}] run scoreboard players set @s ccompass_target_copy 0
 
 ## Remove entities of low target priority
 ## Note: This line is repeated 3 times so the filter will only work if there is no targets with priority values above 4
