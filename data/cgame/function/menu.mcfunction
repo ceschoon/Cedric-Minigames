@@ -20,8 +20,8 @@ tellraw @a [{"text":"[Preset: king of the hill]","color":"aqua", "clickEvent":{"
 
 tellraw @a [" "]
 tellraw @a [{"text":"Step 3: Tweak the settings (Optional)","color":"gold"}]
+tellraw @a [{"text":"[Limit game duration]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_time_to_win cgame_setting 1200"}}]
 tellraw @a [{"text":"[Change preparation time]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_preptime cgame_setting 0"}}]
-tellraw @a [{"text":"[Change time to win]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_time_to_win cgame_setting 1200"}}]
 tellraw @a [{"text":"[Change score to win]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_score_to_win cgame_setting 1200"}}]
 tellraw @a [{"text":"[Change map size (1 to 5)]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_map_size cgame_setting 1"}}]
 tellraw @a [{"text":"[Enable border shrink (0 or 1)]","color":"aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #cgame_shrink_border cgame_setting 1"}}]
