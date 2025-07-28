@@ -1,7 +1,7 @@
 # Compass Module reload
 
-scoreboard objective remove compass_setting
-scoreboard objective add compass_setting dummy
+scoreboard objectives remove compass_setting
+scoreboard objectives add compass_setting dummy
 scoreboard players set #compass_active compass_setting 0
 
 ## target = 0 means the player is not being tracked

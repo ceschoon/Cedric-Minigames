@@ -1,6 +1,6 @@
 
 # display menu
-tellraw @a[scores={cmenu_show=1..}] [{"text":"[Show menu: Compass module]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function compass:menu"}}]
+tellraw @a[scores={cmenu_show=1..}] [{"text":"[Show menu: Compass module (legacy)]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function compass:menu"}}]
 
 execute if score #compass_active compass_setting matches 1 run function compass:main
 
