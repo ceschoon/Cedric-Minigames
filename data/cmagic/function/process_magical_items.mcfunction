@@ -2,10 +2,15 @@
 #give @s netherite_sword[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true,enchantments={levels:{"fire_aspect":2,"sweeping_edge":3,"looting":3}}]
 
 
-
+scoreboard players set @s cmagic_has_magical_ticket 0
 scoreboard players set @s cmagic_has_magical_item 0
 scoreboard players set @s cmagic_has_magical_item2 0
 scoreboard players set @s cmagic_num_magical_items 0
+
+
+
+execute store success score @s cmagic_has_magical_ticket run clear @s paper[lore=['{"text":"Ticket for a random gift","italic":false}'],enchantment_glint_override=true]
+execute if score @s cmagic_has_magical_ticket matches 1 run loot give @s loot cmagic:magical_item_no_helmet
 
 
 
@@ -123,5 +128,6 @@ execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":['{"italic":fals
 
 ## Playsound around magical item entity
 execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":['{"italic":false,"text":"CMagic Item"}'],"minecraft:enchantment_glint_override":1b}}}] at @s if score #ctime_TicksInSec ctime_variable matches 0 run playsound minecraft:block.enchantment_table.use ambient @a ~ ~ ~ 2.0
+
 
 
