@@ -1,4 +1,4 @@
-Only present in the legacy version of the minigames: boss,infection,koth,tag
+Only present in the legacy version of the minigames: boss,koth,tag
 
 cedric@cedric-B760-AORUS-ELITE-AX:~/.mcserver-pvp/datapacks/Cedric-Minigames/data$ cat animals/*/* | grep dimroof
 cedric@cedric-B760-AORUS-ELITE-AX:~/.mcserver-pvp/datapacks/Cedric-Minigames/data$ cat boss/*/* | grep dimroof
@@ -27,13 +27,6 @@ cedric@cedric-B760-AORUS-ELITE-AX:~/.mcserver-pvp/datapacks/Cedric-Minigames/dat
 cedric@cedric-B760-AORUS-ELITE-AX:~/.mcserver-pvp/datapacks/Cedric-Minigames/data$ cat duels/*/* | grep dimroof
 cat: duels/function/sets: Is a directory
 cedric@cedric-B760-AORUS-ELITE-AX:~/.mcserver-pvp/datapacks/Cedric-Minigames/data$ cat flsheep/*/* | grep dimroof
-cedric@cedric-B760-AORUS-ELITE-AX:~/.mcserver-pvp/datapacks/Cedric-Minigames/data$ cat infection/*/* | grep dimroof
-execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 50 50 false @s
-execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 50 50 under 127 false @s
-cat: # Spread Players (use dimroof variable from compass module)
-infection/tags/blockexecute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 150 150 false @a[scores={inf_On=1}]
-execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 150 150 under 127 false @a[scores={inf_On=1}]
-: Is a directory
 cedric@cedric-B760-AORUS-ELITE-AX:~/.mcserver-pvp/datapacks/Cedric-Minigames/data$ cat koth/*/* | grep dimroof
 # Spread Players (use dimroof variable from compass module)
 execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 100 100 false @a[scores={koth_On=1}]

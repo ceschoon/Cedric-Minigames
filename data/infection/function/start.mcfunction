@@ -35,8 +35,8 @@ setworldspawn ~ ~ ~
 
 # Summon armorstand to indicate the position where the shrine must be constructed
 # Use spreadplayers command to make sure that the shrine is placed at the surface
-execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 50 50 false @s
-execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 50 50 under 127 false @s
+spreadplayers ~ ~ 50 50 false @s
+execute if entity @s[nbt={Dimension:"minecraft:the_nether"}] run spreadplayers ~ ~ 50 50 under 127 false @s
 kill @e[type=armor_stand]
 summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"shrine\"",CustomNameVisible:0}
 execute at @s align xyz run tp @e[type=armor_stand,name=shrine] ~.5 ~-1.5 ~.5
@@ -46,9 +46,9 @@ scoreboard players set #shrine_active inf_variable 0
 # Tp all players to bring them in the correct dimension
 tp @a[scores={inf_On=1}] @s
 
-# Spread Players (use dimroof variable from compass module)
-execute if entity @s[scores={dimroof=0}] run spreadplayers ~ ~ 150 150 false @a[scores={inf_On=1}]
-execute if entity @s[scores={dimroof=1}] run spreadplayers ~ ~ 150 150 under 127 false @a[scores={inf_On=1}]
+# Spread Players
+spreadplayers ~ ~ 150 150 false @a[scores={inf_On=1}]
+execute if entity @s[nbt={Dimension:"minecraft:the_nether"}] run spreadplayers ~ ~ 150 150 under 127 false @a[scores={inf_On=1}]
 
 execute as @a[scores={inf_On=1}] at @s run spawnpoint @s ~ ~ ~
 
