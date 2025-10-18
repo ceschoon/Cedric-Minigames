@@ -1,5 +1,5 @@
 tellraw @a [" "]
-tellraw @a [{"text":"=== New compass module ===","color":"gold","bold":true}]
+tellraw @a [{"text":"=== Compass module ===","color":"gold","bold":true}]
 tellraw @a [{"text":"[Reload]","color":"dark_aqua", "clickEvent":{"action":"run_command","value":"/function ccompass:load"}}]
 tellraw @a [{"text":"[Enable/Disable module (0 or 1)]","color":"dark_aqua", "clickEvent":{"action":"suggest_command","value":"/scoreboard players set #ccompass_active ccompass_setting 1"}}]
 tellraw @a [{"text":"[Change compass type]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function ccompass:select_type"},"hoverEvent":{"action":"show_text","value":{"text":"Change the compass behaviour"}}}]

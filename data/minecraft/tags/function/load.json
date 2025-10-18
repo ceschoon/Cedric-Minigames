@@ -1,22 +1,18 @@
 {
 	"values": [
 	  "animals:load",
-	  "boss:load",
 	  "ccompass:load",
 	  "cgame:load",
 	  "cmagic:load",
 	  "cmenu:load",
-	  "compass:load",
 	  "cscale:load",
 	  "ctime:load",
 	  "cworld:load",
 	  "duels:load",
 	  "flsheep:load",
 	  "infection:load",
-	  "koth:load",
 	  "permeffects:load",
 	  "platforms:load",
-	  "tag:load",
 	  "teams:load",
 	  "zombies:load"
 	  ]

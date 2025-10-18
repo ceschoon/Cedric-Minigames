@@ -1,22 +1,18 @@
 {
 	"values": [
 	  "animals:tick",
-	  "boss:tick",
 	  "ccompass:tick",
 	  "cgame:tick",
 	  "cmagic:tick",
 	  "cmenu:tick",
-	  "compass:tick",
 	  "cscale:tick",
 	  "ctime:tick",
 	  "cworld:tick",
 	  "duels:tick",
 	  "flsheep:tick",
 	  "infection:tick",
-	  "koth:tick",
 	  "platforms:tick",
 	  "permeffects:tick",
-	  "tag:tick",
 	  "teams:tick",
 	  "zombies:tick"
 	  ]
