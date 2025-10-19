@@ -139,9 +139,9 @@ execute at @e[type=armor_stand,name=team3] if score #pltf_DelayWool pltf_variabl
 execute at @e[type=armor_stand,name=team4] if score #pltf_DelayWool pltf_variable matches ..0 run loot spawn ~ ~ ~ loot minecraft:blocks/yellow_wool
 
 # Reset delay
-execute if score #pltf_DelayEmrld pltf_variable matches ..0 run scoreboard players set #pltf_DelayEmrld pltf_variable 100
-execute if score #pltf_DelayDiamd pltf_variable matches ..0 run scoreboard players set #pltf_DelayDiamd pltf_variable 600
-execute if score #pltf_DelayWool pltf_variable matches ..0 run scoreboard players set #pltf_DelayWool pltf_variable 30
+execute if score #pltf_DelayEmrld pltf_variable matches ..0 store result score #pltf_DelayEmrld pltf_variable run scoreboard players get #pltf_delay_emerald pltf_setting
+execute if score #pltf_DelayDiamd pltf_variable matches ..0 store result score #pltf_DelayDiamd pltf_variable run scoreboard players get #pltf_delay_diamond pltf_setting
+execute if score #pltf_DelayWool pltf_variable matches ..0 store result score #pltf_DelayWool pltf_variable run scoreboard players get #pltf_delay_wool pltf_setting
 
 # Keep villagers in place --> it appears that after version 1.21.4,
 # teleporting the villager closes the interaction gui. Therefore, I
