@@ -14,9 +14,7 @@ scoreboard objectives add pltf_DeathCount deathCount
 scoreboard objectives add pltf_DelayBlind dummy
 scoreboard objectives add pltf_DelayCage dummy
 scoreboard objectives add pltf_AddScore dummy
-scoreboard objectives add pltf_Score dummy "Diamonds /20"
-
-scoreboard players set @a pltf_On 0
+scoreboard objectives add pltf_Score dummy "Diamonds"
 
 
 #######################################################
