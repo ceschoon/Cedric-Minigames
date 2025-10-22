@@ -19,7 +19,7 @@ setblock ~-2 ~-2 ~1 emerald_block
 setblock ~2 ~-2 ~1 emerald_ore
 setblock ~2 ~-2 ~ emerald_block
 setblock ~ ~-2 ~2 emerald_ore
-setblock ~1 ~-2 ~2 emerald_ore 
+setblock ~1 ~-2 ~2 emerald_ore
 setblock ~2 ~-2 ~2 emerald_ore
 setblock ~1 ~-2 ~-2 emerald_block
 setblock ~ ~-2 ~2 emerald_ore

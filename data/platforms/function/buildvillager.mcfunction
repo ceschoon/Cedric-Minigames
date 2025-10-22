@@ -21,7 +21,7 @@ fill ~-2 ~-2 ~1 ~-2 ~-2 ~1 furnace replace air
 setblock ~2 ~-2 ~1 cobblestone
 fill ~2 ~-2 ~ ~2 ~-2 ~ furnace replace air
 fill ~ ~-2 ~2 ~ ~-2 ~2 furnace replace air
-setblock ~1 ~-2 ~2 cobblestone 
+setblock ~1 ~-2 ~2 cobblestone
 setblock ~2 ~-2 ~2 cobblestone
 fill ~1 ~-2 ~-2 ~1 ~-2 ~-2 furnace replace air
 fill ~ ~-2 ~2 ~ ~-2 ~2 furnace replace air

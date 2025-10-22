@@ -67,7 +67,7 @@ effect give @a[scores={pltf_On=1}] slowness 3 10
 
 # Inventory and gamemode
 clear @a[scores={pltf_On=1}]
-execute as @a[scores={pltf_On=1}] run function platforms:clearenderchest 
+execute as @a[scores={pltf_On=1}] run function platforms:clearenderchest
 gamemode survival @a[scores={pltf_On=1}]
 
 # Game starts message

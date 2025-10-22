@@ -17,7 +17,7 @@ scoreboard objectives remove inf_variable
 scoreboard objectives add inf_variable dummy
 
 team remove sane
-team add sane 
+team add sane
 team modify sane color green
 team modify sane nametagVisibility never
 

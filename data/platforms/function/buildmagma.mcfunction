@@ -19,7 +19,7 @@ setblock ~-2 ~-2 ~1 magma_block
 setblock ~2 ~-2 ~1 coal_block
 setblock ~2 ~-2 ~ magma_block
 setblock ~ ~-2 ~2 coal_block
-setblock ~1 ~-2 ~2 magma_block 
+setblock ~1 ~-2 ~2 magma_block
 setblock ~2 ~-2 ~2 coal_block
 setblock ~1 ~-2 ~-2 magma_block
 setblock ~ ~-2 ~2 coal_block
