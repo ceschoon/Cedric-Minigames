@@ -151,6 +151,10 @@ execute at @e[type=armor_stand,name=villager1] run tp @e[type=villager,distance=
 execute at @e[type=armor_stand,name=villager2] run tp @e[type=villager,distance=4..9] ~ ~ ~
 execute at @e[type=armor_stand,name=villager3] run tp @e[type=villager,distance=4..9] ~ ~ ~
 
+# Replace witches by villager
+execute as @e[type=witch] at @s run function platforms:summonvillager
+execute as @e[type=witch] run kill @s
+
 # Keep golems in place
 execute at @e[type=armor_stand,name=team1] run tp @e[type=iron_golem,distance=8..10] ~ ~ ~
 execute at @e[type=armor_stand,name=team2] run tp @e[type=iron_golem,distance=8..10] ~ ~ ~
