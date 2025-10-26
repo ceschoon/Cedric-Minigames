@@ -255,6 +255,9 @@ function platforms:cagemechanics
 # Blindness from ink sacs
 function platforms:inkmechanics
 
+# Trident mechanics
+execute if items entity @a[scores={pltf_On=1}] weapon.mainhand minecraft:trident run weather thunder 300
+
 # Enforce no fireball rule if activated
 execute if score #pltf_nofireballs pltf_setting matches 1 run kill @e[type=fireball]
 
