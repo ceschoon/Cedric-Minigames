@@ -6,13 +6,14 @@ effect give @a[scores={pltf_On=1}] saturation 10
 execute as @a[scores={pltf_On=1},nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1}]}] run effect give @s weakness 10 0
 
 # Safety net using special anti-fall boots
-execute at @e[type=armor_stand,name=team1] as @a[scores={pltf_On=1},team=team1,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
-execute at @e[type=armor_stand,name=team2] as @a[scores={pltf_On=1},team=team2,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
-execute at @e[type=armor_stand,name=team3] as @a[scores={pltf_On=1},team=team3,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
-execute at @e[type=armor_stand,name=team4] as @a[scores={pltf_On=1},team=team4,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=149,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team1] as @a[scores={pltf_On=1},team=team1,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=179,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team2] as @a[scores={pltf_On=1},team=team2,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=179,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team3] as @a[scores={pltf_On=1},team=team3,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=179,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team4] as @a[scores={pltf_On=1},team=team4,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":['{"italic":false,"text":"Safety Boots"}']},count:1,Slot:100b}]},x=-1000000,y=179,z=-1000000,dx=2000000,dy=40,dz=2000000] run tp @s ~ ~ ~
 
-# Kill players who fell off the map
-kill @a[x=-1000000,y=0,z=-1000000,dx=2000000,dy=149,dz=2000000,scores={pltf_On=1,pltf_DeathCount=0}]
+# Kill players who fell off the map (and enderpearls)
+kill @a[x=-1000000,y=0,z=-1000000,dx=2000000,dy=179,dz=2000000,scores={pltf_On=1,pltf_DeathCount=0}]
+kill @e[x=-1000000,y=0,z=-1000000,dx=2000000,dy=179,dz=2000000,type=ender_pearl]
 
 # Delay respawn
 scoreboard players set @a[scores={pltf_On=1,pltf_DeathCount=201..}] pltf_DeathCount 0
