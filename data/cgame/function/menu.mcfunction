@@ -10,6 +10,7 @@ tellraw @a [{"text":"[Reload]","color":"aqua", "clickEvent":{"action":"run_comma
 
 tellraw @a [" "]
 tellraw @a [{"text":"Step 2: Select a game preset","color":"gold"}]
+tellraw @a [{"text":"[Preset: random]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/random"}}]
 tellraw @a [{"text":"[Preset: normal tag]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/tag_normal"},"hoverEvent":{"action":"show_text","value":{"text":"Tag game on a 300x300 map"}}}]
 tellraw @a [{"text":"[Preset: mini tag]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/tag_mini"},"hoverEvent":{"action":"show_text","value":{"text":"Tag game on a 100x100 map with infinite strength"}}}]
 tellraw @a [{"text":"[Preset: cursed tag]","color":"aqua", "clickEvent":{"action":"run_command","value":"/function cgame:presets/tag_cursed"},"hoverEvent":{"action":"show_text","value":{"text":"The goal is to get rid of the tag"}}}]

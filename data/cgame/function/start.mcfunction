@@ -57,14 +57,14 @@ function cgame:spread_players
 
 execute if score #cgame_preptime cgame_setting matches 1.. run title @a[scores={cgame_on=1}] title {"text":"Get ready!","color":"gold"}
 execute if score #cgame_preptime cgame_setting matches 1.. run title @a[scores={cgame_on=1}] subtitle {"text":"This is the preparation phase","color":"gold"}
-execute if score #cgame_preptime cgame_setting matches 1.. run tellraw @a[scores={cgame_on=1}] [{"text":"You have ","color":"gold"},{"score":{"name": "#cgame_preptime", "objective": "cgame_setting"},"color":"gold"},{"text":" minutes to prepare before the game begins","color":"gold"}]
+execute if score #cgame_preptime cgame_setting matches 1.. run tellraw @a[scores={cgame_on=1}] [{"text":"You have ","color":"gold"},{"score":{"name": "#cgame_preptime", "objective": "cgame_setting"},"color":"gold"},{"text":" seconds to prepare before the game begins","color":"gold"}]
 
 tellraw @a[scores={cgame_on=1}] " "
 execute if score #cgame_preptime cgame_setting matches 0 run title @a[scores={cgame_on=1}] title {"text":"Game Starts Now!","color":"gold"}
 execute if score #cgame_preptime cgame_setting matches 0 run tellraw @a[scores={cgame_on=1}] [{"text":"Game started! No preparation time.","color":"gold"}]
 
 tellraw @a[scores={cgame_on=1}] " "
-tellraw @a[scores={cgame_on=1}] [{"text":"Game max duration is set to ","color":"gold"},{"score":{"name": "#cgame_time_to_win", "objective": "cgame_setting"},"color":"gold"},{"text":" minutes","color":"gold"}]
+tellraw @a[scores={cgame_on=1}] [{"text":"Game max duration is set to ","color":"gold"},{"score":{"name": "#cgame_time_to_win", "objective": "cgame_setting"},"color":"gold"},{"text":" seconds","color":"gold"}]
 tellraw @a[scores={cgame_on=1}] [{"text":"Score to win is set to ","color":"gold"},{"score":{"name": "#cgame_score_to_win", "objective": "cgame_setting"},"color":"gold"}]
 tellraw @a[scores={cgame_on=1}] [{"text":"Map size is set to ","color":"gold"},{"score":{"name": "#cgame_map_size", "objective": "cgame_setting"},"color":"gold"},{"text":" x 100 blocks","color":"gold"}]
 execute if score #cgame_shrink_border cgame_setting matches 0 run tellraw @a[scores={cgame_on=1}] [{"text":"World border is fixed","color":"gold"}]
