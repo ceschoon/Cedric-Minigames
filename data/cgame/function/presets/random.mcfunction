@@ -55,7 +55,7 @@ scoreboard players set @a[scores={cgame_starting_team=1}] cgame_starting_team 4
 scoreboard players set @a[scores={cgame_starting_team=101}] cgame_starting_team 1
 
 # Activate curse if there is such a role (or remove the role entirely)
-execute store result score #temp cgame_variable run random value 1..3
+execute store result score #temp cgame_variable run random value 1..10
 execute if score #temp cgame_variable matches 1 if entity @a[scores={cgame_starting_team=2}] run scoreboard players set #cgame_curse_active cgame_setting 1
 execute unless score #temp cgame_variable matches 1 run scoreboard players set @a[scores={cgame_starting_team=2}] cgame_starting_team 4
 
