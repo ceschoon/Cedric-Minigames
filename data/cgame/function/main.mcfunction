@@ -45,7 +45,7 @@ execute if entity @a[scores={cgame_on=1,ctime_DeathCount=1}] as @a at @s run pla
 # spread dead players to a new location, if they re-spawned at the map center
 # otherwise they can be spawn-killed (this works only if spawnradius set to 0)
 # TODO: There is an exploit if a player obstructs the world spawn...
-execute as @a[scores={cgame_on=1,ctime_DeathCount=1}] at @s if entity @e[type=armor_stand,name=cgame_map_center,distance=..5] run scoreboard players set @s cgame_relocate 1
+execute as @a[scores={cgame_on=1,ctime_DeathCount=1..}] at @s if entity @e[type=armor_stand,name=cgame_map_center,distance=..5] run scoreboard players set @s cgame_relocate 1
 function cgame:spread_players
 
 # process kill detectors and streak
