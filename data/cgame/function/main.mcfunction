@@ -82,7 +82,7 @@ scoreboard players set @a[scores={cgame_on=1},team=cgame_decrement] ccompass_tar
 scoreboard players set @a[scores={cgame_on=1},team=cgame_boss] ccompass_target 3
 scoreboard players set @a[scores={cgame_on=1},team=cgame_hunter] ccompass_target 0
 scoreboard players set @a[scores={cgame_on=1},team=cgame_cultist] ccompass_target 2
-scoreboard players set @e[scores={cgame_on=1},type=armor_stand,name=cgame_hill] ccompass_target 1
+scoreboard players set @e[type=armor_stand,name=cgame_hill] ccompass_target 1
 
 # compass groups
 scoreboard players set @a[scores={cgame_on=1},team=cgame_regular] ccompass_group 6
