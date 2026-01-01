@@ -55,13 +55,6 @@ execute unless entity @a[scores={cgame_on=1,ctime_DeathCount=1..}] run scoreboar
 execute unless entity @a[scores={cgame_on=1,ctime_DeathCount=1..}] run scoreboard players set @a[scores={cgame_on=1}] cgame_cult_kill_detect 0
 scoreboard players set @a[scores={cgame_on=1,ctime_DeathCount=1..}] cgame_kill_streak 0
 
-# compass
-# TODO: unicity problem! There should only be one target at a time
-#       either change the compass module OR make it so that the following teams can only have one member
-execute as @a[team=cgame_decrement] run function compass:trackme
-execute as @a[team=cgame_increment] run function compass:trackme
-execute as @a[team=cgame_boss] run function compass:trackme
-
 # display game time
 execute store result score @a[scores={cgame_on=1}] cgame_time_copy_for_display run scoreboard players get #ctime_Seconds ctime_variable
 scoreboard objectives setdisplay list cgame_time_copy_for_display
