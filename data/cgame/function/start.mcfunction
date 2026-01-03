@@ -68,9 +68,9 @@ tellraw @a[scores={cgame_on=1}] [{"text":"Game max duration is set to ","color":
 tellraw @a[scores={cgame_on=1}] [{"text":"Score to win is set to ","color":"gold"},{"score":{"name": "#cgame_score_to_win", "objective": "cgame_setting"},"color":"gold"}]
 tellraw @a[scores={cgame_on=1}] [{"text":"Map size is set to ","color":"gold"},{"score":{"name": "#cgame_map_size", "objective": "cgame_setting"},"color":"gold"},{"text":" x 100 blocks","color":"gold"}]
 execute if score #cgame_shrink_border cgame_setting matches 0 run tellraw @a[scores={cgame_on=1}] [{"text":"World border is fixed","color":"gold"}]
-execute if score #cgame_shrink_border cgame_setting matches 1 run tellraw @a[scores={cgame_on=1}] [{"text":"World border will shrink (after preptime)","color":"gold"}]
+execute if score #cgame_shrink_border cgame_setting matches 1 run tellraw @a[scores={cgame_on=1}] [{"text":"World border will shrink (after preptime)","color":"red"}]
 execute if score #cgame_curse_active cgame_setting matches 0 run tellraw @a[scores={cgame_on=1}] [{"text":"Cursed tag is disabled","color":"gold"}]
-execute if score #cgame_curse_active cgame_setting matches 1 run tellraw @a[scores={cgame_on=1}] [{"text":"Cursed tag is enabled","color":"gold"}]
+execute if score #cgame_curse_active cgame_setting matches 1 run tellraw @a[scores={cgame_on=1}] [{"text":"Cursed tag is enabled","color":"red"}]
 
 tellraw @a[scores={cgame_on=1}] " "
 
