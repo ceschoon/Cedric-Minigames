@@ -14,15 +14,6 @@ execute if entity @a[team=cgame_increment,scores={cgame_on=1,ctime_DeathCount=2}
 # If the solo ("tagged") player dies, he becomes a regular player again
 team join cgame_regular @a[team=cgame_increment,scores={cgame_on=1,ctime_DeathCount=2}]
 
-#### Note: swapping the curse is a bit harder to implement and may be less fun
-##execute if entity @a[team=cgame_regular,scores={cgame_on=1,ctime_DeathCount=1..}] run team join cgame_regular @a[team=cgame_decrement,scores={cgame_on=1,ctime_DeathCount=0}]
-
-# If curse mode is active, any (regular) player that dies gets the curse
-execute if score #cgame_curse_active cgame_setting matches 1 run team join cgame_decrement @a[team=cgame_regular,scores={cgame_on=1,ctime_DeathCount=1..}]
-
-# Cursed players loose their curse by killing someone (anyone)
-team join cgame_regular @a[team=cgame_decrement,scores={cgame_on=1,cgame_kill_detect=1..}]
-
 # If the boss player dies, he becomes a regular player (but with style...)
 execute if entity @a[team=cgame_boss,scores={cgame_on=1,ctime_DeathCount=1..}] run function cgame:boss_death
 team join cgame_regular @a[team=cgame_boss,scores={cgame_on=1,ctime_DeathCount=1..}]
@@ -30,12 +21,16 @@ team join cgame_regular @a[team=cgame_boss,scores={cgame_on=1,ctime_DeathCount=1
 # If a cultist dies, he becomes a regular player again
 team join cgame_regular @a[team=cgame_cultist,scores={cgame_on=1,ctime_DeathCount=2}]
 
+# If curse mode is active, any player that dies gets the curse
+execute if score #cgame_curse_active cgame_setting matches 1 run team join cgame_decrement @a[team=!cgame_increment,scores={cgame_on=1,ctime_DeathCount=1..}]
+
+# Cursed players loose their curse by killing someone (anyone)
+team join cgame_regular @a[team=cgame_decrement,scores={cgame_on=1,cgame_kill_detect=1..}]
+
 # Unique player in the special teams
 scoreboard players set @a cgame_temp 0
 scoreboard players set @a[team=cgame_increment,scores={cgame_on=1}] cgame_temp 1
 scoreboard players set @r[team=cgame_increment,scores={cgame_on=1}] cgame_temp 0
-#scoreboard players set @a[team=cgame_decrement,scores={cgame_on=1}] cgame_temp 1
-#scoreboard players set @r[team=cgame_decrement,scores={cgame_on=1}] cgame_temp 0
 scoreboard players set @a[team=cgame_boss,scores={cgame_on=1}] cgame_temp 1
 scoreboard players set @r[team=cgame_boss,scores={cgame_on=1}] cgame_temp 0
 team join cgame_regular @a[scores={cgame_temp=1,cgame_on=1}]
