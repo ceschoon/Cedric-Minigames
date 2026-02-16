@@ -2,6 +2,7 @@
 	"values": [
 	  "animals:load",
 	  "ccompass:load",
+	  "cfp:load",
 	  "cgame:load",
 	  "cmagic:load",
 	  "cmenu:load",
