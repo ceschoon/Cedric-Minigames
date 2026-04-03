@@ -32,7 +32,7 @@ scoreboard objectives add pltf_setting dummy
 
 scoreboard players set #pltf_NumTeams pltf_setting 4
 scoreboard players set #pltf_nofireballs pltf_setting 0
-scoreboard players set #pltf_score_to_win pltf_setting 20
+scoreboard players set #pltf_score_to_win pltf_setting 15
 scoreboard players set #pltf_delay_diamond pltf_setting 600
 scoreboard players set #pltf_delay_emerald pltf_setting 100
 scoreboard players set #pltf_delay_wool pltf_setting 30
