@@ -38,7 +38,7 @@ setworldspawn ~ ~ ~
 spreadplayers ~ ~ 50 50 false @s
 execute if entity @s[nbt={Dimension:"minecraft:the_nether"}] run spreadplayers ~ ~ 50 50 under 127 false @s
 kill @e[type=armor_stand]
-summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"shrine\"",CustomNameVisible:0}
+summon armor_stand ~ ~ ~ {Invisible:1b,Marker:1b,CustomName:"\"shrine\"",CustomNameVisible:0b}
 execute at @s align xyz run tp @e[type=armor_stand,name=shrine] ~.5 ~-1.5 ~.5
 execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~2 ~2 ~2 air
 scoreboard players set #shrine_active inf_variable 0

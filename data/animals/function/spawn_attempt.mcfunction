@@ -4,7 +4,7 @@ execute store result score @s animals_count run execute if entity @e[tag=custom_
 
 ## Summon armor stand that will mark the spawn location
 ## Proceed if there is fewer animals than a certain cap
-execute if entity @s[scores={animals_count=..20}] run summon armor_stand ~ 0 ~ {Invisible:1,Marker:1,CustomName:"\"spawn_animal\"",CustomNameVisible:0}
+execute if entity @s[scores={animals_count=..20}] run summon armor_stand ~ 0 ~ {Invisible:1b,Marker:1b,CustomName:"\"spawn_animal\"",CustomNameVisible:0b}
 
 ## Re-locate the armor stand at a suitable distance from players
 spreadplayers ~ ~ 128 128 false @e[type=armor_stand,name=spawn_animal]

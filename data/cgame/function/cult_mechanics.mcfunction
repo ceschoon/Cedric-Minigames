@@ -28,7 +28,7 @@ scoreboard players add @a[scores={cgame_on=1}] cgame_cult_warning_delay 1
 #########################################################
 ## Beacon: activation
 
-execute as @a[team=cgame_cultist,scores={cgame_on=1}] at @s align xyz positioned ~.5 ~-.5 ~.5 unless entity @e[type=armor_stand,name=cgame_cult_beacon,distance=..0.1] if block ~ ~ ~ beacon run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,CustomName:"\"cgame_cult_beacon\"",CustomNameVisible:0}
+execute as @a[team=cgame_cultist,scores={cgame_on=1}] at @s align xyz positioned ~.5 ~-.5 ~.5 unless entity @e[type=armor_stand,name=cgame_cult_beacon,distance=..0.1] if block ~ ~ ~ beacon run summon armor_stand ~ ~ ~ {Invisible:1b,Marker:1b,CustomName:"\"cgame_cult_beacon\"",CustomNameVisible:0b}
 execute as @e[type=armor_stand,name=cgame_cult_beacon] at @s run function cgame:check_beacon
 execute as @e[type=armor_stand,name=cgame_cult_beacon] at @s unless block ~ ~ ~ beacon run kill @s
 
