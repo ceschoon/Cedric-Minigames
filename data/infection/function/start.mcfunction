@@ -14,7 +14,7 @@ scoreboard players set #ctime_TicksInSec ctime_variable 0
 scoreboard players set #ctime_Seconds ctime_variable 0
 scoreboard players set #ctime_Pause ctime_variable 0
 scoreboard players set #inf_DebugMode inf_variable 0
-scoreboard players set #compass_active compass_setting 1
+scoreboard players set #compass_active ccompass_setting 1
 
 scoreboard objectives setdisplay sidebar inf_TotalKills
 
