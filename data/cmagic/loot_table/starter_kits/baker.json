@@ -36,7 +36,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:enchanted_book",
-          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:swift_sneak": 3}}}}]
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"minecraft:swift_sneak": 3}}}]
         }
       ]
     },

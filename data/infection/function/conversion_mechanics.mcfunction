@@ -10,12 +10,12 @@ effect give @s[team=infected,scores={inf_HealDelay=..30}] regeneration 1 4
 
 execute if score #ctime_TicksInSec ctime_variable matches 0 run effect give @s[team=infected,scores={inf_HealDelay=10}] nausea 15
 
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=infected,scores={inf_HealDelay=30}] title [{"text":"Hit!","color":"red"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=infected,scores={inf_HealDelay=30}] subtitle [{"text":"Hit! You will be healed in 30 seconds","color":"red"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=infected,scores={inf_HealDelay=20}] title [{"text":"20 seconds ...","color":"red"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=infected,scores={inf_HealDelay=10}] title [{"text":"10 seconds ...","color":"red"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=sane,scores={inf_HealDelay=-1}] title [{"text":"Healed!","color":"green"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=sane,scores={inf_HealDelay=-1}] subtitle [{"text":"You are now in the sane team","color":"green"}]
-execute if score #ctime_TicksInSec ctime_variable matches 0 run tellraw @s[team=sane,scores={inf_HealDelay=-1}] [{"text":"Healed! You are now in the sane team","color":"green"}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=infected,scores={inf_HealDelay=30}] title [{text:'Hit!',color:red}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=infected,scores={inf_HealDelay=30}] subtitle [{text:'Hit! You will be healed in 30 seconds',color:red}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=infected,scores={inf_HealDelay=20}] title [{text:'20 seconds ...',color:red}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=infected,scores={inf_HealDelay=10}] title [{text:'10 seconds ...',color:red}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=sane,scores={inf_HealDelay=-1}] title [{text:'Healed!',color:green}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 run title @s[team=sane,scores={inf_HealDelay=-1}] subtitle [{text:'You are now in the sane team',color:green}]
+execute if score #ctime_TicksInSec ctime_variable matches 0 run tellraw @s[team=sane,scores={inf_HealDelay=-1}] [{text:'Healed! You are now in the sane team',color:green}]
 
 

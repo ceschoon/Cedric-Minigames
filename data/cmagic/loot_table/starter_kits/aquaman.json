@@ -15,7 +15,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:enchanted_book",
-          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:aqua_affinity": 1,"minecraft:respiration": 3}}}}]
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"minecraft:aqua_affinity": 1,"minecraft:respiration": 3}}}]
         }
       ]
     }

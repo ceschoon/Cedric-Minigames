@@ -23,6 +23,6 @@ execute at @e[type=armor_stand,name="Spawn Point Player2"] run tp @a[team=team2]
 
 execute as @a[team=!noteam] run function duels:givesetfromid
 
-title @a[team=!noteam] title {"text":"Ready?","color":"gold"}
-tellraw @a {"text":"Duel starts in 5 seconds","color":"gold"}
+title @a[team=!noteam] title {text:'Ready?',color:gold}
+tellraw @a {text:'Duel starts in 5 seconds',color:gold}
 

@@ -35,7 +35,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:enchanted_book",
-          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:sharpness": 1}}}}]
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"minecraft:sharpness": 1}}}]
         }
       ]
     }

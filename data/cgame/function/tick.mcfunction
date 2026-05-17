@@ -1,6 +1,6 @@
 
 # display menu
-#tellraw @a[scores={cmenu_show_composer=1}] [{"text":"[Minigame composer settings]","color":"green", "clickEvent":{"action":"run_command","value":"/function cgame:menu"}}]
+#tellraw @a[scores={cmenu_show_composer=1}] [{text:'[Minigame composer settings]',color:green,click_event:{action:run_command,command:'/function cgame:menu'}}]
 execute as @a[scores={cmenu_show_composer=1}] run function cgame:menu
 
 # armor stands visible if game is off

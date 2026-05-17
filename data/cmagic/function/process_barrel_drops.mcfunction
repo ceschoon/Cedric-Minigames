@@ -4,12 +4,12 @@
 execute if score #cmagic_barrel_drop_delay cmagic_variable matches 0 run scoreboard players set #cmagic_barrel_drop_delay cmagic_variable 2400
 execute if score #cmagic_barrel_drop_delay cmagic_variable matches 0.. run scoreboard players remove #cmagic_barrel_drop_delay cmagic_variable 1
 
-execute if score #cmagic_barrel_drop_delay cmagic_variable matches 100 run title @a actionbar {"text":"Loot drop incoming in 5", "color":"gold"}
-execute if score #cmagic_barrel_drop_delay cmagic_variable matches 80 run title @a actionbar {"text":"Loot drop incoming in 4", "color":"gold"}
-execute if score #cmagic_barrel_drop_delay cmagic_variable matches 60 run title @a actionbar {"text":"Loot drop incoming in 3", "color":"gold"}
-execute if score #cmagic_barrel_drop_delay cmagic_variable matches 40 run title @a actionbar {"text":"Loot drop incoming in 2", "color":"gold"}
-execute if score #cmagic_barrel_drop_delay cmagic_variable matches 20 run title @a actionbar {"text":"Loot drop incoming in 1", "color":"gold"}
-execute if score #cmagic_barrel_drop_delay cmagic_variable matches 0 run title @a actionbar {"text":"Go find it!", "color":"gold"}
+execute if score #cmagic_barrel_drop_delay cmagic_variable matches 100 run title @a actionbar {text:'Loot drop incoming in 5',color:gold}
+execute if score #cmagic_barrel_drop_delay cmagic_variable matches 80 run title @a actionbar {text:'Loot drop incoming in 4',color:gold}
+execute if score #cmagic_barrel_drop_delay cmagic_variable matches 60 run title @a actionbar {text:'Loot drop incoming in 3',color:gold}
+execute if score #cmagic_barrel_drop_delay cmagic_variable matches 40 run title @a actionbar {text:'Loot drop incoming in 2',color:gold}
+execute if score #cmagic_barrel_drop_delay cmagic_variable matches 20 run title @a actionbar {text:'Loot drop incoming in 1',color:gold}
+execute if score #cmagic_barrel_drop_delay cmagic_variable matches 0 run title @a actionbar {text:'Go find it!',color:gold}
 
 execute if score #cmagic_barrel_drop_delay cmagic_variable matches 0 run kill @e[type=armor_stand,name="barreldrop"]
 execute if score #cmagic_barrel_drop_delay cmagic_variable matches 0 as @a at @s run playsound minecraft:item.trident.thunder master @s ~ ~ ~

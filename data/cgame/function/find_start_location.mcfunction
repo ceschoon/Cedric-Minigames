@@ -11,4 +11,4 @@ execute if score #found_start_location cgame_variable matches 0 store success sc
 execute if score #found_start_location cgame_variable matches 0 store success score #found_start_location cgame_variable run spreadplayers ~ ~ 300 300 false @s
 execute if score #found_start_location cgame_variable matches 0 store success score #found_start_location cgame_variable run spreadplayers ~ ~ 500 500 false @s
 
-execute if score #found_start_location cgame_variable matches 0 run tellraw @s [{"text": "ERROR: Not a suitable location to start a game.","color":"red"}]
+execute if score #found_start_location cgame_variable matches 0 run tellraw @s [{text:'ERROR: Not a suitable location to start a game.',color:red}]

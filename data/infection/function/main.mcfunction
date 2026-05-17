@@ -17,16 +17,16 @@ scoreboard players remove @a[scores={inf_On=1,inf_Kills=1..}] inf_Kills 1
 execute at @a[team=infected] if score #ctime_TicksInSec ctime_variable matches 0 run playsound minecraft:entity.warden.heartbeat ambient @a[team=sane] ~ ~ ~ 2
 execute at @a[team=infected] if score #ctime_TicksInSec ctime_variable matches 7 run playsound minecraft:entity.warden.heartbeat ambient @a[team=sane] ~ ~ ~ 2
 execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=infected,distance=..30] run playsound minecraft:entity.zombie.infect master @s ~ ~ ~
-execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=infected,distance=..30] run tellraw @s [{"text":"An infected player is nearby...","color":"red"}]
+execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=infected,distance=..30] run tellraw @s [{text:'An infected player is nearby...',color:red}]
 execute as @a[team=sane,scores={inf_WarnDelay=60..}] at @s if entity @a[team=infected,distance=..30] run scoreboard players set @s inf_WarnDelay 0
 
 # infect sane players who just died
 execute if entity @a[scores={ctime_DeathCount=2},team=sane] as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~
-execute if entity @a[scores={ctime_DeathCount=2},team=sane] run title @a[team=sane] actionbar [{"text":"One of you lost his life... but will come back soon.","color":"red"}]
+execute if entity @a[scores={ctime_DeathCount=2},team=sane] run title @a[team=sane] actionbar [{text:'One of you lost his life... but will come back soon.',color:red}]
 team join infected @a[scores={ctime_DeathCount=2},team=sane]
 
 # force players to wear a golden helmet in the nether
-execute as @a[scores={inf_On=1}] at @s if dimension minecraft:the_nether run item replace entity @s armor.head with golden_helmet[enchantments={levels:{binding_curse:1}}]
+execute as @a[scores={inf_On=1}] at @s if dimension minecraft:the_nether run item replace entity @s armor.head with golden_helmet[enchantments={binding_curse:1}]
 
 # mole reveal
 scoreboard objectives remove inf_test_mole
@@ -36,7 +36,7 @@ execute as @a[team=sane,scores={inf_On=1,inf_Mole=1}] unless entity @s[nbt={Inve
 team join infected @a[scores={inf_test_mole=1}]
 scoreboard players set @a[scores={inf_test_mole=1}] inf_Mole 0
 effect give @a[scores={inf_test_mole=1}] minecraft:absorption infinite 1 false
-execute if entity @a[scores={inf_test_mole=1}] run tellraw @a [{"selector":"@a[scores={inf_test_mole=1}]","color":"red"},{"text":" was a mole the whole time!!","color":"red"}]
+execute if entity @a[scores={inf_test_mole=1}] run tellraw @a [{selector:'@a[scores={inf_test_mole=1}]',color:red},{text:' was a mole the whole time!!',color:red}]
 execute if entity @a[scores={inf_test_mole=1}] as @a at @a run playsound minecraft:entity.ghast.hurt master @s ~ ~ ~
 
 # auto reveal mole as soon as the portal is constructed

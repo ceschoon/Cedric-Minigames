@@ -38,7 +38,7 @@ setworldspawn ~ ~ ~
 spreadplayers ~ ~ 50 50 false @s
 execute if entity @s[nbt={Dimension:"minecraft:the_nether"}] run spreadplayers ~ ~ 50 50 under 127 false @s
 kill @e[type=armor_stand]
-summon armor_stand ~ ~ ~ {Invisible:1b,Marker:1b,CustomName:"\"shrine\"",CustomNameVisible:0b}
+summon armor_stand ~ ~ ~ {Invisible:1b,Marker:1b,CustomName:'shrine',CustomNameVisible:0b}
 execute at @s align xyz run tp @e[type=armor_stand,name=shrine] ~.5 ~-1.5 ~.5
 execute at @e[type=armor_stand,name=shrine] run fill ~-2 ~ ~-2 ~2 ~2 ~2 air
 scoreboard players set #shrine_active inf_variable 0
@@ -69,15 +69,15 @@ team join sane @a[scores={inf_On=1}]
 scoreboard players set @r[scores={inf_On=1}] inf_Mole 1
 
 loot give @a[scores={inf_Mole=1}] loot cmagic:starter_kit
-item replace entity @a[scores={inf_Mole=1}] inventory.0 with black_banner[banner_patterns=[{pattern:skull,color:green}],lore=['{"text":"Remove the banner from this slot to join the infected team."}']]
+item replace entity @a[scores={inf_Mole=1}] inventory.0 with black_banner[banner_patterns=[{pattern:skull,color:green}],lore=[{text:'Remove the banner from this slot to join the infected team.'}]]
 
-title @a[scores={inf_On=1}] title {"text":"Infection Game Starts Now!","color":"red"}
-title @a[team=sane,scores={inf_Mole=0}] subtitle {"text":"You will become infected if you die","color":"red"}
-title @a[team=sane,scores={inf_Mole=1}] subtitle {"text":"You are a mole. Your goal is to kill your teammates.","color":"red"}
-title @a[team=infected] subtitle {"text":"You are infected","color":"red"}
-tellraw @a[team=sane,scores={inf_Mole=0}] [{"text":"Infection Game Starts Now! You will become infected if you die","color":"red"}]
-tellraw @a[team=sane,scores={inf_Mole=1}] [{"text":"Infection Game Starts Now! You are a mole. Your goal is to kill your teammates.","color":"red"}]
-tellraw @a[team=infected] [{"text":"Infection Game Starts Now! You are infected","color":"red"}]
+title @a[scores={inf_On=1}] title {text:'Infection Game Starts Now!',color:red}
+title @a[team=sane,scores={inf_Mole=0}] subtitle {text:'You will become infected if you die',color:red}
+title @a[team=sane,scores={inf_Mole=1}] subtitle {text:'You are a mole. Your goal is to kill your teammates.',color:red}
+title @a[team=infected] subtitle {text:'You are infected',color:red}
+tellraw @a[team=sane,scores={inf_Mole=0}] [{text:'Infection Game Starts Now! You will become infected if you die',color:red}]
+tellraw @a[team=sane,scores={inf_Mole=1}] [{text:'Infection Game Starts Now! You are a mole. Your goal is to kill your teammates.',color:red}]
+tellraw @a[team=infected] [{text:'Infection Game Starts Now! You are infected',color:red}]
 
 
 

@@ -2,7 +2,7 @@
 ## Bossbar 
 
 execute unless entity @a[team=cgame_boss,scores={cgame_on=1}] run bossbar remove cgame_boss_health
-execute if entity @a[team=cgame_boss,scores={cgame_on=1}] run bossbar add cgame_boss_health {"text":"Boss Health","color":"light_purple"}
+execute if entity @a[team=cgame_boss,scores={cgame_on=1}] run bossbar add cgame_boss_health {text:'Boss Health',color:light_purple}
 
 bossbar set cgame_boss_health players @a[scores={cgame_on=1}]
 bossbar set cgame_boss_health color pink

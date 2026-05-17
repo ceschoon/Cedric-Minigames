@@ -30,7 +30,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:enchanted_book",
-          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:blast_protection": 4}}}}]
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"minecraft:blast_protection": 4}}}]
         }
       ]
     }

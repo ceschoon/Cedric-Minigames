@@ -19,7 +19,7 @@ execute at @a[team=!cgame_cultist,scores={cgame_on=1}] if score #ctime_TicksInSe
 execute at @a[team=!cgame_cultist,scores={cgame_on=1}] if score #ctime_TicksInSec ctime_variable matches 7 run playsound minecraft:entity.warden.heartbeat ambient @a[team=cgame_cultist] ~ ~ ~ 2
 
 execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_cult_warning_delay=600..}] at @s if entity @a[team=!cgame_cultist,scores={cgame_on=1},distance=..30] run playsound minecraft:entity.zombie.infect master @s ~ ~ ~
-execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_cult_warning_delay=600..}] at @s if entity @a[team=!cgame_cultist,scores={cgame_on=1},distance=..30] run tellraw @s [{"text":"Beware! An infidel is nearby...","color":"red"}]
+execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_cult_warning_delay=600..}] at @s if entity @a[team=!cgame_cultist,scores={cgame_on=1},distance=..30] run tellraw @s [{text:'Beware! An infidel is nearby...',color:red}]
 execute as @a[team=cgame_cultist,scores={cgame_on=1,cgame_cult_warning_delay=600..}] at @s if entity @a[team=!cgame_cultist,scores={cgame_on=1},distance=..30] run scoreboard players set @s cgame_cult_warning_delay 0
 
 scoreboard players add @a[scores={cgame_on=1}] cgame_cult_warning_delay 1
@@ -59,7 +59,7 @@ execute if score #cgame_cult_conversion cgame_variable matches 6000.. run scoreb
 
 execute if score #cgame_cult_conversion cgame_variable matches ..0 run bossbar remove cgame_cult_conversion
 
-execute if score #cgame_cult_conversion cgame_variable matches 1.. run bossbar add cgame_cult_conversion {"text":"Cultist Victory","color":"dark_green"}
+execute if score #cgame_cult_conversion cgame_variable matches 1.. run bossbar add cgame_cult_conversion {text:'Cultist Victory',color:dark_green}
 execute if score #cgame_cult_conversion cgame_variable matches 1.. run bossbar set cgame_cult_conversion players @a[scores={cgame_on=1}]
 execute if score #cgame_cult_conversion cgame_variable matches 1.. run bossbar set cgame_cult_conversion color green
 execute if score #cgame_cult_conversion cgame_variable matches 1.. run bossbar set cgame_cult_conversion max 6000

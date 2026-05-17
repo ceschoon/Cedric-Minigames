@@ -4,7 +4,7 @@
 
 scoreboard players set @s cmagic_num_life_cryst 0
 
-execute store result score @s cmagic_num_life_cryst run clear @s amethyst_shard[lore=['{"text":"Life crystal","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_num_life_cryst run clear @s amethyst_shard[lore=[{text:'Life crystal',italic:false}],enchantment_glint_override=1b] 0
 
 attribute @s[scores={cmagic_num_life_cryst=0}] minecraft:max_health base set 20
 attribute @s[scores={cmagic_num_life_cryst=1}] minecraft:max_health base set 22
@@ -32,11 +32,11 @@ attribute @s[scores={cmagic_num_life_cryst=20..}] minecraft:max_health base set 
 ###################################################
 ## Life crystals are lost upon death
 
-clear @a[scores={ctime_DeathCount=1..}] amethyst_shard[lore=['{"text":"Life crystal","italic":false}'],enchantment_glint_override=true]
+clear @a[scores={ctime_DeathCount=1..}] amethyst_shard[lore=[{text:'Life crystal',italic:false}],enchantment_glint_override=1b]
 
 
 ###################################################
 ## Life crystals are lost upon death
 
-clear @a[scores={ctime_DeathCount=1..}] amethyst_shard[lore=['{"text":"Life crystal","italic":false}'],enchantment_glint_override=true]
+clear @a[scores={ctime_DeathCount=1..}] amethyst_shard[lore=[{text:'Life crystal',italic:false}],enchantment_glint_override=1b]
 

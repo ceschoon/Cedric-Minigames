@@ -26,7 +26,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:enchanted_book",
-          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"levels": {"minecraft:thorns": 3}}}}]
+          "functions": [{"function": "minecraft:set_components","components": {"minecraft:stored_enchantments": {"minecraft:thorns": 3}}}]
         }
       ]
     },

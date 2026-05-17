@@ -1,0 +1,250 @@
+# Minecraft Java Edition 1.21.5 - Syntax Changes for Data Packs
+# Source: https://minecraft.wiki/w/Java_Edition_1.21.5#Changes_2
+# Data pack format: 71  |  Resource pack format: 55
+
+==============================================================================
+1. TEXT COMPONENTS (tellraw, title, bossbar, scoreboard, team)
+==============================================================================
+Text components are now specified with SNBT instead of JSON.
+
+OLD: /tellraw @s '{"text":"Hello world","color":"red"}'
+NEW: /tellraw @s {text:'Hello world',color:red}
+
+OLD: /title @s actionbar '{"text":"Foo","color":"aqua"}'
+NEW: /title @s actionbar {text:'Foo',color:aqua}
+
+Rules:
+- Remove outer quotes wrapping the JSON string
+- Replace double-quoted keys with unquoted keys
+- Replace double-quoted string values with single-quoted strings
+- Unquote color names, action names, and other plain-word values
+- Boolean `true`/`false` can remain or use 1b/0b in NBT contexts
+
+==============================================================================
+2. HOVER EVENT & CLICK EVENT FIELD RENAMES
+==============================================================================
+These apply inside text components in tellraw, title, signs, books, etc.
+
+a) `hoverEvent` → `hover_event`
+b) `clickEvent` → `click_event`
+
+hover_event show_text:
+  OLD: {action:'show_text',contents:'Hello'}
+  NEW: {action:'show_text',value:'Hello'}
+
+hover_event show_item:
+  OLD: {action:'show_item',contents:{id:'minecraft:stick',count:2}}
+  NEW: {action:'show_item',id:'minecraft:stick',count:2}
+  (contents is inlined; if it was just a string id: {action:'show_item',id:'minecraft:stick'})
+
+hover_event show_entity:
+  OLD: {action:'show_entity',contents:{id:[I;0,0,0,0],type:'minecraft:pig'}}
+  NEW: {action:'show_entity',uuid:[I;0,0,0,0],id:'minecraft:pig'}
+  (`id` in contents → `uuid`, `type` in contents → `id`)
+
+click_event open_url:
+  OLD: {action:'open_url',value:'https://minecraft.net'}
+  NEW: {action:'open_url',url:'https://minecraft.net'}
+
+click_event run_command:
+  OLD: {action:'run_command',value:'/say Hi'}
+  NEW: {action:'run_command',command:'/say Hi'}
+  (The `/` prefix is no longer required but still accepted)
+
+click_event suggest_command:
+  OLD: {action:'suggest_command',value:'/help'}
+  NEW: {action:'suggest_command',command:'/help'}
+
+click_event change_page:
+  OLD: {action:'change_page',value:'1'}
+  NEW: {action:'change_page',page:1}
+  (value is now an integer, not a string)
+
+==============================================================================
+3. ITEM COMPONENT SYNTAX CHANGES
+==============================================================================
+Item components in give, clear, item, execute if items, etc. now use SNBT.
+
+custom_name:
+  OLD: custom_name='{"text":"Renamed item"}'
+  NEW: custom_name={text:'Renamed item'}
+
+item lore:
+  OLD: lore=['{"text":"Life crystal","italic":false}']
+  NEW: lore=[{text:'Life crystal',italic:false}]
+
+attribute_modifiers (simplified form, modifiers inlined):
+  OLD: attribute_modifiers={modifiers:[...]}
+  NEW: attribute_modifiers=[...]
+
+can_place_on / can_break (predicates inlined):
+  OLD: can_place_on={predicates:[{blocks:'stone'},{blocks:'dirt'}]}
+  NEW: can_place_on=[{blocks:'stone'},{blocks:'dirt'}]
+  or single: can_place_on={blocks:'stone'}
+
+dyed_color (rgb inlined):
+  OLD: dyed_color={rgb:12345}
+  NEW: dyed_color=12345
+  (also supports RGB array: dyed_color=[0.5,1.0,0.2])
+
+enchantments / stored_enchantments (levels inlined):
+  OLD: enchantments={levels:{sharpness:2}}
+  NEW: enchantments={sharpness:2}
+
+hide_additional_tooltip (REMOVED):
+  OLD: hide_additional_tooltip={}
+  NEW: tooltip_display={hidden_components:['minecraft:COMPONENT_ID',...]}
+  Components covered: banner_patterns, bees, block_entity_data, block_state,
+  bundle_contents, charged_projectiles, container, container_loot,
+  firework_explosion, fireworks, instrument, map_id, painting/variant,
+  pot_decorations, potion_contents, tropical_fish/pattern, written_book_content
+
+hide_tooltip (REMOVED):
+  OLD: hide_tooltip={}
+  NEW: tooltip_display={hide_tooltip:true}
+
+show_in_tooltip field removed from these components:
+  attribute_modifiers, can_place_on, can_break, dyed_color,
+  enchantments, stored_enchantments, jukebox_playable, trim, unbreakable
+  → use tooltip_display component instead
+
+enchantment_glint_override:
+  OLD: enchantment_glint_override=true
+  NEW: enchantment_glint_override=1b   (in NBT/SNBT boolean context)
+  Note: in 1.21.5 numbers are re-accepted in place of booleans in inline args,
+  so `true`/`false` still works in command arguments, but SNBT format for
+  item components uses 1b/0b.
+
+==============================================================================
+4. ENTITY FORMAT CHANGES (summon, data, execute if entity)
+==============================================================================
+
+Equipment merged:
+  ArmorItems, HandItems, body_armor_item → equipment map
+  OLD: summon zombie ~ ~ ~ {ArmorItems:[{},{},{id:'minecraft:diamond_chestplate',count:1},{id:'minecraft:diamond_helmet',count:1}]}
+  NEW: summon zombie ~ ~ ~ {equipment:{chest:{id:'minecraft:diamond_chestplate'},head:{id:'minecraft:diamond_helmet'}}}
+  Slots: head, chest, legs, feet, mainhand, offhand, body, saddle
+
+Drop chances merged:
+  ArmorDropChances, HandDropChances, body_armor_drop_chance → drop_chances map
+  OLD: {ArmorDropChances:[0.085f,0.085f,0.085f,0.085f],HandDropChances:[0.085f,0.085f]}
+  NEW: {drop_chances:{chest:0.1,feet:1.0}}   (only non-default values needed)
+
+FallDistance → fall_distance (now double):
+  OLD: {FallDistance:5.0f}
+  NEW: {fall_distance:5.0d}
+
+SleepingX/Y/Z → sleeping_pos:
+  OLD: {SleepingX:10,SleepingY:64,SleepingZ:-5}
+  NEW: {sleeping_pos:[I;10,64,-5]}
+
+Item slot rename:
+  horse.saddle → saddle
+  (e.g. in /item and selector item slot arguments)
+
+area_effect_cloud Duration default change:
+  If Duration is not specified, it now defaults to -1 (never expires).
+  Previously, unspecified duration caused immediate despawn.
+  If you want it to expire, set Duration explicitly, e.g. {Duration:600}
+
+allay: CanDuplicate field removed (controlled only by DuplicationCooldown).
+
+dolphin: TreasurePosX/Y/Z removed.
+
+phantom: Size → size (lowercase), AX/AY/AZ → anchor_pos.
+
+turtle: HomePosX/Y/Z → home_pos, HasEgg → has_egg.
+
+vex: LifeTicks → life_ticks, BoundX/Y/Z → bound_pos.
+
+player: SpawnX/Y/Z/Angle/Dimension/Forced → respawn object.
+
+item_frame/glow_item_frame/painting/leash_knot:
+  TileX/Y/Z → block_pos.
+
+minecart: CustomDisplayTile removed; DisplayState always overrides if present.
+
+==============================================================================
+5. ENTITY PREDICATES (in execute if entity, loot conditions, advancements)
+==============================================================================
+
+The following entity sub-predicates have been REMOVED and replaced by using
+the `components` predicate field on entity predicates with variant components:
+  minecraft:axolotl, minecraft:fox, minecraft:mooshroom, minecraft:rabbit,
+  minecraft:horse, minecraft:llama, minecraft:villager, minecraft:parrot,
+  minecraft:salmon, minecraft:tropical_fish, minecraft:painting,
+  minecraft:cat, minecraft:frog, minecraft:wolf, minecraft:pig
+
+Example - checking sheep color (color field removed from minecraft:sheep):
+  OLD predicate: {"type":"minecraft:entity_properties","entity":"this","predicate":{"type_specific":{"type":"minecraft:sheep","color":"white"}}}
+  NEW: Use components predicate with sheep/color component
+
+New fields available on entity predicates: `components` and `predicates`
+
+The `stepping_on` entity predicate now only evaluates to true if entity is on ground.
+
+==============================================================================
+6. ADVANCEMENT DEFINITION CHANGES
+==============================================================================
+The `background` field no longer uses `textures/` prefix or `.png` suffix.
+  OLD: "background": "textures/gui/advancements/backgrounds/stone.png"
+  NEW: "background": "minecraft:gui/advancements/backgrounds/stone"
+
+==============================================================================
+7. SETBLOCK / FILL BEHAVIOR CHANGES
+==============================================================================
+- If block entity data is NOT specified and existing block has data: data is PRESERVED.
+- If block entity data IS specified: data is set to specified value.
+- To CLEAR block entity data explicitly: specify data as `{}`
+- Command succeeds if either block state OR block entity data changed.
+
+New `strict` option for fill, clone, setblock, place template:
+  fill <from> <to> <block> [replace <filter>] [strict|destroy|hollow|outline]
+  setblock <pos> <block> [destroy|keep|replace|strict]
+  clone ... [strict] [[replace|masked|filtered <filter>] [force|move|normal]]
+
+==============================================================================
+8. DATA PACK FORMAT
+==============================================================================
+Update pack.mcmeta:
+  OLD: "pack_format": 61  (1.21.4)
+  NEW: "pack_format": 71  (1.21.5)
+
+==============================================================================
+9. POTION ENTITY SPLIT
+==============================================================================
+The `potion` entity type has been split:
+  OLD: /summon potion ...
+  NEW: /summon splash_potion ...   or   /summon lingering_potion ...
+
+==============================================================================
+10. SNBT FORMAT EXTENSIONS (minor, mostly for advanced usage)
+==============================================================================
+- Heterogeneous lists now supported: ['a', {b:3}] is valid
+- Trailing commas allowed: [1,2,] and {a:b,} are valid
+- Hex numbers: 0xCAFE, binary: 0b101
+- Numbers can contain `_` separator: 1_000_000
+- New functions: bool(arg), uuid(str)
+- Extended string escape sequences: \x42, \u2603, \U00002603, \N{Snowman}
+- Unquoted strings can no longer start with 0-9, `.`, `+`, `-`
+- Float can omit whole or fraction: .1 and 1. are valid
+- Float uses E notation: 1.2e3
+
+==============================================================================
+SUMMARY: WHAT TO CHECK IN EACH .mcfunction FILE
+==============================================================================
+1. All /tellraw commands: convert JSON text component argument to SNBT
+2. All /title commands: convert JSON text component argument to SNBT
+3. All /bossbar set ... name/color: convert text component to SNBT
+4. All /scoreboard objectives: convert styled number format to SNBT
+5. All /team modify ... format: convert text component to SNBT
+6. Any hoverEvent → hover_event, clickEvent → click_event
+7. Any hover_event/click_event subfields renamed (see section 2)
+8. Any item components using custom_name, lore, attribute_modifiers,
+   can_place_on, can_break, dyed_color, enchantments, hide_additional_tooltip,
+   hide_tooltip (see section 3)
+9. Any /summon or /data commands using old entity field names (see section 4)
+10. Any entity predicates using removed sub-predicate types (see section 5)
+11. pack.mcmeta: update pack_format to 71
+12. Any /summon potion → /summon splash_potion or lingering_potion
+13. Any advancement JSON files with background field: remove textures/ prefix and .png suffix

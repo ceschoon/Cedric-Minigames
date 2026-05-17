@@ -71,8 +71,8 @@ execute as @a[scores={pltf_On=1}] run function platforms:clearenderchest
 gamemode survival @a[scores={pltf_On=1}]
 
 # Game starts message
-title @a[scores={pltf_On=1}] title {"text":"Go!","color":"gold"}
-tellraw @a[scores={pltf_On=1}] [{"text":"Platforms: Bring ","color":"gold"},{"score":{"name": "#pltf_score_to_win", "objective": "pltf_setting"},"color":"gold"},{"text":" diamonds to your base to win.","color":"gold"}]
-tellraw @a[scores={pltf_On=1}] {"text":"Platforms: Game starts now!","color":"gold"}
+title @a[scores={pltf_On=1}] title {text:'Go!',color:gold}
+tellraw @a[scores={pltf_On=1}] [{text:'Platforms: Bring ',color:gold},{score:{name:'#pltf_score_to_win',objective:pltf_setting},color:gold},{text:' diamonds to your base to win.',color:gold}]
+tellraw @a[scores={pltf_On=1}] {text:'Platforms: Game starts now!',color:gold}
 
 

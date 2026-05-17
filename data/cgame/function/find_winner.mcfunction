@@ -8,8 +8,8 @@ execute as @a[scores={cgame_on=1}] run scoreboard players operation #maxscore cg
 execute as @a[scores={cgame_on=1}] if score @s cgame_score = #maxscore cgame_score run scoreboard players set @s cgame_temp 1
 
 ## Tell who the winner is
-title @a[scores={cgame_on=1}] title [{"selector":"@a[scores={cgame_on=1,cgame_temp=1}]"},{"text":" won the game!","color":"gold"}]
-tellraw @a[scores={cgame_on=1}] [{"selector":"@a[scores={cgame_on=1,cgame_temp=1}]"},{"text":" won the game!","color":"gold"}]
+title @a[scores={cgame_on=1}] title [{selector:'@a[scores={cgame_on=1,cgame_temp=1}]'},{text:' won the game!',color:gold}]
+tellraw @a[scores={cgame_on=1}] [{selector:'@a[scores={cgame_on=1,cgame_temp=1}]'},{text:' won the game!',color:gold}]
 
 execute as @a at @s run playsound minecraft:entity.wither.spawn master @s
 

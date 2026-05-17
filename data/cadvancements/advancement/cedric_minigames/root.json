@@ -5,7 +5,7 @@
     },
     "title": "Cedric's Minigames",
     "description": "Ready for battle?",
-    "background": "minecraft:textures/block/obsidian.png",
+    "background": "minecraft:block/obsidian",
     "frame": "task",
     "show_toast": false,
     "announce_to_chat": true,

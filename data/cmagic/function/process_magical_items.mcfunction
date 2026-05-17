@@ -1,5 +1,5 @@
 
-#give @s netherite_sword[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true,enchantments={levels:{"fire_aspect":2,"sweeping_edge":3,"looting":3}}]
+#give @s netherite_sword[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b,enchantments={fire_aspect:2,sweeping_edge:3,looting:3}]
 
 
 scoreboard players set @s cmagic_has_magical_ticket 0
@@ -9,14 +9,14 @@ scoreboard players set @s cmagic_num_magical_items 0
 
 
 
-execute store success score @s cmagic_has_magical_ticket run clear @s paper[lore=['{"text":"Ticket for a random gift","italic":false}'],enchantment_glint_override=true]
+execute store success score @s cmagic_has_magical_ticket run clear @s paper[lore=[{text:'Ticket for a random gift',italic:false}],enchantment_glint_override=1b]
 execute if score @s cmagic_has_magical_ticket matches 1 run loot give @s loot cmagic:magical_item_no_helmet
 
 
 
 ## Infinity bow
 
-execute store result score @s cmagic_has_magical_item run clear @s bow[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s bow[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 execute store result score @s cmagic_has_magical_item2 run clear @s spectral_arrow 0
@@ -26,7 +26,7 @@ give @s[scores={cmagic_has_magical_item=1..,cmagic_has_magical_item2=..1}] spect
 
 ## Lightning trident
 
-#execute store result score @s cmagic_has_magical_item run clear @s trident[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+#execute store result score @s cmagic_has_magical_item run clear @s trident[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 #scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 #execute if entity @s[scores={cmagic_has_magical_item=1..},nbt={SelectedItem:{id:"minecraft:trident"}}] run weather thunder 1s
@@ -35,7 +35,7 @@ give @s[scores={cmagic_has_magical_item=1..,cmagic_has_magical_item2=..1}] spect
 
 ## Mace windy
 
-execute store result score @s cmagic_has_magical_item run clear @s mace[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s mace[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 #execute store result score @s cmagic_has_magical_item2 run clear @s wind_charge 0
@@ -48,7 +48,7 @@ effect give @s[scores={cmagic_has_magical_item=1..},nbt={SelectedItem:{id:"minec
 
 ## Fire sword
 
-execute store result score @s cmagic_has_magical_item run clear @s netherite_sword[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s netherite_sword[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 effect give @s[scores={cmagic_has_magical_item=1..}] fire_resistance 1 0
@@ -57,7 +57,7 @@ effect give @s[scores={cmagic_has_magical_item=1..}] fire_resistance 1 0
 
 ## Fortune pick
 
-execute store result score @s cmagic_has_magical_item run clear @s netherite_pickaxe[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s netherite_pickaxe[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 effect give @s[scores={cmagic_has_magical_item=1..}] haste 1 0
@@ -67,7 +67,7 @@ effect give @s[scores={cmagic_has_magical_item=1..}] haste 1 0
 
 ## Turtle helmet
 
-execute store result score @s cmagic_has_magical_item run clear @s turtle_helmet[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s turtle_helmet[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 effect give @s[scores={cmagic_has_magical_item=1..}] dolphins_grace 1 0
@@ -77,7 +77,7 @@ effect give @s[scores={cmagic_has_magical_item=1..}] conduit_power 1 0
 
 ## Wither helmet
 
-execute store result score @s cmagic_has_magical_item run clear @s wither_skeleton_skull[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s wither_skeleton_skull[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 #execute unless entity @s[nbt={active_effects:[{id:"minecraft:wither"}]}] run effect give @s[scores={cmagic_has_magical_item=1..}] wither 2 0
@@ -88,7 +88,7 @@ execute at @s[scores={cmagic_has_magical_item=1..}] as @e[distance=..8,type=!pla
 
 ## Tank armor
 
-execute store result score @s cmagic_has_magical_item run clear @s netherite_chestplate[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s netherite_chestplate[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 effect give @s[scores={cmagic_has_magical_item=1..}] resistance 1 1
@@ -99,7 +99,7 @@ execute at @s[scores={cmagic_has_magical_item=1..}] run effect give @a[distance=
 
 ## Speedy pants
 
-execute store result score @s cmagic_has_magical_item run clear @s netherite_leggings[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s netherite_leggings[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 effect give @s[scores={cmagic_has_magical_item=1..}] speed 1 0
@@ -108,7 +108,7 @@ effect give @s[scores={cmagic_has_magical_item=1..}] speed 1 0
 
 ## Spring boots
 
-execute store result score @s cmagic_has_magical_item run clear @s netherite_boots[lore=['{"text":"CMagic Item","italic":false}'],enchantment_glint_override=true] 0
+execute store result score @s cmagic_has_magical_item run clear @s netherite_boots[lore=[{text:'CMagic Item',italic:false}],enchantment_glint_override=1b] 0
 scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magical_item
 
 effect give @s[scores={cmagic_has_magical_item=1..}] jump_boost 1 3
@@ -122,12 +122,12 @@ execute if entity @s[scores={cmagic_num_magical_items=1..}] run particle enchant
 
 
 ## Enchant particles around magical item entity
-execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":['{"italic":false,"text":"CMagic Item"}'],"minecraft:enchantment_glint_override":1b}}}] at @s run particle enchant ~ ~1 ~ 0.0 0.0 0.0 1.0 1
+execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":[{italic:false,text:'CMagic Item'}],"minecraft:enchantment_glint_override":1b}}}] at @s run particle enchant ~ ~1 ~ 0.0 0.0 0.0 1.0 1
 
 
 
 ## Playsound around magical item entity
-execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":['{"italic":false,"text":"CMagic Item"}'],"minecraft:enchantment_glint_override":1b}}}] at @s if score #ctime_TicksInSec ctime_variable matches 0 run playsound minecraft:block.enchantment_table.use ambient @a ~ ~ ~ 2.0
+execute as @e[type=item,nbt={Item:{components:{"minecraft:lore":[{italic:false,text:'CMagic Item'}],"minecraft:enchantment_glint_override":1b}}}] at @s if score #ctime_TicksInSec ctime_variable matches 0 run playsound minecraft:block.enchantment_table.use ambient @a ~ ~ ~ 2.0
 
 
 
