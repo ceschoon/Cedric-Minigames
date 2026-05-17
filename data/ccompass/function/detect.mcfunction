@@ -9,6 +9,10 @@ execute as @e store result score @s ccompass_target_copy run scoreboard players 
 
 scoreboard players set @s ccompass_target_copy 0
 
+## Exclude spatially close players from the target list
+
+scoreboard players set @e[distance=..5,scores={ccompass_target_copy=1..}] ccompass_target_copy 0
+
 ## Exclude targets that are not in the same dimension
 
 execute unless entity @s[nbt={Dimension:"minecraft:overworld"}] run scoreboard players set @e[nbt={Dimension:"minecraft:overworld"},scores={ccompass_target_copy=1..}] ccompass_target_copy 0
