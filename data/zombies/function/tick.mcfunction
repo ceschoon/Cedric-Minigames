@@ -1,6 +1,6 @@
 
 # display menu
-tellraw @a[scores={cmenu_show=1..}] [{text:'[Show menu: Zombie Apocalypse]',color:aqua,click_event:{action:run_command,command:'function zombies:menu'}}]
+tellraw @a[scores={cmenu_show=1..}] [{text:'[Show menu: Zombie Apocalypse]',color:aqua,click_event:{action:run_command,command:'/function zombies:menu'}}]
 
 execute if entity @a[scores={zombies_on=1..}] run function zombies:main
 

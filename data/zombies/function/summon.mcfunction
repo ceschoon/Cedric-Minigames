@@ -11,7 +11,7 @@ execute if entity @s[scores={zombies_rng=10..19}] run summon zombie_villager ~ ~
 
 ## Baby zombies
 execute if entity @s[scores={zombies_difficulty=1..,zombies_rng=20..26}] run summon zombie ~ ~ ~ {Tags:['custom_zombie'],attributes:[{id:"follow_range",base:64}],IsBaby:1b}
-execute if entity @s[scores={zombies_difficulty=1..,zombies_rng=27..29}] run summon zombie ~ ~ ~ {Tags:['custom_zombie'],attributes:[{id:"follow_range",base:64}],IsBaby:1b,equipment:{mainhand:{id:'minecraft:wooden_sword',count:1}},drop_chances:{mainhand:0.2F}}
+execute if entity @s[scores={zombies_difficulty=2..,zombies_rng=27..29}] run summon zombie ~ ~ ~ {Tags:['custom_zombie'],attributes:[{id:"follow_range",base:64}],IsBaby:1b,equipment:{mainhand:{id:'minecraft:wooden_sword',count:1}},drop_chances:{mainhand:0.2F}}
 
 ## Zombie with armor
 execute if entity @s[scores={zombies_rng=30}] run summon zombie ~ ~ ~ {Tags:['custom_zombie'],attributes:[{id:"follow_range",base:64}],equipment:{head:{id:'minecraft:chainmail_helmet',count:1}},drop_chances:{head:0.2F}}

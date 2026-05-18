@@ -1,6 +1,6 @@
 
 # display menu
-tellraw @a[scores={cmenu_show=1..}] [{text:'[Show menu: World(Border) module]',color:aqua,click_event:{action:run_command,command:'function cworld:menu'}}]
+tellraw @a[scores={cmenu_show=1..}] [{text:'[Show menu: World(Border) module]',color:aqua,click_event:{action:run_command,command:'/function cworld:menu'}}]
 
 # Storing border size in a variable
 execute store result score #cworld_bordersize cworld_variable run worldborder get

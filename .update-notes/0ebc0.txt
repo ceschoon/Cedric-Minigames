@@ -1,0 +1,65 @@
+Review of commit 0ebc08151562a5bf6574938922df4b71b16703dc
+"Naive upgrade to 1.21.5 using Claude Sonnet 4.6"
+=========================================================
+
+The vast majority of changes in this commit are legitimate syntactic
+upgrades required by MC 1.21.5:
+
+  - Text components: JSON format  →  SNBT format (single-quoted strings,
+    unquoted keys, e.g. {"text":"..."} → {text:'...'})
+  - Click/hover events: clickEvent/hoverEvent → click_event/hover_event,
+    and "value" field renamed to "command"
+  - Entity equipment: ArmorItems/HandItems/ArmorDropChances/HandDropChances
+    → equipment/{head,chest,legs,feet,mainhand,...} / drop_chances/{...}
+  - Enchantments: {levels:{"minecraft:X":N}} → {"minecraft:X":N}
+  - Stored enchantments in loot tables: same levels-wrapper removal
+  - Dyed color component: {rgb:N} → N (bare integer)
+  - Custom entity names: "\"name\"" → 'name'
+  - Advancement background: texture path → block/item ID
+  - pack_format: 61 (1.21.4) → 71 (1.21.5)
+  - Boolean SNBT: true/false → 1b/0b in NBT contexts
+
+
+ANOMALIES
+---------
+
+1. GAMEPLAY CHANGE — data/zombies/function/summon.mcfunction
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   The condition for spawning armed baby zombies (rng=27..29) was changed:
+
+     - Old: execute if entity @s[scores={zombies_difficulty=2..,zombies_rng=27..29}] ...
+     + New: execute if entity @s[scores={zombies_difficulty=1..,zombies_rng=27..29}] ...
+
+   The minimum difficulty threshold was lowered from 2 to 1, meaning
+   baby zombies carrying a wooden sword will now appear at difficulty
+   level 1, one level earlier than before. This is a gameplay balance
+   change that should not have been part of a purely syntactic upgrade.
+
+
+2. INCONSISTENCY — Missing leading "/" in run_command click events
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   When converting clickEvent→click_event, the "value" field was renamed
+   "command". For most modules the "/" prefix was preserved in the command
+   string (e.g. command:'/function cgame:start'). However, four modules
+   had their "/" prefix silently dropped:
+
+     Affected files:
+       data/cworld/function/menu.mcfunction      (3 occurrences)
+       data/cworld/function/tick.mcfunction      (1 occurrence)
+       data/flsheep/function/menu.mcfunction     (5 occurrences)
+       data/flsheep/function/tick.mcfunction     (1 occurrence)
+       data/permeffects/function/menu.mcfunction (11 occurrences)
+       data/permeffects/function/tick.mcfunction (1 occurrence)
+       data/zombies/function/menu.mcfunction     (5 occurrences)
+       data/zombies/function/tick.mcfunction     (1 occurrence)
+
+   Example (zombies/function/menu.mcfunction):
+     - Old: "value":"/function zombies:load"
+     + New: command:'function zombies:load'   ← missing /
+
+   Compare with a correctly converted occurrence (cgame/function/menu.mcfunction):
+     + New: command:'/function cgame:start'   ← / present
+
+   In MC 1.21.5 the "/" prefix is optional in run_command, so this does
+   not break functionality. However it is an inconsistency introduced
+   by the conversion and is worth normalising.
