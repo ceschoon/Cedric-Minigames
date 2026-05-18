@@ -1,0 +1,57 @@
+ANOMALY REVIEW — Minecraft Java Edition 1.21.9 Syntax Update
+============================================================
+Reviewed against: HEAD commit (bf1bb1b — "Naive upgrade to 1.21.6 using Claude Sonnet 4.6")
+Working tree diff examined via: git diff HEAD
+Date of review: 2026-05-18
+
+============================================================
+SUMMARY OF ALL UNCOMMITTED CHANGES
+============================================================
+
+Only one file has uncommitted changes compared to HEAD:
+
+  File: pack.mcmeta
+  Type: VALID — pure format/version update
+
+  Diff hunk:
+    -    "pack_format": 80,
+    +    "pack_format": 88,
+    +    "min_format": 88,
+    +    "max_format": 88,
+
+  Analysis:
+    - pack_format updated from 80 → 88: matches the expected data pack format
+      number for Minecraft Java Edition 1.21.9.
+    - min_format: 88 added: required new field per 1.21.9 pack.mcmeta schema
+      (replaces supported_formats for packs with pack_format >= 82).
+    - max_format: 88 added: required new field per 1.21.9 pack.mcmeta schema.
+    - "description" field unchanged.
+    - No logic, no commands, no game behaviour affected.
+    This is a purely syntactic/format change.
+
+============================================================
+EXPECTED CHANGES NOT PRESENT IN DIFF
+============================================================
+
+The following 1.21.9 breaking changes were listed as potentially applicable
+but do NOT appear in the diff (i.e. they were either not needed because the
+relevant syntax does not exist in this pack, or they have not yet been made):
+
+  1. minecraft:chain → minecraft:iron_chain renames (.mcfunction / .json)
+  2. particle flash <color_argb> — color argument additions
+  3. /gamerule spawnChunkRadius command removals
+  4. Player respawn NBT: "angle" → "yaw" renames
+  5. noise_settings: "initial_density_without_jaggedness" →
+     "preliminary_surface_level" replacements
+
+These absences are NOT anomalies of the changes that were made; they simply
+mean no such updates are reflected in the current working-tree diff. Whether
+they still need to be applied is a separate concern outside the scope of this
+review.
+
+============================================================
+VERDICT
+============================================================
+
+No anomalies detected. All changes present in the diff are purely
+syntactic/format updates for Minecraft Java Edition 1.21.9.

@@ -1,0 +1,279 @@
+MINECRAFT JAVA EDITION 1.21.9 ("The Copper Age") - SYNTAX CHANGES FOR DATAPACKS
+==================================================================================
+Data pack format: 88.0   |   Resource pack format: 69.0
+Release date: September 30, 2025
+
+This file documents all breaking or notable syntax/format changes relevant to
+.mcfunction files, JSON data files (loot tables, recipes, tags, advancements,
+predicates, etc.) and pack.mcmeta.
+
+==============================================================================
+1. pack.mcmeta FORMAT CHANGES (BREAKING)
+==============================================================================
+
+The pack.mcmeta schema has been overhauled:
+
+  OLD format (pack_format 80, used in this pack):
+    {
+      "pack": {
+        "pack_format": 80,
+        "description": "..."
+      }
+    }
+
+  NEW format required for 1.21.9 (data pack format >= 82 must NOT use
+  supported_formats; it must use min_format and max_format instead):
+    {
+      "pack": {
+        "pack_format": 88,
+        "min_format": 88,
+        "max_format": 88,
+        "description": "..."
+      }
+    }
+
+  Rules:
+  - "supported_formats" field: REMOVED (forbidden when pack_format >= 82).
+  - "pack_format" field: now optional but recommended for compatibility.
+  - "min_format": NEW REQUIRED field. Minimum supported pack format.
+    Single integer = major version (minor assumed 0).
+    Two-integer list [major, minor] for precise minor version targeting.
+  - "max_format": NEW REQUIRED field. Maximum supported pack format.
+    Single integer = any minor version of that major (minor = 0x7fffffff).
+
+  For overlay entries, "formats" is similarly removed; use "min_format" and
+  "max_format" per overlay definition instead.
+
+==============================================================================
+2. ITEM/BLOCK ID RENAME: "chain" → "iron_chain" (BREAKING)
+==============================================================================
+
+The block and item previously known as "chain" has been renamed to "iron_chain".
+
+  Affects:
+  - Any /give, /clear, /item, /loot, /execute if items.matches commands
+    referencing minecraft:chain  → change to minecraft:iron_chain
+  - Loot table entries with "name": "minecraft:chain"
+  - Recipe result/ingredient referencing "minecraft:chain"
+  - Item tag files referencing "minecraft:chain" directly
+  - Block tag files referencing "minecraft:chain" directly
+  - Any NBT item data or predicate with item id "minecraft:chain"
+  - Advancement criteria checking for chain items/blocks
+
+  Resource packs: block sprite "chain" renamed to "iron_chain";
+                  item sprite "chain" renamed to "iron_chain".
+
+==============================================================================
+3. NEW GAME RULES (non-breaking additions; relevant if datapacks check/set them)
+==============================================================================
+
+  - allowEnteringNetherUsingPortals  (default: true)
+  - commandBlocksEnabled             (default: true)
+  - pvp                              (default: true)
+  - spawnMonsters                    (default: true)
+  - spawnerBlocksEnabled             (default: true)
+
+  REMOVED game rule:
+  - spawnChunkRadius  — any /gamerule spawnChunkRadius commands must be removed.
+
+==============================================================================
+4. COMMAND CHANGES
+==============================================================================
+
+  /setworldspawn
+    - No longer limited to the Overworld dimension.
+    - Added optional "pitch" argument:
+        /setworldspawn [<pos>] [<angle>] [<pitch>]
+      (existing uses without pitch remain valid)
+
+  /spawnpoint
+    - Added optional "pitch" argument:
+        /spawnpoint [<targets>] [<pos>] [<angle>] [<pitch>]
+      (existing uses remain valid)
+
+  /summon
+    - Now FAILS (returns failure) when summoning monsters while
+      difficulty is set to Peaceful. Previously spawned for 1 tick.
+      No syntax change; purely behavioral.
+
+  Server commands default dimension:
+    - Server-side commands now run from the respawn dimension by default,
+      instead of always the Overworld. May affect relative coordinates (~)
+      in scheduled functions or command blocks without explicit dimension
+      targeting.
+
+==============================================================================
+5. ENTITY DATA CHANGES (NBT / data modify)
+==============================================================================
+
+  minecraft:player — respawn object:
+    - "angle" field RENAMED to "yaw" and is now REQUIRED.
+    - "pitch" field ADDED and is now REQUIRED.
+    - "dimension" field is now REQUIRED.
+    Any /data modify or NBT-setting commands touching player respawn data
+    must be updated.
+
+==============================================================================
+6. PARTICLE SYNTAX CHANGES
+==============================================================================
+
+  flash particle — "color" parameter now REQUIRED (argb integer):
+    OLD: particle flash
+    NEW: particle flash <color_argb>
+    Example: particle flash 0xFFFFFFFF
+
+  dragon_breath particle — NEW optional "power" parameter (float, default 1.0):
+    particle dragon_breath [<power>]
+
+  instant_effect and effect particles — NEW optional parameters:
+    particle instant_effect [<power>] [<color>]
+    particle effect        [<power>] [<color>]
+    (power: float default 1.0; color: rgb integer default 0xFFFFFF)
+
+==============================================================================
+7. LOOT TABLE CHANGES
+==============================================================================
+
+  New loot table types (available for custom use):
+    - minecraft:entity_interact   (params: target_entity, interacting_entity, tool)
+    - minecraft:block_interact    (params: block_state, block_entity,
+                                   interacting_entity, tool)
+
+  New built-in loot tables added by vanilla (do not conflict but be aware):
+    - charged_creeper/root  (and sub-tables: piglin, creeper, skeleton,
+                              wither_skeleton, zombie)
+    - brush/armadillo
+    - gameplay/turtle_grow
+    - harvest/beehive
+    - harvest/cave_vine
+    - harvest/sweet_berry_bush
+    - carve/pumpkin
+
+  Loot function "minecraft:copy_name" — source field new accepted values:
+    direct_attacker, target_entity, interacting_entity
+
+  Loot function "minecraft:copy_components" — source field new accepted values:
+    this, attacker, direct_attacker, attacking_player,
+    target_entity, interacting_entity, tool
+
+  Fields specifying a target entity (e.g. entity_properties.entity) now also
+  accept: target_entity, interacting_entity
+
+==============================================================================
+8. BLOCK ENTITY DATA CHANGES
+==============================================================================
+
+  minecraft:skull (player head block entity):
+    - "profile" field format changed to match minecraft:profile item component.
+    - The profile is now immutable and resolved only when necessary.
+    - If using /data merge or /data modify to set skull profile, update syntax
+      to match the component format (name/id/properties object).
+
+==============================================================================
+9. ITEM COMPONENT CHANGES
+==============================================================================
+
+  minecraft:profile component:
+    - No longer resolves automatically (skin download deferred).
+    - Static mode: has "properties" OR both "name"+"id" present, OR neither.
+      Skin is frozen at creation time.
+    - Dynamic mode: has EITHER "name" OR "id" (not both). Resolves on render.
+    - New override fields: "texture", "cape", "elytra", "model"
+    - Items no longer stack across static/dynamic variants.
+
+  blocks_attacks item component:
+    - If the damage reduced in an attack is 0 (e.g. wrong angle), the item
+      can no longer be disabled or cause knockback from blocking.
+      No syntax change; behavioral only.
+
+==============================================================================
+10. WORLD GENERATION / NOISE SETTINGS (relevant if pack includes dimension data)
+==============================================================================
+
+  In noise_settings JSON files:
+    - Field "initial_density_without_jaggedness" (3D density function) is
+      REPLACED by "preliminary_surface_level" (2D density function).
+    - Use the new "minecraft:find_top_surface" density function type to
+      replicate the old scanning behavior if needed.
+
+  New density function types:
+    - minecraft:find_top_surface  (fields: density, upper_bound, lower_bound,
+                                   cell_height)
+    - minecraft:invert            (field: argument — resolves to 1/argument)
+
+==============================================================================
+11. TAG CHANGES (relevant if pack overrides or extends vanilla tags)
+==============================================================================
+
+  Block tags — vanilla changes (affects packs that remove/extend these):
+    - "chain" REMOVED from direct listings; replaced by "#chains" tag
+      (new tag containing iron_chain and copper_chain).
+    - "iron_bars", "lantern", "lightning_rod", "soul_lantern" removed from
+      #mineable/pickaxe direct list; replaced by new tags (#bars, #lanterns,
+      #lightning_rods).
+    - If your pack's tag files reference the old direct entries, they still
+      work as item IDs (iron_bars etc. still exist), but "chain" is now
+      "iron_chain".
+
+  New block tags: #bars, #chains, #copper, #copper_chests,
+                  #copper_golem_statues, #incorrect_for_copper_tool,
+                  #lanterns, #lightning_rods, #wooden_shelves
+
+  New item tags:  #bars, #chains, #copper, #copper_chests,
+                  #copper_golem_statues, #copper_tool_materials, #lanterns,
+                  #lightning_rods, #repairs_copper_armor,
+                  #shearable_from_copper_golem, #wooden_shelves
+
+  New entity type tags: #accepts_iron_golem_gift, #candidate_for_iron_golem_gift,
+                        #cannot_be_pushed_onto_boats
+
+==============================================================================
+12. ENCHANTMENT DEFINITION CHANGES (if pack defines custom enchantments)
+==============================================================================
+
+  "explode" entity effect — new field "block_particles" (note: mistakenly called
+  "block_effects" in the official changelog):
+    List of entries with fields:
+      - weight (non-negative integer)
+      - particle (particle definition)
+      - scaling (optional float, default 1.0)
+      - speed (optional float, default 1.0)
+
+==============================================================================
+13. JIGSAW STRUCTURE CHANGES (if pack defines custom structures)
+==============================================================================
+
+  "max_distance_from_center" field now supports axis-specific values:
+    OLD: "max_distance_from_center": 20
+    NEW (optional extended format):
+      "max_distance_from_center": { "horizontal": 20, "vertical": 500 }
+    The old single-integer format still works.
+
+==============================================================================
+SUMMARY OF ACTIONS REQUIRED PER FILE TYPE
+==============================================================================
+
+  .mcfunction files:
+    [1] Replace all "minecraft:chain" item/block references with
+        "minecraft:iron_chain".
+    [2] Remove any /gamerule spawnChunkRadius commands.
+    [3] Update /particle flash to include required color argument.
+    [4] Update any NBT player respawn "angle" → "yaw" if present.
+
+  pack.mcmeta:
+    [1] Update "pack_format" to 88.
+    [2] Add "min_format": 88.
+    [3] Add "max_format": 88.
+    [4] Remove "supported_formats" if present.
+
+  Loot table JSON files:
+    [1] Replace "minecraft:chain" in any "name" fields with "minecraft:iron_chain".
+
+  Recipe JSON files:
+    [1] Replace "minecraft:chain" ingredient/result with "minecraft:iron_chain".
+
+  Tag JSON files:
+    [1] Replace "minecraft:chain" entries with "minecraft:iron_chain".
+
+  Noise settings / dimension JSON (if present):
+    [1] Replace "initial_density_without_jaggedness" with "preliminary_surface_level".
