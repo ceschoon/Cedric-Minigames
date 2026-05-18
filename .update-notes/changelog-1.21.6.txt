@@ -1,0 +1,205 @@
+Minecraft Java Edition 1.21.6 — Data Pack Syntax Changes
+==========================================================
+Source: https://minecraft.wiki/w/Java_Edition_1.21.6
+Data pack format version: 80   (was 71 in 1.21.4, 78 in 1.21.5)
+
+This file lists all breaking and noteworthy syntax changes relevant to data
+pack authors (.mcfunction files, JSON loot tables, advancements, tags, etc.).
+
+══════════════════════════════════════════════════════════════════════════════
+1. PACK FORMAT
+══════════════════════════════════════════════════════════════════════════════
+• pack.mcmeta must have "pack_format": 80
+  Old: "pack_format": 71  (or whatever the previous value was)
+  New: "pack_format": 80
+
+══════════════════════════════════════════════════════════════════════════════
+2. SOUND EVENT RENAMES  (affects /playsound and any sounds.json references)
+══════════════════════════════════════════════════════════════════════════════
+The following sound event IDs have been renamed:
+
+  OLD                                   → NEW
+  ─────────────────────────────────────────────────────────
+  minecraft:block.sand.wind             → minecraft:block.dry_grass.ambient
+  minecraft:entity.leashknot.break1     → minecraft:entity.leashknot.unleash1
+  minecraft:entity.leashknot.break2     → minecraft:entity.leashknot.unleash2
+  minecraft:entity.leashknot.break3     → minecraft:entity.leashknot.unleash3
+  minecraft:entity.leashknot.place1     → minecraft:entity.leashknot.leash1
+  minecraft:entity.leashknot.place2     → minecraft:entity.leashknot.leash2
+  minecraft:entity.leashknot.place3     → minecraft:entity.leashknot.leash3
+
+Note on /playsound category names (display-only, not used in commands):
+  "Friendly Creatures" → "Friendly Mobs"
+  "Hostile Creatures"  → "Hostile Mobs"
+
+══════════════════════════════════════════════════════════════════════════════
+3. ENTITY DATA (NBT) CHANGES
+══════════════════════════════════════════════════════════════════════════════
+These affect /data, /execute if entity ... nbt, /summon, and similar commands
+that reference NBT tags.
+
+3a. area_effect_cloud — Particle field renamed
+  OLD: {Particle: {type: "minecraft:entity_effect", ...}}
+  NEW: {custom_particle: {type: "minecraft:entity_effect", ...}}
+  The field "Particle" has been renamed to "custom_particle".
+  It is no longer written when no override is specified.
+
+3b. tnt — new owner field (additive, not breaking)
+  New optional field: owner (UUID of the Living entity that primed the TNT).
+  e.g. to match TNT owned by a player: {owner: <UUID>}
+
+3c. vex — new owner field (additive, not breaking)
+  New optional field: owner (UUID of the Mob that owns the vex).
+  (Previously stored as VexFlags/summoner, now owner UUID)
+  Note: MC-118430 fix — vex summoner is now properly stored.
+
+3d. All mobs — new home fields (additive, not breaking)
+  New optional fields on every mob: home_pos (block pos), home_radius (int).
+  Mobs with a home_pos set will limit pathfinding to within home_radius.
+
+══════════════════════════════════════════════════════════════════════════════
+4. TAG RENAMES
+══════════════════════════════════════════════════════════════════════════════
+The following built-in tag IDs have been renamed:
+
+  BLOCK TAGS:
+  OLD: minecraft:plays_ambient_desert_block_sounds
+  NEW: minecraft:triggers_ambient_desert_dry_vegetation_block_sounds
+
+If any data pack references the old tag name (in tag files, predicates, or
+commands like /tag), it must be updated to the new name.
+
+══════════════════════════════════════════════════════════════════════════════
+5. DATA COMPONENT FORMAT CHANGES  (item components in /give, /item, loot tables, etc.)
+══════════════════════════════════════════════════════════════════════════════
+5a. attribute_modifiers — new optional display field
+  Each entry in attribute_modifiers can now have:
+    display: {type: "default"}   — current behavior (shows calculated values)
+    display: {type: "hidden"}    — hides the entry from tooltip
+    display: {type: "override", value: <text component>}  — custom text
+  Old format still works (backwards-compatible addition).
+
+5b. equippable — two new optional fields
+  can_be_sheared: true/false  (default false)
+    If true, players can shear this equippable item off a mob.
+  shearing_sound: <sound event id>  (default: "item.shears.snip")
+  Old format still works (backwards-compatible addition).
+
+5c. painting/variant — inline variants no longer accepted
+  OLD: painting/variant can be defined inline inside item components.
+  NEW: Only registered variant IDs are accepted; inline variant definitions
+       are no longer supported.
+  If any loot table or /give command uses an inline painting variant, it must
+  be changed to reference a registered variant by ID.
+
+══════════════════════════════════════════════════════════════════════════════
+6. COMMAND FORMAT ADDITIONS (new commands — no breaking changes)
+══════════════════════════════════════════════════════════════════════════════
+The following new commands are available in 1.21.6:
+
+  /dialog show <targets> <dialog>
+  /dialog clear <targets>
+    — Shows or clears a dialog UI for players.
+
+  /version
+    — Prints server version information (operator only).
+
+  /waypoint list
+  /waypoint modify <entity-selector> color <color>
+  /waypoint modify <entity-selector> color hex <hex-color>
+  /waypoint modify <entity-selector> color reset
+  /waypoint modify <entity-selector> style set <style>
+  /waypoint modify <entity-selector> style reset
+    — Manages the locator bar waypoint display for entities.
+
+  /datapack create <id> <name>
+    — Creates a new empty data pack directory (server owner only).
+
+  /playsound — new category "ui"
+    Added category: ui  (continues playing while paused, like music)
+    Usage: /playsound <sound> ui <targets> ...
+
+══════════════════════════════════════════════════════════════════════════════
+7. NEW GAME RULE
+══════════════════════════════════════════════════════════════════════════════
+  locatorBar  (boolean, default: true on servers)
+    Enables/disables the player locator bar. Disabling removes all waypoints.
+
+══════════════════════════════════════════════════════════════════════════════
+8. NEW ADVANCEMENT TRIGGER
+══════════════════════════════════════════════════════════════════════════════
+  minecraft:player_sheared_equipment
+    Triggers when a player shears off shearable equipment from an entity.
+    Conditions: item (the sheared item), entity (the entity that was sheared).
+
+══════════════════════════════════════════════════════════════════════════════
+9. NEW ATTRIBUTES
+══════════════════════════════════════════════════════════════════════════════
+  minecraft:camera_distance         (default 4.0)
+  minecraft:waypoint_transmit_range (default 0.0, players default 60,000,000)
+  minecraft:waypoint_receive_range  (default 0.0, players default 60,000,000)
+  minecraft:flying_speed            (ghasts now have this attribute)
+
+  Usage example: /attribute @s minecraft:waypoint_transmit_range base set 0
+
+══════════════════════════════════════════════════════════════════════════════
+10. NEW ENTITY TAGS (additive)
+══════════════════════════════════════════════════════════════════════════════
+  minecraft:happy_ghast_avoids           (block tag)
+  minecraft:triggers_ambient_desert_sand_block_sounds  (block tag)
+  minecraft:triggers_ambient_dried_ghast_block_sounds  (block tag)
+  minecraft:happy_ghast_food             (item tag)
+  minecraft:happy_ghast_tempt_items      (item tag)
+  minecraft:harnesses                    (item tag)
+  minecraft:can_equip_harness            (entity tag)
+  minecraft:followable_friendly_mobs     (entity tag)
+  minecraft:pause_screen_additions       (dialog tag)
+  minecraft:quick_actions                (dialog tag)
+
+  Also: "carrot" has been added to the minecraft:horse_food item tag.
+
+══════════════════════════════════════════════════════════════════════════════
+11. JSON STRICT MODE
+══════════════════════════════════════════════════════════════════════════════
+All JSON files (loot tables, advancements, recipes, tag files, etc.) are now
+parsed in strict mode. This means:
+  - Trailing commas are NOT allowed: {"a":1,} is an error.
+  - Comments are NOT allowed.
+  - Single quotes are NOT allowed for strings.
+  - All string keys must be quoted.
+Review all JSON files in data packs and remove any non-standard JSON syntax.
+
+══════════════════════════════════════════════════════════════════════════════
+12. TEXT COMPONENT / CLICK EVENT CHANGES
+══════════════════════════════════════════════════════════════════════════════
+12a. New click action in text components: minecraft:custom
+  {clickEvent: {action: "minecraft:custom", id: "namespace:id", payload: <NBT tag>}}
+  The payload field now carries a full NBT compound tag (was previously string).
+  Old "run_command" / standard click events are unaffected.
+
+12b. New click action: show_dialog
+  {clickEvent: {action: "show_dialog", dialog: "namespace:dialog_id"}}
+
+══════════════════════════════════════════════════════════════════════════════
+13. DIMENSION TYPE DEFINITION CHANGES
+══════════════════════════════════════════════════════════════════════════════
+  New optional field: cloud_height (int) — Y level where clouds start.
+  No change to existing dimension type files (backwards-compatible addition).
+
+══════════════════════════════════════════════════════════════════════════════
+SUMMARY OF BREAKING CHANGES REQUIRING ACTION
+══════════════════════════════════════════════════════════════════════════════
+  ✗ pack.mcmeta: bump pack_format to 80
+  ✗ /playsound or sounds.json: rename block.sand.wind → block.dry_grass.ambient
+  ✗ /playsound or sounds.json: rename entity.leashknot.break* → unleash*
+  ✗ /playsound or sounds.json: rename entity.leashknot.place* → leash*
+  ✗ NBT selectors/data commands: rename area_effect_cloud.Particle → custom_particle
+  ✗ Tag references: rename plays_ambient_desert_block_sounds → triggers_ambient_desert_dry_vegetation_block_sounds
+  ✗ JSON files: fix any non-strict JSON (trailing commas, comments, etc.)
+  ✗ painting/variant: remove any inline variant definitions, use registered IDs
+
+  ✓ attribute_modifiers display field: optional, no action needed
+  ✓ equippable can_be_sheared/shearing_sound: optional, no action needed
+  ✓ tnt/vex owner field: optional, no action needed
+  ✓ home_pos/home_radius: optional, no action needed
+  ✓ New commands/gamerules/triggers/attributes: additive, no action needed

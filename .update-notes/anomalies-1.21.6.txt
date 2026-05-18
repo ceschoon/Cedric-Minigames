@@ -1,0 +1,81 @@
+Anomaly Report — Cedric-Minigames 1.21.6 Update Review
+=======================================================
+Reviewed by: GitHub Copilot (Claude Sonnet 4.6)
+Date: 2026-05-18
+Command run: git diff HEAD  (from /workspaces/alpine/Cedric-Minigames)
+Branch: sonnet-1.21.5
+
+════════════════════════════════════════════════════════════════
+SCOPE OF REVIEW
+════════════════════════════════════════════════════════════════
+Only uncommitted working-tree changes (git diff HEAD) were reviewed.
+Two files appear in the diff:
+  1. pack.mcmeta          — modified
+  2. spyglass.json        — deleted
+
+
+════════════════════════════════════════════════════════════════
+EXPECTED CHANGES — CONFIRMED
+════════════════════════════════════════════════════════════════
+
+File: pack.mcmeta
+  Change: "pack_format" value changed from 71 to 80.
+  Status: EXPECTED. This matches the required pack_format bump for
+          Minecraft Java Edition 1.21.6. No other lines were modified.
+
+
+════════════════════════════════════════════════════════════════
+ANOMALIES DETECTED
+════════════════════════════════════════════════════════════════
+
+ANOMALY #1
+  File: spyglass.json (root of the data pack)
+  Change: The file was deleted in its entirety.
+  Deleted content:
+    {
+       "env": {
+          "gameVersion": "1.21.4"
+       }
+    }
+  Reason flagged: This deletion is not listed among the expected
+  changes for the 1.21.6 compatibility update. The task specification
+  only anticipates:
+    • pack_format bump in pack.mcmeta
+    • sound event renames in .mcfunction files
+    • area_effect_cloud NBT field renames
+    • tag renames in JSON files
+    • trailing comma removal in JSON files
+
+  Assessment: spyglass.json is a configuration file for the Spyglass
+  data pack linting tool; it is NOT loaded by the Minecraft server and
+  has NO effect on game logic, gameplay values, or data pack behavior.
+  Deleting it does not introduce any functional or behavioral change to
+  the data pack itself.
+
+  The most likely benign explanation is that the file was removed
+  because it still referenced gameVersion "1.21.4" (two major versions
+  behind), and an updated version has not yet been created. However,
+  since the deletion was not described in the task specification, it is
+  reported here for human review.
+
+  Severity: LOW — no gameplay impact; purely a development tooling
+  file. No corrective action is required for Minecraft compatibility.
+
+
+════════════════════════════════════════════════════════════════
+SUMMARY
+════════════════════════════════════════════════════════════════
+  Total files changed (uncommitted): 2
+  Expected changes confirmed:        1  (pack.mcmeta)
+  Anomalies detected:                1  (spyglass.json deleted)
+
+  All data pack source files (.mcfunction, JSON loot tables,
+  advancements, recipes, tags, predicates) are UNCHANGED in the
+  working tree — no sound event renames, NBT field renames, tag
+  renames, or trailing-comma fixes have been applied yet.
+
+  NOTE: The sound event renames, NBT renames, tag renames, and JSON
+  strict-mode fixes listed as "expected changes" do NOT yet appear in
+  git diff HEAD. Either they have not been performed yet, or they were
+  already committed in an earlier commit on this branch (the committed
+  diff develop..HEAD is a separate scope not reviewed here).
