@@ -3,10 +3,10 @@
 scoreboard objectives setdisplay sidebar duels_Score
 
 # Gamerules
-gamerule keepInventory true
-gamerule doImmediateRespawn true
-gamerule doDaylightCycle false
-gamerule naturalRegeneration true
+gamerule minecraft:keep_inventory true
+gamerule minecraft:immediate_respawn true
+gamerule minecraft:advance_time false
+gamerule minecraft:natural_health_regeneration true
 
 gamemode spectator @a
 

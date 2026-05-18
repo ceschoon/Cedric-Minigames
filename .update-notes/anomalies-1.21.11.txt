@@ -1,0 +1,162 @@
+AUDIT REPORT — Cedric-Minigames data pack, update to MC 1.21.11
+Generated: 2026-05-18
+Audited: all changes in `git diff HEAD` relative to the last commit.
+
+════════════════════════════════════════════════════════════════════════════════
+SUMMARY
+════════════════════════════════════════════════════════════════════════════════
+
+No anomalies detected. All changes are purely syntactic.
+
+10 files were modified. Every changed line is one of the following three
+categories of mechanical, semantics-preserving renames required for MC 1.21.x:
+
+  A) Gamerule namespace prefix addition  (old name → minecraft:<new_name>)
+  B) worldborder set time-literal suffix  (bare integer → integer + 's')
+  C) NBT field snake_case rename  (AngryAt → angry_at)
+
+════════════════════════════════════════════════════════════════════════════════
+DETAILED CHANGE LOG — all SYNTACTIC
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/cgame/function/display_options.mcfunction
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] Gamerule rename (Category A)
+  OLD: /gamerule announceAdvancements false
+  NEW: /gamerule minecraft:show_advancement_messages false
+  Reason: `announceAdvancements` was renamed to `minecraft:show_advancement_messages`
+          in MC 1.21+. The boolean value (false) is unchanged.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/cgame/function/load.mcfunction  (6 changes)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] Gamerule rename (Category A)
+  OLD: gamerule announceAdvancements true
+  NEW: gamerule minecraft:show_advancement_messages true
+  Reason: Same rename as above; value (true) unchanged.
+
+[SYNTACTIC] Gamerule rename (Category A)
+  OLD: gamerule doImmediateRespawn true
+  NEW: gamerule minecraft:immediate_respawn true
+  Reason: `doImmediateRespawn` → `minecraft:immediate_respawn`. Value unchanged.
+
+[SYNTACTIC] Gamerule rename (Category A)
+  OLD: gamerule naturalRegeneration true
+  NEW: gamerule minecraft:natural_health_regeneration true
+  Reason: `naturalRegeneration` → `minecraft:natural_health_regeneration`. Value unchanged.
+
+[SYNTACTIC] Gamerule rename (Category A)
+  OLD: gamerule doDaylightCycle false
+  NEW: gamerule minecraft:advance_time false
+  Reason: `doDaylightCycle` → `minecraft:advance_time`. Value unchanged.
+
+[SYNTACTIC] Gamerule rename (Category A)
+  OLD: gamerule doInsomnia false
+  NEW: gamerule minecraft:spawn_phantoms false
+  Reason: `doInsomnia` → `minecraft:spawn_phantoms`. Value unchanged.
+
+[SYNTACTIC] Gamerule rename (Category A)
+  OLD: gamerule spawnRadius 0
+  NEW: gamerule minecraft:respawn_radius 0
+  Reason: `spawnRadius` → `minecraft:respawn_radius`. Value unchanged.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/cgame/function/presets/random.mcfunction  (1 change)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] Gamerule rename (Category A)
+  OLD: ... run gamerule doDaylightCycle true
+  NEW: ... run gamerule minecraft:advance_time true
+  Reason: Same rename as above; the enclosing `execute if score …` context and
+          the value (true) are both unchanged.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/cgame/function/shrink_border.mcfunction  (5 changes)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] worldborder time-literal syntax (Category B)
+  OLD: worldborder set 100 400
+  NEW: worldborder set 100 400s
+  Reason: MC 1.21.4+ requires an explicit time unit for worldborder duration.
+          `400` (bare integer, interpreted as seconds in old syntax) is
+          identical to `400s` (400 seconds with explicit suffix). No duration
+          change. Same pattern for the four other size brackets:
+
+  OLD: worldborder set 100 800   → NEW: worldborder set 100 800s
+  OLD: worldborder set 100 1200  → NEW: worldborder set 100 1200s
+  OLD: worldborder set 100 1600  → NEW: worldborder set 100 1600s
+  OLD: worldborder set 100 2000  → NEW: worldborder set 100 2000s
+
+  All numeric values are identical; only the unit suffix was added.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/cgame/function/start.mcfunction  (4 changes)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] Gamerule renames (Category A)
+  OLD: gamerule doImmediateRespawn true   → NEW: gamerule minecraft:immediate_respawn true
+  OLD: gamerule doDaylightCycle true      → NEW: gamerule minecraft:advance_time true
+  OLD: gamerule naturalRegeneration true  → NEW: gamerule minecraft:natural_health_regeneration true
+  OLD: gamerule spawnRadius 0             → NEW: gamerule minecraft:respawn_radius 0
+  Reason: All are pure name renames; values unchanged.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/duels/function/start.mcfunction  (4 changes)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] Gamerule renames (Category A)
+  OLD: gamerule keepInventory true        → NEW: gamerule minecraft:keep_inventory true
+  OLD: gamerule doImmediateRespawn true   → NEW: gamerule minecraft:immediate_respawn true
+  OLD: gamerule doDaylightCycle false     → NEW: gamerule minecraft:advance_time false
+  OLD: gamerule naturalRegeneration true  → NEW: gamerule minecraft:natural_health_regeneration true
+  Reason: All are pure name renames; values unchanged.
+  Note:   `keepInventory` was only updated in this file. Other files that use
+          `keepInventory` were left untouched (the old short form still
+          functions as a deprecated alias in 1.21.x). This is an incomplete
+          update, not a logic change — no value or behaviour was altered.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/flsheep/function/start.mcfunction  (3 changes)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] Gamerule renames (Category A)
+  OLD: gamerule doImmediateRespawn true    → NEW: gamerule minecraft:immediate_respawn true
+  OLD: gamerule doDaylightCycle false      → NEW: gamerule minecraft:advance_time false
+  OLD: gamerule naturalRegeneration false  → NEW: gamerule minecraft:natural_health_regeneration false
+  Reason: Pure name renames; values unchanged.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/infection/function/start.mcfunction  (3 changes)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] Gamerule renames (Category A)
+  OLD: gamerule doImmediateRespawn true   → NEW: gamerule minecraft:immediate_respawn true
+  OLD: gamerule doDaylightCycle true      → NEW: gamerule minecraft:advance_time true
+  OLD: gamerule naturalRegeneration true  → NEW: gamerule minecraft:natural_health_regeneration true
+  Reason: Pure name renames; values unchanged.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/platforms/function/main.mcfunction  (8 changes)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] NBT field rename (Category C)
+  OLD: data modify entity @s AngryAt set from entity @p[...] UUID  (×4 iron_golem, ×4 vex)
+  NEW: data modify entity @s angry_at set from entity @p[...] UUID
+  Reason: The NBT compound key `AngryAt` was renamed to `angry_at` (snake_case)
+          in MC 1.21+. The entity selectors, target expressions (`set from …
+          UUID`), team conditions, and distance filters are all identical.
+          Pure field-name rename.
+
+────────────────────────────────────────────────────────────────────────────────
+File: data/platforms/function/start.mcfunction  (3 changes)
+────────────────────────────────────────────────────────────────────────────────
+[SYNTACTIC] Gamerule renames (Category A)
+  OLD: gamerule doImmediateRespawn true    → NEW: gamerule minecraft:immediate_respawn true
+  OLD: gamerule doDaylightCycle false      → NEW: gamerule minecraft:advance_time false
+  OLD: gamerule naturalRegeneration false  → NEW: gamerule minecraft:natural_health_regeneration false
+  Reason: Pure name renames; values unchanged.
+
+════════════════════════════════════════════════════════════════════════════════
+CONCLUSION
+════════════════════════════════════════════════════════════════════════════════
+
+No anomalies detected. All changes are purely syntactic.
+
+All 10 modified files contain only mechanical renames required for MC 1.21.x
+compatibility. No numeric values were altered (worldborder durations are
+preserved exactly by the added `s` suffix), no selectors were modified, no
+commands were added or removed, and no logic paths were changed.

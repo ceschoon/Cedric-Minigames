@@ -9,10 +9,10 @@ function ctime:reset
 scoreboard objectives setdisplay sidebar cgame_score
 
 gamerule keepInventory true
-gamerule doImmediateRespawn true
-gamerule doDaylightCycle true
-gamerule naturalRegeneration true
-gamerule spawnRadius 0
+gamerule minecraft:immediate_respawn true
+gamerule minecraft:advance_time true
+gamerule minecraft:natural_health_regeneration true
+gamerule minecraft:respawn_radius 0
 
 gamemode survival @a[scores={cgame_on=1}]
 advancement revoke @a[scores={cgame_on=1}] everything

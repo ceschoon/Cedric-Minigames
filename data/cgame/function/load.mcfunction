@@ -3,15 +3,15 @@
 ## Default Gamerules (for the entire datapack)
 
 gamerule keepInventory true
-gamerule announceAdvancements true
+gamerule minecraft:show_advancement_messages true
 gamerule showDeathMessages true
-gamerule doImmediateRespawn true
-gamerule naturalRegeneration true
-gamerule doDaylightCycle false
+gamerule minecraft:immediate_respawn true
+gamerule minecraft:natural_health_regeneration true
+gamerule minecraft:advance_time false
 gamerule randomTickSpeed 300
 gamerule mobGriefing true
-gamerule doInsomnia false
-gamerule spawnRadius 0
+gamerule minecraft:spawn_phantoms false
+gamerule minecraft:respawn_radius 0
 
 execute as @a run attribute @s minecraft:max_health base set 20
 

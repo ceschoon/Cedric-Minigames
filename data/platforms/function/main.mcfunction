@@ -171,10 +171,10 @@ execute at @e[type=armor_stand,name=team3] as @e[type=iron_golem,distance=..10,l
 execute at @e[type=armor_stand,name=team4] as @e[type=iron_golem,distance=..10,limit=1,sort=random] run team join team4
 
 # Make golems angry at members of enemy teams
-execute as @e[type=iron_golem,team=team1,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team1,distance=..24] UUID
-execute as @e[type=iron_golem,team=team2,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team2,distance=..24] UUID
-execute as @e[type=iron_golem,team=team3,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team3,distance=..24] UUID
-execute as @e[type=iron_golem,team=team4,limit=1,sort=random] at @s run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team4,distance=..24] UUID
+execute as @e[type=iron_golem,team=team1,limit=1,sort=random] at @s run data modify entity @s angry_at set from entity @p[scores={pltf_On=1},team=!team1,distance=..24] UUID
+execute as @e[type=iron_golem,team=team2,limit=1,sort=random] at @s run data modify entity @s angry_at set from entity @p[scores={pltf_On=1},team=!team2,distance=..24] UUID
+execute as @e[type=iron_golem,team=team3,limit=1,sort=random] at @s run data modify entity @s angry_at set from entity @p[scores={pltf_On=1},team=!team3,distance=..24] UUID
+execute as @e[type=iron_golem,team=team4,limit=1,sort=random] at @s run data modify entity @s angry_at set from entity @p[scores={pltf_On=1},team=!team4,distance=..24] UUID
 
 # Make golems glow to show team colors
 effect give @e[type=iron_golem,team=team1] glowing 1 1 true
@@ -183,10 +183,10 @@ effect give @e[type=iron_golem,team=team3] glowing 1 1 true
 effect give @e[type=iron_golem,team=team4] glowing 1 1 true
 
 # Make vex angry at enemy players
-execute as @e[type=vex,team=team1,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team1] UUID
-execute as @e[type=vex,team=team2,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team2] UUID
-execute as @e[type=vex,team=team3,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team3] UUID
-execute as @e[type=vex,team=team4,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s AngryAt set from entity @p[scores={pltf_On=1},team=!team4] UUID
+execute as @e[type=vex,team=team1,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s angry_at set from entity @p[scores={pltf_On=1},team=!team1] UUID
+execute as @e[type=vex,team=team2,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s angry_at set from entity @p[scores={pltf_On=1},team=!team2] UUID
+execute as @e[type=vex,team=team3,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s angry_at set from entity @p[scores={pltf_On=1},team=!team3] UUID
+execute as @e[type=vex,team=team4,limit=1,sort=random] at @e[type=armor_stand,name=diamond] run data modify entity @s angry_at set from entity @p[scores={pltf_On=1},team=!team4] UUID
 
 # Make vex glow to show team colors
 effect give @e[type=vex,team=team1] glowing 1 1 true

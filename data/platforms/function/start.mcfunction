@@ -21,9 +21,9 @@ scoreboard objectives setdisplay sidebar pltf_Score
 
 # Gamerules
 gamerule keepInventory false
-gamerule doImmediateRespawn true
-gamerule doDaylightCycle false
-gamerule naturalRegeneration false
+gamerule minecraft:immediate_respawn true
+gamerule minecraft:advance_time false
+gamerule minecraft:natural_health_regeneration false
 gamerule mobGriefing true
 
 # World

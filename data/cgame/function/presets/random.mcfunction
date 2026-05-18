@@ -41,7 +41,7 @@ execute store result score #temp cgame_variable run random value 1..10
 execute if score #temp cgame_variable matches 1 run scoreboard players set @a[scores={cfp_is_fake_player=0}] zombies_on 1
 execute if score #temp cgame_variable matches 1 store result score @a[scores={cfp_is_fake_player=0}] zombies_difficulty run random value 0..2
 execute if score #temp cgame_variable matches 1 run scoreboard players set @a[scores={cfp_is_fake_player=0}] permeffects_darknight 1
-execute if score #temp cgame_variable matches 1 run gamerule doDaylightCycle true
+execute if score #temp cgame_variable matches 1 run gamerule minecraft:advance_time true
 
 ################################################################
 ## Roles

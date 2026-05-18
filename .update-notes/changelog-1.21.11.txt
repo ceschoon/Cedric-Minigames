@@ -1,0 +1,289 @@
+# Minecraft Java Edition 1.21.11 — Data Pack Syntax Changes
+# Relevant to: .mcfunction files, loot tables, predicates, advancements, tags, recipes
+# Data pack format: 94.1  |  Resource pack format: 75.0
+
+==============================================================================
+1. GAME RULES — Renamed to resource locations (camelCase → snake_case)
+==============================================================================
+All game rules moved to a registry and renamed as namespaced resource locations.
+Any /gamerule command in .mcfunction files must be updated.
+
+Old name                          → New resource location
+---------------------------------------------
+announceAdvancements              → minecraft:show_advancement_messages
+commandBlocksEnabled              → minecraft:command_blocks_work
+command_modification_block_limit  → minecraft:max_block_modifications
+disableElytraMovementCheck        → minecraft:elytra_movement_check   (value INVERTED)
+disablePlayerMovementCheck        → minecraft:player_movement_check   (value INVERTED)
+disableRaids                      → minecraft:raids                    (value INVERTED)
+doDaylightCycle                   → minecraft:advance_time
+doEntityDrops                     → minecraft:entity_drops
+doFireTick                        → REMOVED (replaced by minecraft:fire_spread_radius_around_player)
+allowFireTicksAwayFromPlayer      → REMOVED (replaced by minecraft:fire_spread_radius_around_player)
+doImmediateRespawn                → minecraft:immediate_respawn
+doInsomnia                        → minecraft:spawn_phantoms
+doLimitedCrafting                 → minecraft:limited_crafting
+doMobLoot                         → minecraft:mob_drops
+doMobSpawning                     → minecraft:spawn_mobs
+doPatrolSpawning                  → minecraft:spawn_patrols
+doTileDrops                       → minecraft:block_drops
+doTraderSpawning                  → minecraft:spawn_wandering_traders
+doVinesSpread                     → minecraft:spread_vines
+doWardenSpawning                  → minecraft:spawn_wardens
+doWeatherCycle                    → minecraft:advance_weather
+maxCommandChainLength             → minecraft:max_command_sequence_length
+maxCommandForkCount               → minecraft:max_command_forks
+naturalRegeneration               → minecraft:natural_health_regeneration
+snowAccumulationHeight            → minecraft:max_snow_accumulation_height
+spawnRadius                       → minecraft:respawn_radius
+spawnerBlocksEnabled              → minecraft:spawner_blocks_work
+
+New game rule:
+  minecraft:fire_spread_radius_around_player
+    Replaces doFireTick + allowFireTicksAwayFromPlayer.
+    0 = disable fire spreading, -1 = allow spreading without players nearby.
+
+Syntax for /gamerule commands has changed:
+  OLD: /gamerule doDaylightCycle false
+  NEW: /gamerule minecraft:advance_time false
+
+Note: Inverted rules — the new boolean meaning is the opposite of the old one:
+  disableElytraMovementCheck true  →  minecraft:elytra_movement_check false
+  disablePlayerMovementCheck true  →  minecraft:player_movement_check false
+  disableRaids true                →  minecraft:raids false
+
+==============================================================================
+2. /execute COMMAND — New stopwatch sub-command
+==============================================================================
+New syntax (addition, no breaking change):
+  /execute (if|unless) stopwatch <id> <range>
+Compares elapsed time (in seconds) of a stopwatch with a float range.
+Example:
+  /execute if stopwatch foo:bar ..10 run say Less than 10s elapsed
+
+==============================================================================
+3. /worldborder COMMAND — Time argument unit changed
+==============================================================================
+BREAKING CHANGE: The `time` argument is now in TICKS instead of seconds.
+  /worldborder set <size> <time>   — <time> was seconds, now is ticks
+  /worldborder add <size> <time>   — same change
+
+Suffix support (new):
+  No suffix = ticks (default)
+  s suffix   = seconds  (e.g. 200s)
+  d suffix   = in-game days (e.g. 1d)
+
+Warning distance time argument also defaults to ticks now (with same suffix support).
+
+Example migration:
+  OLD: /worldborder set 100 60      (60 seconds)
+  NEW: /worldborder set 100 60s     (60 seconds, explicit) OR /worldborder set 100 1200 (60*20 ticks)
+
+==============================================================================
+4. ENTITY DATA — Anger fields renamed
+==============================================================================
+  AngryAt   → angry_at   (field rename in NBT/SNBT entity data)
+  AngerTime → REMOVED; replaced by anger_end_time (long, absolute game tick when anger ends)
+
+Any use of AngryAt or AngerTime in data commands or predicates must be updated.
+
+==============================================================================
+5. ITEM COMPONENT — minecraft:consumable animation renamed
+==============================================================================
+In the `animation` field of `minecraft:consumable`:
+  OLD: animation: "spear"    (was the trident animation)
+  NEW: animation: "trident"  (renamed to reflect actual trident use)
+  NEW: animation: "spear"    (new separate animation for actual spears)
+
+==============================================================================
+6. LOOT FUNCTIONS — minecraft:filtered signature changed
+==============================================================================
+The `modifier` field in the `minecraft:filtered` loot function has been split:
+  OLD:
+    { "function": "minecraft:filtered", "item_filter": {...}, "modifier": <loot_function> }
+  NEW:
+    { "function": "minecraft:filtered", "item_filter": {...},
+      "on_pass": <function_or_list>,
+      "on_fail": <function_or_list> }
+
+Any loot table using minecraft:filtered must replace `modifier` with `on_pass` (and optionally `on_fail`).
+
+==============================================================================
+7. NEW LOOT FUNCTION — minecraft:discard
+==============================================================================
+New function (addition only):
+  { "function": "minecraft:discard" }
+Replaces an item stack with an empty one. No fields.
+
+==============================================================================
+8. NEW LOOT POOL ENTRY — minecraft:slots
+==============================================================================
+New addition:
+  { "type": "minecraft:slots", "slot_source": { ... } }
+Provides items from selected inventory slots into the loot table.
+
+==============================================================================
+9. ITEM TAGS — Renames
+==============================================================================
+  #enchantable/sword  →  #enchantable/sweeping    (for Sweeping Edge enchantment)
+  #swords (in #enchantable/sharp_weapon)  →  #enchantable/melee_weapon
+
+Any tag reference in function files or data files using #enchantable/sword must be updated
+to #enchantable/sweeping.
+
+==============================================================================
+10. BIOME TAGS — Removed (replaced by Environment Attributes)
+==============================================================================
+The following biome tags have been removed:
+  #snow_golem_melts              → replaced by gameplay/snow_golem_melts environment attribute
+  #increased_fire_burnout        → replaced by gameplay/increased_fire_burnout environment attribute
+  #plays_underwater_music        → replaced by only_underwater field in audio/background_music attribute
+  #has_closer_water_fog          → replaced by visual/water_fog_radius environment attribute
+  #without_patrol_spawns         → replaced by gameplay/can_pillager_patrol_spawn environment attribute
+
+==============================================================================
+11. ADVANCEMENT TRIGGER — New trigger
+==============================================================================
+New trigger (addition only):
+  spear_mobs
+  Fields:
+    player: optional entity predicate (the player using the kinetic weapon)
+    count:  optional integer (number of mobs hit in a single use)
+
+==============================================================================
+12. PREDICATE — Component predicates extended
+==============================================================================
+Component predicates now support checking existence of ANY component type:
+  { "predicates": { "<component_type>": {} } }
+This checks whether the component is present (any value accepted).
+
+Item predicate in command form also extended:
+  *[instrument~{}]  — checks if instrument component exists (equivalent to *[instrument])
+
+==============================================================================
+13. ENTITY PREDICATE FLAGS — New values
+==============================================================================
+The `flags` predicate now supports:
+  is_in_water:   true when entity is touching water or a bubble column
+  is_fall_flying: true when entity is gliding with elytra
+
+==============================================================================
+14. DIMENSION TYPE — Field changes (breaking)
+==============================================================================
+Several fields in dimension type JSON have been migrated or removed:
+  REMOVED/MIGRATED:
+    ultrawarm          → minecraft:gameplay/water_evaporates, minecraft:gameplay/fast_lava, visual/default_dripstone_particle
+    bed_works          → minecraft:gameplay/bed_rule
+    respawn_anchor_works → minecraft:gameplay/respawn_anchor_works
+    cloud_height       → minecraft:visual/cloud_height
+    piglin_safe        → minecraft:gameplay/piglins_zombify
+    has_raids          → minecraft:gameplay/can_start_raid
+    natural (behavior) → minecraft:gameplay/nether_portal_spawns_piglin, minecraft:gameplay/eyeblossom_open, minecraft:gameplay/creaking_active
+    fixed_time         → replaced by has_fixed_time (boolean, default: false)
+    effects (field removed) → replaced by:
+      skybox: "none" | "overworld" | "end"   (was effects: "minecraft:nether" / "minecraft:overworld" / "minecraft:end")
+      cardinal_light: "default" | "nether"
+
+  NEW field: timelines — specifies which Timelines are active (Timeline ID, list, or tag)
+  NEW field: has_fixed_time — boolean replacing fixed_time
+
+==============================================================================
+15. ENCHANTMENT DEFINITION — New effect + new entity effects
+==============================================================================
+New effect component:
+  minecraft:post_piercing_attack  — effects applying after a piercing attack
+
+New entity effects:
+  minecraft:apply_exhaustion — applies exhaustion to entity (amount: Level-Based Value)
+  minecraft:apply_impulse    — applies impulse to entity (direction, coordinate_scale, magnitude)
+  minecraft:play_sound       — now accepts a list of sound identifiers (one per enchantment level)
+
+New level-based value type:
+  exponent: { base: <Level-Based Value>, power: <Level-Based Value> }
+
+==============================================================================
+16. PACK FORMAT
+==============================================================================
+  Data pack format:     94.1  (was 61 in 1.21.4, was 71 in 1.21.5)
+  Resource pack format: 75.0
+
+Update pack.mcmeta if it specifies an exact pack_format:
+  "pack_format": 94   (or use supported_formats range)
+
+==============================================================================
+17. NEW ENTITIES (for summon, selector, scoreboard, etc.)
+==============================================================================
+New entity type IDs available:
+  minecraft:nautilus
+  minecraft:zombie_nautilus
+  minecraft:camel_husk
+  minecraft:parched
+
+New spawn eggs:
+  minecraft:nautilus_spawn_egg
+  minecraft:zombie_nautilus_spawn_egg
+  minecraft:camel_husk_spawn_egg
+  minecraft:parched_spawn_egg
+
+==============================================================================
+18. NEW ITEMS (for give, clear, item predicates, loot tables, etc.)
+==============================================================================
+  minecraft:wooden_spear
+  minecraft:stone_spear
+  minecraft:copper_spear
+  minecraft:iron_spear
+  minecraft:golden_spear
+  minecraft:diamond_spear
+  minecraft:netherite_spear
+  minecraft:copper_nautilus_armor
+  minecraft:iron_nautilus_armor
+  minecraft:golden_nautilus_armor
+  minecraft:diamond_nautilus_armor
+  minecraft:netherite_nautilus_armor
+  minecraft:netherite_horse_armor
+
+==============================================================================
+19. NEW DAMAGE TYPE
+==============================================================================
+  minecraft:spear  (added to #is_player_attack and #no_knockback damage tags)
+
+==============================================================================
+20. NEW ENTITY TAGS
+==============================================================================
+  #burn_in_daylight
+  #can_float_while_ridden
+  #can_wear_nautilus_armor
+  #nautilus_hostiles
+
+Updated entity tags:
+  #can_equip_saddle  — added camel_husk, nautilus, zombie_nautilus
+  #can_breathe_under_water — added nautilus
+  #aquatic — added nautilus, zombie_nautilus
+  #cannot_be_pushed_onto_boats — added nautilus, zombie_nautilus
+  #not_scary_for_pufferfish — added nautilus, zombie_nautilus
+  #can_wear_horse_armor — added zombie_horse
+  #skeletons — added parched
+  #zombies — added camel_husk, zombie_nautilus
+
+==============================================================================
+21. NEW ITEM TAGS
+==============================================================================
+  #spears                    — all spear weapons
+  #enchantable/lunge         — items enchantable with Lunge
+  #enchantable/melee_weapon  — all primary melee weapons (swords + spears)
+  #camel_husk_food
+  #nautilus_food
+  #nautilus_bucket_food
+  #nautilus_taming_items
+  #zombie_horse_food
+
+Updated item tags:
+  #piglin_loved — added golden_nautilus_armor, golden_spear
+  #piglin_preferred_weapons — added golden_spear
+  #enchantable/durability — added #spears
+
+==============================================================================
+22. NEW EFFECT
+==============================================================================
+  minecraft:breath_of_the_nautilus
+    Pauses oxygen consumption for mounted players (does not replenish).
