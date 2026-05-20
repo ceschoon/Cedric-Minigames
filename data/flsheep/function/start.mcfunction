@@ -10,11 +10,11 @@ scoreboard players set #flsheep_Delay flsheep_variable 0
 scoreboard objectives setdisplay sidebar flsheep_Score
 
 # Gamerules
-gamerule keepInventory false
-gamerule minecraft:immediate_respawn true
-gamerule minecraft:advance_time false
-gamerule minecraft:natural_health_regeneration false
-gamerule mobGriefing true
+gamerule keep_inventory false
+gamerule immediate_respawn true
+gamerule advance_time false
+gamerule natural_health_regeneration false
+gamerule mob_griefing true
 
 # World
 execute in minecraft:overworld run worldborder center ~ ~

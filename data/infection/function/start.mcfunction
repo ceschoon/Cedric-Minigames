@@ -18,10 +18,10 @@ scoreboard players set #compass_active ccompass_setting 1
 
 scoreboard objectives setdisplay sidebar inf_TotalKills
 
-gamerule keepInventory true
-gamerule minecraft:immediate_respawn true
-gamerule minecraft:advance_time true
-gamerule minecraft:natural_health_regeneration true
+gamerule keep_inventory true
+gamerule immediate_respawn true
+gamerule advance_time true
+gamerule natural_health_regeneration true
 
 gamemode survival @a[scores={inf_On=1}]
 advancement revoke @a[scores={inf_On=1}] everything

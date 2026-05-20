@@ -2,16 +2,16 @@
 ###############################################################
 ## Default Gamerules (for the entire datapack)
 
-gamerule keepInventory true
-gamerule minecraft:show_advancement_messages true
-gamerule showDeathMessages true
-gamerule minecraft:immediate_respawn true
-gamerule minecraft:natural_health_regeneration true
-gamerule minecraft:advance_time false
-gamerule randomTickSpeed 300
-gamerule mobGriefing true
-gamerule minecraft:spawn_phantoms false
-gamerule minecraft:respawn_radius 0
+gamerule keep_inventory true
+gamerule show_advancement_messages true
+gamerule show_death_messages true
+gamerule immediate_respawn true
+gamerule natural_health_regeneration true
+gamerule advance_time false
+gamerule random_tick_speed 300
+gamerule mob_griefing true
+gamerule spawn_phantoms false
+gamerule respawn_radius 0
 
 execute as @a run attribute @s minecraft:max_health base set 20
 
