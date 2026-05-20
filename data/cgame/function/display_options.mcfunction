@@ -14,7 +14,7 @@ tellraw @a [{text:'[Enable cursed tag (0 or 1)]',color:aqua,click_event:{action:
 tellraw @a [{text:'[Enable barrel drops (0 or 1)]',color:aqua,click_event:{action:suggest_command,command:'/scoreboard players set #cgame_include_barrel_drops cgame_setting 1'}}]
 tellraw @a [{text:'[Enable item shop for hunters (0 or 1)]',color:aqua,click_event:{action:suggest_command,command:'/scoreboard players set #cgame_include_hunter_item_shop cgame_setting 1'}}]
 tellraw @a [{text:'[Hide advancements]',color:aqua,click_event:{action:suggest_command,command:'/gamerule minecraft:show_advancement_messages false'}}]
-tellraw @a [{text:'[Hide death messages]',color:aqua,click_event:{action:suggest_command,command:'/gamerule showDeathMessages false'}}]
+tellraw @a [{text:'[Hide death messages]',color:aqua,click_event:{action:suggest_command,command:'/gamerule show_death_messages false'}}]
 tellraw @a [{text:'[Place hill here]',color:aqua,click_event:{action:suggest_command,command:'/function cgame:place_hill_here'},hover_event:{action:show_text,value:{text:'Used to play king of the hill'}}}]
 
 tellraw @a [' ']

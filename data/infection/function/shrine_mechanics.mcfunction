@@ -89,7 +89,7 @@ effect give @a[team=sane,distance=..8] minecraft:haste 5 4 false
 effect give @a[team=infected,distance=..8] minecraft:mining_fatigue 5 2 false
 execute if score #shrine_active inf_variable matches 0 run effect give @a[team=sane,distance=..8] minecraft:weakness 5 0 false
 execute if score #shrine_active inf_variable matches 1 run effect give @a[team=infected,distance=..8] minecraft:weakness 5 0 false
-execute if score #shrine_active inf_variable matches 0 if score #ctime_TicksInSec ctime_variable matches 15 run summon area_effect_cloud ~ ~ ~ {Particle:{type:flame},potion_contents:{custom_effects:[{id:instant_damage,duration:10,show_particles:1b,show_icon:1b}]},Radius:2.5,RadiusPerTick:-0.0,Duration:10}
+execute if score #shrine_active inf_variable matches 0 if score #ctime_TicksInSec ctime_variable matches 15 run summon area_effect_cloud ~ ~ ~ {custom_particle:{type:flame},potion_contents:{custom_effects:[{id:instant_damage,duration:10,show_particles:1b,show_icon:1b}]},Radius:2.5,RadiusPerTick:-0.0,Duration:10}
 
 #execute if score #shrine_active inf_variable matches 0 run weather rain 1d
 execute if score #shrine_active inf_variable matches 1 run weather clear 1d
