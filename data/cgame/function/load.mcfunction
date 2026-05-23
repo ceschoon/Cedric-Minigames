@@ -12,6 +12,7 @@ gamerule random_tick_speed 300
 gamerule mob_griefing true
 gamerule spawn_phantoms false
 gamerule respawn_radius 0
+gamerule locator_bar false
 
 execute as @a run attribute @s minecraft:max_health base set 20
 
