@@ -4,7 +4,7 @@
 
 scoreboard players set #cgame_include_hill cgame_setting 1
 
-execute unless entity @e[type=armor_stand,name=cgame_hill] run summon armor_stand ~ ~ ~ {Invisible:1b,Marker:1b,CustomName:"\"cgame_hill\"",CustomNameVisible:0b}
+execute unless entity @e[type=armor_stand,name=cgame_hill] run summon armor_stand ~ ~ ~ {Invisible:1b,Marker:1b,CustomName:"cgame_hill",CustomNameVisible:0b}
 
 tp @e[type=armor_stand,name=cgame_hill] ~ ~ ~
 
