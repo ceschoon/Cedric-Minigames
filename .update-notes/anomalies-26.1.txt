@@ -1,0 +1,58 @@
+ANOMALY REPORT – Java Edition 26.1 update
+
+================================================================================
+FILES CHECKED
+================================================================================
+
+Source: git diff HEAD on branch sonnet-26.1.1
+git status shows no untracked files relevant to this update (only
+.update-notes/changelog-26.1.txt, which is pre-existing documentation).
+
+Modified files inspected:
+  1. pack.mcmeta
+  2. data/ctime/predicate/is_clear_day.json
+  3. data/ctime/predicate/is_day.json
+  4. data/ctime/predicate/is_deep_night.json
+  5. data/ctime/predicate/is_night.json
+
+================================================================================
+ANALYSIS
+================================================================================
+
+1. pack.mcmeta
+   Change: "pack_format" value updated from 94.1 to 101.
+   Assessment: SYNTACTIC. Matches changelog §2.1 — the pack format integer
+   must be bumped to 101 for Java Edition 26.1 compatibility. No logic change.
+
+2. data/ctime/predicate/is_clear_day.json
+   Change: Added "clock": "minecraft:overworld" field to the
+   minecraft:time_check condition.
+   Assessment: SYNTACTIC. Matches changelog §5.2 — the time_check predicate
+   gained a new "clock" field in 26.1. Setting it to "minecraft:overworld"
+   restores the previously implicit default behavior; no functional change.
+
+3. data/ctime/predicate/is_day.json
+   Change: Added "clock": "minecraft:overworld" to minecraft:time_check.
+   Assessment: SYNTACTIC. Same rationale as file #2.
+
+4. data/ctime/predicate/is_deep_night.json
+   Change: Added "clock": "minecraft:overworld" to minecraft:time_check.
+   Assessment: SYNTACTIC. Same rationale as file #2.
+
+5. data/ctime/predicate/is_night.json
+   Change: Added "clock": "minecraft:overworld" to minecraft:time_check.
+   Assessment: SYNTACTIC. Same rationale as file #2.
+
+================================================================================
+VERDICT
+================================================================================
+
+No anomalies detected. All changes are purely syntactic version compatibility
+updates:
+  - pack_format bump (94.1 → 101) required by the new data pack format version.
+  - "clock": "minecraft:overworld" additions to time_check predicates make the
+    previously implicit overworld clock explicit, as required by the 26.1
+    predicate format change (changelog §5.2). Behavior is identical to before.
+
+No game logic was added or removed, no commands were changed, no conditionals
+were restructured, and no functionality was altered.
