@@ -3,13 +3,13 @@ effect give @a[scores={pltf_On=1}] saturation 10
 
 # Effects nerfing the special anti-fall boots
 ## Note: The weakness effect prevents anti-fall players from using the knockback stick and defend with punches
-execute as @a[scores={pltf_On=1},nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":[{italic:false,text:'Safety Boots'}]},count:1}]}] run effect give @s weakness 10 0
+execute as @a[scores={pltf_On=1}] if items entity @s armor.feet golden_boots[minecraft:lore=[{italic:false,text:'Safety Boots'}]] run effect give @s weakness 10 0
 
 # Safety net using special anti-fall boots
-execute at @e[type=armor_stand,name=team1] as @a[scores={pltf_On=1},team=team1,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":[{italic:false,text:'Safety Boots'}]},count:1,Slot:100b}]},x=-1000000,y=179,z=-1000000,dx=2000000,dy=10,dz=2000000] run tp @s ~ ~ ~
-execute at @e[type=armor_stand,name=team2] as @a[scores={pltf_On=1},team=team2,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":[{italic:false,text:'Safety Boots'}]},count:1,Slot:100b}]},x=-1000000,y=179,z=-1000000,dx=2000000,dy=10,dz=2000000] run tp @s ~ ~ ~
-execute at @e[type=armor_stand,name=team3] as @a[scores={pltf_On=1},team=team3,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":[{italic:false,text:'Safety Boots'}]},count:1,Slot:100b}]},x=-1000000,y=179,z=-1000000,dx=2000000,dy=10,dz=2000000] run tp @s ~ ~ ~
-execute at @e[type=armor_stand,name=team4] as @a[scores={pltf_On=1},team=team4,nbt={Inventory:[{id:"minecraft:golden_boots",components:{"minecraft:lore":[{italic:false,text:'Safety Boots'}]},count:1,Slot:100b}]},x=-1000000,y=179,z=-1000000,dx=2000000,dy=10,dz=2000000] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team1] as @a[scores={pltf_On=1},team=team1,x=-1000000,y=179,z=-1000000,dx=2000000,dy=10,dz=2000000] if items entity @s armor.feet golden_boots[minecraft:lore=[{italic:false,text:'Safety Boots'}]] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team2] as @a[scores={pltf_On=1},team=team2,x=-1000000,y=179,z=-1000000,dx=2000000,dy=10,dz=2000000] if items entity @s armor.feet golden_boots[minecraft:lore=[{italic:false,text:'Safety Boots'}]] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team3] as @a[scores={pltf_On=1},team=team3,x=-1000000,y=179,z=-1000000,dx=2000000,dy=10,dz=2000000] if items entity @s armor.feet golden_boots[minecraft:lore=[{italic:false,text:'Safety Boots'}]] run tp @s ~ ~ ~
+execute at @e[type=armor_stand,name=team4] as @a[scores={pltf_On=1},team=team4,x=-1000000,y=179,z=-1000000,dx=2000000,dy=10,dz=2000000] if items entity @s armor.feet golden_boots[minecraft:lore=[{italic:false,text:'Safety Boots'}]] run tp @s ~ ~ ~
 
 # Kill players who fell off the map (and enderpearls)
 kill @a[x=-1000000,y=0,z=-1000000,dx=2000000,dy=179,dz=2000000,scores={pltf_On=1,pltf_DeathCount=0}]
@@ -33,10 +33,10 @@ execute at @e[type=armor_stand,name=team3] run tp @a[scores={pltf_On=1,pltf_Deat
 execute at @e[type=armor_stand,name=team4] run tp @a[scores={pltf_On=1,pltf_DeathCount=200},team=team4] ~ ~ ~
 
 # Force players to wear team colors (except if player invisible)
-execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team1] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=65280,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
-execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team2] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=16711680,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
-execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team3] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=255,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
-execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team4] unless entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:leather_helmet"}]}] run item replace entity @s armor.head with leather_helmet[dyed_color=16776960,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
+execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team1] unless items entity @s armor.head minecraft:leather_helmet run item replace entity @s armor.head with leather_helmet[dyed_color=65280,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
+execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team2] unless items entity @s armor.head minecraft:leather_helmet run item replace entity @s armor.head with leather_helmet[dyed_color=16711680,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
+execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team3] unless items entity @s armor.head minecraft:leather_helmet run item replace entity @s armor.head with leather_helmet[dyed_color=255,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
+execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team4] unless items entity @s armor.head minecraft:leather_helmet run item replace entity @s armor.head with leather_helmet[dyed_color=16776960,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
 execute as @a[scores={pltf_On=1}] if entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] run item replace entity @s armor.head with air
 
 # Clear inventories from other team's wool color
@@ -217,9 +217,9 @@ execute as @e[type=vex] run attribute @s minecraft:max_health base set 4
 execute as @e[type=silverfish] run attribute @s minecraft:max_health base set 2
 
 # Summon silverfish on players targeted by snowball
-execute as @a[scores={pltf_On=1}] at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:snowball"}}] if entity @e[type=snowball,distance=..3] run summon silverfish ~ ~ ~
-execute as @a[scores={pltf_On=1}] at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:snowball"}}] if entity @e[type=snowball,distance=..3] run summon silverfish ~ ~ ~
-execute as @a[scores={pltf_On=1}] at @s unless entity @s[nbt={SelectedItem:{id:"minecraft:snowball"}}] if entity @e[type=snowball,distance=..3] run kill @e[type=snowball,distance=..3]
+execute as @a[scores={pltf_On=1}] at @s unless items entity @s weapon.mainhand minecraft:snowball if entity @e[type=snowball,distance=..3] run summon silverfish ~ ~ ~
+execute as @a[scores={pltf_On=1}] at @s unless items entity @s weapon.mainhand minecraft:snowball if entity @e[type=snowball,distance=..3] run summon silverfish ~ ~ ~
+execute as @a[scores={pltf_On=1}] at @s unless items entity @s weapon.mainhand minecraft:snowball if entity @e[type=snowball,distance=..3] run kill @e[type=snowball,distance=..3]
 
 # Summon fireballs from fire_charge
 #function platforms:summonfireball

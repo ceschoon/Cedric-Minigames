@@ -41,8 +41,8 @@ scoreboard players operation @s cmagic_num_magical_items += @s cmagic_has_magica
 #execute store result score @s cmagic_has_magical_item2 run clear @s wind_charge 0
 #give @s[scores={cmagic_has_magical_item=1..,cmagic_has_magical_item2=..1}] wind_charge 1
 
-effect give @s[scores={cmagic_has_magical_item=1..},nbt={SelectedItem:{id:"minecraft:mace"}}] jump_boost 1 3
-effect give @s[scores={cmagic_has_magical_item=1..},nbt={SelectedItem:{id:"minecraft:mace"}}] slowness 1 0
+execute if score @s cmagic_has_magical_item matches 1.. if items entity @s weapon.mainhand minecraft:mace run effect give @s jump_boost 1 3
+execute if score @s cmagic_has_magical_item matches 1.. if items entity @s weapon.mainhand minecraft:mace run effect give @s slowness 1 0
 
 
 

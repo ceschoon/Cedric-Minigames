@@ -32,7 +32,7 @@ execute as @a[scores={inf_On=1}] at @s if dimension minecraft:the_nether run ite
 scoreboard objectives remove inf_test_mole
 scoreboard objectives add inf_test_mole dummy
 scoreboard players set @a inf_test_mole 0
-execute as @a[team=sane,scores={inf_On=1,inf_Mole=1}] unless entity @s[nbt={Inventory:[{id: "minecraft:black_banner", count:1}]}] run scoreboard players set @s inf_test_mole 1
+execute as @a[team=sane,scores={inf_On=1,inf_Mole=1}] unless items entity @s container.* minecraft:black_banner run scoreboard players set @s inf_test_mole 1
 team join infected @a[scores={inf_test_mole=1}]
 scoreboard players set @a[scores={inf_test_mole=1}] inf_Mole 0
 effect give @a[scores={inf_test_mole=1}] minecraft:absorption infinite 1 false
