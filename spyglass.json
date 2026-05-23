@@ -1,0 +1,12 @@
+{
+	"lint": {
+		"undeclaredSymbol": [
+			{
+				"if": [
+                    { "excludePattern": "cfp_" }
+				],
+				"then": { "report": "warning" }
+			}
+		]
+	}
+}
