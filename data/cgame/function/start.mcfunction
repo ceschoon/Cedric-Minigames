@@ -34,14 +34,14 @@ function cgame:find_start_location
 tp @a[scores={cgame_on=1}] ~ ~ ~
 
 ## Note: armor stands are cleared in the load function
-summon armor_stand ~ ~ ~ {Invisible:1b,Marker:1b,CustomName:"cgame_map_center",CustomNameVisible:0b}
+execute align xy positioned ~.5 ~ ~.5 run summon armor_stand ~ ~ ~ {Invisible:1b,Marker:1b,CustomName:"cgame_map_center",CustomNameVisible:0b}
 execute if score #cgame_include_hill cgame_setting matches 1 unless entity @e[type=armor_stand,name=cgame_hill] run function cgame:place_hill_here
 
 time set 0
 weather clear
 
-execute in minecraft:overworld run worldborder center ~ ~
-setworldspawn ~ ~ ~
+execute align xy positioned ~.5 ~ ~.5 in minecraft:overworld run worldborder center ~ ~
+execute align xy positioned ~.5 ~ ~.5 run setworldspawn ~ ~ ~
 
 ## Set world spawn as the default spawnpoint (will be overritten by the spread function)
 spawnpoint @a[scores={cgame_on=1}] ~ ~ ~
