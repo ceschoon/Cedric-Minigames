@@ -8,6 +8,7 @@
 	  "cmenu:load",
 	  "cscale:load",
 	  "ctime:load",
+	  "cterra:load",
 	  "cworld:load",
 	  "duels:load",
 	  "flsheep:load",
