@@ -14,6 +14,7 @@ tellraw @a [{text:'[Generate 2 teams map: 6 platforms evenly spaced]',color:aqua
 tellraw @a [{text:'[Generate 4 teams map: all resources in the middle]',color:aqua,click_event:{action:run_command,command:'/function platforms:generatemap5'},hover_event:{action:show_text,value:{text:'Map 5'}}}]
 tellraw @a [{text:'[Generate 3 teams map: all resources in the middle]',color:aqua,click_event:{action:run_command,command:'/function platforms:generatemap7'},hover_event:{action:show_text,value:{text:'Map 7'}}}]
 tellraw @a [{text:'[Generate 3 teams map: all resources stacked in the middle]',color:aqua,click_event:{action:run_command,command:'/function platforms:generatemap9'},hover_event:{action:show_text,value:{text:'Map 9'}}}]
+tellraw @a [{text:'[Generate 4 teams map: all resources behind spawn]',color:aqua,click_event:{action:run_command,command:'/function platforms:generatemap10'},hover_event:{action:show_text,value:{text:'Map 10'}}}]
 tellraw @a [{text:'[Generate 4 teams map: arranged as a 2v2]',color:aqua,click_event:{action:run_command,command:'/function platforms:generatemap1'},hover_event:{action:show_text,value:{text:'Map 1'}}}]
 tellraw @a [{text:'[Generate 3 teams map: arranged as a 2v1]',color:aqua,click_event:{action:run_command,command:'/function platforms:generatemap8'},hover_event:{action:show_text,value:{text:'Map 8'}}}]
 tellraw @a [{text:'[Generate 3 teams map: 3 platforms, unequal resources]',color:aqua,click_event:{action:run_command,command:'/function platforms:generatemap3'},hover_event:{action:show_text,value:{text:'Map 3'}}}]

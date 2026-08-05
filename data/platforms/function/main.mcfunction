@@ -99,9 +99,11 @@ execute at @e[type=armor_stand,name=diamond] run function platforms:builddiamond
 execute at @e[type=armor_stand,name=emerald1] run function platforms:buildemerald
 execute at @e[type=armor_stand,name=emerald2] run function platforms:buildemerald
 execute at @e[type=armor_stand,name=emerald3] run function platforms:buildemerald
+execute at @e[type=armor_stand,name=emerald4] run function platforms:buildemerald
 execute at @e[type=armor_stand,name=villager1] run function platforms:buildvillager
 execute at @e[type=armor_stand,name=villager2] run function platforms:buildvillager
 execute at @e[type=armor_stand,name=villager3] run function platforms:buildvillager
+execute at @e[type=armor_stand,name=villager4] run function platforms:buildvillager
 execute at @e[type=armor_stand,name=cannon1] run function platforms:buildmagma
 execute at @e[type=armor_stand,name=cannon2] run function platforms:buildmagma
 execute at @e[type=armor_stand,name=cannon3] run function platforms:buildmagma
@@ -116,6 +118,7 @@ execute at @e[type=armor_stand,name=diamond] run kill @e[type=item,nbt={Item:{id
 execute at @e[type=armor_stand,name=emerald1] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
 execute at @e[type=armor_stand,name=emerald2] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
 execute at @e[type=armor_stand,name=emerald3] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
+execute at @e[type=armor_stand,name=emerald4] run kill @e[type=item,nbt={Item:{id:"minecraft:emerald_block"}},distance=..10]
 
 # Remove wind charges near fireball cannon to prevent staked middle camper from getting rid of them remotely
 #execute at @e[type=armor_stand,name=cannon1] run kill @e[type=wind_charge,distance=..5]
@@ -134,6 +137,7 @@ execute at @e[type=armor_stand,name=diamond] if score #pltf_DelayDiamd pltf_vari
 execute at @e[type=armor_stand,name=emerald1] if score #pltf_DelayEmrld pltf_variable matches ..0 run loot spawn ~ ~ ~ loot minecraft:blocks/emerald_ore
 execute at @e[type=armor_stand,name=emerald2] if score #pltf_DelayEmrld pltf_variable matches ..0 run loot spawn ~ ~ ~ loot minecraft:blocks/emerald_ore
 execute at @e[type=armor_stand,name=emerald3] if score #pltf_DelayEmrld pltf_variable matches ..0 run loot spawn ~ ~ ~ loot minecraft:blocks/emerald_ore
+execute at @e[type=armor_stand,name=emerald4] if score #pltf_DelayEmrld pltf_variable matches ..0 run loot spawn ~ ~ ~ loot minecraft:blocks/emerald_ore
 execute at @e[type=armor_stand,name=team1] if score #pltf_DelayWool pltf_variable matches ..0 run loot spawn ~ ~ ~ loot minecraft:blocks/lime_wool
 execute at @e[type=armor_stand,name=team2] if score #pltf_DelayWool pltf_variable matches ..0 run loot spawn ~ ~ ~ loot minecraft:blocks/red_wool
 execute at @e[type=armor_stand,name=team3] if score #pltf_DelayWool pltf_variable matches ..0 run loot spawn ~ ~ ~ loot minecraft:blocks/blue_wool
