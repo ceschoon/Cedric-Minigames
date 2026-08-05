@@ -46,7 +46,7 @@ execute align xy positioned ~.5 ~ ~.5 run setworldspawn ~ ~ ~
 ## Set world spawn as the default spawnpoint (will be overritten by the spread function)
 spawnpoint @a[scores={cgame_on=1}] ~ ~ ~
 
-execute if score #cgame_map_size cgame_setting matches ..0 run execute in minecraft:overworld run worldborder set 9999999
+execute if score #cgame_map_size cgame_setting matches ..0 run execute in minecraft:overworld run worldborder set 1000000
 execute if score #cgame_map_size cgame_setting matches 1 run execute in minecraft:overworld run worldborder set 100
 execute if score #cgame_map_size cgame_setting matches 2 run execute in minecraft:overworld run worldborder set 200
 execute if score #cgame_map_size cgame_setting matches 3 run execute in minecraft:overworld run worldborder set 300
