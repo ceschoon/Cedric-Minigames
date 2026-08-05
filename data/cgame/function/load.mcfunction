@@ -77,6 +77,7 @@ scoreboard players set #cgame_curse_active cgame_setting 0
 scoreboard players set #cgame_include_hill cgame_setting 0
 scoreboard players set #cgame_include_boss cgame_setting 0
 scoreboard players set #cgame_include_barrel_drops cgame_setting 0
+scoreboard players set #cgame_include_runner_mining_fatigue cgame_setting 1
 scoreboard players set #cgame_starter_kit cgame_setting 0
 scoreboard players set #cgame_shrink_border cgame_setting 0
 scoreboard players set #cgame_include_hunter_item_shop cgame_setting 0

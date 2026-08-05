@@ -18,6 +18,7 @@ tellraw @a [{text:'[Preset: kill the boss]',color:aqua,click_event:{action:run_c
 tellraw @a [{text:'[Preset: battleroyale]',color:aqua,click_event:{action:run_command,command:'/function cgame:presets/battleroyale'},hover_event:{action:show_text,value:{text:'Kill other players to score'}}}]
 tellraw @a [{text:'[Preset: light the beacons]',color:aqua,click_event:{action:run_command,command:'/function cgame:presets/cult'},hover_event:{action:show_text,value:{text:'The goal is for the cultist to bring riches to the sacred stone and convert everyone. The others must stop them.'}}}]
 tellraw @a [{text:'[Preset: king of the hill]',color:aqua,click_event:{action:run_command,command:'/function cgame:presets/king_of_the_hill'},hover_event:{action:show_text,value:{text:'Stay on the hill for as long as possible'}}}]
+tellraw @a [{text:'[Preset: manhunt]',color:aqua,click_event:{action:run_command,command:'/function cgame:presets/manhunt'}}]
 
 tellraw @a [' ']
 tellraw @a [{text:'Step 3: Tweak the settings (Optional)',color:gold}]

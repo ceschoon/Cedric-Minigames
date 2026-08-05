@@ -6,10 +6,10 @@ execute if score #cgame_preptime cgame_setting matches 0 if score #ctime_TicksIn
 function cgame:preptime
 
 # permanent effects
-effect give @a[team=cgame_increment,scores={cgame_on=1}] mining_fatigue 10 0 true
+execute if score #cgame_include_runner_mining_fatigue cgame_setting matches 1 run effect give @a[team=cgame_increment,scores={cgame_on=1}] mining_fatigue 10 0 true
 effect give @a[team=cgame_decrement,scores={cgame_on=1}] glowing 10 0 true
 effect give @a[team=cgame_boss,scores={cgame_on=1}] resistance 10 1 true
-effect give @a[team=cgame_boss,scores={cgame_on=1}] mining_fatigue 10 0 true
+execute if score #cgame_include_runner_mining_fatigue cgame_setting matches 1 run effect give @a[team=cgame_boss,scores={cgame_on=1}] mining_fatigue 10 0 true
 effect give @a[team=cgame_boss,scores={cgame_on=1}] glowing 10 0 true
 
 # special mechanics
