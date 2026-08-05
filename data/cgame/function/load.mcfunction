@@ -142,8 +142,6 @@ kill @e[type=armor_stand,name=cgame_cult_beacon]
 kill @e[type=armor_stand,name="Cultist Beacon Level 1/2"]
 kill @e[type=armor_stand,name="Cultist Beacon Level 2/2"]
 
-kill @e[type=villager,tag=cgame_cult_villager]
-
 bossbar remove cgame_boss_health
 bossbar remove cgame_cult_conversion
 
