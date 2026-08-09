@@ -24,13 +24,13 @@ gamemode spectator @a[scores={pltf_On=1,pltf_DeathCount=2}]
 execute at @e[type=armor_stand,name=diamond] run tp @a[scores={pltf_On=1,pltf_DeathCount=1..199}] ~ ~20 ~
 title @a[scores={pltf_On=1,pltf_DeathCount=2}] title [{text:'You died!',color:red}]
 title @a[scores={pltf_On=1,pltf_DeathCount=2}] subtitle [{text:'You will respawn in 10 seconds...',color:red}]
-gamemode survival @a[scores={pltf_On=1,pltf_DeathCount=200}]
 
-# Tp players who respawned back to team platform
+# Tp players who respawned back to team platform (survival mode after tp otherwise players may collide and pick up sufficient momentum to be thrown off their platform)
 execute at @e[type=armor_stand,name=team1] run tp @a[scores={pltf_On=1,pltf_DeathCount=200},team=team1] ~ ~ ~
 execute at @e[type=armor_stand,name=team2] run tp @a[scores={pltf_On=1,pltf_DeathCount=200},team=team2] ~ ~ ~
 execute at @e[type=armor_stand,name=team3] run tp @a[scores={pltf_On=1,pltf_DeathCount=200},team=team3] ~ ~ ~
 execute at @e[type=armor_stand,name=team4] run tp @a[scores={pltf_On=1,pltf_DeathCount=200},team=team4] ~ ~ ~
+gamemode survival @a[scores={pltf_On=1,pltf_DeathCount=200}]
 
 # Force players to wear team colors (except if player invisible)
 execute as @a[scores={pltf_On=1}] unless entity @s[nbt={active_effects:[{id:"minecraft:invisibility"}]}] if entity @s[team=team1] unless items entity @s armor.head minecraft:leather_helmet run item replace entity @s armor.head with leather_helmet[dyed_color=65280,enchantments={"minecraft:vanishing_curse":1,"minecraft:binding_curse":1}]
